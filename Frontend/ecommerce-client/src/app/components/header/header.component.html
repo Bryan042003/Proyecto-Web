@@ -1,10 +1,52 @@
-
-
 <header>
-    <div class="bg-[#1E2B3D] w-full ">
-        <div >
-            <button>INICIAR SESIÓN</button>
-            <button>CREAR UNA CUENTA</button>
+    <div class="bg-[#1E2B3D] w-full h-[75px] flex items-center justify-end space-x-4 pr-5">
+        <button class="bg-[#E9EFF9] text-[#1E2B3D] font-bold py-2 px-4 rounded-sm shadow-md transform -skew-x-12">
+            INICIAR SESIÓN
+        </button>
+        <button class="text-white font-bold py-2 px-4">
+            CREAR UNA CUENTA
+        </button>
+
+        <button class="bg-white rounded-full flex items-center justify-center w-10 h-10">
+            <span class="material-symbols-outlined text-[#1E2B3D]">
+                person
+            </span>
+        </button>
+    </div>
+
+    <div class="w-full h-[250px] flex items-center justify-center px-5 space-x-2">
+        <img src="../../../assets/logo.png" class="mr-24">
+        <div class="flex">
+            <input type="text" placeholder="Buscar productos"
+                class=" text-[#1E2B3D] font-bold py-2 px-4 rounded-l-md w-[600px] border border-black ">
+
+            <button class="bg-[#1E2B3D] rounded-r-md flex items-center justify-center m-0 p-3 w-[100px]">
+                <span class="material-symbols-outlined text-white">
+                    search
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div class="flex items-center bg-[#EDF2FB] h-[75px] px-5">
+        <!-- Menú centrado -->
+        <div class="flex-grow flex items-center justify-center space-x-4">
+            <button class="text-black font-bold py-2 px-4">CATEGORÍAS</button>
+            <button class="text-black font-bold py-2 px-4">OFERTAS</button>
+            <button class="text-black font-bold py-2 px-4">CONTACTO</button>
+            <button class="text-black font-bold py-2 px-4">CARRITO</button>
+        </div>
+
+        <!-- Íconos alineados a la derecha -->
+        <div class="flex items-center space-x-4">
+
+            <button class="bg-white rounded-full flex items-center justify-center w-10 h-10">
+
+            </button>
+
+            <button class="bg-[#1E2B3D] rounded-full flex items-center justify-center w-10 h-10">
+
+            </button>
         </div>
     </div>
 </header>
