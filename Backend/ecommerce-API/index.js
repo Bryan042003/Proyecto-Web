@@ -3,7 +3,9 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const sequelize = require('./config/database');
-const userRoutes = require('./routes/userRoutes');
+const UserRoutes = require('./routes/UserRoutes');
+const AuthRoutes = require('./routes/AuthRoutes');
+const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
 
@@ -25,7 +27,11 @@ app.get('/', (req, res) => {
 // })
 
 //Routes
-app.use('/api/users', userRoutes);
+app.use('/api/users', UserRoutes);
+app.use('/api/auth', AuthRoutes);
+
+//Cors
+app.use(cors());
 
 //Server
 app.listen(port, () => {
