@@ -4,10 +4,14 @@ module.exports = {
     './src/**/*.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        jetbrains: ['"JetBrains Mono"', 'monospace'],
+      },
+    },
   },
-  daisyui:{
-    themes:[
+  daisyui: {
+    themes: [
 
     ]
   },
