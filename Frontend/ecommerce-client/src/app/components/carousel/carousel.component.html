@@ -1,0 +1,11 @@
+<div class="carousel w-full" *ngIf="slides.length">
+    <div *ngFor="let slide of slides; let i = index" 
+         [class.hidden]="i !== currentIndex"
+         class="carousel-item relative w-full">
+        <img [src]="slide" class="w-full" />
+        <div class="absolute bottom-5 left-5 flex space-x-2 -translate-y-1/2 transform justify-between">
+            <button (click)="previousSlide()" class="btn btn-circle bg-[#58616e] text-white">❮</button>
+            <button (click)="nextSlide()" class="btn btn-circle bg-[#58616e] text-white">❯</button>
+        </div>
+    </div>
+</div>

@@ -28,25 +28,218 @@
         </div>
     </div>
 
-    <div class="flex items-center bg-[#EDF2FB] h-[75px] px-5">
-        <!-- Menú centrado -->
-        <div class="flex-grow flex items-center justify-center space-x-4">
-            <button class="text-black font-bold py-2 px-4">CATEGORÍAS</button>
-            <button class="text-black font-bold py-2 px-4">OFERTAS</button>
-            <button class="text-black font-bold py-2 px-4">CONTACTO</button>
-            <button class="text-black font-bold py-2 px-4">CARRITO</button>
+
+
+    <div class="navbar bg-[#EDF2FB]">
+        <div class="navbar-start">
+
         </div>
+        <div class="navbar-center ">
+            <div class="navbar-center hidden lg:flex z-[100]">
+                <ul class="menu menu-horizontal space-x-4">
+                    <li class="relative group">
+                        <a class="font-bold text-lg">Parent</a>
+                        <ul class="w-32 bg-white hidden group-hover:block absolute top-full">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="relative group">
+                        <a class="font-bold text-lg">Parent</a>
+                        <ul class="w-32 bg-white hidden group-hover:block absolute top-full">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </li>
 
-        <!-- Íconos alineados a la derecha -->
-        <div class="flex items-center space-x-4">
+                    <li class="relative group">
+                        <a class="font-bold text-lg">Parent</a>
+                        <ul class="w-32 bg-white hidden group-hover:block absolute top-full">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </li>
 
-            <button class="bg-white rounded-full flex items-center justify-center w-10 h-10">
-                <img src="images/whislist.png" alt="" class="w-[30px]">
-            </button>
+                    <li class="relative group">
+                        <a class="font-bold text-lg">Parent</a>
+                        <ul class="w-32 bg-white hidden group-hover:block absolute top-full">
+                            <li><a>Submenu 1</a></li>
+                            <li><a>Submenu 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-            <button class="bg-[#1E2B3D] rounded-full flex items-center justify-center w-10 h-10">
-                <img src="images/shopping_cart.png" alt="" class="w-[25px]">
-            </button>
+
+        </div>
+        <div class="navbar-end space-x-4 ">
+            <div class="flex-none bg-white rounded-full text-black">
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                        <div class="indicator">
+                            <img src="images/whislist.png" alt="" class="w-[30px]">
+
+                            <span class="badge badge-sm indicator-item">8</span>
+                        </div>
+                    </div>
+                    <div tabindex="0"
+                        class="card card-compact dropdown-content bg-[#EDF2FB] z-[1] mt-3 w-[500px] h-[450px] text-black border-2 border-[#a5a5a5]">
+
+                        <div class="  h-full w-full">
+
+                            <!-- Columna principal que ocupa 8 de las 12 columnas -->
+                            <div
+                                class="col-span-8 w-full h-full flex justify-center items-center pt-[10px] pl-[10px] pb-[10px] ">
+                                <div class="h-[100%] w-[100%] rounded-2xl max-h-[425px]  overflow-auto rtl">
+
+                                    <div class="card card-side border  h-[200px] bg-[#f8fafd] ltr">
+                                        <figure class="rounded-2xl">
+                                            <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                                                alt="Movie" />
+                                        </figure>
+                                        <div class="card-body  rounded-2xl ">
+
+                                            <div class="flex row w-full h-full">
+                                                <div class="col h-[100%]  w-[80%]">
+                                                    <div class="flex row h-[50%] items-center font-bold font-jetbrains">
+                                                        NOMBRE DEL PRODUCTO A UTILIZAR EN ESTE ESPACIO
+                                                    </div>
+                                                    <div class="flex row h-[50%] items-center font-jetbrains">
+                                                        <p class="font-bold text-lg">₡ 250 000</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col w-[20%]">
+                                                    <div class="row flex items-center justify-center h-full w-full">
+                                                        <img src="images/delete.png" alt="delete" class="w-[50%]">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-none bg-[#1E2B3D] rounded-full text-white">
+                <div class="dropdown dropdown-end">
+                    <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+                        <div class="indicator">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            <span class="badge badge-sm indicator-item">8</span>
+                        </div>
+                    </div>
+                    <div tabindex="0"
+                        class="card card-compact dropdown-content bg-[#EDF2FB] z-[1] mt-3 w-[800px] h-[450px] text-black border-2 border-[#a5a5a5]">
+
+                        <div class="grid grid-cols-12 gap-4 h-full">
+
+                            <!-- Columna principal que ocupa 8 de las 12 columnas -->
+                            <div
+                                class="col-span-8 w-full h-full flex justify-center items-center pt-[10px] pl-[10px] pb-[10px] ">
+                                <div class="h-[100%] w-[100%] rounded-2xl max-h-[425px]  overflow-auto rtl">
+
+                                    <div class="card card-side border  h-[200px] bg-[#f8fafd] ltr">
+                                        <figure class="rounded-2xl">
+                                            <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                                                alt="Movie" />
+                                        </figure>
+                                        <div class="card-body  rounded-2xl ">
+
+                                            <div class="flex row w-full h-full">
+                                                <div class="col h-[100%]  w-[80%]">
+                                                    <div class="flex row h-[33%] items-center font-bold font-jetbrains">
+                                                        NOMBRE DEL PRODUCTO A UTILIZAR EN ESTE ESPACIO
+                                                    </div>
+                                                    <div class="flex row h-[33%] items-center justify-center">
+                                                        <div
+                                                            class="w-[20%] h-[80%] bg-[#edf2fb] flex items-center justify-center rounded-2xl font-jetbrains">
+                                                            2X
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex row h-[33%] items-center font-jetbrains">
+                                                        <p class="font-bold text-lg">₡ 250 000</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col w-[20%]">
+                                                    <div class="row flex items-center justify-center h-full w-full">
+                                                        <img src="images/delete.png" alt="delete" class="w-[50%]">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Columna secundaria que ocupa 4 de las 12 columnas -->
+                            <div
+                                class="col-span-4 w-full h-full flex justify-center items-center pt-[10px] pr-[10px] pb-[10px]">
+                                <div class="bg-[#f8fafd] h-[100%] w-[100%] rounded-2xl">
+                                    <div class="flex row h-[60%] items-center font-bold font-jetbrains justify-center">
+                                        <div class="col font-bold font-jetbrains h-[100%]  pt-4">
+                                            Total de compra
+                                        </div>
+                                    </div>
+
+                                    <div class=" h-[30%] w-full">
+                                        <!-- Fila 1 -->
+                                        <div class="flex col w-full h-[33.33%]">
+                                            <div
+                                                class="flex row w-[30%] items-center justify-start pl-2 font-jetbrains text-xs">
+                                                Transporte</div>
+                                            <div
+                                                class="flex row w-[70%] items-center justify-end pr-2 font-extrabold font-jetbrains text-xs">
+                                                ₡ 1 250 000</div>
+
+                                        </div>
+                                        <!-- Fila 2 -->
+                                        <div class="flex col w-full h-[33.33%]">
+                                            <div
+                                                class="flex row w-[30%] items-center justify-start pl-2 font-jetbrains text-xs">
+                                                Subtotal</div>
+                                            <div
+                                                class="flex row w-[70%] items-center justify-end pr-2 font-extrabold font-jetbrains text-xs">
+                                                ₡ 10 250 000</div>
+
+                                        </div>
+                                        <!-- Fila 3 -->
+                                        <div class="flex col w-full h-[33.33%]">
+                                            <div
+                                                class="flex row w-[30%] items-center justify-start pl-2 font-jetbrains">
+                                                Total</div>
+                                            <div
+                                                class="flex row w-[70%] items-center justify-end pr-2 font-extrabold font-jetbrains">
+                                                ₡ 10 250 000</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row h-[10%] flex items-center justify-center">
+                                        <button
+                                            class="w-[75%] h-[75%] bg-[#1E2B3D] rounded-2xl font-jetbrains text-white">Confirmar</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </header>
