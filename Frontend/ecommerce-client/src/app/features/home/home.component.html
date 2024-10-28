@@ -1,7 +1,101 @@
-<app-header/>
-<app-carousel/>
-<app-slogan/>
-<div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
-    <app-slider-day-promotions/>
+<app-header />
+<div *ngIf="principalPage; else alternativeContent">
+    <app-carousel />
+    <app-slogan />
+    <div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
+        <div *ngIf="principalPageProducts ; else verificarLogin">
+            
+            <app-products-per-category/>
+            
+            <!--
+            <app-slider-day-promotions />
+            
+            <div class="w-full flex justify-between">
+                <div class="w-[49%]">
+                    <app-featured-products />
+                </div>
+                <div class="w-[49%]">
+                    <app-featured-products />
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
 </div>
-<app-footer/>
+
+
+<ng-template #verificarLogin>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div *ngIf="login ; else verificarMiCuenta">
+        login
+    </div>
+
+</ng-template>
+
+
+<ng-template #verificarMiCuenta>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div *ngIf="account ; else verificarInfoPersonal">
+        account
+    </div>
+
+</ng-template>
+
+<ng-template #verificarInfoPersonal>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div *ngIf="personalInformation ; else historialPedidos">
+        info personal
+    </div>
+
+</ng-template>
+
+
+<ng-template #historialPedidos>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div *ngIf="orderHistory ; else direcciones">
+        historial
+    </div>
+
+</ng-template>
+
+<ng-template #direcciones>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div *ngIf="directions ; else metodosPago">
+        direcciones
+    </div>
+
+</ng-template>
+
+
+<ng-template #metodosPago>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div *ngIf="paymentMethod ">
+        metodosPago
+    </div>
+
+</ng-template>
+
+
+
+<ng-template #alternativeContent>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white">
+        <div *ngIf="whishlist; else carrito ">
+            whishlist
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #carrito>
+    <!-- Contenido alternativo cuando principalPage es false -->
+    <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white">
+        <div *ngIf="cart ">
+            carrito
+        </div>
+    </div>
+</ng-template>
+
+
+
+<app-footer />

@@ -1,12 +1,13 @@
 <div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12" *ngIf="slides.length">
-    <p class="text-[25px] font-bold">Promociones del día</p>
+    <p class="text-[25px] font-bold">Productos destacados</p>
     
     <div class="flex w-full justify-center overflow-hidden relative">
         <div class="flex w-full transition-transform duration-700 transform" 
-             [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 25) + '%)'}">
+             [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 50) + '%)'}">
             <div *ngFor="let slide of slides" 
-                 class="w-[25%] h-full p-3">
-                <app-offer-card-product/>
+                 class="w-[50%] h-full p-3">
+                 {{slide}}
+                <app-card-product></app-card-product>
             </div>
         </div>
     </div>

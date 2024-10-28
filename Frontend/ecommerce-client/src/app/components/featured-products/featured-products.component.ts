@@ -1,17 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardProductComponent } from "../card-product/card-product.component";
-import { OfferCardProductComponent } from "../offer-card-product/offer-card-product.component";
+
 
 @Component({
-  selector: 'app-slider-day-promotions',
+  selector: 'app-featured-products',
   standalone: true,
-  imports: [CommonModule, CardProductComponent, OfferCardProductComponent],
-  templateUrl: './slider-day-promotions.component.html',
-  styleUrl: './slider-day-promotions.component.scss'
+  imports: [CommonModule, CardProductComponent],
+  templateUrl: './featured-products.component.html',
+  styleUrl: './featured-products.component.scss'
 })
-export class SliderDayPromotionsComponent {
-  displayedSlides = 4; 
+export class FeaturedProductsComponent {
+
+
+  displayedSlides = 2; 
   currentIndex = 0;
 
   slides = ["hola", "hola1", "hola2", "hola3", "hola4", "hola5", "hola6"];
@@ -31,5 +33,4 @@ export class SliderDayPromotionsComponent {
       this.currentIndex = 0;
     }
   }
-
 }

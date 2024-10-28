@@ -1,0 +1,15 @@
+<div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12">
+    <p class="text-[25px] font-bold">Nombre de la categoría</p>
+
+    <div class="flex w-full flex-wrap content-between">
+        <div *ngFor="let slide of displayedItems" class="w-[25%] p-3">
+            {{slide}}
+            <app-card-product></app-card-product>
+        </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center mt-4">
+        <p class="text-[20px]">Cargando...</p>
+        <i class="fas fa-spinner fa-spin text-[#1E2B3D] text-3xl mt-2"></i>
+    </div>
+</div>

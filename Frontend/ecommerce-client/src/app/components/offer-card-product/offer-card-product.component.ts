@@ -1,0 +1,16 @@
+import { Component } from '@angular/core';
+import { InfoProductComponent } from "../info-product/info-product.component";
+import { AddCartComponent } from "../add-cart/add-cart.component";
+import { AddWhislistComponent } from "../add-whislist/add-whislist.component";
+import { StockStatusComponent } from "../stock-status/stock-status.component";
+
+@Component({
+  selector: 'app-offer-card-product',
+  standalone: true,
+  imports: [InfoProductComponent, AddCartComponent, AddWhislistComponent, StockStatusComponent],
+  templateUrl: './offer-card-product.component.html',
+  styleUrl: './offer-card-product.component.scss'
+})
+export class OfferCardProductComponent {
+
+}
