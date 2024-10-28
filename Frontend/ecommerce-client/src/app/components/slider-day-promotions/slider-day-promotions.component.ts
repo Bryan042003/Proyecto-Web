@@ -10,37 +10,25 @@ import { CardProductComponent } from "../card-product/card-product.component";
   styleUrl: './slider-day-promotions.component.scss'
 })
 export class SliderDayPromotionsComponent {
-  displayedSlides = 4; // Número de componentes visibles
-  currentIndex = 0; // Índice actual
-  currentDirection = ''; // Para controlar la dirección del desplazamiento
+  displayedSlides = 4; 
+  currentIndex = 0;
 
-  // Lista de ejemplos; reemplaza esto con tus propios datos
-  slides = ["hola","hola1","hola2","hola3","hola4","hola5","hola6"];
+  slides = ["hola", "hola1", "hola2", "hola3", "hola4", "hola5", "hola6"];
 
   previousSlide() {
-    this.currentDirection = 'translate-x-[100%]'; // Desplazamiento hacia la derecha
-    this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
-    setTimeout(() => {
-      this.currentDirection = ''; // Resetear la dirección
-    }, 500); // Duración de la animación
+    if (this.currentIndex > 0) {
+      this.currentIndex -= 1;
+    } else {
+      this.currentIndex = this.slides.length - this.displayedSlides;
+    }
   }
 
   nextSlide() {
-    this.currentDirection = 'translate-x-[-100%]'; // Desplazamiento hacia la izquierda
-    this.currentIndex = (this.currentIndex + 1) % this.slides.length;
-    setTimeout(() => {
-      this.currentDirection = ''; // Resetear la dirección
-    }, 500); // Duración de la animación
-  }
-
-  get visibleSlides() {
-    const totalSlides = this.slides.length;
-    const slidesToShow = [];
-    for (let i = 0; i < this.displayedSlides; i++) {
-      const index = (this.currentIndex + i) % totalSlides;
-      slidesToShow.push(this.slides[index]);
+    if (this.currentIndex < this.slides.length - this.displayedSlides) {
+      this.currentIndex += 1;
+    } else {
+      this.currentIndex = 0;
     }
-    return slidesToShow;
   }
 
 }
