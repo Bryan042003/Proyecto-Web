@@ -12,12 +12,13 @@
                         <div class="col h-[50%] w-full">
                             <div class="row h-full w-full p-10">
                                 <div class="col h-full">
-                                    <div class="row h-[50%] w-[70%] font-bold font-jetbrains text-2xl flex items-center">
+                                    <div
+                                        class="row h-[50%] w-[70%] font-bold font-jetbrains text-2xl flex items-center">
                                         NOMBRE DEL PRODUCTO A UTILIZAR EN ESTE ESPACIO
                                     </div>
                                     <div class="row h-[50%] text-2xl">
-                                        Marca: <span class="font-bold pr-52">HP</span> 
-                                        <app-stock-status/>
+                                        Marca: <span class="font-bold pr-52">HP</span>
+                                        <app-stock-status />
                                     </div>
                                 </div>
 
@@ -61,17 +62,88 @@
         <div class="col w-full h-[400px] text-white mt-5">
             <div class="row h-full flex space-x-5">
                 <div class="col w-[50%] bg-white rounded-2xl ">
-                    <p class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">Descripción del producto</p>
-                    <p class="h-[80%] p-10 overflow-y-auto text-black" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam consequatur. Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.</p>
+                    <p
+                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                        Descripción del producto</p>
+                    <p class="h-[80%] p-10 overflow-y-auto text-black"> Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam consequatur.
+                        Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.</p>
                 </div>
                 <div class="col w-[50%] bg-white rounded-2xl ">
-                    <p class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">Especificaciones técnicas</p>
-                    <p class="h-[80%] p-10 overflow-y-auto text-black" > Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam consequatur. Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.</p>
+                    <p
+                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                        Especificaciones técnicas</p>
+                    <p class="h-[80%] p-10 overflow-y-auto text-black"> Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam consequatur.
+                        Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.</p>
                 </div>
             </div>
         </div>
-        <div class="col w-full bg-red-500 mt-5 h-[700px]">
-            3
+        <div class="col w-full mt-5 h-[700px] flex">
+            <div class="row h-full w-full flex">
+                <div class="col w-full h-full bg-white ">
+                    <p
+                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                        Review de compradores</p>
+
+
+                    <div class="h-[80%]  flex items-start justify-center ">
+
+                        <div class="w-full">
+                            <div class="w-full flex items-center justify-center">
+                                <app-star-rating></app-star-rating>
+                            </div>
+                            <div class="w-full flex justify-center items-center mt-10 mb-10">
+                                <textarea class="w-[70%] h-[150px] border border-black' text-white"
+                                    placeholder="Añade una valoración"></textarea>
+                            </div>
+                            <div class="flex w-full h-12 items-center justify-center ">
+                                <button
+                                    class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains  rounded-xl w-[50%] h-full">
+                                    Enviar
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col w-full h-full bg-white">
+                    <p
+                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                        Valoraciones </p>
+                    <div class="w-[95%] h-[75%] p-5 overflow-y-auto">
+                        <div class="w-full h-[300px] flex  mb-2 bg-[#edf2fb] rounded-2xl pt-2 pb-2 pr-6 pl-6">
+
+                            <div class=" w-full">
+                                <div class="w-full h-[35%] flex">
+
+                                    <div class=" h-full w-[30%] flex items-center justify-center bg-blue-200">
+                                        <i class="fas fa-image w-full h-full"></i>
+                                    </div>
+                                    <p
+                                        class="font-bold text-lg w-[70%] h-full  flex items-center font-jetbrains text-black ">
+                                        Bryan Castro Solís </p>
+                                </div>
+
+                                <div class="flex h-[15%] ">
+                                    <ng-container *ngFor="let star of stars; index as i">
+                                        <i (click)="rate(i + 1)"
+                                            [ngClass]="i < rating ? 'fas fa-star text-yellow-500' : 'far fa-star text-gray-400'"
+                                            class="w-10 cursor-pointer transition duration-200 ease-in-out text-2xl"></i>
+                                    </ng-container>
+                                </div>
+                                <div class="h-[50%] bg-white">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
