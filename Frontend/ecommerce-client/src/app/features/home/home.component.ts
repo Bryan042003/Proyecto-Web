@@ -8,11 +8,12 @@ import { FeaturedProductsComponent } from "../../components/featured-products/fe
 import { CommonModule } from '@angular/common';
 import { ProductsPerCategoryComponent } from "../../components/products-per-category/products-per-category.component";
 import { ProductDetailsComponent } from "../../components/product-details/product-details.component";
+import { PersonalInformationComponent } from "../../components/personal-information/personal-information.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent],
+  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
