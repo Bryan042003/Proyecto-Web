@@ -11,11 +11,12 @@ import { ProductDetailsComponent } from "../../components/product-details/produc
 import { PersonalInformationComponent } from "../../components/personal-information/personal-information.component";
 import { OrderHistoryComponent } from "../../components/order-history/order-history.component";
 import { DirectionComponent } from "../../components/direction/direction.component";
+import { LoginComponent } from "../authentication/login/login.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent],
+  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent, LoginComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
