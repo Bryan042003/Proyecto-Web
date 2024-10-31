@@ -9,11 +9,12 @@ import { CommonModule } from '@angular/common';
 import { ProductsPerCategoryComponent } from "../../components/products-per-category/products-per-category.component";
 import { ProductDetailsComponent } from "../../components/product-details/product-details.component";
 import { PersonalInformationComponent } from "../../components/personal-information/personal-information.component";
+import { OrderHistoryComponent } from "../../components/order-history/order-history.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent],
+  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
