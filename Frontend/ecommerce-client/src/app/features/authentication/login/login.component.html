@@ -1,1 +1,124 @@
-<p>login works!</p>
+<div class="w-full h-[650px] bg-white rounded-xl flex flex-col">
+    <!-- Contenedor principal de la vista -->
+    <ng-container *ngIf="showLogin; else registerTemplate">
+        <!-- Pantalla de Iniciar Sesión -->
+        <div class="row w-full h-full flex justify-center">
+            <div class="col w-[50%] h-full p-10 bg-white rounded-l-2xl">
+                <div class="row w-full h-[20%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
+                    Iniciar Sesión
+                </div>
+                <div class="row w-full h-[20%] font-extrabold font-jetbrains items-center">
+                    <div class="col w-full h[80%] flex items-center justify-center space-x-4">
+                        <div class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/google.png" alt="">
+                        </div>
+                        <div class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/facebook.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col w-full h[20%] flex justify-center items-center">
+                        o usa tu correo
+                    </div>
+                </div>
+                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="email"
+                        placeholder="Correo Electrónico">
+                </div>
+                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                        type="password" placeholder="Contraseña">
+                </div>
+                <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex">
+                    <button class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]">
+                        Guardar
+                    </button>
+                </div>
+                <div class="row h-[10%] w-full flex justify-center items-center">
+                    <div class="col w-[full] h-full flex justify-end items-center space-x-2">
+                        <input type="checkbox">
+                        <label for="checkbox">Mostrar Contraseña</label>
+                    </div>
+                    <div class="col w-[50%] h-full flex justify-end items-center">
+                        <a href="#" class="underline">¿Has olvidado tu contraseña?</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="rounded-r-2xl w-[50%] h-full flex flex-col bg-[#f5f8fc] items-center justify-center font-bold space-y-4">
+                <div class="w-full flex justify-center items-center text-2xl">
+                    ¡Bienvenido!
+                </div>
+                <div class="w-full flex justify-center items-center text-lg">
+                    Presione para crear una cuenta
+                </div>
+                <div class="w-full h-[10%] flex justify-center items-center">
+                    <button (click)="toggleView()"
+                        class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-full">
+                        Crear cuenta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- Plantilla de Registro -->
+    <ng-template #registerTemplate>
+        <div class="row w-full h-full flex justify-center">
+            <div class="rounded-l-2xl w-[50%] h-full flex flex-col bg-[#f5f8fc] items-center justify-center font-bold space-y-4">
+                <div class="w-full flex justify-center items-center text-2xl">
+                    ¡Bienvenido!
+                </div>
+                <div class="w-full flex justify-center items-center text-lg">
+                    Presione para iniciar sesión
+                </div>
+                <div class="w-full h-[10%] flex justify-center items-center">
+                    <button (click)="toggleView()"
+                        class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-full">
+                        Iniciar sesión
+                    </button>
+                </div>
+            </div>
+            <div class="col w-[50%] h-full p-10 bg-white rounded-r-2xl">
+                <div class="row w-full h-[20%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
+                    Registrarse
+                </div>
+                <div class="row w-full h-[20%] font-extrabold font-jetbrains items-center">
+                    <div class="col w-full h[80%] flex items-center justify-center space-x-4">
+                        <div class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/google.png" alt="">
+                        </div>
+                        <div class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/facebook.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col w-full h[20%] flex justify-center items-center">
+                        o usa tu correo
+                    </div>
+                </div>
+                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="text"
+                        placeholder="Nombre">
+                </div>
+                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="email"
+                        placeholder="Correo Electrónico">
+                </div>
+                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                        type="password" placeholder="Contraseña">
+                </div>
+                <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex">
+                    <button class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]">
+                        Registrarse
+                    </button>
+                </div>
+                <div class="row h-[10%] w-full flex justify-center items-center">
+                    <div class="col w-[full] h-full flex justify-end items-center space-x-2">
+                        <input type="checkbox">
+                        <label for="checkbox">Mostrar Contraseña</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

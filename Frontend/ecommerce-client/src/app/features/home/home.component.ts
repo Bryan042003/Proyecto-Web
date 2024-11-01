@@ -8,17 +8,22 @@ import { FeaturedProductsComponent } from "../../components/featured-products/fe
 import { CommonModule } from '@angular/common';
 import { ProductsPerCategoryComponent } from "../../components/products-per-category/products-per-category.component";
 import { ProductDetailsComponent } from "../../components/product-details/product-details.component";
+import { PersonalInformationComponent } from "../../components/personal-information/personal-information.component";
+import { OrderHistoryComponent } from "../../components/order-history/order-history.component";
+import { DirectionComponent } from "../../components/direction/direction.component";
+import { LoginComponent } from "../authentication/login/login.component";
+import { WhishlistComponent } from "../../components/whishlist/whishlist.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent],
+  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent, LoginComponent, WhishlistComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   //pagina principal
-  principalPage = true;
+  principalPage = false;
   
   principalPageProducts = true;
 
@@ -34,7 +39,7 @@ export class HomeComponent {
  
 
 //paginas fuera de la principal
-  whishlist = false;
+  whishlist = true;
   cart = false;
 
 
