@@ -12,17 +12,18 @@ import { PersonalInformationComponent } from "../../components/personal-informat
 import { OrderHistoryComponent } from "../../components/order-history/order-history.component";
 import { DirectionComponent } from "../../components/direction/direction.component";
 import { LoginComponent } from "../authentication/login/login.component";
+import { WhishlistComponent } from "../../components/whishlist/whishlist.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent, LoginComponent],
+  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent, LoginComponent, WhishlistComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
   //pagina principal
-  principalPage = true;
+  principalPage = false;
   
   principalPageProducts = true;
 
@@ -38,7 +39,7 @@ export class HomeComponent {
  
 
 //paginas fuera de la principal
-  whishlist = false;
+  whishlist = true;
   cart = false;
 
 

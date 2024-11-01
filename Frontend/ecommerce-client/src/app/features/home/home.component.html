@@ -6,10 +6,11 @@
         <div *ngIf="principalPageProducts ; else verificarLogin">
             
 
-            <app-login/>
+
            
 
             <!--
+            <app-login/>
              <app-direction />
             <app-order-history />
             <app-product-details/>
@@ -83,26 +84,14 @@
 </ng-template>
 
 
-
 <ng-template #alternativeContent>
     <!-- Contenido alternativo cuando principalPage es false -->
-    <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white">
-        <div *ngIf="whishlist; else carrito ">
-            whishlist
+    <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white ">
+        <div *ngIf="whishlist" class="bg-[#edf2fb] w-full h-[1000px] p-10 rounded-2xl">
+            <app-whishlist/>
         </div>
     </div>
 </ng-template>
-
-
-<ng-template #carrito>
-    <!-- Contenido alternativo cuando principalPage es false -->
-    <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white">
-        <div *ngIf="cart ">
-            carrito
-        </div>
-    </div>
-</ng-template>
-
 
 
 <app-footer />
