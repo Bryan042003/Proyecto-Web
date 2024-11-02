@@ -4,10 +4,10 @@
     <app-slogan />
     <div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
         <div *ngIf="principalPageProducts ; else verificarLogin">
-            
 
 
-           
+
+
 
             <!--
             <app-login/>
@@ -87,9 +87,18 @@
 <ng-template #alternativeContent>
     <!-- Contenido alternativo cuando principalPage es false -->
     <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white ">
-        <div *ngIf="whishlist" class="bg-[#edf2fb] w-full h-[1000px] p-10 rounded-2xl">
-            <app-whishlist/>
-        </div>
+
+
+        <!-- ESTO ES DEL CARRITO DE COMPRAS -->
+            <app-shopping-cart />
+      
+
+        <!-- ESTO ES DE LA WHISLIST 
+         <app-whishlist />
+        -->
+
+
+
     </div>
 </ng-template>
 
