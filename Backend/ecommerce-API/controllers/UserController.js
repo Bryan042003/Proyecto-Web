@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Address = require('../models/Address');
+const {getLocationIds} = require('../utils/LocationUtils');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/database');
 const {body,validationResult} = require('express-validator');
@@ -86,12 +87,15 @@ const validateUpdateUser = [
 async function createUser(req, res) {
     const transaction = await sequelize.transaction();
 
+    const locationIds = await getLocationIds(
+        req.body.province, 
+        req.body.canton, 
+        req.body.district
+    );
+
     try{
         const newAddress = await Address.create({
-            country: req.body.country,
-            province: req.body.province,
-            canton: req.body.canton,
-            district: req.body.district,
+            id_district: locationIds.id_district,
             postal_code: req.body.postal_code,
             specific_address: req.body.specific_address
         },{transaction});

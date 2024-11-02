@@ -1,34 +1,36 @@
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/database');
 
-const Address = sequelize.define('Address', {
-    id: {
+const Order = sequelize.define('Order', {
+    id:{
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    id_district: {
+    id_user:{
         type: DataTypes.INTEGER,
-        allowNull: false,
         references: {
-            model: 'District',
+            model: 'User',
             key: 'id'
         }
     },
-    postal_code: {
-        type: DataTypes.STRING(100),
+    date:{
+        type: DataTypes.DATE,
         allowNull: false
     },
-    specific_address: {
-        type: DataTypes.STRING(255),
+    total_price:{
+        type: DataTypes.DOUBLE,
+        allowNull: false
+    },
+    status:{
+        type: DataTypes.ENUM('pending', 'in_process', 'sent', 'delivered'),
         allowNull: false
     }
 },{
-    tableName: 'Address',
+    tableName: 'Order',
     timestamps: false
 }
 
-
 );
 
-module.exports = Address;
+module.exports = Order;
