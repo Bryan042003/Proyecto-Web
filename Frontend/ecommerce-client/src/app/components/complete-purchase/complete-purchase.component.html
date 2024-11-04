@@ -1,0 +1,237 @@
+<div class="h-full w-full space-y-10">
+
+    <div class="row w-full h-[5%] flex items-center justify-center p-20 bg-[#4c5664] rounded-2xl space-x-10">
+        <p class="font-bold text-2xl font-jetbrains text-[#767575]">CARRITO</p>
+        <i class="fas fa-arrow-right text-[#767575] text-4xlxl"></i>
+        <p class="font-bold text-2xl font-jetbrains text-white">FINZALIZAR COMPRA</p>
+        <i class="fas fa-arrow-right text-4xl text-white"></i>
+        <p class="font-bold text-2xl font-jetbrains text-[#767575]">PEDIDO COMPLETADO</p>
+    </div>
+    <div class="bg-[#edf2fb] w-full h-[1300px] p-10 rounded-2xl">
+
+        <div class="w-full h-full flex space-x-5">
+            <div class="col w-[60%] h-full">
+                <div class="row w-full h-[49%] flex flex-col bg-[#f8fafd] rounded-2xl mb-4">
+                    <div class="row w-full h-[20%] flex items-center justify-center">
+                        <p class="font-bold text-2xl font-jetbrains text-black">Información de contacto</p>
+                    </div>
+
+                    <div class="row h-[80%] w-full pt-2 pb-6">
+                        <!-- Aquí puedes agregar el contenido de la segunda fila -->
+
+                        <div class="row  h-[20%] w-full flex justify-center items-center space-x-4 pl-4 pr-4">
+                            <div class="flex flex-col w-[50%] ">
+                                <label for="nombre-id" class="mb-2 font-bold text-black">Nombre:</label>
+                                <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
+                                    id="nombre-id" name="nombre">
+                            </div>
+
+                            <div class="flex flex-col w-[50%]  pl-4 pr-4">
+                                <label for="apellido-id" class="mb-2 font-bold text-black">Apellidos:</label>
+                                <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
+                                    id="apellido-id" name="apellido">
+                            </div>
+                        </div>
+
+                        <div class="row h-[40%]  w-full flex justify-center items-center pl-4 pr-4">
+                            <div class="flex flex-col w-full r">
+                                <label for="apellido-id" class="mb-2 font-bold text-black">Dirección Exacta:</label>
+                                <input class="w-full h-[80px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
+                                    id="apellido-id" name="apellido">
+                            </div>
+                        </div>
+
+                        <div class="row h-[20%]  w-full flex justify-center items-center pl-4 pr-4">
+                            <div class="flex flex-col w-full justify-center ">
+                                <label for="apellido-id" class="mb-2 font-bold text-black">Telefono:</label>
+                                <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
+                                    id="apellido-id" name="apellido">
+                            </div>
+                        </div>
+
+
+                        <div class="row  h-[20%] w-full flex justify-center items-center pl-4 pr-4">
+
+                            <div class="flex flex-col w-full ">
+                                <label for="apellido-id" class="mb-2 font-bold text-black">Correo:</label>
+                                <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
+                                    id="apellido-id" name="apellido">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div
+                    class="flex flex-col w-full h-[50%] bg-[#f8fafd] text-black rounded-2xl justify-center items-center">
+                    <!-- Primera fila -->
+                    <div class="w-full h-[10%] flex items-center justify-center">
+                        <p class="font-bold text-2xl font-jetbrains text-black">Método de pago</p>
+                    </div>
+
+                    <!-- Segunda fila -->
+                    <div class="flex w-full h-[60%] items-center justify-center rounded-2xl p-4">
+                        <div
+                            class="card relative w-[450px] h-[270px] rounded-2xl bg-[#8894a6]/95 backdrop-blur-lg border border-white/10 shadow-lg overflow-hidden">
+                            <div class="logo absolute top-8 right-10 opacity-80">
+                                <img src="images/letras visa.png" alt="Visa" class="w-20">
+                            </div>
+
+                            <!-- Número de tarjeta -->
+                            <input
+                                class="number absolute left-10 bottom-[65px] w-[70%] bg-transparent text-white text-lg font-medium tracking-wider placeholder-white placeholder-opacity-80 outline-none border-none"
+                                type="text" placeholder="**** **** **** ****" maxlength="19" />
+
+                            <!-- Nombre del titular -->
+                            <input
+                                class="name absolute left-10 bottom-10 bg-transparent text-white text-sm tracking-wider placeholder-white placeholder-opacity-80 outline-none border-none"
+                                type="text" placeholder="Nombre del titular" />
+
+                            <!-- Fecha de vencimiento -->
+                            <input
+                                class="to absolute bottom-10 right-24 bg-transparent text-white text-sm text-center placeholder-white placeholder-opacity-80 outline-none border-none z-10"
+                                type="text" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}"
+                                style="width: 60px;" />
+
+                            <!-- CVV -->
+                            <input
+                                class="cvv absolute bottom-10 right-10 bg-transparent text-white text-sm text-center placeholder-white placeholder-opacity-80 outline-none border-none z-10"
+                                type="text" placeholder="CVV" maxlength="3" style="width: 40px;" />
+
+
+                            <!-- Anillos decorativos de fondo -->
+                            <div
+                                class="ring absolute h-[500px] w-[500px] rounded-full border border-white/10 bottom-[-250px] right-[-250px]">
+                                <div
+                                    class="ring-inner absolute h-[600px] w-[600px] rounded-full border-2 border-white/10 bottom-[-80px] right-[-110px]">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row flex items-center gap-4 font-bold">
+                        <input type="checkbox" class="h-[25px] w-[25px] rounded-2xl ">
+                        He leido y acepto los terminos y condiciones de la web
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="col w-[40%] h-full bg-[#f8fafd] rounded-2xl">
+                <div class="row w-full h-[10%] flex items-center justify-center ">
+                    <p class="font-bold text-2xl font-jetbrains text-black">Su Orden</p>
+                </div>
+
+                <div class="row w-full h-[60%] flex flex-col items-center overflow-y-auto gap-2">
+
+
+                    <!-- Aqui va el for -->
+
+                    <div class=" flex row w-[95%] h-[200px] bg-[#fcfdfe] min-h-[200px] text-black rounded-2xl shadow-lg ">
+                        <div class="col h-full w-[30%] flex items-center justify-center">
+                            <div class="w-full h-[80%] flex items-center justify-center">
+                                <img src="images/compu.jpeg" alt="" class="w-[80%] h-[80%] rounded-2xl">
+                            </div>
+
+                        </div>
+                        <div class="col h-full w-[60%] flex flex-col  ">
+                            <div class="row h-1/2 flex items-center justify-center font-jetbrains">
+                                <p>Nombre del producto</p>
+                            </div>
+                            <div class="row h-1/2 flex items-center justify-center font-jetbrains">
+                                <div
+                                    class="flex flex-col items-center justify-center space-y-4 p-4  rounded-2xl w-[50%]">
+                                    <!-- Número central -->
+                                    <div
+                                        class="flex items-center justify-center text-2xl font-bold bg-[#edf2fb] w-[50%] h-70%] rounded-2xl">
+                                        {{ counter }}
+                                    </div>
+
+                                    <!-- Botones de incremento y decremento -->
+                                    <div class="flex  w-full h-[30%] items-center justify-center">
+                                        <!-- Botón de decremento -->
+                                        <button (click)="decrement()"
+                                            class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
+                                            -
+                                        </button>
+
+                                        <!-- Botón de incremento -->
+                                        <button (click)="increment()"
+                                            class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
+                                            +
+                                        </button>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col h-full w-[50%] flex items-center justify-center font-bold font-jetbrains text-lg">
+                                    ₡ 250 000
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col h-full w-[10%] flex items-center justify-center">
+                            <i class="fas fa-trash text-xl text-black"> </i>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+                <div class="w-full h-[30%] flex items-end justify-center p-5">
+
+                    <div class="col text-black w-full h-full flex items-end">
+                        <div class="w-full h-full flex flex-col justify-end space-y-10">
+                            <!-- Subtotal Row -->
+                            <div class="flex w-full">
+                                <div class="w-[50%] flex justify-start items-center font-jetbrains">
+                                    Subtotal
+                                </div>
+                                <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
+                                    ₡ 250 000
+                                </div>
+                            </div>
+
+                            <!-- Transporte Row -->
+                            <div class="flex w-full">
+                                <div class="w-[50%] flex justify-start items-center font-jetbrains">
+                                    Transporte
+                                </div>
+                                <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
+                                    ₡ 2 500
+                                </div>
+                            </div>
+
+                            <!-- Total Row -->
+                            <div class="flex w-full">
+                                <div class="w-[30%] flex justify-start items-center font-bold text-2xl font-jetbrains">
+                                    Total
+                                </div>
+                                <div class="w-[70%] flex justify-end items-center font-bold text-2xl font-jetbrains">
+                                    ₡ 252 500
+                                </div>
+                            </div>
+
+                            <!-- Botón Confirmar -->
+                            <div class="flex h-[50px] items-center justify-center w-full">
+                                <button
+                                    class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full">
+                                    Realizar el pedido
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

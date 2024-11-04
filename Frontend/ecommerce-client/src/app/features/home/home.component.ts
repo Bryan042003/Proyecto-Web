@@ -14,11 +14,12 @@ import { DirectionComponent } from "../../components/direction/direction.compone
 import { LoginComponent } from "../authentication/login/login.component";
 import { WhishlistComponent } from "../../components/whishlist/whishlist.component";
 import { ShoppingCartComponent } from "../../components/shopping-cart/shopping-cart.component";
+import { CompletePurchaseComponent } from "../../components/complete-purchase/complete-purchase.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent, LoginComponent, WhishlistComponent, ShoppingCartComponent],
+  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent, LoginComponent, WhishlistComponent, ShoppingCartComponent, CompletePurchaseComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
