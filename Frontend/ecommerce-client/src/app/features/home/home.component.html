@@ -4,7 +4,7 @@
     <app-slogan />
     <div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
         <div *ngIf="principalPageProducts ; else verificarLogin">
-
+            <app-payment-method/>
 
 
 
@@ -89,13 +89,15 @@
     <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white ">
 
 
-        <!-- ESTO ES DEL CARRITO DE COMPRAS -->
+        <!-- ESTO ES DEL CARRITO DE COMPRAS 
         <app-order-complete />
-      
+        <app-complete-purchase />
+        <app-shopping-cart />
+
+        -->
 
         <!-- ESTO ES DE LA WHISLIST 
-          <app-complete-purchase />
-          <app-shopping-cart />
+         
          <app-whishlist />
         -->
 
