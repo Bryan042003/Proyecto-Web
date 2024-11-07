@@ -17,11 +17,18 @@ import { ShoppingCartComponent } from "../../components/shopping-cart/shopping-c
 import { CompletePurchaseComponent } from "../../components/complete-purchase/complete-purchase.component";
 import { OrderCompleteComponent } from "../../components/order-complete/order-complete.component";
 import { PaymentMethodComponent } from "../../components/payment-method/payment-method.component";
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent, CarouselComponent, SliderDayPromotionsComponent, FeaturedProductsComponent, ProductsPerCategoryComponent, ProductDetailsComponent, PersonalInformationComponent, OrderHistoryComponent, DirectionComponent, LoginComponent, WhishlistComponent, ShoppingCartComponent, CompletePurchaseComponent, OrderCompleteComponent, PaymentMethodComponent],
+  imports: [CommonModule, HeaderComponent, SloganComponent, FooterComponent,
+     CarouselComponent, SliderDayPromotionsComponent,
+      FeaturedProductsComponent, ProductsPerCategoryComponent, 
+      ProductDetailsComponent, PersonalInformationComponent, 
+      OrderHistoryComponent, DirectionComponent, LoginComponent,
+       WhishlistComponent, ShoppingCartComponent, CompletePurchaseComponent, 
+       OrderCompleteComponent, PaymentMethodComponent, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
