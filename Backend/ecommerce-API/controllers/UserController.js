@@ -22,7 +22,7 @@ const validateUser = [
     body('last_name')
     .isLength({min: 2}).withMessage('Last name must have at least 2 characters')
     .isString().withMessage('Last name must be a string'),
-    body('password')
+    body('passw')
     .isLength({min: 6}).withMessage('Password must have at least 6 characters')
     .isString().withMessage('Password must be a string'),
     body('role')
@@ -100,12 +100,12 @@ async function createUser(req, res) {
             specific_address: req.body.specific_address
         },{transaction});
 
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const hashedPassword = await bcrypt.hash(req.body.passw, 10);
         const newUser = await User.create({
             email: req.body.email,
             name: req.body.name,
             last_name: req.body.last_name,
-            password: hashedPassword,
+            passw: hashedPassword,
             role: req.body.role,
             photo: req.body.photo,
             phone: req.body.phone,

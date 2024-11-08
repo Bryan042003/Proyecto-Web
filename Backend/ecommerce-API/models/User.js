@@ -20,12 +20,12 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING(100),
         allowNull: false
     },
-    password: {
+    passw: {
         type: DataTypes.STRING(255),
         allowNull: false
     },
     role: {
-        type: DataTypes.ENUM('admin', 'user','operator'),
+        type: DataTypes.ENUM('user', 'admin','logist'),
         allowNull: false
     },
     photo: {

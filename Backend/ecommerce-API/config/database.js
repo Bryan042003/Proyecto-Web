@@ -11,7 +11,7 @@ class Database {
         process.env.DB_PASSWORD,
         {
           host: process.env.DB_HOST,
-          dialect: process.env.DB_DIALECT,
+          dialect: process.env.DB_DIALECT
         }
       );
       this.instance = this;

@@ -16,15 +16,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-//Sync database
-// sequelize.sync({alter:true})
-// .then(()=>{
-//   console.log("Modelos sincronizados con la base de datos");
-// })
-// .catch((error)=>{
-//   console.log("Error al sincronizar los modelos con la base de datos", error);
-
-// })
+// (async () => {
+//   await sequelize.authenticate();
+// })();
 
 //Routes
 app.use('/api/users', UserRoutes);

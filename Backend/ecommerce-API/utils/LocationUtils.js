@@ -1,7 +1,12 @@
-const { Province, Canton, District } = require('../models');
+
+const District = require('../models/District.js');
+const Canton = require('../models/Canton.js');
+const Province = require('../models/Province');
+
 
 
 async function getLocationIds(province, canton, district) {
+
     const provinceId = await Province.findOne({ where: { name: province } });
     if(!provinceId){
         throw new Error('Province not found');
