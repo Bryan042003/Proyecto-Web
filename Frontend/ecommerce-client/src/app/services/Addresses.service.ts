@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import {Address} from '../models/address.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {Address} from '../models/address.model';
 
 export class AddressesService {
 
-    private baseUrl = 'http://localhost:3000/api/addresses';
+    private baseUrl = `${environment.baseUrl}addresses`;
     constructor(private http: HttpClient) { }
 
     getAddresses(): Observable<Address[]> {

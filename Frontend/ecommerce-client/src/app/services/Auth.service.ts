@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import {jwtDecode} from 'jwt-decode';
 import { LocalStorageService } from './LocalStorage.service';
+import { environment } from '../../environments/environment';
 
 
 
@@ -11,7 +12,7 @@ import { LocalStorageService } from './LocalStorage.service';
 })
 
 export class AuthService {
-    private baseUrl = 'http://localhost:3000/api/auth';
+    private baseUrl = `${environment.baseUrl}auth`;
     constructor(private http: HttpClient,private localStorageService:LocalStorageService) { }
 
     login(data: any): Observable<any> {
@@ -22,7 +23,7 @@ export class AuthService {
         }
         */
         
-        return this.http.post(this.baseUrl, data);
+        return this.http.post(`${this.baseUrl}/login`, data);
     }
 
     getDecodedAccessToken(token: string): any {  //To get the information from the token
