@@ -1,85 +1,26 @@
 <app-header />
-<div *ngIf="principalPage; else alternativeContent">
-    <app-carousel />
-    <app-slogan />
-    <div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
-        <div *ngIf="principalPageProducts ; else verificarLogin">
-            <!-- <app-payment-method/> -->
-            <router-outlet></router-outlet>
+<app-carousel />
+<app-slogan />
+<div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
 
-            <!--
-            <app-login/>
+    <router-outlet></router-outlet>
+
+    <!--
+
+            esto es para navegar por las categorias
+            <app-products-per-category />
+
+
+           
+            esto es para el usuario logueado
+            <app-payment-method/>
+             <app-personal-information/>
              <app-direction />
             <app-order-history />
-            <app-product-details/>
-            <app-products-per-category />
-            <app-slider-day-promotions />
-            <app-personal-information/>
-            
-            <div class="w-full flex justify-between">
-                <div class="w-[49%]">
-                    <app-featured-products />
-                </div>
-                <div class="w-[49%]">
-                    <app-featured-products />
-                </div>
-            </div>
+
             -->
-        </div>
-    </div>
 </div>
 
-
-<ng-template #verificarLogin>
-    <!-- Contenido alternativo cuando principalPage es false -->
-    <div *ngIf="login ; else verificarMiCuenta">
-        login
-    </div>
-
-</ng-template>
-
-
-<ng-template #verificarMiCuenta>
-    <!-- Contenido alternativo cuando principalPage es false -->
-    <div *ngIf="account ; else verificarInfoPersonal">
-        account
-    </div>
-
-</ng-template>
-
-<ng-template #verificarInfoPersonal>
-    <!-- Contenido alternativo cuando principalPage es false -->
-    <div *ngIf="personalInformation ; else historialPedidos">
-        info personal
-    </div>
-
-</ng-template>
-
-
-<ng-template #historialPedidos>
-    <!-- Contenido alternativo cuando principalPage es false -->
-    <div *ngIf="orderHistory ; else direcciones">
-        historial
-    </div>
-
-</ng-template>
-
-<ng-template #direcciones>
-    <!-- Contenido alternativo cuando principalPage es false -->
-    <div *ngIf="directions ; else metodosPago">
-        direcciones
-    </div>
-
-</ng-template>
-
-
-<ng-template #metodosPago>
-    <!-- Contenido alternativo cuando principalPage es false -->
-    <div *ngIf="paymentMethod ">
-        metodosPago
-    </div>
-
-</ng-template>
 
 
 <ng-template #alternativeContent>

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CardProductComponent } from "../card-product/card-product.component";
 import { OfferCardProductComponent } from "../offer-card-product/offer-card-product.component";
+import { FeaturedProductsComponent } from "../featured-products/featured-products.component";
 
 @Component({
   selector: 'app-slider-day-promotions',
   standalone: true,
-  imports: [CommonModule, CardProductComponent, OfferCardProductComponent],
+  imports: [CommonModule, OfferCardProductComponent, FeaturedProductsComponent],
   templateUrl: './slider-day-promotions.component.html',
   styleUrl: './slider-day-promotions.component.scss'
 })
