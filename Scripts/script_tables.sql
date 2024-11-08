@@ -62,10 +62,10 @@ CREATE TABLE Product(
   brand VARCHAR(100) NOT NULL,
   photo VARCHAR(255)  NOT NULL,
   technical_stuff VARCHAR(255)  NOT NULL,
-  id_offer INT NOT NULL,
+  id_offer INT,
   FOREIGN KEY (id_offer) REFERENCES Offer(id),
   stock INT NOT NULL,
-  n_sales INT
+  n_sales INT DEFAULT 0
 );
 
 
