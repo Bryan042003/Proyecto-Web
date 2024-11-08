@@ -29,8 +29,6 @@ const validateUser = [
     .isIn(['admin', 'user', 'operator']).withMessage('Invalid role'),
     body('phone')
     .isMobilePhone().withMessage('Invalid phone number'),
-    body('country')
-    .isString().withMessage('Country must be a string'),
     body('province')
     .isString().withMessage('Province must be a string'),
     body('canton')
