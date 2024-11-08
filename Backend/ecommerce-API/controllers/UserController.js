@@ -124,7 +124,7 @@ async function createUser(req, res) {
 async function getUsers(req, res) {
     try{
         const users = await User.findAll({
-           
+           attributes: {exclude: ['passw']},
         });
 
         res.status(200).json(users);
@@ -139,7 +139,8 @@ async function getUserByEmail(req, res) {
         const user = await User.findOne({
             where: {
                 email: req.params.email
-            }
+            },
+            attributes: {exclude: ['passw']}
         });
 
         if(user){
@@ -155,7 +156,13 @@ async function getUserByEmail(req, res) {
 
 async function getUserById(req, res) {
     try{
-        const user = await User.findByPk(req.params.id);
+        const user = await User.findByPk({
+            where: {
+                id: req.params.id
+            },
+            attributes: {exclude: ['passw']}
+
+        });
 
         if(user){
             res.status(200).json(user);
