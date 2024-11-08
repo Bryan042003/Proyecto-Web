@@ -5,6 +5,7 @@ const port = 3000;
 const sequelize = require('./config/database');
 const UserRoutes = require('./routes/UserRoutes');
 const AuthRoutes = require('./routes/AuthRoutes');
+const AddressRoutes = require('./routes/AddressRoutes');
 const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
@@ -23,6 +24,8 @@ app.get('/', (req, res) => {
 //Routes
 app.use('/api/users', UserRoutes);
 app.use('/api/auth', AuthRoutes);
+app.use('/api/addresses', AddressRoutes);
+
 
 //Cors
 app.use(cors());
