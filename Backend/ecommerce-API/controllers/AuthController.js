@@ -7,7 +7,7 @@ const {body,validationResult} = require('express-validator');
 const validateLogin = [
     body('email')
     .isEmail().withMessage('Invalid email'),
-    body('password')
+    body('passw')
     .isString().withMessage('Password must be a string'),
     (req, res, next) => {
         const errors = validationResult(req);
@@ -19,7 +19,7 @@ const validateLogin = [
 ]
 
 const login = async (req, res) => {
-    const {email, password} = req.body;
+    const {email, passw} = req.body;
 
     try{
         
@@ -28,7 +28,7 @@ const login = async (req, res) => {
             return res.status(400).json({message: 'Invalid email or password'});
         }
 
-        const validPassword = await bcrypt.compare(password, user.password);
+        const validPassword = await bcrypt.compare(passw, user.passw);
         if(!validPassword){
             return res.status(400).json({message: 'Invalid email or password'});
         }
