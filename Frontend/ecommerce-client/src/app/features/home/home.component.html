@@ -1,49 +1,28 @@
 <app-header />
 <app-carousel />
 <app-slogan />
-<div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
+
 
     <router-outlet></router-outlet>
 
-    <!--
-
-            esto es para navegar por las categorias
-            <app-products-per-category />
-
-
-           
-            esto es para el usuario logueado
-            <app-payment-method/>
-             <app-personal-information/>
-             <app-direction />
-            <app-order-history />
-
-            -->
-</div>
 
 
 
-<ng-template #alternativeContent>
+
+
     <!-- Contenido alternativo cuando principalPage es false -->
-    <div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white ">
-
 
         <!-- ESTO ES DEL CARRITO DE COMPRAS 
         <app-order-complete />
         <app-complete-purchase />
         <app-shopping-cart />
-
         -->
-
         <!-- ESTO ES DE LA WHISLIST 
          
          <app-whishlist />
         -->
 
 
-
-    </div>
-</ng-template>
 
 
 <app-footer />
