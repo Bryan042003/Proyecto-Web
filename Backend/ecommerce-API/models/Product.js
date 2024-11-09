@@ -37,7 +37,7 @@ const Product = sequelize.define('Product', {
     },
     n_sales:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     id_offer:{
         type: DataTypes.INTEGER,

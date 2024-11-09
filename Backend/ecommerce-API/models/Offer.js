@@ -17,7 +17,7 @@ const Offer = sequelize.define('Offer', {
     },
     end_date:{
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     }
 
 
