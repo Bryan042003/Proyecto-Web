@@ -1,27 +1,35 @@
-<div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12" *ngIf="slides.length">
-    <p class="text-[25px] font-bold">Promociones del día</p>
-    
-    <div class="flex w-full justify-center overflow-hidden relative">
-        <div class="flex w-full transition-transform duration-700 transform" 
-             [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 25) + '%)'}">
-            <div *ngFor="let slide of slides" 
-                 class="w-[25%] h-full p-3">
-                <app-offer-card-product/>
+
+
+
+<div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
+
+    <div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12" *ngIf="slides.length">
+        <p class="text-[25px] font-bold">Promociones del día</p>
+
+        <div class="flex w-full justify-center overflow-hidden relative">
+            <div class="flex w-full transition-transform duration-700 transform"
+                [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 25) + '%)'}">
+                <div *ngFor="let slide of slides" class="w-[25%] h-full p-3">
+                    <app-offer-card-product />
+                </div>
             </div>
+        </div>
+
+        <div class="flex items-center justify-center w-full mt-5 h-[20%] space-x-2">
+            <button (click)="previousSlide()"
+                class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❮</button>
+            <button (click)="nextSlide()"
+                class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❯</button>
         </div>
     </div>
 
-    <div class="flex items-center justify-center w-full mt-5 h-[20%] space-x-2">
-        <button (click)="previousSlide()" class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❮</button>
-        <button (click)="nextSlide()" class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❯</button>
+    <div class="w-full flex justify-between">
+        <div class="w-[49%]">
+            <app-featured-products />
+        </div>
+        <div class="w-[49%]">
+            <app-featured-products />
+        </div>
     </div>
-</div>
 
-<div class="w-full flex justify-between">
-    <div class="w-[49%]">
-        <app-featured-products />
-    </div>
-    <div class="w-[49%]">
-        <app-featured-products />
-    </div>
 </div>

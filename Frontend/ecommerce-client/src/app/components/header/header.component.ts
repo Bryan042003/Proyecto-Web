@@ -11,6 +11,6 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
 
-  logueado: boolean = false;  
+  logueado: boolean = true;  
 
 }

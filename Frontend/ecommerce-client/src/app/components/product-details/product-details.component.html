@@ -1,153 +1,174 @@
-<div class="w-full bg-[#EDF2FB] h-full flex">
+<div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
 
-    <div class="row  w-full ">
-        <div class="col w-full h-[600px] bg-white  rounded-2xl">
-            <div class="row flex w-full h-full">
-                <div class="col w-[30%] h-full  p-10 flex items-center justify-center ">
-                    <img class="w-full h-full object-contain rounded-lg border border-black " src="images/compu.jpeg"
-                        alt="">
-                </div>
-                <div class="col w-[70%] flex">
-                    <div class="row w-full h-full">
-                        <div class="col h-[50%] w-full">
-                            <div class="row h-full w-full p-10">
-                                <div class="col h-full">
-                                    <div
-                                        class="row h-[50%] w-[70%] font-bold font-jetbrains text-2xl flex items-center">
-                                        NOMBRE DEL PRODUCTO A UTILIZAR EN ESTE ESPACIO
-                                    </div>
-                                    <div class="row h-[50%] text-2xl">
-                                        Marca: <span class="font-bold pr-52">HP</span>
-                                        <app-stock-status />
-                                    </div>
-                                </div>
 
-                            </div>
+    <div class="w-full bg-[#EDF2FB] h-full flex">
 
-                        </div>
-                        <div class="col h-[50%] w-full flex items-end ">
-                            <div class="w-full p-10">
-                                <p class="font-bold text-5xl font-jetbrains mb-10">₡ 250 000</p>
-
-                                <div class="flex space-x-1 h-full">
-                                    <button class="flex w-full h-full">
+        <div class="row  w-full ">
+            <div class="col w-full h-[600px] bg-white  rounded-2xl">
+                <div class="row flex w-full h-full">
+                    <div class="col w-[30%] h-full  p-10 flex items-center justify-center ">
+                        <img class="w-full h-full object-contain rounded-lg border border-black "
+                            src="images/compu.jpeg" alt="">
+                    </div>
+                    <div class="col w-[70%] flex">
+                        <div class="row w-full h-full">
+                            <div class="col h-[50%] w-full">
+                                <div class="row h-full w-full p-10">
+                                    <div class="col h-full">
                                         <div
-                                            class="col bg-[#1E2B3D] text-white font-bold font-jetbrains w-full rounded-xl flex flex-col md:flex-row h-full md:h-[40px] items-center">
+                                            class="row h-[50%] w-[70%] font-bold font-jetbrains text-2xl flex items-center">
+                                            NOMBRE DEL PRODUCTO A UTILIZAR EN ESTE ESPACIO
+                                        </div>
+                                        <div class="row h-[50%] text-2xl">
+                                            Marca: <span class="font-bold pr-52">HP</span>
+                                            <app-stock-status />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="col h-[50%] w-full flex items-end ">
+                                <div class="w-full p-10">
+                                    <p class="font-bold text-5xl font-jetbrains mb-10">₡ 250 000</p>
+
+                                    <div class="flex space-x-1 h-full">
+                                        <button class="flex w-full h-full">
                                             <div
-                                                class="col h-full w-full md:w-[90%] bg-[#4c5664] rounded-xl flex items-center justify-center p-2">
-                                                <p class="font-bold text-lg">AÑADIR AL CARRITO</p>
+                                                class="col bg-[#1E2B3D] text-white font-bold font-jetbrains w-full rounded-xl flex flex-col md:flex-row h-full md:h-[40px] items-center">
+                                                <div
+                                                    class="col h-full w-full md:w-[90%] bg-[#4c5664] rounded-xl flex items-center justify-center p-2">
+                                                    <p class="font-bold text-lg">AÑADIR AL CARRITO</p>
+                                                </div>
+                                                <div class="col w-full md:w-[10%] flex items-center justify-center">
+                                                </div>
                                             </div>
-                                            <div class="col w-full md:w-[10%] flex items-center justify-center">
+
+                                        </button>
+
+                                        <div class="w-full flex space-x-1">
+                                            <div class="w-[15%] h-full">
+                                                <app-add-cart />
+                                            </div>
+                                            <div class="w-[15%] h-full">
+                                                <app-add-whislist />
                                             </div>
                                         </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col w-full h-[400px] text-white mt-5">
+                <div class="row h-full flex space-x-5">
+                    <div class="col w-[50%] bg-white rounded-2xl ">
+                        <p
+                            class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                            Descripción del producto</p>
+                        <p class="h-[80%] p-10 overflow-y-auto text-black"> Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam
+                            consequatur.
+                            Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.
+                        </p>
+                    </div>
+                    <div class="col w-[50%] bg-white rounded-2xl ">
+                        <p
+                            class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                            Especificaciones técnicas</p>
+                        <p class="h-[80%] p-10 overflow-y-auto text-black"> Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam
+                            consequatur.
+                            Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col w-full mt-5 h-[700px] flex">
+                <div class="row h-full w-full flex">
+                    <div class="col w-full h-full bg-white ">
+                        <p
+                            class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                            Review de compradores</p>
+
+
+                        <div class="h-[80%]  flex items-start justify-center ">
+
+                            <div class="w-full">
+                                <div class="w-full flex items-center justify-center">
+                                    <app-star-rating></app-star-rating>
+                                </div>
+                                <div class="w-full flex justify-center items-center mt-10 mb-10">
+                                    <textarea class="w-[70%] h-[150px] border border-black' text-white"
+                                        placeholder="Añade una valoración"></textarea>
+                                </div>
+                                <div class="flex w-full h-12 items-center justify-center ">
+                                    <button
+                                        class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains  rounded-xl w-[50%] h-full">
+                                        Enviar
                                     </button>
+                                </div>
+                            </div>
 
-                                    <div class="w-full flex space-x-1">
-                                        <div class="w-[15%] h-full">
-                                            <app-add-cart />
+                        </div>
+
+                    </div>
+                    <div class="col w-full h-full bg-white">
+                        <p
+                            class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
+                            Valoraciones </p>
+                        <div class="w-[95%] h-[75%] p-5 overflow-y-auto">
+                            <div class="w-full h-[300px] flex  mb-2 bg-[#edf2fb] rounded-2xl pt-2 pb-2 pr-6 pl-6">
+
+                                <div class=" w-full">
+                                    <div class="w-full h-[35%] flex">
+
+                                        <div class=" h-full w-[20%] flex items-center justify-center rounded-full ">
+                                            <div class="w-[75px] h-[75px] rounded-full bg-white">
+                                                <i
+                                                    class="fas fa-image w-full h-full flex items-center justify-center "></i>
+                                            </div>
                                         </div>
-                                        <div class="w-[15%] h-full">
-                                            <app-add-whislist />
-                                        </div>
+                                        <p
+                                            class="font-bold text-xl w-[70%] h-full pr-4  flex items-center font-jetbrains text-black ">
+                                            Bryan Castro Solís </p>
                                     </div>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col w-full h-[400px] text-white mt-5">
-            <div class="row h-full flex space-x-5">
-                <div class="col w-[50%] bg-white rounded-2xl ">
-                    <p
-                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
-                        Descripción del producto</p>
-                    <p class="h-[80%] p-10 overflow-y-auto text-black"> Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam consequatur.
-                        Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.</p>
-                </div>
-                <div class="col w-[50%] bg-white rounded-2xl ">
-                    <p
-                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
-                        Especificaciones técnicas</p>
-                    <p class="h-[80%] p-10 overflow-y-auto text-black"> Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Vero architecto beatae fugit eaque enim! Maiores ullam numquam consequatur.
-                        Distinctio ad vero sapiente voluptate voluptatum fugiat voluptas ea deleniti nobis eveniet.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col w-full mt-5 h-[700px] flex">
-            <div class="row h-full w-full flex">
-                <div class="col w-full h-full bg-white ">
-                    <p
-                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
-                        Review de compradores</p>
-
-
-                    <div class="h-[80%]  flex items-start justify-center ">
-
-                        <div class="w-full">
-                            <div class="w-full flex items-center justify-center">
-                                <app-star-rating></app-star-rating>
-                            </div>
-                            <div class="w-full flex justify-center items-center mt-10 mb-10">
-                                <textarea class="w-[70%] h-[150px] border border-black' text-white"
-                                    placeholder="Añade una valoración"></textarea>
-                            </div>
-                            <div class="flex w-full h-12 items-center justify-center ">
-                                <button
-                                    class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains  rounded-xl w-[50%] h-full">
-                                    Enviar
-                                </button>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="col w-full h-full bg-white">
-                    <p
-                        class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
-                        Valoraciones </p>
-                    <div class="w-[95%] h-[75%] p-5 overflow-y-auto">
-                        <div class="w-full h-[300px] flex  mb-2 bg-[#edf2fb] rounded-2xl pt-2 pb-2 pr-6 pl-6">
-
-                            <div class=" w-full">
-                                <div class="w-full h-[35%] flex">
-
-                                    <div class=" h-full w-[20%] flex items-center justify-center rounded-full ">
-                                        <div class="w-[75px] h-[75px] rounded-full bg-white">
-                                            <i class="fas fa-image w-full h-full flex items-center justify-center "></i>
-                                        </div>
+                                    <div class="flex h-[15%] ">
+                                        <ng-container *ngFor="let star of stars; index as i">
+                                            <i (click)="rate(i + 1)"
+                                                [ngClass]="i < rating ? 'fas fa-star text-yellow-500' : 'far fa-star text-gray-400'"
+                                                class="w-10 cursor-pointer transition duration-200 ease-in-out text-2xl"></i>
+                                        </ng-container>
                                     </div>
-                                    <p
-                                        class="font-bold text-xl w-[70%] h-full pr-4  flex items-center font-jetbrains text-black ">
-                                        Bryan Castro Solís </p>
-                                </div>
-
-                                <div class="flex h-[15%] ">
-                                    <ng-container *ngFor="let star of stars; index as i">
-                                        <i (click)="rate(i + 1)"
-                                            [ngClass]="i < rating ? 'fas fa-star text-yellow-500' : 'far fa-star text-gray-400'"
-                                            class="w-10 cursor-pointer transition duration-200 ease-in-out text-2xl"></i>
-                                    </ng-container>
-                                </div>
-                                <div class="h-[45%] pb-3 overflow-y-auto">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, eius, dolor reprehenderit obcaecati beatae ipsa eveniet consequatur voluptate rerum quis qui esse fuga suscipit assumenda voluptas, vero dignissimos minima. Ea?
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque sint iusto repudiandae illo explicabo, ipsum harum a maxime reiciendis adipisci possimus deleniti quisquam ratione velit sit, voluptate voluptatibus excepturi. Incidunt?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptas molestias voluptatibus deleniti? Qui eveniet maiores rem, dolor enim similique pariatur corrupti alias. Molestias praesentium aspernatur eius accusamus deserunt perferendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, unde ipsa laboriosam et, possimus, perspiciatis provident ullam delectus velit harum dolorum asperiores deleniti voluptatibus ex labore iure distinctio sed. Eius?
+                                    <div class="h-[45%] pb-3 overflow-y-auto">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, eius, dolor
+                                        reprehenderit obcaecati beatae ipsa eveniet consequatur voluptate rerum quis qui
+                                        esse fuga suscipit assumenda voluptas, vero dignissimos minima. Ea?
+                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque sint iusto
+                                        repudiandae illo explicabo, ipsum harum a maxime reiciendis adipisci possimus
+                                        deleniti quisquam ratione velit sit, voluptate voluptatibus excepturi.
+                                        Incidunt?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptas
+                                        molestias voluptatibus deleniti? Qui eveniet maiores rem, dolor enim similique
+                                        pariatur corrupti alias. Molestias praesentium aspernatur eius accusamus
+                                        deserunt perferendis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                        Atque, unde ipsa laboriosam et, possimus, perspiciatis provident ullam delectus
+                                        velit harum dolorum asperiores deleniti voluptatibus ex labore iure distinctio
+                                        sed. Eius?
+                                    </div>
                                 </div>
                             </div>
+
+
                         </div>
 
-
                     </div>
-
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>

@@ -1,143 +1,147 @@
-<div class="h-full w-full space-y-10">
+<div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white ">
+    <div class="h-full w-full space-y-10">
 
-    <div class="row w-full h-[5%] flex items-center justify-center p-20 bg-[#4c5664] rounded-2xl space-x-10">
-        <p class="font-bold text-2xl font-jetbrains text-white">CARRITO</p>
-        <i class="fas fa-arrow-right text-white text-4xlxl"></i>
-        <p class="font-bold text-2xl font-jetbrains text-[#767575]">FINZALIZAR COMPRA</p>
-        <i class="fas fa-arrow-right text-4xl text-[#767575]"></i>
-        <p class="font-bold text-2xl font-jetbrains text-[#767575]">PEDIDO COMPLETADO</p>
-    </div>
-    <div class="bg-[#edf2fb] w-full h-[1000px] p-10 rounded-2xl">
+        <div class="row w-full h-[5%] flex items-center justify-center p-20 bg-[#4c5664] rounded-2xl space-x-10">
+            <p class="font-bold text-2xl font-jetbrains text-white">CARRITO</p>
+            <i class="fas fa-arrow-right text-white text-4xlxl"></i>
+            <p class="font-bold text-2xl font-jetbrains text-[#767575]">FINZALIZAR COMPRA</p>
+            <i class="fas fa-arrow-right text-4xl text-[#767575]"></i>
+            <p class="font-bold text-2xl font-jetbrains text-[#767575]">PEDIDO COMPLETADO</p>
+        </div>
+        <div class="bg-[#edf2fb] w-full h-[1000px] p-10 rounded-2xl">
 
-        <div class="w-full h-full flex space-x-5">
-            <div class="col w-[75%] h-full space-y-4 overflow-y-auto ">
+            <div class="w-full h-full flex space-x-5">
+                <div class="col w-[75%] h-full space-y-4 overflow-y-auto ">
 
 
 
-                <div class="row w-full h-[10%] flex items-center justify-center bg-[#4c5664] rounded-2xl">
+                    <div class="row w-full h-[10%] flex items-center justify-center bg-[#4c5664] rounded-2xl">
 
-                    <div class="col w-[35%] flex items-center justify-center">
-                        Producto
-                    </div>
-                    <div class="col w-[20%] flex items-center justify-center">
-                        Precio
-                    </div>
-                    <div class="col w-[20%] flex items-center justify-center">
-                        Cantidad
-                    </div>
-                    <div class="col w-[20%] flex items-center justify-center">
-                        Subtotal
-                    </div>
-                    <div class="col w-[5%] flex items-center justify-center">
-
-                    </div>
-                </div>
-
-                <!-- Aqui va el for -->
-
-                <div class=" flex row w-full h-[125px] bg-[#f8fafd]  text-black rounded-2xl">
-                    <div class="col h-full w-[35%] flex">
-                        <div class="w-[40%] h-full flex items-center justify-center">
-                            <img src="images/compu.jpeg" alt="" class="w-[80%] h-[80%] rounded-2xl">
+                        <div class="col w-[35%] flex items-center justify-center">
+                            Producto
                         </div>
-                        <div class="col h-full w-[60%] flex items-center justify-center font-jetbrains">
-                            <p>Nombre del producto</p>
+                        <div class="col w-[20%] flex items-center justify-center">
+                            Precio
+                        </div>
+                        <div class="col w-[20%] flex items-center justify-center">
+                            Cantidad
+                        </div>
+                        <div class="col w-[20%] flex items-center justify-center">
+                            Subtotal
+                        </div>
+                        <div class="col w-[5%] flex items-center justify-center">
+
                         </div>
                     </div>
 
-                    <div class="col h-full w-[20%] flex items-center justify-center ">
-                        <div class="w-full h-full flex items-center justify-center font-bold font-jetbrains">
-                            ₡ 250 000
+                    <!-- Aqui va el for -->
+
+                    <div class=" flex row w-full h-[125px] bg-[#f8fafd]  text-black rounded-2xl">
+                        <div class="col h-full w-[35%] flex">
+                            <div class="w-[40%] h-full flex items-center justify-center">
+                                <img src="images/compu.jpeg" alt="" class="w-[80%] h-[80%] rounded-2xl">
+                            </div>
+                            <div class="col h-full w-[60%] flex items-center justify-center font-jetbrains">
+                                <p>Nombre del producto</p>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        class="flex flex-col items-center justify-center space-y-4 p-4 bg-[#f8fafd] rounded-2xl w-[20%]">
-                        <!-- Número central -->
+
+                        <div class="col h-full w-[20%] flex items-center justify-center ">
+                            <div class="w-full h-full flex items-center justify-center font-bold font-jetbrains">
+                                ₡ 250 000
+                            </div>
+                        </div>
                         <div
-                            class="flex items-center justify-center text-2xl font-bold bg-[#edf2fb] w-[50%] h-70%] rounded-2xl">
-                            {{ counter }}
-                        </div>
-
-                        <!-- Botones de incremento y decremento -->
-                        <div class="flex  w-full h-[30%] items-center justify-center">
-                            <!-- Botón de decremento -->
-                            <button (click)="decrement()"
-                                class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
-                                -
-                            </button>
-
-                            <!-- Botón de incremento -->
-                            <button (click)="increment()"
-                                class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
-                                +
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <div class="col h-full w-[20%] flex items-center justify-center font-bold font-jetbrains">
-                        ₡ 250 000
-                    </div>
-                    <div class="col h-full w-[5%] flex items-center justify-center">
-                        <i class="fas fa-trash text-xl text-black"> </i>
-                    </div>
-                </div>
-            </div>
-            <div class="col w-[25%] h-full bg-[#f8fafd] rounded-2xl">
-                <div class="row w-full h-[10%] flex items-center justify-center ">
-                    <p class="font-bold text-2xl font-jetbrains text-black">TOTAL DE COMPRA</p>
-                </div>
-                <div class="w-full h-[90%] flex items-end justify-center p-5">
-
-                    <div class="col text-black w-full h-full flex items-end">
-                        <div class="w-full h-full flex flex-col justify-end space-y-10">
-                            <!-- Subtotal Row -->
-                            <div class="flex w-full">
-                                <div class="w-[50%] flex justify-start items-center font-jetbrains">
-                                    Subtotal
-                                </div>
-                                <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                    ₡ 250 000
-                                </div>
+                            class="flex flex-col items-center justify-center space-y-4 p-4 bg-[#f8fafd] rounded-2xl w-[20%]">
+                            <!-- Número central -->
+                            <div
+                                class="flex items-center justify-center text-2xl font-bold bg-[#edf2fb] w-[50%] h-70%] rounded-2xl">
+                                {{ counter }}
                             </div>
 
-                            <!-- Transporte Row -->
-                            <div class="flex w-full">
-                                <div class="w-[50%] flex justify-start items-center font-jetbrains">
-                                    Transporte
-                                </div>
-                                <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                    ₡ 2 500
-                                </div>
-                            </div>
+                            <!-- Botones de incremento y decremento -->
+                            <div class="flex  w-full h-[30%] items-center justify-center">
+                                <!-- Botón de decremento -->
+                                <button (click)="decrement()"
+                                    class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
+                                    -
+                                </button>
 
-                            <!-- Total Row -->
-                            <div class="flex w-full">
-                                <div class="w-[30%] flex justify-start items-center font-bold text-2xl font-jetbrains">
-                                    Total
-                                </div>
-                                <div class="w-[70%] flex justify-end items-center font-bold text-2xl font-jetbrains">
-                                    ₡ 252 500
-                                </div>
-                            </div>
-
-                            <!-- Botón Confirmar -->
-                            <div class="flex h-[50px] items-center justify-center w-full">
-                                <button
-                                    class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full">
-                                    Confirmar
+                                <!-- Botón de incremento -->
+                                <button (click)="increment()"
+                                    class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
+                                    +
                                 </button>
                             </div>
                         </div>
+
+
+                        <div class="col h-full w-[20%] flex items-center justify-center font-bold font-jetbrains">
+                            ₡ 250 000
+                        </div>
+                        <div class="col h-full w-[5%] flex items-center justify-center">
+                            <i class="fas fa-trash text-xl text-black"> </i>
+                        </div>
                     </div>
+                </div>
+                <div class="col w-[25%] h-full bg-[#f8fafd] rounded-2xl">
+                    <div class="row w-full h-[10%] flex items-center justify-center ">
+                        <p class="font-bold text-2xl font-jetbrains text-black">TOTAL DE COMPRA</p>
+                    </div>
+                    <div class="w-full h-[90%] flex items-end justify-center p-5">
+
+                        <div class="col text-black w-full h-full flex items-end">
+                            <div class="w-full h-full flex flex-col justify-end space-y-10">
+                                <!-- Subtotal Row -->
+                                <div class="flex w-full">
+                                    <div class="w-[50%] flex justify-start items-center font-jetbrains">
+                                        Subtotal
+                                    </div>
+                                    <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
+                                        ₡ 250 000
+                                    </div>
+                                </div>
+
+                                <!-- Transporte Row -->
+                                <div class="flex w-full">
+                                    <div class="w-[50%] flex justify-start items-center font-jetbrains">
+                                        Transporte
+                                    </div>
+                                    <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
+                                        ₡ 2 500
+                                    </div>
+                                </div>
+
+                                <!-- Total Row -->
+                                <div class="flex w-full">
+                                    <div
+                                        class="w-[30%] flex justify-start items-center font-bold text-2xl font-jetbrains">
+                                        Total
+                                    </div>
+                                    <div
+                                        class="w-[70%] flex justify-end items-center font-bold text-2xl font-jetbrains">
+                                        ₡ 252 500
+                                    </div>
+                                </div>
+
+                                <!-- Botón Confirmar -->
+                                <div class="flex h-[50px] items-center justify-center w-full">
+                                    <button [routerLink]="['/complete-purchase']"
+                                        class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full">
+                                        Confirmar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
 
+
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
     </div>
 </div>

@@ -1,55 +1,61 @@
-<div class="h-full w-full space-y-10" >
 
-    <div class="row w-full h-[5%] flex items-center justify-center p-20 bg-[#4c5664] rounded-2xl">
-        <p class="font-bold text-2xl font-jetbrains text-white">LISTA DE PRODUCTOS FAVORITOS</p>
-    </div>
-    <div class="bg-[#edf2fb] w-full h-[1000px] p-10 rounded-2xl">
-    
-        <div class="w-full h-full ">
-            <div class="row w-full h-[90%] space-y-4 overflow-y-auto ">
-    
-                <!-- Aqui va el for -->
-    
-                <div class="row flex w-full h-[150px]">
-                    <div class="col w-[10%] h-full flex items-center justify-center">
-                        <input type="checkbox" class="h-[25px] w-[25px] rounded-md ">
-                    </div>
-                    <div class="col w-[90%] h-full  bg-[#f8fafd] flex text-black rounded-2xl">
-                        <div class="col h-full w-[20%] flex items-center justify-center">
-                            <img src="images/compu.jpeg" alt="" class="w-[80%] h[80%] rounded-2xl">
+
+<div class="w-full h-full bg-[#1E2B3D] pl-[10%] pr-[10%] pt-[2%] pb-[2%] text-white ">
+
+
+    <div class="h-full w-full space-y-10">
+
+        <div class="row w-full h-[5%] flex items-center justify-center p-20 bg-[#4c5664] rounded-2xl">
+            <p class="font-bold text-2xl font-jetbrains text-white">LISTA DE PRODUCTOS FAVORITOS</p>
+        </div>
+        <div class="bg-[#edf2fb] w-full h-[1000px] p-10 rounded-2xl">
+
+            <div class="w-full h-full ">
+                <div class="row w-full h-[90%] space-y-4 overflow-y-auto ">
+
+                    <!-- Aqui va el for -->
+
+                    <div class="row flex w-full h-[150px]">
+                        <div class="col w-[10%] h-full flex items-center justify-center">
+                            <input type="checkbox" class="h-[25px] w-[25px] rounded-md ">
                         </div>
-                        <div class="col h-full w-[20%] flex items-center justify-center">
-                            <p>Nombre del producto</p>
-                        </div>
-                        <div class="col h-full w-[20%] flex items-center justify-center ">
-                            <div class="w-full">
-                                <app-price-view />
+                        <div class="col w-[90%] h-full  bg-[#f8fafd] flex text-black rounded-2xl">
+                            <div class="col h-full w-[20%] flex items-center justify-center">
+                                <img src="images/compu.jpeg" alt="" class="w-[80%] h[80%] rounded-2xl">
                             </div>
-                        </div>
-                        <div class="col h-full w-[20%] flex items-center justify-center ">
-                            <app-stock-status />
-                        </div>
-                        <div class="col h-full w-[20%] flex items-center justify-center space-x-2">
-                            <div class="col w-[25%] h-[25%] ">
-                                <app-info-product />
+                            <div class="col h-full w-[20%] flex items-center justify-center">
+                                <p>Nombre del producto</p>
                             </div>
-                            <div class="col w-[25%] h-[25%] ">
-                                <app-add-cart />
+                            <div class="col h-full w-[20%] flex items-center justify-center ">
+                                <div class="w-full">
+                                    <app-price-view />
+                                </div>
+                            </div>
+                            <div class="col h-full w-[20%] flex items-center justify-center ">
+                                <app-stock-status />
+                            </div>
+                            <div class="col h-full w-[20%] flex items-center justify-center space-x-2">
+                                <div class="col w-[25%] h-[25%] ">
+                                    <app-info-product />
+                                </div>
+                                <div class="col w-[25%] h-[25%] ">
+                                    <app-add-cart />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-    
-            <div class="row w-full h-[10%] flex">
-    
-                <div class="row flex items-center justify-start h-full w-full">
-                    <i class="fas fa-trash text-xl text-black pr-4"> </i>
-                    <p class="font-jetbrains text-black">Eliminar</p>
+
+                <div class="row w-full h-[10%] flex">
+
+                    <div class="row flex items-center justify-start h-full w-full">
+                        <i class="fas fa-trash text-xl text-black pr-4"> </i>
+                        <p class="font-jetbrains text-black">Eliminar</p>
+                    </div>
+
                 </div>
-    
+
             </div>
-    
         </div>
     </div>
 </div>

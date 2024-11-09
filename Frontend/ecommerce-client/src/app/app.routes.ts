@@ -8,25 +8,28 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { DirectionComponent } from './components/direction/direction.component';
-import { AuthGuard } from './authGuard/auth.guard';
-
-
+import { ProductsPerCategoryComponent } from './components/products-per-category/products-per-category.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { CompletePurchaseComponent } from './components/complete-purchase/complete-purchase.component';
+import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
 
 export const routes: Routes = [
-
-    
-
     {
         path: '', component: HomeComponent, children: [
             { path: '', redirectTo: 'slider-day-promotions', pathMatch: 'full' }, 
             { path: 'payment-method', component: PaymentMethodComponent },
-            { path: 'login', component: LoginComponent},
+            { path: 'login', component: LoginComponent },
             { path: 'whishlist', component: WhishlistComponent },
             { path: 'slider-day-promotions', component: SliderDayPromotionsComponent },
             { path: 'product-details', component: ProductDetailsComponent },
             {path: 'personal-information', component: PersonalInformationComponent},
             {path: 'order-history', component: OrderHistoryComponent},
-            {path: 'direction', component: DirectionComponent}
+            {path: 'direction', component: DirectionComponent},
+            {path: 'products-per-category', component: ProductsPerCategoryComponent},
+            {path: 'shopping-cart', component: ShoppingCartComponent},
+            {path: 'complete-purchase', component: CompletePurchaseComponent},
+            {path: 'order-complete', component: OrderCompleteComponent}
+
         ]
     },
 ];
