@@ -26,6 +26,7 @@
 --             Audio >
 --             Cámaras y Videocámaras >
 
+ALTER TABLE category AUTO_INCREMENT = 1;
 
 
 -- Nivel 1
