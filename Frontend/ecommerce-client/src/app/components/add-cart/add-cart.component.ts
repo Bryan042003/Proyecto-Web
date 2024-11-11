@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../../models/product.model';
+import { LocalStorageService } from '../../services/LocalStorage.service';
 
 @Component({
   selector: 'app-add-cart',
@@ -8,5 +10,13 @@ import { Component } from '@angular/core';
   styleUrl: './add-cart.component.scss'
 })
 export class AddCartComponent {
+  @Input()
+  product!: Product;
+
+  constructor(private localStorageService: LocalStorageService) { }
+
+  addLocalStorageCart(): void {
+    this.localStorageService.saveProduct(this.product);
+  }
 
 }
