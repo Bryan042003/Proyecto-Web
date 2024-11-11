@@ -9,5 +9,5 @@ export interface Product {
     stock:number;
     n_sales:number;
     id_offer:number;
-
+    quantity: number;
 }
