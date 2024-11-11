@@ -29,7 +29,7 @@ const getALLCategoriesWithSubcategories = async (req,res) => {
     }
 }
 
-
+//Get a category with its subcategories
 const getCategoryWithSubcategories = async (req,res) => {
     const {category_id} = req.params;
 
@@ -50,45 +50,37 @@ const getCategoryWithSubcategories = async (req,res) => {
 }
 
 
-
-//Get all products from a category
-const getProductsByCategory = async (req,res)=>{
+//Get subcategories of a category
+const getSubcategories = async (req,res) => {
     const {category_id} = req.params;
 
     try{
-        const categoryHierarchy = await Category.findAll({
+        const subcategories = await Category.findAll({
             where: {
-                id: category_id
-            },
+                parent_id: category_id
+            }
+        });
+
+        res.status(200).json(subcategories);
+    }catch(error){
+        console.log(error);
+        res.status(500).json({error: 'There was an error trying to get the subcategories'});
+    }
+}
+
+const getParentCategory = async (req,res) => {
+    const {category_id} = req.params;
+
+    try{
+        const category = await Category.findByPk(category_id,{
             include:{
                 model: Category,
-                as: 'subcategories',
-                required: false,
-                include:{
-                    model: Category,
-                    as: 'subcategories',
-                    required: false,
-                    atributtes: ['id']
-                }
+                as: 'parent',
+                required: false
             }
         });
 
-        //Get all the categories ids
-        const categoriesIds = categoryHierarchy.map(category => category.id);
-
-        //Get all the products from the categories
-
-        const products = await Product_Category.findAll({
-            where: {
-                id_category: categoriesIds
-            },
-            include:{
-                model: Product,
-                as: 'product'
-            }
-        });
-
-        res.status(200).json(products);
+        res.status(200).json(category);
     }catch(error){
         console.log(error);
         res.status(500).json({error: 'There was an error trying to get the category'});
@@ -99,7 +91,8 @@ const getProductsByCategory = async (req,res)=>{
 
 
 module.exports = {
-    getCategories,
-    getProductsByCategory,
-    getCategoryWithSubcategories
+    getALLCategoriesWithSubcategories,
+    getCategoryWithSubcategories,
+    getSubcategories,
+    getParentCategory
 }
