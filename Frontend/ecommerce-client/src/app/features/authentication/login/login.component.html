@@ -1,137 +1,244 @@
-<div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
-
-    <div class="w-full h-[650px] bg-white rounded-xl flex flex-col">
-        <!-- Contenedor principal de la vista -->
-        <ng-container *ngIf="showLogin; else registerTemplate">
-            <!-- Pantalla de Iniciar Sesión -->
-            <div class="row w-full h-full flex justify-center">
-                <div class="col w-[50%] h-full p-10 bg-white rounded-l-2xl">
-                    <div
-                        class="row w-full h-[20%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
-                        Iniciar Sesión
-                    </div>
-                    <div class="row w-full h-[20%] font-extrabold font-jetbrains items-center">
-                        <div class="col w-full h[80%] flex items-center justify-center space-x-4">
-                            <div
-                                class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
-                                <img class="w-[50%] h-[50%]" src="images/google.png" alt="">
-                            </div>
-                            <div
-                                class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
-                                <img class="w-[50%] h-[50%]" src="images/facebook.png" alt="">
-                            </div>
+<div class="w-full h-[650px] bg-white rounded-xl flex flex-col">
+    <!-- Contenedor principal de la vista -->
+    <ng-container *ngIf="showLogin; else registerTemplate">
+        <!-- Pantalla de Iniciar Sesión -->
+        <div class="row w-full h-full flex justify-center">
+            <div class="col w-[50%] h-full p-10 bg-white rounded-l-2xl">
+                <div class="row w-full h-[20%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
+                    Iniciar Sesión
+                </div>
+                <div class="row w-full h-[20%] font-extrabold font-jetbrains items-center">
+                    <div class="col w-full h[80%] flex items-center justify-center space-x-4">
+                        <div
+                            class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/google.png" alt="">
                         </div>
-                        <div class="col w-full h[20%] flex justify-center items-center">
-                            o usa tu correo
+                        <div
+                            class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/facebook.png" alt="">
                         </div>
                     </div>
-                    <div class="row h-[10%] w-full flex flex-col justify-center items-center">
-                        <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="email"
-                            placeholder="Correo Electrónico">
-                    </div>
-                    <div class="row h-[10%] w-full flex flex-col justify-center items-center">
-                        <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
-                            type="password" placeholder="Contraseña">
-                    </div>
-                    <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex">
-                        <button
-                            class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]">
-                            Guardar
-                        </button>
-                    </div>
-                    <div class="row h-[10%] w-full flex justify-center items-center">
-                        <div class="col w-[full] h-full flex justify-end items-center space-x-2">
-                            <input type="checkbox">
-                            <label for="checkbox">Mostrar Contraseña</label>
-                        </div>
-                        <div class="col w-[50%] h-full flex justify-end items-center">
-                            <a href="#" class="underline">¿Has olvidado tu contraseña?</a>
-                        </div>
+                    <div class="col w-full h[20%] flex justify-center items-center">
+                        o usa tu correo
                     </div>
                 </div>
-                <div
-                    class="rounded-r-2xl w-[50%] h-full flex flex-col bg-[#f5f8fc] items-center justify-center font-bold space-y-4">
-                    <div class="w-full flex justify-center items-center text-2xl">
-                        ¡Bienvenido!
+                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="email"
+                        placeholder="Correo Electrónico">
+                </div>
+                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                        type="password" placeholder="Contraseña">
+                </div>
+                <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex">
+                    <button class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]">
+                        Guardar
+                    </button>
+                </div>
+                <div class="row h-[10%] w-full flex justify-center items-center">
+                    <div class="col w-[full] h-full flex justify-end items-center space-x-2">
+                        <input type="checkbox">
+                        <label for="checkbox">Mostrar Contraseña</label>
                     </div>
-                    <div class="w-full flex justify-center items-center text-lg">
-                        Presione para crear una cuenta
-                    </div>
-                    <div class="w-full h-[10%] flex justify-center items-center">
-                        <button (click)="toggleView()"
-                            class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-full">
-                            Crear cuenta
-                        </button>
+                    <div class="col w-[50%] h-full flex justify-end items-center">
+                        <a href="#" class="underline">¿Has olvidado tu contraseña?</a>
                     </div>
                 </div>
             </div>
-        </ng-container>
+            <div
+                class="rounded-r-2xl w-[50%] h-full flex flex-col bg-[#f5f8fc] items-center justify-center font-bold space-y-4">
+                <div class="w-full flex justify-center items-center text-2xl">
+                    ¡Bienvenido!
+                </div>
+                <div class="w-full flex justify-center items-center text-lg">
+                    Presione para crear una cuenta
+                </div>
+                <div class="w-full h-[10%] flex justify-center items-center">
+                    <button (click)="toggleView()"
+                        class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-full">
+                        Crear cuenta
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
 
-        <!-- Plantilla de Registro -->
-        <ng-template #registerTemplate>
-            <div class="row w-full h-full flex justify-center">
-                <div
-                    class="rounded-l-2xl w-[50%] h-full flex flex-col bg-[#f5f8fc] items-center justify-center font-bold space-y-4">
-                    <div class="w-full flex justify-center items-center text-2xl">
-                        ¡Bienvenido!
+    <ng-template #registerTemplate>
+        <div class="row w-full h-full flex justify-center">
+            <!-- Panel de bienvenida -->
+            <div
+                class="rounded-l-2xl w-[50%] h-full flex flex-col bg-[#f5f8fc] items-center justify-center font-bold space-y-4">
+                <div class="w-full flex justify-center items-center text-2xl">
+                    ¡Bienvenido!
+                </div>
+                <div class="w-full flex justify-center items-center text-lg">
+                    Presione para iniciar sesión
+                </div>
+                <div class="w-full h-[10%] flex justify-center items-center">
+                    <button (click)="toggleView()"
+                        class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-full">
+                        Iniciar sesión
+                    </button>
+                </div>
+            </div>
+
+            <!-- Formulario de registro -->
+            <div class="col w-[50%] h-full p-10 bg-white rounded-r-2xl">
+                <div class="row w-full h-[10%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
+                    Registrarse
+                </div>
+
+                <!-- Opciones de redes sociales -->
+
+                <div class="row w-full h-[20%] font-extrabold font-jetbrains items-center">
+                    <div class="col w-full h-[80%] flex items-center justify-center space-x-4">
+                        <div
+                            class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/google.png" alt="">
+                        </div>
+                        <div
+                            class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
+                            <img class="w-[50%] h-[50%]" src="images/facebook.png" alt="">
+                        </div>
                     </div>
-                    <div class="w-full flex justify-center items-center text-lg">
-                        Presione para iniciar sesión
-                    </div>
-                    <div class="w-full h-[10%] flex justify-center items-center">
-                        <button (click)="toggleView()"
-                            class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-full">
-                            Iniciar sesión
-                        </button>
+                    <div class="col w-full h-[20%] flex justify-center items-center">
+                        o usa tu correo
                     </div>
                 </div>
-                <div class="col w-[50%] h-full p-10 bg-white rounded-r-2xl">
-                    <div
-                        class="row w-full h-[20%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
+
+                <form class="grid" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <!-- Campos de formulario en dos columnas -->
+                    <div class="row w-full flex flex-wrap justify-between space-y-4">
+                        <!-- Columna izquierda -->
+                        <div class="col w-[48%] space-y-4">
+
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Nombre" formControlName="name" />
+                            <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched"
+                                class="text-red-500">
+                                <small *ngIf="userForm.controls['name'].errors?.['required']">El nombre es
+                                    obligatorio.</small>
+                                <small *ngIf="userForm.controls['name'].errors?.['pattern']">
+                                    Se permiten solo caraterés alfabéticos</small>
+                            </div>
+
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="email" placeholder="Correo Electrónico" formControlName="email" />
+                            <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched"
+                                class="text-red-500">
+                                <small *ngIf="userForm.controls['email'].errors?.['required']">El correo electrónico es
+                                    obligatorio.</small>
+                                <small *ngIf="userForm.controls['email'].errors?.['email']">
+                                    Ingrese un email válido</small>
+                            </div>
+
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Teléfono" formControlName="phone" />
+                            <div *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched"
+                                class="text-red-500">
+                                <small *ngIf="userForm.controls['phone'].errors?.['required']">El teléfono es
+                                    obligatorio.</small>
+                                <small *ngIf="userForm.controls['phone'].errors?.['pattern']">Ingrese un teléfono válido
+                                    (8
+                                    dígitos).</small>
+                            </div>
+
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Enlace de Foto" formControlName="photo" />
+
+                            <select
+                                class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                                formControlName="canton">
+                                <option value="">Seleccione un cantón</option>
+                                <option value="Desamparados">Desamparados</option>
+                                <option value="Asserrí">Asserrí</option>
+                                <option value="Pavas">Pavas</option>
+                            </select>
+
+
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Dirección Específica" formControlName="specific_address" />
+                            <div *ngIf="userForm.controls['specific_address'].invalid && userForm.controls['specific_address'].touched"
+                                class="text-red-500">
+                                <small *ngIf="userForm.controls['specific_address'].errors?.['required']"> Una dirección
+                                    específica es obligatorio.</small>
+                            </div>
+                        </div>
+
+                        <!-- Columna derecha -->
+                        <div class="col w-[48%] space-y-4">
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Apellido" formControlName="last_name" />
+                            <div *ngIf="userForm.controls['last_name'].invalid && userForm.controls['last_name'].touched"
+                                class="text-red-500">
+                                <small *ngIf="userForm.controls['last_name'].errors?.['required']">El apellido es
+                                    obligatorio.</small>
+                                <small *ngIf="userForm.controls['last_name'].errors?.['pattern']">
+                                    Se permiten solo caraterés alfabéticos</small>
+                            </div>
+
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="password" placeholder="Contraseña" formControlName="passw" />
+                            <div *ngIf="userForm.controls['passw'].invalid && userForm.controls['passw'].touched"
+                                class="text-red-500">
+                                <small *ngIf="userForm.controls['passw'].errors?.['required']">La contraseña es
+                                    obligatoria.</small>
+                                <small *ngIf="userForm.controls['passw'].errors?.['minlength']">Debe tener al menos 8
+                                    caracteres.</small>
+                            </div>
+
+                            <select
+                                class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                                formControlName="province">
+                                <option value="">Seleccione una provincia</option>
+                                <option value="San José">San José</option>
+                                <option value="Heredia">Heredia</option>
+                                <option value="Limón">Limón</option>
+                            </select>
+
+                            <select
+                                class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                                formControlName="district">
+                                <option value="">Seleccione un distrito</option>
+                                <option value="San Miguel">San Miguel</option>
+                                <option value="Tacares">Tacares</option>
+                                <option value="Bolívar">Bolívar</option>
+                            </select>
+
+
+                            <input class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Código Postal" formControlName="postal_code" />
+                            <div *ngIf="userForm.controls['postal_code'].invalid && userForm.controls['postal_code'].touched"
+                                class="text-red-500">
+                                <small *ngIf="userForm.controls['postal_code'].errors?.['required']">El código postal es
+                                    obligatorio.</small>
+                                <small *ngIf="userForm.controls['postal_code'].errors?.['pattern']">Ingrese un código
+                                    postal
+                                    válido (5 dígitos).</small>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- Botón de registro -->
+                <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex mt-6">
+                    <button class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]"
+                        (click)="onSubmit()">
                         Registrarse
-                    </div>
-                    <div class="row w-full h-[20%] font-extrabold font-jetbrains items-center">
-                        <div class="col w-full h[80%] flex items-center justify-center space-x-4">
-                            <div
-                                class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
-                                <img class="w-[50%] h-[50%]" src="images/google.png" alt="">
-                            </div>
-                            <div
-                                class="row w-[50px] h-[50px] rounded-full border border-black flex items-center justify-center">
-                                <img class="w-[50%] h-[50%]" src="images/facebook.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col w-full h[20%] flex justify-center items-center">
-                            o usa tu correo
-                        </div>
-                    </div>
-                    <div class="row h-[10%] w-full flex flex-col justify-center items-center">
-                        <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="text"
-                            placeholder="Nombre">
-                    </div>
-                    <div class="row h-[10%] w-full flex flex-col justify-center items-center">
-                        <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="email"
-                            placeholder="Correo Electrónico">
-                    </div>
-                    <div class="row h-[10%] w-full flex flex-col justify-center items-center">
-                        <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
-                            type="password" placeholder="Contraseña">
-                    </div>
-                    <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex">
-                        <button
-                            class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]">
-                            Registrarse
-                        </button>
-                    </div>
-                    <div class="row h-[10%] w-full flex justify-center items-center">
-                        <div class="col w-[full] h-full flex justify-end items-center space-x-2">
-                            <input type="checkbox">
-                            <label for="checkbox">Mostrar Contraseña</label>
-                        </div>
+                    </button>
+                </div>
+
+                <!-- Mostrar Contraseña -->
+                <div class="row h-[10%] w-full flex justify-center items-center">
+                    <div class="col w-full flex justify-end items-center space-x-2">
+                        <input type="checkbox">
+                        <label for="checkbox">Mostrar Contraseña</label>
                     </div>
                 </div>
+
             </div>
-        </ng-template>
-    </div>
+        </div>
+    </ng-template>
+
 
 </div>
