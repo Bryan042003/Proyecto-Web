@@ -48,4 +48,16 @@ export class AddressesService {
     deleteAddress(id: string): Observable<any> {
         return this.http.delete(`${this.baseUrl}/delete/${id}`);
     }
+
+    getDistricts(): Observable<any> {
+        return this.http.get(`${environment.baseUrl}districts`);
+    }
+
+    getCantons(): Observable<any> {
+        return this.http.get(`${environment.baseUrl}cantons`);
+    }
+
+    getProvinces(): Observable<any> {
+        return this.http.get(`${environment.baseUrl}provinces`);
+    }
 }

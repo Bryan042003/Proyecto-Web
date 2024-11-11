@@ -4,7 +4,7 @@ const Product_Category = require('../models/Product_Category');
 const Product = require('../models/Product');
 
 //Get all categories with their subcategories (hierarchical)
-exports.getCategories = async (req,res) => {
+const getALLCategoriesWithSubcategories = async (req,res) => {
     try{
         const categories = await Category.findAll({
             where: {
@@ -29,45 +29,58 @@ exports.getCategories = async (req,res) => {
     }
 }
 
-
-//Get all products from a category
-exports.getProductsByCategory = async (req,res)=>{
+//Get a category with its subcategories
+const getCategoryWithSubcategories = async (req,res) => {
     const {category_id} = req.params;
 
     try{
-        const categoryHierarchy = await Category.findAll({
-            where: {
-                id: category_id
-            },
+        const category = await Category.findByPk(category_id,{
             include:{
                 model: Category,
                 as: 'subcategories',
-                required: false,
-                include:{
-                    model: Category,
-                    as: 'subcategories',
-                    required: false,
-                    atributtes: ['id']
-                }
+                required: false
             }
         });
 
-        //Get all the categories ids
-        const categoriesIds = categoryHierarchy.map(category => category.id);
+        res.status(200).json(category);
+    }catch(error){
+        console.log(error);
+        res.status(500).json({error: 'There was an error trying to get the category'});
+    }
+}
 
-        //Get all the products from the categories
 
-        const products = await Product_Category.findAll({
+//Get subcategories of a category
+const getSubcategories = async (req,res) => {
+    const {category_id} = req.params;
+
+    try{
+        const subcategories = await Category.findAll({
             where: {
-                id_category: categoriesIds
-            },
-            include:{
-                model: Product,
-                as: 'product'
+                parent_id: category_id
             }
         });
 
-        res.status(200).json(products);
+        res.status(200).json(subcategories);
+    }catch(error){
+        console.log(error);
+        res.status(500).json({error: 'There was an error trying to get the subcategories'});
+    }
+}
+
+const getParentCategory = async (req,res) => {
+    const {category_id} = req.params;
+
+    try{
+        const category = await Category.findByPk(category_id,{
+            include:{
+                model: Category,
+                as: 'parent',
+                required: false
+            }
+        });
+
+        res.status(200).json(category);
     }catch(error){
         console.log(error);
         res.status(500).json({error: 'There was an error trying to get the category'});
@@ -75,3 +88,11 @@ exports.getProductsByCategory = async (req,res)=>{
 }
 
 //To do: Assing a product to a category
+
+
+module.exports = {
+    getALLCategoriesWithSubcategories,
+    getCategoryWithSubcategories,
+    getSubcategories,
+    getParentCategory
+}

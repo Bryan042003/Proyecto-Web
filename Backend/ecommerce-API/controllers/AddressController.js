@@ -1,6 +1,9 @@
 const Address = require('../models/Address');
 const sequelize = require('../config/database');
 const {body,validationResult} = require('express-validator');
+const District = require('../models/District');
+const Canton = require('../models/Canton');
+const Province = require('../models/Province');
 
 //Middleware to validate address data
 const validateAddress = [
@@ -134,11 +137,59 @@ const deleteAddress = async (req, res) => {
     }
 }
 
+//Locations
+
+const getDistricts = async (req, res) => {
+    try {
+        console.log('Getting districts');
+        const districts = await District.findAll();
+        return res.status(200).json({
+            districts
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting districts',
+            error
+        });
+    }
+}
+
+const getCantons = async (req, res) => {
+    try {
+        const cantons = await Canton.findAll();
+        return res.status(200).json({
+            cantons
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting cantons',
+            error
+        });
+    }
+}
+
+const getProvinces = async (req, res) => {
+    try {
+        const provinces = await Province.findAll();
+        return res.status(200).json({
+            provinces
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting provinces',
+            error
+        });
+    }
+}
+
 module.exports = {
     createAddress,
     getAddresses,
     getAddressById,
     updateAddress,
     deleteAddress,
-    validateAddress
+    validateAddress,
+    getDistricts,
+    getCantons,
+    getProvinces
 }
