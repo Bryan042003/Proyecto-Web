@@ -8,6 +8,7 @@ const AuthRoutes = require('./routes/AuthRoutes');
 const AddressRoutes = require('./routes/AddressRoutes');
 const ProductRoutes = require('./routes/ProductRoutes');
 const CategoryRoutes = require('./routes/CategoryRoutes');
+const OfferRoutes = require('./routes/OfferRoutes');
 const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
@@ -25,16 +26,13 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// (async () => {
-//   await sequelize.authenticate();
-// })();
-
 //Routes
 app.use('/api/users', UserRoutes);
 app.use('/api/auth', AuthRoutes);
 app.use('/api/addresses', AddressRoutes);
 app.use('/api/products', ProductRoutes);
 app.use('/api/categories', CategoryRoutes);
+app.use('/api/offers', OfferRoutes);
 
 //Server
 app.listen(port, () => {
