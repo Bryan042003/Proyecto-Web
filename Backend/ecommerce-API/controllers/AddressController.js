@@ -4,6 +4,7 @@ const {body,validationResult} = require('express-validator');
 const District = require('../models/District');
 const Canton = require('../models/Canton');
 const Province = require('../models/Province');
+const { get } = require('../routes/UserRoutes');
 
 //Middleware to validate address data
 const validateAddress = [
@@ -182,6 +183,47 @@ const getProvinces = async (req, res) => {
     }
 }
 
+//Get Cantons by Province
+const getCantonsByProvince = async (req, res) => {
+    const {id_province} = req.params;
+    try {
+        const cantons = await Canton.findAll({
+            where: {
+                id_province
+            }
+        });
+        return res.status(200).json({
+            cantons
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting cantons',
+            error
+        });
+    }
+}
+
+//Get Districts by Canton
+
+const getDistrictsByCanton = async (req, res) => {
+    const {id_canton} = req.params;
+    try {
+        const districts = await District.findAll({
+            where: {
+                id_canton
+            }
+        });
+        return res.status(200).json({
+            districts
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting districts',
+            error
+        });
+    }
+}
+
 module.exports = {
     createAddress,
     getAddresses,
@@ -191,5 +233,7 @@ module.exports = {
     validateAddress,
     getDistricts,
     getCantons,
-    getProvinces
+    getProvinces,
+    getCantonsByProvince,
+    getDistrictsByCanton
 }
