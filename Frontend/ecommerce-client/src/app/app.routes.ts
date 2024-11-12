@@ -12,6 +12,7 @@ import { ProductsPerCategoryComponent } from './components/products-per-category
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { CompletePurchaseComponent } from './components/complete-purchase/complete-purchase.component';
 import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
+import { AuthGuard } from './authGuard/auth.guard';
 
 export const routes: Routes = [
     {
@@ -23,7 +24,7 @@ export const routes: Routes = [
             { path: 'slider-day-promotions', component: SliderDayPromotionsComponent },
             { path: 'product-details', component: ProductDetailsComponent },
             {path: 'personal-information', component: PersonalInformationComponent},
-            {path: 'order-history', component: OrderHistoryComponent},
+            {path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard]},
             {path: 'direction', component: DirectionComponent},
             {path: 'products-per-category', component: ProductsPerCategoryComponent},
             {path: 'shopping-cart', component: ShoppingCartComponent},

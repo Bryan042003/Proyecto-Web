@@ -25,9 +25,9 @@ export class SliderDayPromotionsComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getProducts().subscribe((products) => {
-      this.products = products;
+      // Filtra los productos cuya propiedad id_offer no sea null
+      this.products = products.filter(product => product.id_offer !== null);
     });
-    console.log(this.products);
   }
 
 
