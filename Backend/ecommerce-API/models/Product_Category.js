@@ -30,8 +30,8 @@ const Product_Category = sequelize.define('Product_Category', {
 
 );
 
-Product_Category.belongsTo(Product,{as:'product',foreignKey:'id_product'});
-Product_Category.belongsTo(Category,{as:'category',foreignKey:'id_category'});
+// Product_Category.belongsTo(Product,{as:'product',foreignKey:'id_product'});
+// Product_Category.belongsTo(Category,{as:'category',foreignKey:'id_category'});
 
 module.exports = Product_Category;
 

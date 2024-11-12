@@ -52,4 +52,8 @@ export class ProductService {
     reduceStock(id: string, quantity: number): Observable<any> {
         return this.http.put(`${this.baseUrl}/reduce-stock/${id}`, {quantity});
     }
+
+    getProductsByCategory(id:string): Observable<Product[]> {
+        return this.http.get<Product[]>(`${this.baseUrl}/by-category/${id}`);
+    }
 }
