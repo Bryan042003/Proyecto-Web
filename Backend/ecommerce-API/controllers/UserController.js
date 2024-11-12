@@ -156,13 +156,11 @@ async function getUserByEmail(req, res) {
 
 async function getUserById(req, res) {
     try{
-        const user = await User.findByPk({
-            where: {
-                id: req.params.id
-            },
+        const user = await User.findByPk(req.params.id,{
             attributes: {exclude: ['passw']}
-
-        });
+        }
+          
+        );
 
         if(user){
             res.status(200).json(user);

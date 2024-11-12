@@ -2,7 +2,7 @@
     <div class="bg-[#1E2B3D] w-full h-[75px] flex items-center justify-end space-x-4 pr-5">
 
 
-        <button *ngIf="!logueado" [routerLink]="['/login']"
+        <button *ngIf="!logged" [routerLink]="['/login']"
             class="bg-[#E9EFF9] text-[#1E2B3D] font-bold py-2 px-4 rounded-sm shadow-md transform -skew-x-12 flex space-x-2">
             <span>INICIAR SESIÓN</span>
             <span class="text-[#1E2B3D]">|</span>
@@ -13,14 +13,17 @@
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
                     <!-- Mostrar imagen si logueado es true -->
-                    <img *ngIf="logueado" src="images/logo.png" class="w-8 h-8 object-cover" />
-
+                    <img *ngIf="logged" src="images/logo.png" class="w-8 h-8 object-cover" />
+            
                     <!-- Mostrar ícono si logueado es false -->
-                    <i *ngIf="!logueado" class="far fa-user text-lg"></i>
+                    <i *ngIf="!logged" class="far fa-user text-lg"></i>
                 </div>
             </div>
+            
+            
 
-            <ul *ngIf="logueado" tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <ul *ngIf="logged" tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 <li [routerLink]="['/personal-information']"><a>Pefil</a></li>
                 <li [routerLink]="['/order-history']"><a>Historial de pedidos</a></li>
                 <li [routerLink]="['/payment-method']"><a>Método de pago</a></li>
@@ -31,12 +34,12 @@
     </div>
 
     <div class="w-full h-[150px] flex items-center justify-center px-5 space-x-2">
-        <a [routerLink]="['/slider-day-promotions']" class="mr-[15%]" ><img  src="images/logo.png" class=" w-[200px]"></a>
+        <a [routerLink]="['/slider-day-promotions']" class="mr-[15%]"><img src="images/logo.png" class=" w-[200px]"></a>
         <div class="flex">
             <input type="text" placeholder="Buscar productos"
                 class=" text-[#1E2B3D] font-bold py-2 px-4 rounded-l-md w-[600px] border border-black ">
 
-            <button class="bg-[#1E2B3D] rounded-r-md flex items-center justify-center m-0 p-3 w-[100px]">
+            <button class="bg-[#1E2B3D] rounded-r-md flex items-center justify-center m-0 p-3 w-[100px] btn btn-square">
                 <i class="fas fa-search text-xl text-white"></i>
             </button>
         </div>
@@ -51,62 +54,43 @@
 
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1 z-[100]">
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2">
-                            <li [routerLink]="['/products-per-category']"><a>Submenu 1</a></li>
-                            <li [routerLink]="['/products-per-category']"><a>Submenu 2</a></li>
+                <li *ngFor="let category of categories,let i = index">
+
+
+                    <!-- Mostrar detalles solo si hay subcategorías -->
+                    <details [open]="openCategoryIndex === i" (toggle)="onCategoryToggle(i)" *ngIf="category.subcategories?.length > 0">
+                        <summary>{{ category.name }}</summary>
+                        <ul *ngIf="category.subcategories?.length > 0" class="p-2">
+                            <li *ngFor="let subcategory of category.subcategories, let j = index">
+
+
+                                <!-- Mostrar detalles solo si hay subcategorías dentro de la subcategoría -->
+                                <details  [open]="openSubcategoryIndex === j && openCategoryIndex === i" (toggle)="onSubcategoryToggle(i, j)" *ngIf="subcategory.subcategories?.length > 0">
+                                    <summary>{{ subcategory.name }}</summary>
+
+                                    <ul *ngIf="subcategory.subcategories?.length > 0" class="p-2">
+                                        <li *ngFor="let subsubcategory of subcategory.subcategories"
+                                            [routerLink]="['/products-per-category']">
+                                            <a>{{ subsubcategory.name }}</a>
+                                        </li>
+                                    </ul>
+                                </details>
+
+                                <ul *ngIf="!subcategory.subcategories?.length">
+                                    <li [routerLink]="['/products-per-category']">
+                                        <a>{{ subcategory.name }}</a>
+                                    </li>
+                                </ul>
+
+
+                            </li>
                         </ul>
                     </details>
+
+
                 </li>
-
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-
-
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-
-
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-
-                <li>
-                    <details>
-                        <summary>Parent</summary>
-                        <ul class="p-2">
-                            <li><a>Submenu 1</a></li>
-                            <li><a>Submenu 2</a></li>
-                        </ul>
-                    </details>
-                </li>
-                
             </ul>
         </div>
-
-
 
         <div class="navbar-end space-x-4 ">
             <div class="flex-none bg-white rounded-full text-black">
@@ -159,7 +143,9 @@
                                 </div>
                             </div>
                             <div class="row h-[10%] flex items-center justify-center">
-                                <button [routerLink]="['/whishlist']" class="w-[50%] h-[90%] bg-[#1E2B3D] rounded-2xl font-jetbrains text-white">Ver whislist</button>
+                                <button [routerLink]="['/whishlist']"
+                                    class="w-[50%] h-[90%] bg-[#1E2B3D] rounded-2xl font-jetbrains text-white">Ver
+                                    whislist</button>
                             </div>
                         </div>
                     </div>
@@ -176,7 +162,9 @@
                         <div class="indicator">
                             <div>
                                 <i class="fas fa-shopping-cart text-xl text-white"></i>
-                                <div class="badge bg-white text-black">+99</div>
+                                <div class="badge bg-white text-black"> {{ cartProducts.length > 99 ? '+99' :
+                                    cartProducts.length }}</div>
+
                             </div>
                         </div>
                     </div>
@@ -192,10 +180,10 @@
 
 
 
-                                    <div *ngFor="let cartProduct of cartProducts" class="card card-side border  h-[200px]  bg-[#f8fafd] ltr">
+                                    <div *ngFor="let cartProduct of cartProducts"
+                                        class="card card-side border  h-[200px]  bg-[#f8fafd] ltr">
                                         <figure class="rounded-2xl w-[250px]">
-                                            <img src="{{cartProduct.photo}}"
-                                                alt="Movie" />
+                                            <img src="{{cartProduct.photo}}" alt="Movie" />
                                         </figure>
                                         <div class="card-body  rounded-2xl ">
 
@@ -211,12 +199,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="flex row h-[33%] items-center font-jetbrains">
-                                                        <p class="font-bold text-lg">₡ {{cartProduct.price * getQuantity(cartProduct.id)}}</p>
+                                                        <p class="font-bold text-lg">₡ {{cartProduct.price *
+                                                            getQuantity(cartProduct.id)}}</p>
                                                     </div>
                                                 </div>
 
                                                 <div class="col w-[20%]">
-                                                    
+
                                                     <div class="row flex items-center justify-center h-full w-full">
                                                         <button (click)="ShoppingCartDelete(cartProduct.id)">
                                                             <i class="fas fa-trash text-xl text-black"></i>
@@ -229,7 +218,7 @@
 
                                     </div>
 
-                                </div> 
+                                </div>
                             </div>
 
                             <!-- Columna secundaria que ocupa 4 de las 12 columnas -->

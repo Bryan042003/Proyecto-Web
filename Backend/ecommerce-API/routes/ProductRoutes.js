@@ -11,4 +11,6 @@ router.put('/update/:id', productController.validateProduct,productController.up
 router.patch('/reduce-stock/:id', productController.validateStock,productController.reduceStock);
 router.delete('/delete/:id', productController.deleteProduct);
 
+router.get('/by-category/:id_category', productController.getProductsByCategory);
+
 module.exports = router;
