@@ -12,6 +12,12 @@ const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
 
+app.use(cors({
+  origin: '*', // Permitir cualquier origen
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD'], // Permitir cualquier método HTTP
+  allowedHeaders: ['Content-Type', 'Authorization'] // Permitir estos encabezados
+}));
+
 app.use(express.json());
 app.use(upload.none());
 
@@ -29,10 +35,6 @@ app.use('/api/auth', AuthRoutes);
 app.use('/api/addresses', AddressRoutes);
 app.use('/api/products', ProductRoutes);
 app.use('/api/categories', CategoryRoutes);
-
-
-//Cors
-app.use(cors());
 
 //Server
 app.listen(port, () => {
