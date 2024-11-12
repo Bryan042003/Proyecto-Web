@@ -20,4 +20,14 @@ export class AuthGuard implements CanActivate {
         }
         return true;
     }
+
+
+    logged(): boolean {
+        const token = this.localStorageService.getItem('token');
+        if (token === null || this.authService.isTokenExpired(token)) {
+            return false;
+        }
+        return true;
+    }
+
 }
