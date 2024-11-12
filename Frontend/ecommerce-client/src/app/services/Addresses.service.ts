@@ -50,14 +50,14 @@ export class AddressesService {
     }
 
     getDistricts(): Observable<any> {
-        return this.http.get(`${environment.baseUrl}districts`);
+        return this.http.get(`${environment.baseUrl}addresses/districts`);
     }
 
     getCantons(): Observable<any> {
-        return this.http.get(`${environment.baseUrl}cantons`);
+        return this.http.get(`${environment.baseUrl}addresses/cantons`);
     }
 
     getProvinces(): Observable<any> {
-        return this.http.get(`${environment.baseUrl}provinces`);
+        return this.http.get(`${environment.baseUrl}addresses/provinces`);
     }
 }

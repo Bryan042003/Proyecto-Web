@@ -189,14 +189,11 @@
                                     caracteres.</small>
                             </div>
 
-                            <select
-                                class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
-                                formControlName="province">
+                            <select class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white" formControlName="province">
                                 <option value="">Seleccione una provincia</option>
-                                <option value="San José">San José</option>
-                                <option value="Heredia">Heredia</option>
-                                <option value="Limón">Limón</option>
-                            </select>
+                                <option *ngFor="let province of provinces" [value]="province.name">{{ province.name }}</option>
+                              </select>
+                              
 
                             <select
                                 class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"

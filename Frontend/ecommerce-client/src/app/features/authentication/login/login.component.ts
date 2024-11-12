@@ -1,6 +1,9 @@
 
 import { UsersService } from './../../../services/Users.service';
+import { AddressesService } from '../../../services/Addresses.service';
 import { AlertsComponent } from '../../../components/alerts/alerts.component';
+import { District } from '../../../models/address.model';
+import { Province } from '../../../models/address.model';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -23,6 +26,9 @@ import { last } from 'rxjs';
 export class LoginComponent {
   showLogin = true;
   showAlert = false;
+  districts: any[] = [];
+  cantons = [];
+  provinces: Province[] = [];
 
   /*
         data ={
@@ -94,9 +100,84 @@ export class LoginComponent {
 
   constructor(
     private _usersService: UsersService,
+    private _addressService: AddressesService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+
+
+  }
+
+
+  ngOnInit(): void { 
+    this.loadProvinces(); 
+  }
+
+
+  loadDistricts() {
+    this._addressService.getDistricts()
+      .subscribe({
+        next: (result: any) => {
+          this.districts = result;
+          console.log(this.districts);
+        },
+        error: (error: any) => {
+          console.error('Error al obtener distritos:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        }
+      });
+  }
+
+  get district() {
+    return this.districts;
+  }
+
+
+
+  loadCanton() {
+    this._addressService.getCantons()
+      .subscribe({
+        next: (result: any) => {
+          this.cantons = result;
+          console.log(this.cantons);
+        },
+        error: (error: any) => {
+          console.error('Error al obtener cantones:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        }
+      });
+  }
+
+  get canton() {
+    return this.cantons;
+  }
+
+
+  loadProvinces() {
+    this._addressService.getProvinces()
+      .subscribe({
+        next: (result: any) => {
+          this.provinces = result;
+          console.log(this.provinces);
+        },
+        error: (error: any) => {
+          console.error('Error al obtener provincias:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        }
+      });
+  }
+
+  get province() {
+    return this.provinces;
+  }
+
+
 
   onSubmit() {
     if (this.userForm.valid) {
@@ -106,9 +187,9 @@ export class LoginComponent {
             console.log('Usuario creado con éxito:', result);
             this.showAlert = true;
             this.userForm.reset();
-            this.userForm.patchValue({role: 'user'});
+            this.userForm.patchValue({ role: 'user' });
             setTimeout(() => { this.showAlert = false; }, 3000);
-            console.table(this.userForm.value);
+
           },
           error: (error: any) => {
             console.error('Error al crear usuario:', error);
