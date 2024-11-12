@@ -1,3 +1,5 @@
+USE ExtremeTEC;
+
 INSERT INTO Province (name) VALUES ('San José');
 INSERT INTO Province (name) VALUES ('Alajuela');
 INSERT INTO Province (name) VALUES ('Cartago');

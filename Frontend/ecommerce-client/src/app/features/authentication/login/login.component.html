@@ -84,6 +84,8 @@
 
             <!-- Formulario de registro -->
             <div class="col w-[50%] h-full p-10 bg-white rounded-r-2xl">
+                <!-- Alerta de éxito -->
+                <app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
                 <div class="row w-full h-[10%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
                     Registrarse
                 </div>
@@ -227,6 +229,8 @@
                         Registrarse
                     </button>
                 </div>
+
+
 
                 <!-- Mostrar Contraseña -->
                 <div class="row h-[10%] w-full flex justify-center items-center">
