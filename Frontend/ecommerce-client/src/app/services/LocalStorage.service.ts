@@ -44,40 +44,36 @@ export class LocalStorageService {
     async saveProduct(product: Product): Promise<void> {
         const products = this.getAllProducts();
     
-        // Verificar si el producto tiene un descuento
+        
         let finalPrice = product.price;
         if (product.id_offer != null) {
-            const discount = await this.getDiscountById(product.id_offer); // Esperamos el descuento
+            const discount = await this.getDiscountById(product.id_offer); 
             console.log('Descuento:', discount);
             if (discount) {
-                finalPrice = product.price * (1 - discount);  // Aplica el descuento al precio
+                finalPrice = product.price * (1 - discount);  
                 console.log('Precio final con descuento:', finalPrice);
             }
         }
     
         if (products[product.id]) {
-            // Si el producto ya está en el carrito, incrementamos la cantidad
             products[product.id].quantity += 1;
-            // Actualizamos el precio final con descuento en el carrito
             products[product.id].price = finalPrice;
         } else {
-            // Si el producto no está en el carrito, lo agregamos
-            products[product.id] = { ...product, quantity: 1, price: finalPrice }; // Agrega el producto con precio final
+            products[product.id] = { ...product, quantity: 1, price: finalPrice }; 
         }
     
         this.setItem(this.productKeyShoppingCart, JSON.stringify(products));
         this.printAllProducts();
     }
     
-    // Función para obtener el descuento de forma asincrónica
     async getDiscountById(id: number): Promise<number> {
         try {
-            const offer = await this.offersService.getOffer(id.toString()).toPromise(); // Usamos `toPromise` para esperar la respuesta
+            const offer = await this.offersService.getOffer(id.toString()).toPromise(); 
             console.log('Descuento función:', offer?.discount);
-            return offer?.discount || 0;  // Retorna el descuento o 0 si no hay
+            return offer?.discount || 0; 
         } catch (error) {
             console.error('Error al obtener el descuento:', error);
-            return 0;  // Si hay un error, retorna 0 como descuento
+            return 0;  
         }
     }
 
@@ -130,20 +126,19 @@ export class LocalStorageService {
 
     async saveProductWish(product: Product): Promise<void> {
         const wishlistProducts = this.getAllProductsWish();
-         // Verificar si el producto tiene un descuento
          let finalPrice = product.price;
          if (product.id_offer != null) {
-             const discount = await this.getDiscountById(product.id_offer); // Esperamos el descuento
+             const discount = await this.getDiscountById(product.id_offer); 
              console.log('Descuento:', discount);
              if (discount) {
-                 finalPrice = product.price * (1 - discount);  // Aplica el descuento al precio
+                 finalPrice = product.price * (1 - discount);  
                  console.log('Precio final con descuento:', finalPrice);
              }
          }
      
-        // Agregar el producto solo si no está en la lista
+        
         if (!wishlistProducts[product.id]) {
-            wishlistProducts[product.id] = { ...product, quantity: 1, price: finalPrice }; // Agrega el producto con precio final
+            wishlistProducts[product.id] = { ...product, quantity: 1, price: finalPrice }; 
         }
         this.setItem(this.productKeyWishlist, JSON.stringify(wishlistProducts));
     }
