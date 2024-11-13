@@ -44,26 +44,23 @@ export class HeaderComponent implements OnInit {
 
     this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
 
-    this.calculateSubtotal(); // Calcular el subtotal inicial
-    this.calculateIVA(); // Calcular el IVA inicial
-    this.calculateTotal(); // Calcular el total inicial
+    this.calculateSubtotal();
+    this.calculateIVA(); 
+    this.calculateTotal(); 
 
   }
 
   ShoppingCartDelete(productId: number): void {
     this.localStorageService.removeProduct(productId);
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
-    this.calculateSubtotal(); // Calcular el subtotal inicial
-    this.calculateIVA(); // Calcular el IVA inicial
-    this.calculateTotal(); // Calcular el total inicial
+    this.calculateSubtotal(); 
+    this.calculateIVA(); 
+    this.calculateTotal(); 
 
   }
 
   WhishlistDelete(productId: number): void {
-    // Eliminar el producto de la lista de deseos en el local storage
     this.localStorageService.removeProductWish(productId);
-    
-    // Actualizar la lista de productos en el componente desde el local storage
     this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
 }
 
