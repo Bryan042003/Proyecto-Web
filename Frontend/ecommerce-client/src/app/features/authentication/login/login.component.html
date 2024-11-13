@@ -150,11 +150,11 @@
 
                             <select
                                 class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
-                                formControlName="canton">
+                                formControlName="canton"  (change)="onCantonChange($event)">
                                 <option value="">Seleccione un cantón</option>
-                                <option value="Desamparados">Desamparados</option>
-                                <option value="Asserrí">Asserrí</option>
-                                <option value="Pavas">Pavas</option>
+                                <option *ngFor="let canton of cantons" [value]="canton.name" [attr.data-id]="canton.id"
+                               >{{ canton.name }}
+                            </option>
                             </select>
 
 
@@ -189,19 +189,25 @@
                                     caracteres.</small>
                             </div>
 
-                            <select class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white" formControlName="province">
+                            <select
+                                class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                                formControlName="province" (change)="onProvinceChange($event)">
                                 <option value="">Seleccione una provincia</option>
-                                <option *ngFor="let province of provinces" [value]="province.name">{{ province.name }}</option>
-                              </select>
-                              
+                                <option *ngFor="let province of provinces" [value]="province.name"
+                                    [attr.data-id]="province.id">
+                                    {{ province.name }}
+                                </option>
+                            </select>
+
+
 
                             <select
                                 class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
                                 formControlName="district">
                                 <option value="">Seleccione un distrito</option>
-                                <option value="San Miguel">San Miguel</option>
-                                <option value="Tacares">Tacares</option>
-                                <option value="Bolívar">Bolívar</option>
+                                <option *ngFor="let district of districts" [value]="district.name">
+                                {{ district.name }}
+                            </option>
                             </select>
 
 

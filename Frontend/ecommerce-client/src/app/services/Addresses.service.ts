@@ -62,10 +62,10 @@ export class AddressesService {
     }
 
     getDistrictsByCanton(id: string): Observable<any> {
-        return this.http.get(`${environment.baseUrl}districts-by-canton/${id}`);
+        return this.http.get(`${environment.baseUrl}addresses/districts-by-canton/${id}`);
     }
 
     getCantonsByProvince(id: string): Observable<any> {
-        return this.http.get(`${environment.baseUrl}cantons-by-province/${id}`);
+        return this.http.get(`${environment.baseUrl}addresses/cantons-by-province/${id}`);
     }
 }
