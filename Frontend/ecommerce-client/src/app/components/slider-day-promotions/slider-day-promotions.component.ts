@@ -9,7 +9,7 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'app-slider-day-promotions',
   standalone: true,
-  imports: [CommonModule, OfferCardProductComponent, FeaturedProductsComponent],
+  imports: [CommonModule, OfferCardProductComponent],
   templateUrl: './slider-day-promotions.component.html',
   styleUrl: './slider-day-promotions.component.scss'
 })

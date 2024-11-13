@@ -16,4 +16,21 @@ export class OfferCardProductComponent {
   @Input()
   product!: Product;
 
+  
+  stockStatus!: boolean;
+
+
+  ngOnInit() {
+    this.getStock();
+  }
+
+  getStock() {
+    if (this.product.stock > 0) {
+      return this.stockStatus = true;
+    } else {
+      return this.stockStatus = false;
+    }
+  }
+
+
 }

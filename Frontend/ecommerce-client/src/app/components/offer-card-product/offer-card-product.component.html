@@ -18,17 +18,17 @@
         <div class="row flex w-full h-full items-center justify-center">
             <div class="col w-[100%]  flex space-x-2">
                 <div class="w-[30%] h-[50px]">
-                    <app-info-product />
+                    <app-info-product [product]="product"/>
                 </div>
                 <div class="w-[30%] h-[50px]">
-                    <app-add-cart [product] = "product"/>
+                    <app-add-cart [product]="product"/>
                 </div>
                 <div class="w-[30%] h-[50px]">
-                    <app-add-whislist [product] = "product" />
+                    <app-add-whislist [product]="product" />
                 </div>
             </div>
             <div class="col h-full w-[70%] flex items-center justify-center">
-                <app-stock-status />
+                <app-stock-status [stockStatus]="stockStatus"/>
             </div>
 
         </div>

@@ -22,7 +22,7 @@ export const routes: Routes = [
             { path: 'login', component: LoginComponent },
             { path: 'whishlist', component: WhishlistComponent },
             { path: 'slider-day-promotions', component: SliderDayPromotionsComponent },
-            { path: 'product-details', component: ProductDetailsComponent },
+            { path: 'product-details/:id', component: ProductDetailsComponent },
             {path: 'personal-information', component: PersonalInformationComponent},
             {path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard]},
             {path: 'direction', component: DirectionComponent},

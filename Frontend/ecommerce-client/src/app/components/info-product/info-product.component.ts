@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule} from '@angular/router';
+import { Product } from '../../models/product.model';
 
 
 @Component({
@@ -10,5 +11,7 @@ import { RouterModule} from '@angular/router';
   styleUrl: './info-product.component.scss'
 })
 export class InfoProductComponent {
+  @Input()
+  product!: Product;
 
 }
