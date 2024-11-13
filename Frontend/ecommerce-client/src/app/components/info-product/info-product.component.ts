@@ -12,6 +12,6 @@ import { Product } from '../../models/product.model';
 })
 export class InfoProductComponent {
   @Input()
-  product!: Product;
+  product: Product | undefined;
 
 }

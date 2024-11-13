@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { AddWhislistComponent } from "../add-whislist/add-whislist.component";
 import { StockStatusComponent } from "../stock-status/stock-status.component";
 import { Product } from '../../models/product.model';
+import { OffersService } from '../../services/Offers.service';
+import { Offer } from '../../models/offer.model';
 
 @Component({
   selector: 'app-card-product',
@@ -18,11 +20,21 @@ export class CardProductComponent {
 
   @Input()
   product!: Product;
+  offer: Offer | undefined;
 
   stockStatus!: boolean;
 
+  constructor(private offersService: OffersService) { }
 
   ngOnInit() {
+
+    if (this.product.id_offer !== null) {
+      this.offersService.getOffer(this.product.id_offer.toString()).subscribe(offer => {
+        this.offer = offer;
+      });
+    }
+    
+
     this.getStock();
   }
 

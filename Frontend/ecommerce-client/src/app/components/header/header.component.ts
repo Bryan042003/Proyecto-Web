@@ -80,7 +80,7 @@ export class HeaderComponent implements OnInit {
 
 
   calculateIVA() {
-    this.IVA = (this.subtotal + 2500) * 0.13;
+    this.IVA = Math.round((this.subtotal + 2500) * 0.13);
 
   }
 

@@ -17,14 +17,12 @@ import { Product } from '../../models/product.model';
 })
 export class ProductDetailsComponent {
   productId!: string ;
-  product!: Product;
+  product: Product | undefined;
   stockStatus!: boolean;
   constructor(private route: ActivatedRoute, private productService:ProductService) {}
 
 
   ngOnInit(): void {
-    
-    
     
     this.route.paramMap.subscribe(params => {
       this.productId = params.get('id') || '';

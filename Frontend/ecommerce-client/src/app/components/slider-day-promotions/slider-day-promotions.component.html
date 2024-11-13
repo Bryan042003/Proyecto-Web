@@ -10,7 +10,7 @@
             <div class="flex w-full transition-transform duration-700 transform"
                 [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 25) + '%)'}">
                 <div *ngFor="let product of products" class="w-[25%] h-full p-3">
-                    <app-offer-card-product [product]="product"/>
+                    <app-card-product [product]="product"/>
                 </div>
             </div>
         </div>

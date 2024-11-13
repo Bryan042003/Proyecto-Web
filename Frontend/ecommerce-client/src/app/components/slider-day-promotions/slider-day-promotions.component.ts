@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OfferCardProductComponent } from "../offer-card-product/offer-card-product.component";
-import { FeaturedProductsComponent } from "../featured-products/featured-products.component";
 import { ProductService } from '../../services/Product.service';
 import { Product } from '../../models/product.model';
+import { CardProductComponent } from "../card-product/card-product.component";
 
 
 @Component({
   selector: 'app-slider-day-promotions',
   standalone: true,
-  imports: [CommonModule, OfferCardProductComponent],
+  imports: [CommonModule, CardProductComponent],
   templateUrl: './slider-day-promotions.component.html',
   styleUrl: './slider-day-promotions.component.scss'
 })

@@ -8,7 +8,7 @@
                 <div class="row flex w-full h-full">
                     <div class="col w-[30%] h-full  p-10 flex items-center justify-center ">
                         <img class="w-full h-full object-contain rounded-lg border border-black "
-                            src="{{product.photo}}" alt="">
+                            src="{{product?.photo}}" alt="">
                     </div>
                     <div class="col w-[70%] flex">
                         <div class="row w-full h-full">
@@ -17,10 +17,10 @@
                                     <div class="col h-full">
                                         <div
                                             class="row h-[50%] w-[70%] font-bold font-jetbrains text-2xl flex items-center">
-                                            {{product.name}}
+                                            {{product?.name}}
                                         </div>
                                         <div class="row h-[50%] text-2xl">
-                                            Marca: <span class="font-bold pr-52">{{product.brand}}</span>
+                                            Marca: <span class="font-bold pr-52">{{product?.brand}}</span>
                                             <app-stock-status [stockStatus]="stockStatus"/>
                                         </div>
                                     </div>
@@ -30,15 +30,15 @@
                             </div>
                             <div class="col h-[50%] w-full flex items-end ">
                                 <div class="w-full p-10">
-                                    <p class="font-bold text-5xl font-jetbrains mb-10">₡ {{product.price}}</p>
+                                    <p class="font-bold text-5xl font-jetbrains mb-10">₡ {{product?.price}}</p>
 
                                     <div class="flex space-x-1 h-full">
                                         <div class="w-full flex space-x-1">
                                             <div class="w-[15%] h-full">
-                                                <app-add-cart [product]="product"/>
+                                                <app-add-cart *ngIf="product" [product]="product"/>
                                             </div>
                                             <div class="w-[15%] h-full">
-                                                <app-add-whislist [product]="product" />
+                                                <app-add-whislist *ngIf="product" [product]="product" />
                                             </div>
                                         </div>
 
@@ -55,14 +55,14 @@
                         <p
                             class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
                             Descripción del producto</p>
-                        <p class="h-[80%] p-10 overflow-y-auto text-black"> {{product.description}}
+                        <p class="h-[80%] p-10 overflow-y-auto text-black"> {{product?.description}}
                         </p>
                     </div>
                     <div class="col w-[50%] bg-white rounded-2xl ">
                         <p
                             class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
                             Especificaciones técnicas</p>
-                        <p class="h-[80%] p-10 overflow-y-auto text-black"> {{product.technical_stuff}}
+                        <p class="h-[80%] p-10 overflow-y-auto text-black"> {{product?.technical_stuff}}
                         </p>
                     </div>
                 </div>
