@@ -7,6 +7,8 @@ import { StarRatingComponent } from "../star-rating/star-rating.component";
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/Product.service';
 import { Product } from '../../models/product.model';
+import { OffersService } from '../../services/Offers.service';
+import { Offer } from '../../models/offer.model';
 
 @Component({
   selector: 'app-product-details',
@@ -19,7 +21,9 @@ export class ProductDetailsComponent {
   productId!: string ;
   product: Product | undefined;
   stockStatus!: boolean;
-  constructor(private route: ActivatedRoute, private productService:ProductService) {}
+  offer: Offer | undefined;
+  
+  constructor(private route: ActivatedRoute, private productService:ProductService, private offersService: OffersService) {}
 
 
   ngOnInit(): void {
@@ -29,8 +33,16 @@ export class ProductDetailsComponent {
 
       this.productService.getProduct(this.productId).subscribe(product => {
         this.product = product;
+
+        if (this.product.id_offer !== null) {
+          this.offersService.getOffer(this.product.id_offer.toString()).subscribe(offer => {
+            this.offer = offer;
+          });
+        }
+
         this.getStock();
       } );
+      
     });
 
   }
