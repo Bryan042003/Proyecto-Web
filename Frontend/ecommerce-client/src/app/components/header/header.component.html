@@ -1,3 +1,10 @@
+<!-- component -->
+<style>
+    .dropdown:hover>.dropdown-content {
+        display: block;
+    }
+</style>
+
 <header>
     <div class="bg-[#1E2B3D] w-full h-[75px] flex items-center justify-end space-x-4 pr-5">
 
@@ -14,13 +21,13 @@
                 <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
                     <!-- Mostrar imagen si logueado es true -->
                     <img *ngIf="logged" src="images/logo.png" class="w-8 h-8 object-cover" />
-            
+
                     <!-- Mostrar ícono si logueado es false -->
                     <i *ngIf="!logged" class="far fa-user text-lg"></i>
                 </div>
             </div>
-            
-            
+
+
 
             <ul *ngIf="logged" tabindex="0"
                 class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
@@ -39,7 +46,7 @@
             <input type="text" placeholder="Buscar productos"
                 class=" text-[#1E2B3D] font-bold py-2 px-4 rounded-l-md w-[600px] border border-black ">
 
-            <button class="bg-[#1E2B3D] rounded-r-md flex items-center justify-center m-0 p-3 w-[100px] btn btn-square">
+            <button class="bg-[#1E2B3D] rounded-r-md flex items-center justify-center m-0 p-3 w-[100px]">
                 <i class="fas fa-search text-xl text-white"></i>
             </button>
         </div>
@@ -53,43 +60,32 @@
         </div>
 
         <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal px-1 z-[100]">
-                <li *ngFor="let category of categories,let i = index">
 
-
-                    <!-- Mostrar detalles solo si hay subcategorías -->
-                    <details [open]="openCategoryIndex === i" (toggle)="onCategoryToggle(i)" *ngIf="category.subcategories?.length > 0">
-                        <summary>{{ category.name }}</summary>
-                        <ul *ngIf="category.subcategories?.length > 0" class="p-2">
-                            <li *ngFor="let subcategory of category.subcategories, let j = index">
-
-
-                                <!-- Mostrar detalles solo si hay subcategorías dentro de la subcategoría -->
-                                <details  [open]="openSubcategoryIndex === j && openCategoryIndex === i" (toggle)="onSubcategoryToggle(i, j)" *ngIf="subcategory.subcategories?.length > 0">
-                                    <summary>{{ subcategory.name }}</summary>
-
-                                    <ul *ngIf="subcategory.subcategories?.length > 0" class="p-2">
-                                        <li *ngFor="let subsubcategory of subcategory.subcategories"
-                                            [routerLink]="['/products-per-category']">
-                                            <a>{{ subsubcategory.name }}</a>
-                                        </li>
-                                    </ul>
-                                </details>
-
-                                <ul *ngIf="!subcategory.subcategories?.length">
-                                    <li [routerLink]="['/products-per-category']">
-                                        <a>{{ subcategory.name }}</a>
-                                    </li>
-                                </ul>
-
-
+            <div *ngFor="let category of categories" class="dropdown dropdown-hover inline-block relative pl-4 pr-4">
+                <button [routerLink]="['/products-per-category', category.id]"
+                    class="btn text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center w-[200px]">
+                    <span>{{category.name}}</span>
+                </button>
+                <ul class="dropdown-content absolute hidden text-gray-700 pt-1 w-[200px] z-50">
+                    <li *ngFor="let subcategory of category.subcategories" class="dropdown z-50 relative w-[200px]">
+                        <a [routerLink]="['/products-per-category', subcategory.id]"
+                            class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                            {{subcategory.name}}
+                        </a>
+                        <!-- Sub-subcategorías al lado de las subcategorías -->
+                        <ul class="dropdown-content  hidden text-gray-700 pl-5 ml-44 w-[200px] z-[20]">
+                            <li *ngFor="let subsubcategory of subcategory.subcategories">
+                                <a [routerLink]="['/products-per-category', subsubcategory.id]"
+                                    class=" bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                                    {{subsubcategory.name}}
+                                </a>
                             </li>
                         </ul>
-                    </details>
+                    </li>
+                </ul>
+            </div>
 
 
-                </li>
-            </ul>
         </div>
 
         <div class="navbar-end space-x-4 ">
@@ -98,7 +94,8 @@
                     <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
                         <div>
                             <i class="far fa-heart text-xl"></i>
-                            <div class="badge bg-[#1E2B3D] text-white">+99</div>
+                            <div class="badge bg-[#1E2B3D] text-white">{{ whishlistProducts.length > 99 ? '+99' :
+                                    whishlistProducts.length }}</div>
                         </div>
 
                     </div>
@@ -112,9 +109,12 @@
                                 class="col-span-8 w-full h-[90%] flex justify-center items-center pt-[10px] pl-[10px] pb-[10px] ">
                                 <div class="h-[100%] w-[100%] rounded-2xl max-h-[425px]  overflow-auto rtl">
 
-                                    <div class="card card-side border  h-[200px] bg-[#f8fafd] ltr">
+
+                                    <!-- aqui va el for -->
+
+                                    <div  *ngFor="let whishProduct of whishlistProducts"  class="card card-side border  h-[200px] bg-[#f8fafd] ltr">
                                         <figure class="rounded-2xl">
-                                            <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+                                            <img src="{{whishProduct.photo}}"
                                                 alt="Movie" />
                                         </figure>
                                         <div class="card-body  rounded-2xl ">
@@ -122,16 +122,18 @@
                                             <div class="flex row w-full h-full">
                                                 <div class="col h-[100%]  w-[80%]">
                                                     <div class="flex row h-[50%] items-center font-bold font-jetbrains">
-                                                        NOMBRE DEL PRODUCTO A UTILIZAR EN ESTE ESPACIO
+                                                        {{whishProduct.name}}
                                                     </div>
                                                     <div class="flex row h-[50%] items-center font-jetbrains">
-                                                        <p class="font-bold text-lg">₡ 250 000</p>
+                                                        <p class="font-bold text-lg">₡ {{whishProduct.price}}</p>
                                                     </div>
                                                 </div>
 
                                                 <div class="col w-[20%]">
                                                     <div class="row flex items-center justify-center h-full w-full">
-                                                        <i class="fas fa-trash text-xl"></i>
+                                                        <button (click)="WhishlistDelete(whishProduct.id) ">
+                                                            <i class="fas fa-trash text-xl text-black"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
 
@@ -139,6 +141,8 @@
                                         </div>
 
                                     </div>
+
+
 
                                 </div>
                             </div>

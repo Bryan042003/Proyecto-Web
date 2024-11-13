@@ -1,19 +1,19 @@
 <div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12" *ngIf="slides.length">
-    <p class="text-[25px] font-bold">Productos destacados</p>
-    
+    <p class="text-[25px] font-bold">Promociones del día</p>
+
     <div class="flex w-full justify-center overflow-hidden relative">
-        <div class="flex w-full transition-transform duration-700 transform" 
-             [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 50) + '%)'}">
-            <div *ngFor="let slide of slides" 
-                 class="w-[50%] h-full p-3">
-                 {{slide}}
-                <app-card-product></app-card-product>
+        <div class="flex w-full transition-transform duration-700 transform"
+            [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 25) + '%)'}">
+            <div *ngFor="let product of slides" class="w-[25%] h-full p-3">
+                <app-card-product/>
             </div>
         </div>
     </div>
 
     <div class="flex items-center justify-center w-full mt-5 h-[20%] space-x-2">
-        <button (click)="previousSlide()" class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❮</button>
-        <button (click)="nextSlide()" class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❯</button>
+        <button (click)="previousSlide1()"
+            class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❮</button>
+        <button (click)="nextSlide1()"
+            class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❯</button>
     </div>
 </div>

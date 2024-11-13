@@ -13,12 +13,12 @@ import { CardProductComponent } from "../card-product/card-product.component";
 export class FeaturedProductsComponent {
 
 
-  displayedSlides = 2; 
+  displayedSlides = 4; 
   currentIndex = 0;
 
   slides = ["hola", "hola1", "hola2", "hola3", "hola4", "hola5", "hola6"];
 
-  previousSlide() {
+  previousSlide1() {
     if (this.currentIndex > 0) {
       this.currentIndex -= 1;
     } else {
@@ -26,7 +26,7 @@ export class FeaturedProductsComponent {
     }
   }
 
-  nextSlide() {
+  nextSlide1() {
     if (this.currentIndex < this.slides.length - this.displayedSlides) {
       this.currentIndex += 1;
     } else {

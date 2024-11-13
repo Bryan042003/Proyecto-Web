@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './stock-status.component.scss'
 })
 export class StockStatusComponent {
-  isInStock: boolean = false;
+
+  @Input()
+  stockStatus!: boolean;
 
 }

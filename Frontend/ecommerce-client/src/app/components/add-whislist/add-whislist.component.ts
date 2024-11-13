@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Product } from '../../models/product.model';
+import { LocalStorageService } from '../../services/LocalStorage.service';
 
 @Component({
   selector: 'app-add-whislist',
@@ -8,5 +10,14 @@ import { Component } from '@angular/core';
   styleUrl: './add-whislist.component.scss'
 })
 export class AddWhislistComponent {
+
+  @Input()
+  product!: Product;
+
+  constructor(private localStorageService: LocalStorageService) { }
+
+  addLocalStorageWhishlist(): void {
+    this.localStorageService.saveProductWish(this.product);
+  }
 
 }

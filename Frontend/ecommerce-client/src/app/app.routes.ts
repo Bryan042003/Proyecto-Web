@@ -26,7 +26,7 @@ export const routes: Routes = [
             {path: 'personal-information', component: PersonalInformationComponent},
             {path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard]},
             {path: 'direction', component: DirectionComponent},
-            {path: 'products-per-category', component: ProductsPerCategoryComponent},
+            { path: 'products-per-category/:id', component: ProductsPerCategoryComponent },
             {path: 'shopping-cart', component: ShoppingCartComponent},
             {path: 'complete-purchase', component: CompletePurchaseComponent},
             {path: 'order-complete', component: OrderCompleteComponent}

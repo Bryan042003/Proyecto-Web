@@ -15,20 +15,23 @@
 
                     <!-- Aqui va el for -->
 
-                    <div class="row flex w-full h-[150px]">
+                    <div *ngFor="let whishProduct of whishProducts" class="row flex w-full h-[150px]">
                         <div class="col w-[10%] h-full flex items-center justify-center">
-                            <input type="checkbox" class="h-[25px] w-[25px] rounded-md ">
+                            <input 
+                            type="checkbox" 
+                            class="h-[25px] w-[25px] rounded-md" 
+                            (change)="toggleItem($event, whishProduct)">
                         </div>
                         <div class="col w-[90%] h-full  bg-[#f8fafd] flex text-black rounded-2xl">
                             <div class="col h-full w-[20%] flex items-center justify-center">
-                                <img src="images/compu.jpeg" alt="" class="w-[80%] h[80%] rounded-2xl">
+                                <img [src]="whishProduct.photo" alt="" class="w-[80%] h[80%] rounded-2xl">
                             </div>
                             <div class="col h-full w-[20%] flex items-center justify-center">
-                                <p>Nombre del producto</p>
+                                <p>{{whishProduct.name}}</p>
                             </div>
                             <div class="col h-full w-[20%] flex items-center justify-center ">
                                 <div class="w-full">
-                                    <app-price-view />
+                                    <app-price-view  />
                                 </div>
                             </div>
                             <div class="col h-full w-[20%] flex items-center justify-center ">
@@ -49,7 +52,9 @@
                 <div class="row w-full h-[10%] flex">
 
                     <div class="row flex items-center justify-start h-full w-full">
-                        <i class="fas fa-trash text-xl text-black pr-4"> </i>
+                        <button (click)="WhishlistDelete()">
+                            <i class="fas fa-trash text-xl text-black pr-4"> </i>
+                        </button>
                         <p class="font-jetbrains text-black">Eliminar</p>
                     </div>
 

@@ -1,6 +1,11 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardProductComponent } from "../card-product/card-product.component";
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../services/Product.service';
+import { Product } from '../../models/product.model';
+import { CategoryService } from '../../services/Category.service';
+
 
 @Component({
   selector: 'app-products-per-category',
@@ -9,24 +14,39 @@ import { CardProductComponent } from "../card-product/card-product.component";
   templateUrl: './products-per-category.component.html',
   styleUrls: ['./products-per-category.component.scss']
 })
-export class ProductsPerCategoryComponent {
+export class ProductsPerCategoryComponent implements OnInit {
+
+
+
   displayedSlides = 10;
   currentIndex = 0;
   loading = false;
 
-  slides = [
-    "hola", "hola1", "hola2", "hola3", "hola4", "hola5", "hola6",
-    "hola7", "hola8", "hola9", "hola10", "hola11", "hola12", "hola13",
-    "hola14", "hola15", "hola16", "hola17", "hola18", "hola19", "hola20",
-    "hola21", "hola22", "hola23", "hola24", "hola25", "hola26", "hola27",
-    "hola28", "hola29", "hola30", "hola31", "hola32", "hola33", "hola34",
-    "hola35", "hola36", "hola37", "hola38", "hola39", "hola40", "hola41",
-    "hola42", "hola43", "hola44", "hola45", "hola46", "hola47", "hola48",
-    "hola49", "hola50", "hola51", "hola52", "hola53", "hola54", "hola55",
-    "hola56", "hola57", "hola58", "hola59", "hola60"
-  ];
 
-  displayedItems = this.slides.slice(0, this.displayedSlides);
+  productsPerCategory: Product[] = [];
+  category:string | undefined; 
+  categoryId!: string ;
+
+
+  displayedItems = this.productsPerCategory.slice(0, this.displayedSlides);
+
+  constructor(private route: ActivatedRoute, private productService:ProductService, private  categoryService: CategoryService) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.categoryId = params.get('id') || '';
+
+      this.productService.getProductsByCategory(this.categoryId).subscribe(products => {
+        this.productsPerCategory = products;
+
+        this.displayedItems = this.productsPerCategory.slice(0, this.displayedSlides);
+      });
+
+      this.categoryService.getCategory(this.categoryId).subscribe(category => {
+        this.category = category.name;
+      });
+    });
+  }
 
   @HostListener('window:scroll', [])
   onScroll(): void {
@@ -36,13 +56,13 @@ export class ProductsPerCategoryComponent {
   }
 
   loadMoreSlides() {
-    if (this.displayedSlides < this.slides.length) {
+    if (this.displayedSlides < this.productsPerCategory.length) {
       this.loading = true;
 
       // Simulate loading time
       setTimeout(() => {
         this.displayedSlides += 10;
-        this.displayedItems = this.slides.slice(0, this.displayedSlides);
+        this.displayedItems = this.productsPerCategory.slice(0, this.displayedSlides);
         this.loading = false;
       }, 1000); // Tiempo de espera simulado
     }

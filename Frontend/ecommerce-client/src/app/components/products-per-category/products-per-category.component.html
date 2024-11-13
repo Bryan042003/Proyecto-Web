@@ -1,20 +1,38 @@
 <div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
 
+  <div class="breadcrumbs text-sm">
+    <ul>
+      <li><a>Home</a></li>
+      <li><a>Documents</a></li>
+      <li>Add Document</li>
+    </ul>
+  </div>
 
-    <div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12">
-        <p class="text-[25px] font-bold">Nombre de la categoría</p>
 
-        <div class="flex w-full flex-wrap content-between">
-            <div *ngFor="let slide of displayedItems" class="w-[25%] p-3">
-                {{slide}}
-                <app-card-product></app-card-product>
-            </div>
+  <div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12">
+    <p class="text-[25px] font-bold">{{category}}</p>
+
+    <div class="flex w-full flex-wrap content-between">
+      <div class="flex w-full flex-wrap content-between" *ngIf="displayedItems.length > 0; else noProductsMessage">
+        <div *ngFor="let product of displayedItems" class="w-[25%] p-3">
+          <app-card-product [product]="product"></app-card-product>
         </div>
+      </div>
 
-        <div *ngIf="loading" class="text-center mt-4">
-            <p class="text-[20px]">Cargando...</p>
-            <i class="fas fa-spinner fa-spin text-[#1E2B3D] text-3xl mt-2"></i>
+      <ng-template #noProductsMessage>
+        <div role="alert" class="alert h-[200px] flex items-center justify-center mt-10">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span class="text-xl font-bold ">No hay productos disponibles en esta categoría.</span>
         </div>
+      </ng-template>
     </div>
 
+    <div *ngIf="loading" class="text-center mt-4">
+      <p class="text-[20px]">Cargando...</p>
+      <i class="fas fa-spinner fa-spin text-[#1E2B3D] text-3xl mt-2"></i>
+    </div>
+  </div>
 </div>

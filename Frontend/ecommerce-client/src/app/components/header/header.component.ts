@@ -19,6 +19,10 @@ export class HeaderComponent implements OnInit {
   logged: boolean = false;
 
   cartProducts: Array<Product & { quantity: number }> = [];
+
+  whishlistProducts: Array<Product> = [];
+
+
   subtotal: number = 0; // Variable para almacenar el total
   total: number = 0; // Variable para almacenar el total
   IVA: number = 0.13; // Variable para almacenar el IVA
@@ -32,12 +36,13 @@ export class HeaderComponent implements OnInit {
 
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
-      console.log("category", this.categories);
     });
 
     this.logged = this.authGuard.logged();
 
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
+
+    this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
 
     this.calculateSubtotal(); // Calcular el subtotal inicial
     this.calculateIVA(); // Calcular el IVA inicial
@@ -53,6 +58,15 @@ export class HeaderComponent implements OnInit {
     this.calculateTotal(); // Calcular el total inicial
 
   }
+
+  WhishlistDelete(productId: number): void {
+    // Eliminar el producto de la lista de deseos en el local storage
+    this.localStorageService.removeProductWish(productId);
+    
+    // Actualizar la lista de productos en el componente desde el local storage
+    this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
+}
+
 
   getQuantity(productId: number): number {
     return this.localStorageService.getProductQuantity(productId);
@@ -72,29 +86,6 @@ export class HeaderComponent implements OnInit {
     this.IVA = (this.subtotal + 2500) * 0.13;
 
   }
-
-
- openCategoryIndex: number | null = null;
- openSubcategoryIndex: number | null = null;
-
- onCategoryToggle(index: number) {
-   if (this.openCategoryIndex === index) {
-     this.openCategoryIndex = null;
-     this.openSubcategoryIndex = null; 
-   } else {
-    
-     this.openCategoryIndex = index;
-     this.openSubcategoryIndex = null;  
-   }
- }
-
- onSubcategoryToggle(categoryIndex: number, subcategoryIndex: number) {
-   if (this.openCategoryIndex === categoryIndex && this.openSubcategoryIndex === subcategoryIndex) {
-     this.openSubcategoryIndex = null;
-   } else {
-     this.openSubcategoryIndex = subcategoryIndex;
-   }
- }
 
 
 }

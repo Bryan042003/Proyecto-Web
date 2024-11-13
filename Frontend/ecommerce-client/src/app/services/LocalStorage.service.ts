@@ -100,12 +100,30 @@ export class LocalStorageService {
     // Métodos específicos para WHISLIST
 
     saveProductWish(product: Product): void {
-        const products = this.getAllProducts();
-        if (products[product.id]) {
-            products[product.id] = product;
+        const wishlistProducts = this.getAllProductsWish();
+        // Agregar el producto solo si no está en la lista
+        if (!wishlistProducts[product.id]) {
+            wishlistProducts[product.id] = product;
         }
-        this.setItem(this.productKeyWishlist, JSON.stringify(products));
-        this.printAllProducts();
+        this.setItem(this.productKeyWishlist, JSON.stringify(wishlistProducts));
+    }
+
+    removeProductWish(productId: number): void {
+        const wishlistProducts = this.getAllProductsWish();
+        if (wishlistProducts[productId]) {
+            delete wishlistProducts[productId];
+            this.setItem(this.productKeyWishlist, JSON.stringify(wishlistProducts));
+        }
+    }
+
+    getAllProductsWish(): { [key: number]: Product } {
+        const whishData = this.getItem(this.productKeyWishlist);
+        return whishData ? JSON.parse(whishData) : {};
+    }
+
+    getProductWish(productId: number): Product | null {
+        const wishlistProducts = this.getAllProductsWish();
+        return wishlistProducts[productId] || null;
     }
 
 
