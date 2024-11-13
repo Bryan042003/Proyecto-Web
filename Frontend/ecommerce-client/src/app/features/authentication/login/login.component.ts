@@ -2,9 +2,9 @@
 import { UsersService } from './../../../services/Users.service';
 import { AddressesService } from '../../../services/Addresses.service';
 import { AlertsComponent } from '../../../components/alerts/alerts.component';
-import { District } from '../../../models/address.model';
+import { Canton, District } from '../../../models/address.model';
 import { Province } from '../../../models/address.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -23,29 +23,14 @@ import { last } from 'rxjs';
   styleUrl: './login.component.scss'
 })
 
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   showLogin = true;
   showAlert = false;
-  districts: any[] = [];
-  cantons = [];
+  selectedProvinceId: number | null = null;
+  selectedCantonId: number | null = null;
+  districts: District[] = [];
+  cantons: Canton[] = [];
   provinces: Province[] = [];
-
-  /*
-        data ={
-            email,
-            name,
-            last_name,
-            passw,
-            role,
-            photo,
-            phone,
-            province,
-            canton,
-            district,
-            postal_code,
-            specific_address
-        }
-        */
 
 
   public userForm = new FormGroup({
@@ -103,22 +88,20 @@ export class LoginComponent {
     private _addressService: AddressesService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {
+  ) {}
 
 
-  }
-
-
-  ngOnInit(): void { 
-    this.loadProvinces(); 
+  ngOnInit(): void {
+    this.loadProvinces();
   }
 
 
   loadDistricts() {
-    this._addressService.getDistricts()
+    if (this.selectedCantonId !== null && this.selectedCantonId !== undefined) {
+    this._addressService.getDistrictsByCanton(this.selectedCantonId.toString())
       .subscribe({
-        next: (result: any) => {
-          this.districts = result;
+        next: (result: { districts: District[] }) => {
+          this.districts = result.districts;
           console.log(this.districts);
         },
         error: (error: any) => {
@@ -127,29 +110,52 @@ export class LoginComponent {
         complete: () => {
           console.log('Solicitud completada');
         }
-      });
+      });}else {
+        console.error('Error: selectedProvinceId no tiene un valor válido.');
+      }
   }
 
   get district() {
     return this.districts;
   }
 
+  onProvinceChange(event: Event) {
+    const selectedOption = (event.target as HTMLSelectElement).selectedOptions[0];
+    const provinceId = selectedOption.getAttribute('data-id');
+    this.selectedProvinceId = provinceId ? parseInt(provinceId, 10) : null;
+    this.loadCanton();
+    console.log('ID de provincia seleccionada:', this.selectedProvinceId);
+    console.log('Nombre de provincia seleccionado en el formulario:', this.userForm.value.province);
+  }
+
+
+  onCantonChange(event: Event) {
+    const selectedOption = (event.target as HTMLSelectElement).selectedOptions[0];
+    const cantonId = selectedOption.getAttribute('data-id');
+    this.selectedCantonId = cantonId ? parseInt(cantonId, 10) : null;
+    this.loadDistricts();
+    console.log('ID de canton seleccionada:', this.selectedCantonId);
+    console.log('Nombre de canton seleccionado en el formulario:', this.userForm.value.canton);
+  }
 
 
   loadCanton() {
-    this._addressService.getCantons()
-      .subscribe({
-        next: (result: any) => {
-          this.cantons = result;
-          console.log(this.cantons);
-        },
-        error: (error: any) => {
-          console.error('Error al obtener cantones:', error);
-        },
-        complete: () => {
-          console.log('Solicitud completada');
-        }
-      });
+    if (this.selectedProvinceId !== null && this.selectedProvinceId !== undefined) {
+      this._addressService.getCantonsByProvince(this.selectedProvinceId.toString())
+        .subscribe({
+          next: (result: { cantons: Canton[] }) => {
+            this.cantons = result.cantons;
+          },
+          error: (error: any) => {
+            console.error('Error al obtener cantones:', error);
+          },
+          complete: () => {
+            console.log('Solicitud completada');
+          }
+        });
+    } else {
+      console.error('Error: selectedProvinceId no tiene un valor válido.');
+    }
   }
 
   get canton() {
@@ -160,8 +166,8 @@ export class LoginComponent {
   loadProvinces() {
     this._addressService.getProvinces()
       .subscribe({
-        next: (result: any) => {
-          this.provinces = result;
+        next: (result: { provinces: Province[] }) => {
+          this.provinces = result.provinces;
           console.log(this.provinces);
         },
         error: (error: any) => {
@@ -172,6 +178,7 @@ export class LoginComponent {
         }
       });
   }
+
 
   get province() {
     return this.provinces;
