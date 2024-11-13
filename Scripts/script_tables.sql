@@ -48,8 +48,8 @@ CREATE TABLE User (
 CREATE TABLE Offer(
 id INT AUTO_INCREMENT PRIMARY KEY,
 discount DOUBLE NOT NULL,
-start_date DATE NOT NULL,
-end_date DATE 
+start_date DATETIME NOT NULL,
+end_date DATETIME 
 );
 
 
@@ -82,13 +82,13 @@ CREATE TABLE Review (
 
 
 /*--cambiar nombre por que palabra reservada order a charge--*/
-CREATE TABLE Charge( 
+CREATE TABLE `Order`( 
    id INT AUTO_INCREMENT PRIMARY KEY,
    id_user INT NOT NULL, /*--??*/
    FOREIGN KEY (id_user) REFERENCES User(id),
-   status ENUM('pending', 'not pending') NOT NULL,
+   status ENUM('pending', 'in_process','sent','delivered') NOT NULL,
    total_price DOUBLE NOT NULL,
-   day_done DATE NOT NULL /*--cambiar nombre por que palabra reservada date a day done--*/
+   `date` DATETIME NOT NULL /*--cambiar nombre por que palabra reservada date a day done--*/
 
 );
 
