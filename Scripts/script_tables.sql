@@ -96,7 +96,7 @@ CREATE TABLE `Order`(
 CREATE TABLE Order_Product(
   id INT AUTO_INCREMENT PRIMARY KEY,
   id_order INT NOT NULL,
-  FOREIGN KEY (id_order) REFERENCES Charge(id),
+  FOREIGN KEY (id_order) REFERENCES `Order`(id),
   id_product INT NOT NULL,
   FOREIGN KEY (id_product) REFERENCES Product(id),
   quantity INT NOT NULL
