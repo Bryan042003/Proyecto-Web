@@ -31,7 +31,9 @@
                             <div class="col h-[50%] w-full flex items-end ">
                                 <div class="w-full p-10 ">
                                     <div class="flex gap-10 items-end ">
-                                        <p class="font-bold text-5xl font-jetbrains mb-10">₡ {{ product?.id_offer == null ? product?.price :  (product && offer) ? (product.price - (product.price * offer.discount)) : 0 }}
+                                        <p class="font-bold text-5xl font-jetbrains mb-10">₡ {{ product?.id_offer ==
+                                            null ? product?.price : (product && offer) ? (product.price - (product.price
+                                            * offer.discount)) : 0 }}
                                         </p>
 
                                         <p *ngIf=" product?.id_offer !== null"
@@ -84,26 +86,75 @@
                             class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
                             Review de compradores</p>
 
-
-                        <div class="h-[80%]  flex items-start justify-center ">
-
-                            <div class="w-full">
-                                <div class="w-full flex items-center justify-center">
-                                    <app-star-rating></app-star-rating>
-                                </div>
-                                <div class="w-full flex justify-center items-center mt-10 mb-10">
-                                    <textarea class="w-[70%] h-[150px] border border-black' text-white"
-                                        placeholder="Añade una valoración"></textarea>
-                                </div>
-                                <div class="flex w-full h-12 items-center justify-center ">
-                                    <button
-                                        class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains  rounded-xl w-[50%] h-full">
-                                        Enviar
-                                    </button>
-                                </div>
+                        <!-- Alerta de éxito -->
+                        <div class="w-full flex justify-center items-center mb-5">
+                            <div class="w-[60%]">
+                                <app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
                             </div>
 
                         </div>
+
+                        <form [formGroup]="reviewForm">
+                            <div class="h-[80%] flex items-start justify-center">
+                                <div class="w-full">
+                                    <!-- Componente de calificación con validación -->
+                                    <div class="w-full flex items-center justify-center">
+                                        <app-star-rating (ratingChange)="onRatingChange($event)"
+                                            formControlName="score"></app-star-rating>
+                                    </div>
+
+                                    <div *ngIf="reviewForm.controls['score'].invalid && reviewForm.controls['score'].touched"
+                                        class="w-full text-red-500 mt-2 mb-10 flex justify-center">
+                                        <div class="text-center">
+                                            <small *ngIf="reviewForm.controls['score'].hasError('required')">
+                                                La calificación es obligatoria.
+                                            </small>
+                                            <small *ngIf="reviewForm.controls['score'].hasError('min')">
+                                                La calificación debe ser al menos 1.
+                                            </small>
+                                            <small *ngIf="reviewForm.controls['score'].hasError('max')">
+                                                La calificación no puede ser mayor que 5.
+                                            </small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col w-full flex flex-row justify-center items-center mt-10 mb-5">
+                                        <div class="row h-[80%] w-full flex justify-center items-center">
+                                            <textarea formControlName="description"
+                                                class="row w-[70%] h-[150px] border border-black text-black p-2"
+                                                placeholder="Añade una valoración"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mensaje de error para el textarea -->
+                                    <div *ngIf="reviewForm.controls['description'].invalid && reviewForm.controls['description'].touched"
+                                        class="w-full text-red-500 mt-2 mb-10 flex justify-center">
+                                        <div class="text-center">
+                                            <small *ngIf="reviewForm.controls['description'].errors?.['required']">
+                                                La valoración es necesaria.
+                                            </small>
+                                            <small *ngIf="reviewForm.controls['description'].errors?.['pattern']">
+                                                Se permiten solo caracteres alfabéticos.
+                                            </small>
+                                            <small *ngIf="reviewForm.controls['description'].errors?.['maxLength']">
+                                                Se permiten máximo 200 caracteres.
+                                            </small>
+                                        </div>
+                                    </div>
+
+                                    <!-- Botón de enviar -->
+                                    <div class="flex w-full h-12 items-center justify-center">
+                                        <button (click)="sendReview()"
+                                            class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[50%] h-full">
+                                            Enviar
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+
 
                     </div>
                     <div class="col w-full h-full bg-white">
@@ -111,55 +162,50 @@
                             class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
                             Valoraciones </p>
                         <div class="w-[95%] h-[75%] p-5 overflow-y-auto">
-                            <div class="w-full h-[300px] flex  mb-2 bg-[#edf2fb] rounded-2xl pt-2 pb-2 pr-6 pl-6">
 
-                                <div class=" w-full">
+                            <!--aqui va el for -->
+                            <div *ngFor="let review of reviews"
+                                class="w-full h-[300px] flex mb-2 bg-[#edf2fb] rounded-2xl pt-2 pb-2 pr-6 pl-6">
+                                <div class="w-full">
                                     <div class="w-full h-[35%] flex">
-
-                                        <div class=" h-full w-[20%] flex items-center justify-center rounded-full ">
+                                        <div class="h-full w-[20%] flex items-center justify-center rounded-full">
                                             <div class="w-[75px] h-[75px] rounded-full bg-white">
-                                                <i
-                                                    class="fas fa-image w-full h-full flex items-center justify-center "></i>
+                                                <div class="w-full h-full flex items-center justify-center">
+                                                    <ng-container
+                                                        *ngIf="!userData[review.id_user]?.photo; else showImage">
+                                                        <i
+                                                            class="fas fa-image w-full h-full flex items-center justify-center"></i>
+                                                    </ng-container>
+                                                    <ng-template #showImage>
+                                                        <img [src]="userData[review.id_user]?.photo" alt="User Photo"
+                                                            class="w-full h-full object-cover" />
+                                                    </ng-template>
+                                                </div>
                                             </div>
                                         </div>
                                         <p
-                                            class="font-bold text-xl w-[70%] h-full pr-4  flex items-center font-jetbrains text-black ">
-                                            Bryan Castro Solís </p>
+                                            class="font-bold text-xl w-[70%] h-full pl-4 flex items-center font-jetbrains text-black">
+                                            {{ userData[review.id_user]?.name }}
+                                        </p>
                                     </div>
 
-                                    <div class="flex h-[15%] ">
+                                    <div class="flex h-[15%]">
                                         <ng-container *ngFor="let star of stars; index as i">
                                             <i (click)="rate(i + 1)"
-                                                [ngClass]="i < rating ? 'fas fa-star text-yellow-500' : 'far fa-star text-gray-400'"
+                                                [ngClass]="i < review.score ? 'fas fa-star text-yellow-500' : 'far fa-star text-gray-400'"
                                                 class="w-10 cursor-pointer transition duration-200 ease-in-out text-2xl"></i>
                                         </ng-container>
                                     </div>
                                     <div class="h-[45%] pb-3 overflow-y-auto">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, eius, dolor
-                                        reprehenderit obcaecati beatae ipsa eveniet consequatur voluptate rerum quis qui
-                                        esse fuga suscipit assumenda voluptas, vero dignissimos minima. Ea?
-                                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque sint iusto
-                                        repudiandae illo explicabo, ipsum harum a maxime reiciendis adipisci possimus
-                                        deleniti quisquam ratione velit sit, voluptate voluptatibus excepturi.
-                                        Incidunt?Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa voluptas
-                                        molestias voluptatibus deleniti? Qui eveniet maiores rem, dolor enim similique
-                                        pariatur corrupti alias. Molestias praesentium aspernatur eius accusamus
-                                        deserunt perferendis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        Atque, unde ipsa laboriosam et, possimus, perspiciatis provident ullam delectus
-                                        velit harum dolorum asperiores deleniti voluptatibus ex labore iure distinctio
-                                        sed. Eius?
+                                        {{ review.description }}
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
 </div>

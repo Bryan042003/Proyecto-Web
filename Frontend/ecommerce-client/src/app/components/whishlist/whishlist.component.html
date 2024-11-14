@@ -31,18 +31,18 @@
                             </div>
                             <div class="col h-full w-[20%] flex items-center justify-center ">
                                 <div class="w-full">
-                                    <app-price-view  />
+                                    <app-price-view [product]="whishProduct" />
                                 </div>
                             </div>
                             <div class="col h-full w-[20%] flex items-center justify-center ">
-                                <app-stock-status />
+                                <app-stock-status [stockStatus]="whishProduct.stock > 1" />
                             </div>
                             <div class="col h-full w-[20%] flex items-center justify-center space-x-2">
                                 <div class="col w-[25%] h-[25%] ">
-                                    <app-info-product />
+                                    <app-info-product [product]="whishProduct"/>
                                 </div>
                                 <div class="col w-[25%] h-[25%] ">
-                                    <app-add-cart />
+                                    <app-add-cart   [product]="whishProduct"/>
                                 </div>
                             </div>
                         </div>
