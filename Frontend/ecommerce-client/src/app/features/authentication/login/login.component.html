@@ -1,4 +1,4 @@
-<div class="w-full h-[650px] bg-white rounded-xl flex flex-col">
+<div class="w-full h-[1000px] bg-white rounded-xl flex flex-col" id="target-section">
     <!-- Contenedor principal de la vista -->
     <ng-container *ngIf="showLogin; else registerTemplate">
         <!-- Pantalla de Iniciar Sesión -->
@@ -259,7 +259,7 @@
                 </form>
 
                 <!-- Botón de registro -->
-                <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex mt-6">
+                <div class="row w-full h-[10%] font-extrabold font-jetbrains items-center justify-center flex mt-6">
                     <button class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]"
                         (click)="onSubmit()">
                         Registrarse
