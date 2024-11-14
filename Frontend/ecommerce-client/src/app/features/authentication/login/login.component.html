@@ -22,19 +22,50 @@
                         o usa tu correo
                     </div>
                 </div>
-                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
-                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="email"
-                        placeholder="Correo Electrónico">
-                </div>
-                <div class="row h-[10%] w-full flex flex-col justify-center items-center">
-                    <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
-                        type="password" placeholder="Contraseña">
-                </div>
+
+
+                <form class="grid" [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+
+                    <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                        <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold placeholder-white" type="email"
+                            placeholder="Correo Electrónico" formControlName="email">
+                        <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"
+                            class="text-red-500">
+                            <small *ngIf="loginForm.controls['email'].errors?.['required']">El correo electrónico es
+                                obligatorio.</small>
+                            <small *ngIf="loginForm.controls['email'].errors?.['email']">
+                                Ingrese un email válido</small>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="row h-[10%] w-full flex flex-col justify-center items-center">
+                        <input class="w-[50%] h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                            type="password" placeholder="Contraseña" formControlName="passw">
+                        <div *ngIf="loginForm.controls['passw'].invalid && loginForm.controls['passw'].touched"
+                            class="text-red-500">
+                            <small *ngIf="loginForm.controls['passw'].errors?.['required']">La contraseña es
+                                obligatoria.</small>
+                            <small *ngIf="loginForm.controls['passw'].errors?.['minlength']">Debe tener al menos 8
+                                caracteres.</small>
+                        </div>
+
+                    </div>
+
+                </form>
+
                 <div class="row w-full h-[15%] font-extrabold font-jetbrains items-center justify-center flex">
-                    <button class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]">
-                        Guardar
+                    <button class="font-bold text-lg bg-[#1E2B3D] font-jetbrains text-white rounded-xl w-[50%] h-[60%]"
+                    (click)="onSubmitLogin()">
+                        Iniciar Sesión
                     </button>
                 </div>
+
+
+
                 <div class="row h-[10%] w-full flex justify-center items-center">
                     <div class="col w-[full] h-full flex justify-end items-center space-x-2">
                         <input type="checkbox">
@@ -83,6 +114,8 @@
             </div>
 
             <!-- Formulario de registro -->
+
+
             <div class="col w-[50%] h-full p-10 bg-white rounded-r-2xl">
                 <!-- Alerta de éxito -->
                 <app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
@@ -150,11 +183,11 @@
 
                             <select
                                 class="w-full h-[40px] rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
-                                formControlName="canton"  (change)="onCantonChange($event)">
+                                formControlName="canton" (change)="onCantonChange($event)">
                                 <option value="">Seleccione un cantón</option>
-                                <option *ngFor="let canton of cantons" [value]="canton.name" [attr.data-id]="canton.id"
-                               >{{ canton.name }}
-                            </option>
+                                <option *ngFor="let canton of cantons" [value]="canton.name" [attr.data-id]="canton.id">
+                                    {{ canton.name }}
+                                </option>
                             </select>
 
 
@@ -206,8 +239,8 @@
                                 formControlName="district">
                                 <option value="">Seleccione un distrito</option>
                                 <option *ngFor="let district of districts" [value]="district.name">
-                                {{ district.name }}
-                            </option>
+                                    {{ district.name }}
+                                </option>
                             </select>
 
 
