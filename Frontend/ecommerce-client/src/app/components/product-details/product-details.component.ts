@@ -39,7 +39,7 @@ export class ProductDetailsComponent {
 
 
 
-  constructor(private router: Router,private fb: FormBuilder, private usersService: UsersService, private route: ActivatedRoute, private productService: ProductService, private offersService: OffersService, private reviewService: ReviewService) {
+  constructor(private router: Router, private fb: FormBuilder, private usersService: UsersService, private route: ActivatedRoute, private productService: ProductService, private offersService: OffersService, private reviewService: ReviewService) {
     this.reviewForm = new FormGroup({
       score: new FormControl<number>(0, [
         Validators.required,
@@ -51,7 +51,7 @@ export class ProductDetailsComponent {
         Validators.pattern('^[A-Za-z\\s]+$'),
         Validators.maxLength(200)
       ]),
-      
+
       id_product: new FormControl<number>(0, [Validators.required]),
       id_user: new FormControl<number>(1, [Validators.required])
     });
@@ -106,28 +106,28 @@ export class ProductDetailsComponent {
 
   sendReview(): void {
     if (this.reviewForm.valid) {
-
-      this.reviewService.createReview(this.reviewForm.value).
-      subscribe({
+      this.reviewService.createReview(this.reviewForm.value).subscribe({
         next: (result: any) => {
-          console.log('review cerado con exito:', result);
+          console.log('review creado con éxito:', result);
           this.showAlert = true;
           this.reviewForm.reset();
-          setTimeout(() => { this.showAlert = false; this.router.navigate([this.router.url]);}, 3000);
-
-         
+          setTimeout(() => {
+            this.showAlert = false;
+            console.log('Redirigiendo a la página de detalles del producto');
+            console.log('ID del producto:', this.product?.id);
+            window.location.reload(); // Recarga la página actual
+          }, 3000);
         },
-        error:(error:any)=>{
-          console.error('review cerado con exito:', error);
+        error: (error: any) => {
+          console.error('Error al crear el review:', error);
           console.table(this.reviewForm.value);
         },
         complete: () => {
-          console.log('solicitud aceptada');
+          console.log('Solicitud aceptada');
         }
       });
-
-      
-    } else {
+    }
+    else {
       console.log('Formulario inválido');
       this.reviewForm.markAllAsTouched(); // Marca todos los controles como "tocados" para mostrar errores
     }
