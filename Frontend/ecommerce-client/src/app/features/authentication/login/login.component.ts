@@ -1,6 +1,7 @@
 
 import { UsersService } from './../../../services/Users.service';
 import { AddressesService } from '../../../services/Addresses.service';
+import { AuthService } from '../../../services/Auth.service';
 import { AlertsComponent } from '../../../components/alerts/alerts.component';
 import { Canton, District } from '../../../models/address.model';
 import { Province } from '../../../models/address.model';
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { last } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-login',
@@ -31,6 +33,20 @@ export class LoginComponent implements OnInit {
   districts: District[] = [];
   cantons: Canton[] = [];
   provinces: Province[] = [];
+
+
+  public loginForm = new FormGroup({
+    email: new FormControl<string>( '',[
+      Validators.required,
+      Validators.email,
+      Validators.maxLength(100)
+    ]),
+    passw:  new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(8),   
+      Validators.maxLength(20)
+    ])
+  });
 
 
   public userForm = new FormGroup({
@@ -86,6 +102,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private _usersService: UsersService,
     private _addressService: AddressesService,
+    private _loginAuth: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
@@ -184,6 +201,31 @@ export class LoginComponent implements OnInit {
     return this.provinces;
   }
 
+  onSubmitLogin(){
+    if(this.loginForm.valid){
+      this._loginAuth.login(this.loginForm.value).
+      subscribe({
+        next: (result: any) => {
+          console.log('Login cerado con exito:', result);
+          this.router.navigate(['/slider-day-promotions']);
+          //navegate 
+        },
+        error:(error:any)=>{
+          console.error('Login cerado con exito:', error);
+          console.table(this.loginForm.value);
+        },
+        complete: () => {
+          console.log('solicitud aceptada');
+        }
+      });
+
+    }else{
+      console.log('Formulario inválido');
+      this.loginForm.markAllAsTouched(); // Marca todos los controles como "tocados" para mostrar errores
+      console.log(this.loginForm.value);
+    }
+
+  }
 
 
   onSubmit() {
