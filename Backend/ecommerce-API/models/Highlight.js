@@ -1,5 +1,6 @@
 const {DataTypes} = require('sequelize');
 const sequelize = require('../config/database');
+const Product = require('./Product');
 
 const Highlight = sequelize.define('Highlight', {
     id:{
@@ -26,5 +27,6 @@ const Highlight = sequelize.define('Highlight', {
 }
 
 );
+
 
 module.exports = Highlight;
