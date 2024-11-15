@@ -185,6 +185,43 @@ async function getProductsByCategory(req, res) {
     }
 }
 
+const getProductsByBrandAndCategory = async (req, res) => {
+    const {brand, id_category} = req.query;
+    try{
+        const products = await sequelize.query('CALL GetProductsByCategoryAndBrand(:id_category, :brand)', {
+            replacements: { brand: brand, id_category: id_category }
+        });
+        return res.status(200).json(products);
+    }catch(error){
+        return res.status(500).json({ message: "Error to get products by brand and category" });
+    }
+}
+
+const getProductsByPricesAndCategory = async (req, res) => {
+    const {min_price, max_price, id_category} = req.query;
+    try{
+        const products = await sequelize.query('CALL GetProductsByCategoryAndPrice(:id_category,:min_price, :max_price)', {
+            replacements: { min_price: min_price, max_price: max_price, id_category: id_category }
+        });
+        return res.status(200).json(products);
+    }catch(error){
+        return res.status(500).json({ message: "Error to get products by prices and category" });
+    }
+}
+
+const getTopProductsbySalesAndCategory = async (req, res) => {
+    const {id_category,limit} = req.query;
+    try{
+        const products = await sequelize.query('CALL GetTopSellingProductsByCategory(:id_category, :limit)', {
+            replacements: { id_category: id_category, limit: limit }
+        });
+        return res.status(200).json(products);
+    }catch(error){
+        return res.status(500).json({ message: "Error to get top products by sales" });
+    }
+}
+
+
 
 
 
@@ -198,5 +235,8 @@ module.exports = {
     validateStock,
     deleteProduct,
     getProductsByCategory,
+    getProductsByBrandAndCategory,
+    getProductsByPricesAndCategory,
+    getTopProductsbySalesAndCategory
 }
 
