@@ -1,38 +1,142 @@
-<div class="w-full h-full bg-[#EDF2FB] pl-[10%] pr-[10%] pt-[2%] pb-[2%]">
-
-  <div class="breadcrumbs text-sm">
-    <ul>
-      <li><a>Home</a></li>
-      <li><a>Documents</a></li>
-      <li>Add Document</li>
-    </ul>
-  </div>
+<div class="flex row bg-[#EDF2FB] w-full h-full">
 
 
-  <div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12">
-    <p class="text-[25px] font-bold">{{category}}</p>
+  <div class="col w-[20%] h-full bg-[#EDF2FB] pl-[3%] pr-[1%] pt-[2%] pb-[2%]">
+    <div class="row w-full h-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12">
 
-    <div class="flex w-full flex-wrap content-between">
-      <div class="flex w-full flex-wrap content-between" *ngIf="displayedItems.length > 0; else noProductsMessage">
-        <div *ngFor="let product of displayedItems" class="w-[25%] p-3">
-          <app-card-product [product]="product"></app-card-product>
+      <div
+        class=" font-bold row bg-[#4c5664] w-full  h-[50px] flex flex-col items-center justify-center rounded-2xl text-white mb-10 mt-5">
+        Filtros Disponibles :
+      </div>
+      <div class="row w-full flex flex-col mb-5">
+        Precio
+        <span class=" w-full border-b-2 border-gray-400 mt-1"></span>
+
+        <div class=" row w-full h-[75px]  overflow-y-auto ">
+
+          <!--Aqui va el for-->
+
+          <div  class="w-full mt-4">
+            <input  type="range" name="priceRange" id="priceRange" min="0" max="1000" class="w-full">
+            <div class="text-center mt-2">
+              Precio: $1000
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div *ngIf="containSubcategories" class="row w-full flex flex-col mb-5">
+        Categorias
+        <span class=" w-full border-b-2 border-gray-400 mt-1 mb-2"></span>
+
+        <div class=" row w-full h-[150px]  overflow-y-auto ">
+
+          <!--Aqui va el for-->
+
+          <div  *ngFor="let category of categoriesList" class="w-full">
+            <label for="ejemplo" class="flex items-center space-x-2 ">
+              <input (click)="activateFilterCategory(category.id)" type="checkbox" name="ejemplo" id="ejemplo" [checked]="selectedCategory === category.id">
+              <span class="text-xl">{{ category.name }}</span>
+            </label>
+          </div>
+
         </div>
       </div>
 
-      <ng-template #noProductsMessage>
-        <div role="alert" class="alert h-[200px] flex items-center justify-center mt-10">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info h-6 w-6 shrink-0">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-          </svg>
-          <span class="text-xl font-bold ">No hay productos disponibles en esta categoría.</span>
-        </div>
-      </ng-template>
-    </div>
+      <div class="row w-full flex flex-col mb-5">
+        Marca
+        <span class=" w-full border-b-2 border-gray-400 mt-1 mb-2"></span>
 
-    <div *ngIf="loading" class="text-center mt-4">
-      <p class="text-[20px]">Cargando...</p>
-      <i class="fas fa-spinner fa-spin text-[#1E2B3D] text-3xl mt-2"></i>
+        <div  class=" row w-full h-[150px]  overflow-y-auto ">
+
+          <!--Aqui va el for-->
+
+          <div *ngFor="let brand of brandsList" class="w-full">
+            <label for="ejemplo" class="flex items-center space-x-2">
+              <input (click)="activateFilterBrand(brand)" type="checkbox" name="ejemplo" id="ejemplo" [checked]="selectedBrand === brand" >
+              <span class="text-xl">{{brand}}</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row w-full flex flex-col mb-5">
+        Popularidad
+        <span class=" w-full border-b-2 border-gray-400 mt-1 mb-2"></span>
+
+        <div class=" row w-full h-[150px]  overflow-y-auto ">
+
+          <!--Aqui va el for-->
+
+          <div class="w-full">
+            <label for="ejemplo" class="flex items-center space-x-2">
+              <input (click)="activateFilterPopular('5')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '5'">
+              <span class="text-xl">Top 5 más vendidos</span>
+            </label>
+          </div>
+
+          <div class="w-full">
+            <label for="ejemplo" class="flex items-center space-x-2">
+              <input (click)="activateFilterPopular('10')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '10'">
+              <span class="text-xl">Top 10 más vendidos</span>
+            </label>
+          </div>
+
+          <div class="w-full">
+            <label for="ejemplo" class="flex items-center space-x-2">
+              <input (click)="activateFilterPopular('50')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '50'">
+              <span class="text-xl">Top 50 más vendidos</span>
+            </label>
+          </div>
+
+          <div class="w-full">
+            <label for="ejemplo" class="flex items-center space-x-2">
+              <input (click)="activateFilterPopular('100')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '100'">
+              <span class="text-xl">Top 100 más vendidos</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="row w-[80%] h-full bg-[#EDF2FB] pr-[3%] pt-[2%] pb-[2%]">
+    <div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12">
+      <div
+        class="row bg-[#4c5664] w-[30%]  h-[75px] flex flex-col items-center justify-center rounded-2xl text-white mb-5 mt-5 text-[25px] font-bold">
+        {{category}}
+      </div>
+
+      <div class="flex w-full flex-wrap content-between">
+        <div class="flex w-full flex-wrap content-between" *ngIf="displayedItems.length > 0; else noProductsMessage">
+
+
+
+          <div *ngFor="let product of displayedItems" class="w-[25%] p-3">
+            <app-card-product [product]="product"></app-card-product>
+          </div>
+        </div>
+
+        <ng-template #noProductsMessage>
+          <div role="alert" class="alert h-[200px] flex items-center justify-center mt-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              class="stroke-info h-6 w-6 shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span class="text-xl font-bold ">No hay productos disponibles en esta categoría.</span>
+          </div>
+        </ng-template>
+      </div>
+
+      <div *ngIf="loading" class="text-center mt-4">
+        <p class="text-[20px]">Cargando...</p>
+        <i class="fas fa-spinner fa-spin text-[#1E2B3D] text-3xl mt-2"></i>
+      </div>
     </div>
   </div>
 </div>
