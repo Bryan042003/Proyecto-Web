@@ -13,24 +13,25 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { CompletePurchaseComponent } from './components/complete-purchase/complete-purchase.component';
 import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
 import { AuthGuard } from './authGuard/auth.guard';
+import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
     {
         path: '', component: HomeComponent, children: [
-            { path: '', redirectTo: 'slider-day-promotions', pathMatch: 'full' }, 
+            { path: '', redirectTo: 'slider-day-promotions', pathMatch: 'full' },
             { path: 'payment-method', component: PaymentMethodComponent },
             { path: 'login', component: LoginComponent },
             { path: 'whishlist', component: WhishlistComponent },
             { path: 'slider-day-promotions', component: SliderDayPromotionsComponent },
             { path: 'product-details/:id', component: ProductDetailsComponent },
-            {path: 'personal-information', component: PersonalInformationComponent},
-            {path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard]},
-            {path: 'direction', component: DirectionComponent},
+            { path: 'personal-information', component: PersonalInformationComponent },
+            { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard] },
+            { path: 'direction', component: DirectionComponent },
             { path: 'products-per-category/:id', component: ProductsPerCategoryComponent },
-            {path: 'shopping-cart', component: ShoppingCartComponent},
-            {path: 'complete-purchase', component: CompletePurchaseComponent},
-            {path: 'order-complete', component: OrderCompleteComponent}
+            { path: 'shopping-cart', component: ShoppingCartComponent },
+            { path: 'complete-purchase', component: CompletePurchaseComponent },
+            { path: 'order-complete', component: OrderCompleteComponent }
 
         ]
-    },
+    }, { path: 'admin_dashboard', component: AdminDashboardComponent}
 ];

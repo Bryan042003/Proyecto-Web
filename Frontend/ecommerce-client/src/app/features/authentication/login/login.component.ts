@@ -7,6 +7,7 @@ import { Canton, District } from '../../../models/address.model';
 import { Province } from '../../../models/address.model';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LocalStorageService } from '../../../services/LocalStorage.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -103,6 +104,7 @@ export class LoginComponent implements OnInit {
     private _usersService: UsersService,
     private _addressService: AddressesService,
     private _loginAuth: AuthService,
+    private _localStorage: LocalStorageService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
@@ -207,6 +209,7 @@ export class LoginComponent implements OnInit {
       subscribe({
         next: (result: any) => {
           console.log('Login cerado con exito:', result);
+          this._localStorage.setItem('token', result);
           this.router.navigate(['/slider-day-promotions']);
           //navegate 
         },
