@@ -25,6 +25,7 @@ export class ReviewService {
     }
     
     createReview(data: Review): Observable<Review> {
+        console.log(data);
         /*
         data ={
             score,

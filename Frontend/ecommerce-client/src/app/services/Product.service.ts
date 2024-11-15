@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, of } from 'rxjs';
 import { Product } from '../models/product.model';
@@ -50,10 +50,34 @@ export class ProductService {
     }
 
     reduceStock(id: string, quantity: number): Observable<any> {
-        return this.http.put(`${this.baseUrl}/reduce-stock/${id}`, {quantity});
+        return this.http.put(`${this.baseUrl}/reduce-stock/${id}`, { quantity });
     }
 
-    getProductsByCategory(id:string): Observable<Product[]> {
+    getProductsByCategory(id: string): Observable<Product[]> {
         return this.http.get<Product[]>(`${this.baseUrl}/by-category/${id}`);
     }
+
+    getProductsByBrandAndCategory(brand: string, id_category: string): Observable<Product[]> {
+        let params = new HttpParams();
+        params = params.append('brand', brand);
+        params = params.append('id_category', id_category);
+
+        return this.http.get<Product[]>(`${this.baseUrl}/by-brand-and-category`, { params });
+    }
+
+    getProductsByPricesAndCategory(min_price: number, max_price: number, id_category: string): Observable<Product[]> {
+        let params = new HttpParams();
+        params = params.append('min_price', min_price);
+        params = params.append('max_price', max_price);
+        params = params.append('id_category', id_category);
+
+        return this.http.get<Product[]>(`${this.baseUrl}/by-prices-and-category`, { params });
+    }
+
+    getTopProductsbySalesAndCategory(id_category: string,limit:number): Observable<Product[]> {
+        let params = new HttpParams();
+        params = params.append('id_category', id_category);
+        params = params.append('limit', limit);
+        return this.http.get<Product[]>(`${this.baseUrl}/top-sales-and-category`, { params });
+    }   
 }

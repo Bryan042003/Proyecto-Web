@@ -6,11 +6,12 @@ import { InfoProductComponent } from "../info-product/info-product.component";
 import { LocalStorageService } from '../../services/LocalStorage.service';
 import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
+import { OffersService } from '../../services/Offers.service';
 
 @Component({
   selector: 'app-whishlist',
   standalone: true,
-  imports: [CommonModule,PriceViewComponent, StockStatusComponent, AddCartComponent, InfoProductComponent],
+  imports: [CommonModule, StockStatusComponent, AddCartComponent, InfoProductComponent, PriceViewComponent],
   templateUrl: './whishlist.component.html',
   styleUrl: './whishlist.component.scss'
 })
@@ -19,15 +20,14 @@ export class WhishlistComponent {
   whishProducts: Array<Product & { quantity: number }> = [];
   selectedItems: any[] = []; // Lista para almacenar los elementos seleccionados
 
-
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService, private offersService:OffersService) { }
 
 
   ngOnInit() {
 
     this.whishProducts = Object.values(this.localStorageService.getAllProductsWish());
-
   }
+
 
   WhishlistDelete(): void {
     // Elimina cada producto seleccionado del local storage

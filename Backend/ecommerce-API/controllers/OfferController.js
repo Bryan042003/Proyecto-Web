@@ -2,6 +2,7 @@ const Offer = require('../models/Offer');
 const { body, validationResult } = require('express-validator');
 const sequelize = require('../config/database');
 const { Op } = require('sequelize');
+const moment = require('moment-timezone');
 
 
 //Middlewares to validate offer data
@@ -31,7 +32,8 @@ const validateOffer = [
 //Get all offers
 const getOffers = async (req, res) => {
     try {
-        const currentDate = new Date();
+        const currentDate = moment().tz('America/Costa_Rica').format('YYYY-MM-DD HH:mm:ss');
+        console.log(currentDate);
         const offers = await Offer.findAll({
             where: {
                 end_date: {
@@ -64,7 +66,11 @@ const getOfferById = async (req, res) => {
 }
 
 const createOffer = async (req, res) => {
-    const { discount, start_date, end_date } = req.body;
+    let { discount, start_date, end_date } = req.body;
+    
+    start_date = moment(start_date).tz('America/Costa_Rica').format('YYYY-MM-DD HH:mm:ss');
+    end_date = end_date ? moment(end_date).tz('America/Costa_Rica').format('YYYY-MM-DD HH:mm:ss') : null;
+    console.log("Start: "+start_date);
     try {
         const offer = await Offer.create({ discount, start_date, end_date });
         return res.status(201).json({
@@ -78,7 +84,9 @@ const createOffer = async (req, res) => {
 
 const updateOffer = async (req, res) => {
     const id = req.params.id;
-    const { discount, start_date, end_date } = req.body;
+    let { discount, start_date, end_date } = req.body;
+
+
     try {
         const offer = await Offer.findByPk(id);
         if (offer) {
