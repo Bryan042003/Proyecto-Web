@@ -35,7 +35,7 @@
                 <li [routerLink]="['/order-history']"><a>Historial de pedidos</a></li>
                 <li [routerLink]="['/payment-method']"><a>Método de pago</a></li>
                 <li [routerLink]="['/direction']"><a>Dirección</a></li>
-                <li><a>Salir de la cuenta</a></li>
+                <li (click)="logout()"><a>Salir de la cuenta</a></li>
             </ul>
         </div>
     </div>

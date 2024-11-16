@@ -24,6 +24,7 @@ export class AuthGuard implements CanActivate {
 
     logged(): boolean {
         const token = this.localStorageService.getItem('token');
+        console.log("token a verlo en header",token);
         if (token === null || this.authService.isTokenExpired(token)) {
             return false;
         }

@@ -16,6 +16,7 @@ export class LocalStorageService {
 
     setItem(key: string, value: any): void {
         if (typeof window !== 'undefined' && window.localStorage) {
+            console.log('Guardando en localStorage:', key + ' - ' + value);
             localStorage.setItem(key, value);
         }
     }

@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
     });
 
     this.logged = this.authGuard.logged();
+    console.log(this.authGuard.logged());
 
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
 
@@ -84,5 +85,9 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  logout() {
+    this.localStorageService.removeItem('token');
+    this.logged = false;
+  }
 
 }

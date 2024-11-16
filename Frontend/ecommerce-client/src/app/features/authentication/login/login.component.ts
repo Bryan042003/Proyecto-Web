@@ -208,8 +208,8 @@ export class LoginComponent implements OnInit {
       this._loginAuth.login(this.loginForm.value).
       subscribe({
         next: (result: any) => {
-          console.log('Login cerado con exito:', result);
-          this._localStorage.setItem('token', result);
+          console.log('Login cerado con exito:', result.token);
+          this._localStorage.setItem('token', result.token);
           this.router.navigate(['/']);
           //navegate 
         },
