@@ -87,7 +87,7 @@ CREATE TABLE `Order`(
    id_user INT NOT NULL, /*--??*/
    FOREIGN KEY (id_user) REFERENCES User(id),
    status ENUM('pending', 'in_process','sent','delivered') NOT NULL,
-   total_price DOUBLE NOT NULL,
+   total_price DOUBLE DEFAULT 0,
    `date` DATETIME NOT NULL /*--cambiar nombre por que palabra reservada date a day done--*/
 
 );
