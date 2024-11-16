@@ -1,23 +1,63 @@
 <div class="drawer lg:drawer-open">
     <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col items-center justify-center">
-      <!-- Page content here -->
-      <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">
-        Open drawer
-      </label>
-    </div>
-    <div class="drawer-side">
+
+    <div class="drawer-side" style="border-radius: 40px;">
         <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-          <img src="images/logo.png" class="w-50 h-18 object-cover" /> 
+        <ul class="menu bg-base-300 text-base-content min-h-full w-90 p-4">
+          <img src="images/logo.png" class="w-50 h-18 object-cover bg-base-300" /> 
           <!-- Sidebar content here -->
-          <li><a>Perfil</a></li>
-          <li><a>Gestión de productos</a></li>
-          <li><a>Gestión de usuarios</a></li>
-          <li><a>Pedidos</a></li>
-          <li><a>Inventario</a></li>
-          <li><a>Estadísticas</a></li>
-          <li><a>Salir</a></li>
+          <hr style="margin-bottom: 60px;">
+          <li>
+            <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
+              <img src="images/profile.png" alt="profile" class="w-[40px]">
+              <span class="text-xl font-bold">Perfil</span>
+            </a>
+          </li>
+          <hr style="margin-bottom: 40px;">
+          <li>
+            <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
+              <img src="images/list.png" alt="productList" class="w-[40px]">
+              <span class="text-xl font-bold">Gestión de productos</span>
+            </a>
+          </li>
+          <hr style="margin-bottom: 40px;">
+          <li>
+            <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
+              <img src="images/users_settings.png" alt="users_settings" class="w-[40px]">
+              <span class="text-xl font-bold">Gestión de usuarios</span>
+            </a>
+          </li>
+          <hr style="margin-bottom: 60px;">
+          <li>
+            <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
+              <img src="images/pedidos.png" alt="pedidos" class="w-[43px]">
+              <span class="text-xl font-bold">Pedidos</span>
+            </a>
+          </li>
+          <hr style="margin-bottom: 60px;">
+
+          <li>
+            <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
+              <img src="images/box.png" alt="inventario" class="w-[40px]">
+              <span class="text-xl font-bold">Inventario</span>
+            </a>
+          </li>
+
+          <hr style="margin-bottom: 60px;">
+          <li>
+          <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
+            <img src="images/estadistica.png" alt="estadistica" class="w-[40px]">
+            <span class="text-xl font-bold">Estadísticas</span>
+          </a>
+        </li>
+          <hr style="margin-bottom: 60px;">
+          <li>
+            <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
+              <img src="images/exit.png" alt="exit" class="w-[40px]">
+              <span class="text-xl font-bold ">Salir</span>
+            </a>
+          </li>
+         
         </ul>
       </div>
       

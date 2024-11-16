@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+
+
+
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [],
+  imports: [ AngularSvgIconModule],
   templateUrl: './side-bar.component.html',
   styles: ''
 })

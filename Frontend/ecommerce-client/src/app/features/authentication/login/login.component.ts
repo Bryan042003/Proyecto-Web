@@ -210,7 +210,7 @@ export class LoginComponent implements OnInit {
         next: (result: any) => {
           console.log('Login cerado con exito:', result);
           this._localStorage.setItem('token', result);
-          this.router.navigate(['/slider-day-promotions']);
+          this.router.navigate(['/']);
           //navegate 
         },
         error:(error:any)=>{
