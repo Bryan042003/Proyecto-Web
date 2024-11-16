@@ -1,9 +1,7 @@
 const Product = require('../models/Product');
 const { body, validationResult } = require('express-validator');
 const sequelize = require('../config/database');
-const Category = require('../models/Category');
-const categoryController = require('./CategoryController');
-const { get } = require('../routes/ProductRoutes');
+const Highlight = require('../models/Highlight');
 // const Product_Category = require('../models/Product_Category');
 
 
@@ -85,8 +83,16 @@ const createProduct = async (req, res) => {
             stock: req.body.stock
         }, { transaction });
 
+        const expiredDate = moment().add(1,'weeks').toDate();
+
+        const newHighlight = await Highlight.create({
+            id_product: newProduct.id,
+            expired_date: expiredDate
+        }, { transaction});
+        
+
         await transaction.commit();
-        return res.status(201).json(newProduct);
+        return res.status(201).json(newProduct, newHighlight);
 
     } catch (error) {
         await transaction.rollback();
@@ -221,6 +227,14 @@ const getTopProductsbySalesAndCategory = async (req, res) => {
     }
 }
 
+const GetActiveHighlightedProducts = async (req, res) => {
+    try{
+        const products = await sequelize.query('CALL GetActiveHighlightedProducts');
+        return res.status(200).json(products);
+    }catch(error){
+        return res.status(500).json({ message: "Error to get highlighted products" });
+    }
+}
 
 
 
@@ -237,6 +251,7 @@ module.exports = {
     getProductsByCategory,
     getProductsByBrandAndCategory,
     getProductsByPricesAndCategory,
-    getTopProductsbySalesAndCategory
+    getTopProductsbySalesAndCategory,
+    GetActiveHighlightedProducts
 }
 

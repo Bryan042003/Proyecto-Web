@@ -98,4 +98,15 @@ END $$
 DELIMITER ;
 
 
+DELIMITER $$
+
+CREATE PROCEDURE GetActiveHighlightedProducts()
+BEGIN
+    SELECT p.*
+    FROM Product p
+    INNER JOIN Highlight h ON p.id = h.id_product
+    WHERE h.expired_date >= CURDATE();
+END $$
+
+DELIMITER ;
 

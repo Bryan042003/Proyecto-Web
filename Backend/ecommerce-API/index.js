@@ -10,6 +10,7 @@ const ProductRoutes = require('./routes/ProductRoutes');
 const CategoryRoutes = require('./routes/CategoryRoutes');
 const OfferRoutes = require('./routes/OfferRoutes');
 const ReviewRoutes = require('./routes/ReviewRoutes');
+const HighlightRoutes = require('./routes/HighlightRoutes');
 const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
@@ -35,6 +36,8 @@ app.use('/api/products', ProductRoutes);
 app.use('/api/categories', CategoryRoutes);
 app.use('/api/offers', OfferRoutes);
 app.use('/api/reviews', ReviewRoutes);
+app.use('/api/highlights', HighlightRoutes);
+
 
 //Server
 app.listen(port, () => {

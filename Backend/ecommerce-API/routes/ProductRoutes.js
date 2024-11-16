@@ -16,6 +16,7 @@ router.get('/by-category/:id_category', productController.getProductsByCategory)
 router.get('/by-brand-and-category', productController.getProductsByBrandAndCategory);
 router.get('/by-prices-and-category', productController.getProductsByPricesAndCategory);
 router.get('/top-sales-and-category', productController.getTopProductsbySalesAndCategory);
+router.get('/highlighted', productController.GetActiveHighlightedProducts);
 
 
 module.exports = router;
