@@ -15,6 +15,8 @@ import { User } from '../../models/user.model';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertsComponent } from '../alerts/alerts.component';
+import { AuthService } from '../../services/Auth.service';
+import { LocalStorageService } from '../../services/LocalStorage.service';
 
 
 @Component({
@@ -36,10 +38,10 @@ export class ProductDetailsComponent {
   stars = [1, 2, 3, 4, 5];
   showAlert = false;
   public reviewForm: FormGroup;
+  userActive: User | undefined;
 
-
-
-  constructor(private router: Router, private fb: FormBuilder, private usersService: UsersService, private route: ActivatedRoute, private productService: ProductService, private offersService: OffersService, private reviewService: ReviewService) {
+  constructor(private localStorageService: LocalStorageService, private authService: AuthService, private router: Router, private fb: FormBuilder, private usersService: UsersService, private route: ActivatedRoute, private productService: ProductService, private offersService: OffersService, private reviewService: ReviewService) {
+    console.log(this.userActive?.id);
     this.reviewForm = new FormGroup({
       score: new FormControl<number>(0, [
         Validators.required,
@@ -53,17 +55,20 @@ export class ProductDetailsComponent {
       ]),
 
       id_product: new FormControl<number>(0, [Validators.required]),
-      id_user: new FormControl<number>(1, [Validators.required])
+      id_user: new FormControl<number>(0, [Validators.required])
     });
   }
 
   ngOnInit(): void {
+    this.userActive = this.authService.getDecodedAccessToken(this.localStorageService.getItem('token'));
+    console.log('Usuario activo:', this.userActive);
+    this.reviewForm.get('id_user')?.setValue(this.userActive?.id);
+
     this.route.paramMap.subscribe(params => {
       this.productId = params.get('id') || '';
 
       this.productService.getProduct(this.productId).subscribe(product => {
         this.product = product;
-        // Una vez que el producto esté disponible, actualiza el id_product en el formulario
         if (this.product) {
           this.reviewForm.get('id_product')?.setValue(this.product.id);
 
@@ -77,9 +82,9 @@ export class ProductDetailsComponent {
         this.reviewService.getReviewByProduct(this.product.id.toString()).subscribe(reviews => {
           this.reviews = reviews;
           this.reviews.forEach(review => {
-            if (review.id_user && !this.userData[review.id_user]) { // Evita duplicar llamadas si el usuario ya está cargado
+            if (review.id_user && !this.userData[review.id_user]) { 
               this.usersService.getUser(review.id_user.toString()).subscribe(user => {
-                this.userData[review.id_user] = user; // Almacena el usuario en userData
+                this.userData[review.id_user] = user; 
               });
             }
           });
@@ -112,10 +117,8 @@ export class ProductDetailsComponent {
           this.showAlert = true;
           this.reviewForm.reset();
           setTimeout(() => {
-            this.showAlert = false;
-            console.log('Redirigiendo a la página de detalles del producto');
-            console.log('ID del producto:', this.product?.id);
-            window.location.reload(); // Recarga la página actual
+            this.showAlert = false
+            window.location.reload(); 
           }, 3000);
         },
         error: (error: any) => {
@@ -129,7 +132,7 @@ export class ProductDetailsComponent {
     }
     else {
       console.log('Formulario inválido');
-      this.reviewForm.markAllAsTouched(); // Marca todos los controles como "tocados" para mostrar errores
+      this.reviewForm.markAllAsTouched(); 
     }
   }
 

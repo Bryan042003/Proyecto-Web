@@ -23,6 +23,7 @@ export class LocalStorageService {
 
     getItem(key: string): any {
         if (typeof window !== 'undefined' && window.localStorage) {
+            console.log('Obteniendo de localStorage:', key + ' - ' + localStorage.getItem(key));
             return localStorage.getItem(key);
         }
         return null;

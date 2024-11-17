@@ -28,6 +28,7 @@ export class AuthService {
 
     getDecodedAccessToken(token: string): any {  //To get the information from the token
         try{
+            console.log(jwtDecode(token));
             return jwtDecode(token);
         }
         catch(Error){

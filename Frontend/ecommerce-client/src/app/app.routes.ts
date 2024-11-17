@@ -17,12 +17,11 @@ import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashbo
 
 export const routes: Routes = [
     {
-        path: '', component: HomeComponent, children: [
-            { path: '', redirectTo: 'slider-day-promotions', pathMatch: 'full' },
+        path: 'store', component: HomeComponent, children: [
+            { path: '', component: SliderDayPromotionsComponent },
             { path: 'payment-method', component: PaymentMethodComponent },
             { path: 'login', component: LoginComponent },
             { path: 'whishlist', component: WhishlistComponent },
-            { path: 'slider-day-promotions', component: SliderDayPromotionsComponent },
             { path: 'product-details/:id', component: ProductDetailsComponent },
             { path: 'personal-information', component: PersonalInformationComponent },
             { path: 'order-history', component: OrderHistoryComponent, canActivate: [AuthGuard] },
@@ -31,7 +30,10 @@ export const routes: Routes = [
             { path: 'shopping-cart', component: ShoppingCartComponent },
             { path: 'complete-purchase', component: CompletePurchaseComponent },
             { path: 'order-complete', component: OrderCompleteComponent }
-
         ]
-    }, { path: 'admin_dashboard', component: AdminDashboardComponent}
+    },
+    { path: 'admin_dashboard', component: AdminDashboardComponent },
+    { path: '', redirectTo: 'store', pathMatch: 'full' },
+    { path: '**', redirectTo: 'store' }
 ];
+

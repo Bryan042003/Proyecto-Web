@@ -18,6 +18,7 @@ export class AddWhislistComponent {
 
   addLocalStorageWhishlist(): void {
     this.localStorageService.saveProductWish(this.product);
+    window.location.reload();
   }
 
 }

@@ -17,6 +17,7 @@ export class AddCartComponent {
 
   addLocalStorageCart(): void {
     this.localStorageService.saveProduct(this.product);
+    window.location.reload(); 
   }
 
 }

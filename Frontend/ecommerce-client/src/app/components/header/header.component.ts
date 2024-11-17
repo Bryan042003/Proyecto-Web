@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
     });
 
     this.logged = this.authGuard.logged();
-    console.log(this.authGuard.logged());
+    console.log("esta logueado",this.authGuard.logged());
 
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
 
