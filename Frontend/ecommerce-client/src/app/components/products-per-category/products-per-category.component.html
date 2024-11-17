@@ -12,16 +12,32 @@
         Precio
         <span class=" w-full border-b-2 border-gray-400 mt-1"></span>
 
-        <div class=" row w-full h-[75px]  overflow-y-auto ">
-
-          <!--Aqui va el for-->
-
-          <div  class="w-full mt-4">
-            <input  type="range" name="priceRange" id="priceRange" min="0" max="1000" class="w-full">
-            <div class="text-center mt-2">
-              Precio: $1000
+        <div class=" row w-full h-[100px]  overflow-y-auto ">
+          <div class="row w-full mt-2 flex items-center ">
+            <!-- Checkbox -->
+           
+          
+            <div class="flex flex-col w-full">
+              <label for="from-1" class="block text-xl text-gray-700">min</label>
+              <input id="from-1" type="number" name="from" [(ngModel)]="from" class="border border-black rounded w-[90%] h-8">
             </div>
+        
+            <!-- Input "To" -->
+            <div class="flex flex-col w-full">
+              <label for="to-1" class="block text-xl text-gray-700">max</label>
+              <input id="to-1" type="number" name="to" [(ngModel)]="to" class="border border-black rounded w-[90%] h-8">
+            </div>
+
           </div>
+          
+          <div class="row">
+            <label for="ejemplo" class="flex items-center space-x-2 ">
+              <input (click)="activateFilterPrice()" type="checkbox" name="ejemplo" id="ejemplo"  [checked]="selectedPrice === 'price'">
+              <span class="text-xl">Filtrar precio </span>
+            </label>
+
+        </div>
+        
 
         </div>
       </div>
@@ -29,13 +45,14 @@
         Categorias
         <span class=" w-full border-b-2 border-gray-400 mt-1 mb-2"></span>
 
-        <div class=" row w-full h-[150px]  overflow-y-auto ">
+        <div class=" row w-full h-[125px]  overflow-y-auto ">
 
           <!--Aqui va el for-->
 
-          <div  *ngFor="let category of categoriesList" class="w-full">
+          <div *ngFor="let category of categoriesList" class="w-full">
             <label for="ejemplo" class="flex items-center space-x-2 ">
-              <input (click)="activateFilterCategory(category.id)" type="checkbox" name="ejemplo" id="ejemplo" [checked]="selectedCategory === category.id">
+              <input (click)="activateFilterCategory(category.id)" type="checkbox" name="ejemplo" id="ejemplo"
+                [checked]="selectedCategory === category.id">
               <span class="text-xl">{{ category.name }}</span>
             </label>
           </div>
@@ -47,13 +64,14 @@
         Marca
         <span class=" w-full border-b-2 border-gray-400 mt-1 mb-2"></span>
 
-        <div  class=" row w-full h-[150px]  overflow-y-auto ">
+        <div class=" row w-full h-[125px]  overflow-y-auto ">
 
           <!--Aqui va el for-->
 
           <div *ngFor="let brand of brandsList" class="w-full">
             <label for="ejemplo" class="flex items-center space-x-2">
-              <input (click)="activateFilterBrand(brand)" type="checkbox" name="ejemplo" id="ejemplo" [checked]="selectedBrand === brand" >
+              <input (click)="activateFilterBrand(brand)" type="checkbox" name="ejemplo" id="ejemplo"
+                [checked]="selectedBrand === brand">
               <span class="text-xl">{{brand}}</span>
             </label>
           </div>
@@ -65,34 +83,38 @@
         Popularidad
         <span class=" w-full border-b-2 border-gray-400 mt-1 mb-2"></span>
 
-        <div class=" row w-full h-[150px]  overflow-y-auto ">
+        <div class=" row w-full h-[125px]  overflow-y-auto ">
 
           <!--Aqui va el for-->
 
           <div class="w-full">
             <label for="ejemplo" class="flex items-center space-x-2">
-              <input (click)="activateFilterPopular('5')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '5'">
+              <input (click)="activateFilterPopular('5')" type="checkbox" name="ejemplo" id="ejemplo"
+                [checked]=" selectedPopulate === '5'">
               <span class="text-xl">Top 5 más vendidos</span>
             </label>
           </div>
 
           <div class="w-full">
             <label for="ejemplo" class="flex items-center space-x-2">
-              <input (click)="activateFilterPopular('10')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '10'">
+              <input (click)="activateFilterPopular('10')" type="checkbox" name="ejemplo" id="ejemplo"
+                [checked]=" selectedPopulate === '10'">
               <span class="text-xl">Top 10 más vendidos</span>
             </label>
           </div>
 
           <div class="w-full">
             <label for="ejemplo" class="flex items-center space-x-2">
-              <input (click)="activateFilterPopular('50')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '50'">
+              <input (click)="activateFilterPopular('50')" type="checkbox" name="ejemplo" id="ejemplo"
+                [checked]=" selectedPopulate === '50'">
               <span class="text-xl">Top 50 más vendidos</span>
             </label>
           </div>
 
           <div class="w-full">
             <label for="ejemplo" class="flex items-center space-x-2">
-              <input (click)="activateFilterPopular('100')" type="checkbox" name="ejemplo" id="ejemplo" [checked]=" selectedPopulate === '100'">
+              <input (click)="activateFilterPopular('100')" type="checkbox" name="ejemplo" id="ejemplo"
+                [checked]=" selectedPopulate === '100'">
               <span class="text-xl">Top 100 más vendidos</span>
             </label>
           </div>

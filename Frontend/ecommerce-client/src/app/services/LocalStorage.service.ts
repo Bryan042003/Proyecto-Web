@@ -16,14 +16,12 @@ export class LocalStorageService {
 
     setItem(key: string, value: any): void {
         if (typeof window !== 'undefined' && window.localStorage) {
-            console.log('Guardando en localStorage:', key + ' - ' + value);
             localStorage.setItem(key, value);
         }
     }
 
     getItem(key: string): any {
         if (typeof window !== 'undefined' && window.localStorage) {
-            console.log('Obteniendo de localStorage:', key + ' - ' + localStorage.getItem(key));
             return localStorage.getItem(key);
         }
         return null;
@@ -46,22 +44,11 @@ export class LocalStorageService {
     async saveProduct(product: Product): Promise<void> {
         const products = this.getAllProducts();
     
-        
-        let finalPrice = product.price;
-        if (product.id_offer != null) {
-            const discount = await this.getDiscountById(product.id_offer); 
-            console.log('Descuento:', discount);
-            if (discount) {
-                finalPrice = product.price * (1 - discount);  
-                console.log('Precio final con descuento:', finalPrice);
-            }
-        }
     
         if (products[product.id]) {
             products[product.id].quantity += 1;
-            products[product.id].price = finalPrice;
         } else {
-            products[product.id] = { ...product, quantity: 1, price: finalPrice }; 
+            products[product.id] = { ...product, quantity: 1 }; 
         }
     
         this.setItem(this.productKeyShoppingCart, JSON.stringify(products));
@@ -71,10 +58,8 @@ export class LocalStorageService {
     async getDiscountById(id: number): Promise<number> {
         try {
             const offer = await this.offersService.getOffer(id.toString()).toPromise(); 
-            console.log('Descuento función:', offer?.discount);
             return offer?.discount || 0; 
         } catch (error) {
-            console.error('Error al obtener el descuento:', error);
             return 0;  
         }
     }
@@ -114,7 +99,6 @@ export class LocalStorageService {
                 product.quantity = newQuantity;
                 this.setItem(this.productKeyShoppingCart, JSON.stringify(products));
             } else {
-                console.warn('La cantidad debe ser mayor que 0');
             }
         } else {
             console.warn('El producto no existe en el carrito');
@@ -128,19 +112,8 @@ export class LocalStorageService {
 
     async saveProductWish(product: Product): Promise<void> {
         const wishlistProducts = this.getAllProductsWish();
-         let finalPrice = product.price;
-         if (product.id_offer != null) {
-             const discount = await this.getDiscountById(product.id_offer); 
-             console.log('Descuento:', discount);
-             if (discount) {
-                 finalPrice = product.price * (1 - discount);  
-                 console.log('Precio final con descuento:', finalPrice);
-             }
-         }
-     
-        
         if (!wishlistProducts[product.id]) {
-            wishlistProducts[product.id] = { ...product, quantity: 1, price: finalPrice }; 
+            wishlistProducts[product.id] = { ...product, quantity: 1 }; 
         }
         this.setItem(this.productKeyWishlist, JSON.stringify(wishlistProducts));
     }
