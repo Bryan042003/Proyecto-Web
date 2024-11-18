@@ -2,7 +2,8 @@ const Product = require('../models/Product');
 const { body, validationResult } = require('express-validator');
 const sequelize = require('../config/database');
 const Highlight = require('../models/Highlight');
-// const Product_Category = require('../models/Product_Category');
+const Product_Category = require('../models/Product_Category');
+const Category = require('../models/Category');
 
 
 //Middlewares to validate product data
@@ -43,6 +44,49 @@ const validateStock = [
         next();
     }
 ]
+
+
+const validateProductCategory = [
+    body('id_product')
+        .isInt().withMessage('Id product must be an integer')
+        .custom(async (value) => {
+            const product = await Product.findByPk(value);
+            if (!product) {
+                throw new Error('Product not found');
+            }
+            return true;
+        }),
+    body('id_category')
+        .isInt().withMessage('Id category must be an integer')
+        .custom(async (value) => {
+            const category = await Category.findByPk(value);
+            if (!category) {
+                throw new Error('Category not found');
+            }
+            return true;
+        }),
+    body()
+        .custom(async (value, { req }) => {
+            const { id_product, id_category } = req.body;
+            const productCategory = await Product_Category.findOne({
+                where: {
+                    id_product: id_product,
+                    id_category: id_category
+                }
+            });
+            if (productCategory) {
+                throw new Error('This product is already associated with this category');
+            }
+            return true;
+        }),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        next();
+    }
+];
 
 //Get all products
 const getProducts = async (req, res) => {
@@ -236,7 +280,22 @@ const GetActiveHighlightedProducts = async (req, res) => {
     }
 }
 
-
+const AssignProductToCategory = async (req, res) => {
+    const {id_product, id_category} = req.body;
+    console.log(id_product, id_category);
+    try{
+        const product_category = await Product_Category.create({
+            id_product: id_product,
+            id_category: id_category
+        });
+        return res.status(201).json({
+            message: 'Product assigned to category successfully',
+            product_category
+        });
+    }catch(error){
+        return res.status(500).json({ message: "Error to assign product to category" });
+    }
+}
 
 
 module.exports = {
@@ -252,6 +311,8 @@ module.exports = {
     getProductsByBrandAndCategory,
     getProductsByPricesAndCategory,
     getTopProductsbySalesAndCategory,
-    GetActiveHighlightedProducts
+    GetActiveHighlightedProducts,
+    AssignProductToCategory,
+    validateProductCategory
 }
 

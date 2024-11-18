@@ -18,5 +18,9 @@ router.get('/by-prices-and-category', productController.getProductsByPricesAndCa
 router.get('/top-sales-and-category', productController.getTopProductsbySalesAndCategory);
 router.get('/highlighted', productController.GetActiveHighlightedProducts);
 
+router.post('/assign-category', productController.validateProductCategory, productController.AssignProductToCategory);
+
+
+
 
 module.exports = router;

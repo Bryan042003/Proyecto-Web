@@ -108,10 +108,6 @@ const getCategoryByProduct = async (req,res)=>{
     }
 }
 
-
-//To do: Assing a product to a category
-
-
 module.exports = {
     getALLCategoriesWithSubcategories,
     getCategoryWithSubcategories,
