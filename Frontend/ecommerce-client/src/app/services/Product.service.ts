@@ -40,6 +40,7 @@ export class ProductService {
         return this.http.post(`${this.baseUrl}/create`, data);
     }
 
+
     updateProduct(id: string, data: Product): Observable<Product> {
 
         return this.http.put<Product>(`${this.baseUrl}/update/${id}`, data);
@@ -83,5 +84,9 @@ export class ProductService {
     
     getHighlightedProducts(): Observable<Product[]> {
         return this.http.get<Product[]>(`${this.baseUrl}/highlighted`);
+    }
+
+    AssignProductToCategory(id_product: string, id_category: string): Observable<any> {
+        return this.http.post(`${this.baseUrl}/assign-category`, { id_product, id_category });
     }
 }
