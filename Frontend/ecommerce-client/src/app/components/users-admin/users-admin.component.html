@@ -1,0 +1,180 @@
+<form class="grid" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
+  <app-no-alerts *ngIf="showNoAlert" class="alert alert-error"></app-no-alerts>
+  <div class="form-container"
+    style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+
+    <div class="column" style="flex: 1; min-width: 300px;">
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Nombre
+        <input type="text" class="grow" formControlName="name"
+          style="padding: 15px; border-radius: 4px;  width: 100%;" />
+      </label>
+      <div *ngIf="userForm.controls['name'].invalid && userForm.controls['name'].touched" class="text-red-500">
+        <small *ngIf="userForm.controls['name'].errors?.['required']">El nombre es
+          obligatorio.</small>
+        <small *ngIf="userForm.controls['name'].errors?.['pattern']">
+          Se permiten solo caraterés alfabéticos</small>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Apellido
+        <input type="text" class="grow" style="padding: 15px; border-radius: 4px;  width: 100%; "
+          formControlName="last_name" />
+      </label>
+      <div *ngIf="userForm.controls['last_name'].invalid && userForm.controls['last_name'].touched"
+        class="text-red-500">
+        <small *ngIf="userForm.controls['last_name'].errors?.['required']">El apellido es
+          obligatorio.</small>
+        <small *ngIf="userForm.controls['last_name'].errors?.['pattern']">
+          Se permiten solo caraterés alfabéticos</small>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Teléfono
+        <input type="text" class="grow" style="padding: 15px; border-radius: 4px;  width: 100%;"
+          formControlName="phone" />
+      </label>
+      <div *ngIf="userForm.controls['phone'].invalid && userForm.controls['phone'].touched" class="text-red-500">
+        <small *ngIf="userForm.controls['phone'].errors?.['required']">El teléfono es
+          obligatorio.</small>
+        <small *ngIf="userForm.controls['phone'].errors?.['pattern']">Ingrese un teléfono válido
+          (8 dígitos).</small>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Email
+        <input type="text" class="grow" style="padding: 15px; border-radius: 4px;  width: 100%; "
+          placeholder="extreme@site.com" formControlName="email" />
+      </label>
+      <div *ngIf="userForm.controls['email'].invalid && userForm.controls['email'].touched" class="text-red-500">
+        <small *ngIf="userForm.controls['email'].errors?.['required']">El correo electrónico es
+          obligatorio.</small>
+        <small *ngIf="userForm.controls['email'].errors?.['email']">
+          Ingrese un email válido</small>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Contraseña
+        <input type="password" class="grow" style="padding: 15px; border-radius: 4px;  width: 100%;"
+          formControlName="passw" />
+      </label>
+      <div *ngIf="userForm.controls['passw'].invalid && userForm.controls['passw'].touched" class="text-red-500">
+        <small *ngIf="userForm.controls['passw'].errors?.['required']">La contraseña es
+          obligatoria.</small>
+        <small *ngIf="userForm.controls['passw'].errors?.['minlength']">Debe tener al menos 8
+          caracteres.</small>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Rol
+        <select style="padding: 5px;  border-radius: 5px; font-size: 16px;  width: 100%;" formControlName="role">
+          <!-- Letra más grande en el dropdown -->
+          <option value="user">user</option>
+          <option value="admin">admin</option>
+          <option valie="logist">logist</option>
+        </select>
+      </label>
+    </div>
+    <div class="column" style="flex: 1; min-width: 300px;">
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Photo
+        <input type="text" class="grow" style="padding: 15px; border-radius: 4px;  width: 100%;"
+          formControlName="photo" />
+      </label>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Provincia
+        <select style="padding: 5px;  border-radius: 5px; font-size: 16px;  width: 100%;" formControlName="province"
+          (change)="onProvinceChange($event)">
+          <option value="">Seleccione una provincia</option>
+          <option *ngFor="let province of provinces" [value]="province.name" [attr.data-id]="province.id">
+            {{ province.name }}
+          </option>
+        </select>
+      </label>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Cantón
+        <select style="padding: 5px;  border-radius: 5px; font-size: 16px;  width: 100%;" formControlName="canton"
+          (change)="onCantonChange($event)">
+          <!-- Letra más grande en el dropdown -->
+          <option value="">Seleccione un cantón</option>
+          <option *ngFor="let canton of cantons" [value]="canton.name" [attr.data-id]="canton.id">
+            {{ canton.name }}
+          </option>
+        </select>
+      </label>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Distrito
+        <select style="padding: 5px;  border-radius: 5px; font-size: 16px;  width: 100%;" formControlName="district">
+          <option value="">Seleccione un distrito</option>
+          <option *ngFor="let district of districts" [value]="district.name">
+            {{ district.name }}
+          </option>
+        </select>
+      </label>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Código Postal
+        <input type="text" class="grow" style="padding: 15px; border-radius: 4px;  width: 100%;"
+          formControlName="postal_code" />
+      </label>
+      <div *ngIf="userForm.controls['postal_code'].invalid && userForm.controls['postal_code'].touched"
+        class="text-red-500">
+        <small *ngIf="userForm.controls['postal_code'].errors?.['required']">El código postal es
+          obligatorio.</small>
+        <small *ngIf="userForm.controls['postal_code'].errors?.['pattern']">Ingrese un código
+          postal
+          válido (5 dígitos).</small>
+      </div>
+      <label class="input input-bordered flex items-center gap-2 mb-4">
+        Ubicación Específica
+        <input type="text" class="grow" style="padding: 15px; border-radius: 4px;  width: 100%; "
+          formControlName="specific_address" />
+      </label>
+      <div *ngIf="userForm.controls['specific_address'].invalid && userForm.controls['specific_address'].touched"
+        class="text-red-500">
+        <small *ngIf="userForm.controls['specific_address'].errors?.['required']"> Una dirección
+          específica es obligatorio.</small>
+      </div>
+    </div>
+
+  </div>
+</form>
+<div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+  <button class="btn btn-secondary" (click)="onSubmit()"
+    style="padding: 10px 20px; border-radius: 4px; background-color: #63d2e5; color: #fff; border: none; cursor: pointer;">Agregar</button>
+ 
+</div>
+
+  <div class="overflow-x-auto" style="padding: 50px">
+    <table class="table table-striped" style="font-size: 18px;">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Telefono</th>
+          <th>Foto</th>
+          <th>Rol</th>
+          <th>ID dirección</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <th>{{ user.id }}</th>
+          <td>{{ user.name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.photo }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.id_address }}</td>
+          <td><button class="btn btn-secondary"
+              (click)="onDelete(user.id)"
+              style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;">Eliminar</button>
+          </td>
+          <td>
+             <button class="btn btn-primary"
+    style="padding: 10px 20px; border-radius: 4px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

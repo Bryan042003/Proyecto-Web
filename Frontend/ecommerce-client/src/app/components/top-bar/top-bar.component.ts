@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NotificationsComponent } from '../notifications/notifications.component';
 
 @Component({
   selector: 'app-top-bar',
@@ -9,4 +10,10 @@ import { Component } from '@angular/core';
 })
 export class TopBarComponent {
 
+
+
+
+ openModal(){
+  console.log("abre");
+ }
 }
