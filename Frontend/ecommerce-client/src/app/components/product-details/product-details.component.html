@@ -31,14 +31,14 @@
                             <div class="col h-[50%] w-full flex items-end ">
                                 <div class="w-full p-10 ">
                                     <div class="flex gap-10 items-end ">
-                                        <p class="font-bold text-5xl font-jetbrains mb-10">₡  {{product?.price}}
+                                        <p class="font-bold text-5xl font-jetbrains mb-10">₡ {{ product?.id_offer ==
+                                            null ? product?.price : (product && offer) ? (product.price - (product.price
+                                            * offer.discount)) : 0 }} 
                                         </p>
 
                                         <p *ngIf=" product?.id_offer !== null"
-                                            class=" line-through font-bold text-2xl font-jetbrains mb-10 text-red-500">₡
-                                           {{ product?.id_offer ==
-                                                null ? product?.price : (product && offer) ? (product.price + (product.price
-                                                * offer.discount)) : 0 }}</p>
+                                            class=" line-through font-bold text-2xl font-jetbrains mb-10 text-red-500">₡ {{product?.price}}
+                                           </p>
 
 
                                     </div>

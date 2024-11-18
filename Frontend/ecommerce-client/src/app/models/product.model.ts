@@ -10,4 +10,5 @@ export interface Product {
     n_sales:number;
     id_offer:number;
     quantity: number;
+    discount: number;
 }

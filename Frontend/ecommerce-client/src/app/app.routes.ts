@@ -3,7 +3,6 @@ import { HomeComponent } from './features/home/home.component';
 import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
 import { LoginComponent } from './features/authentication/login/login.component';
 import { WhishlistComponent } from './components/whishlist/whishlist.component';
-import { SliderDayPromotionsComponent } from './components/slider-day-promotions/slider-day-promotions.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { PersonalInformationComponent } from './components/personal-information/personal-information.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
@@ -14,11 +13,12 @@ import { CompletePurchaseComponent } from './components/complete-purchase/comple
 import { OrderCompleteComponent } from './components/order-complete/order-complete.component';
 import { AuthGuard } from './authGuard/auth.guard';
 import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
+import { SlidersShopComponent } from './components/sliders-shop/sliders-shop.component';
 
 export const routes: Routes = [
     {
         path: 'store', component: HomeComponent, children: [
-            { path: '', component: SliderDayPromotionsComponent },
+            { path: '', component: SlidersShopComponent },
             { path: 'payment-method', component: PaymentMethodComponent },
             { path: 'login', component: LoginComponent },
             { path: 'whishlist', component: WhishlistComponent },

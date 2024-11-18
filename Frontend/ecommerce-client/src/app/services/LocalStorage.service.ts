@@ -11,6 +11,7 @@ export class LocalStorageService {
 
     private productKeyShoppingCart = 'shoppingCart';
     private productKeyWishlist = 'wishlist';
+    discount: number = 0;
 
     constructor(private offersService: OffersService) { }
 
@@ -44,11 +45,20 @@ export class LocalStorageService {
     async saveProduct(product: Product): Promise<void> {
         const products = this.getAllProducts();
     
+        
+        let finalPrice = product.price;
+        if (product.id_offer != null) {
+            const discount = await this.getDiscountById(product.id_offer); 
+            if (discount) {
+                finalPrice = product.price * (1 - discount);  
+            }
+        }
     
         if (products[product.id]) {
             products[product.id].quantity += 1;
+            products[product.id].price = finalPrice;
         } else {
-            products[product.id] = { ...product, quantity: 1 }; 
+            products[product.id] = { ...product, quantity: 1, price: finalPrice }; 
         }
     
         this.setItem(this.productKeyShoppingCart, JSON.stringify(products));
@@ -99,6 +109,7 @@ export class LocalStorageService {
                 product.quantity = newQuantity;
                 this.setItem(this.productKeyShoppingCart, JSON.stringify(products));
             } else {
+                console.warn('La cantidad debe ser mayor que 0');
             }
         } else {
             console.warn('El producto no existe en el carrito');
@@ -112,12 +123,19 @@ export class LocalStorageService {
 
     async saveProductWish(product: Product): Promise<void> {
         const wishlistProducts = this.getAllProductsWish();
+    
         if (!wishlistProducts[product.id]) {
-            wishlistProducts[product.id] = { ...product, quantity: 1 }; 
+            this.offersService.getOffer(product.id_offer.toString()).subscribe(offer => {
+                this.discount = offer.discount;
+    
+                wishlistProducts[product.id] = { ...product, quantity: 1, discount: this.discount };
+                this.setItem(this.productKeyWishlist, JSON.stringify(wishlistProducts));
+            });
+        } else {
+            this.setItem(this.productKeyWishlist, JSON.stringify(wishlistProducts));
         }
-        this.setItem(this.productKeyWishlist, JSON.stringify(wishlistProducts));
     }
-
+    
 
     removeProductWish(productId: number): void {
         const wishlistProducts = this.getAllProductsWish();

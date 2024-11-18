@@ -1,6 +1,7 @@
-<div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12" >
-    <p class="text-[25px] font-bold">Promociones del día</p>
-    <div *ngIf="products.length  > 0; else noProductsMessage" class="h-full w-full">
+<div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12">
+
+    <p class="text-[25px] font-bold">Productos Destacados</p>
+    <div *ngIf="highlihtProducts.length  > 0; else noProductsMessage" class="h-full w-full">
         <div class="flex w-full justify-center overflow-hidden relative">
 
             <div class="flex items-center justify-start w-full overflow-hidden">
@@ -8,12 +9,13 @@
                 <div class="flex transition-transform duration-700 transform" [style.width]="4 * 25 + '%'"
                     [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 25) + '%)'}">
 
-                    <div *ngFor="let product of products" class="flex-none w-[25%] h-full p-3">
+                    <div *ngFor="let product of highlihtProducts" class="flex-none w-[25%] h-full p-3">
                         <app-card-product [product]="product" />
                     </div>
                 </div>
             </div>
         </div>
+
 
 
         <div class="flex items-center justify-center w-full mt-5 h-[20%] space-x-2">
@@ -22,6 +24,7 @@
             <button (click)="nextSlide()"
                 class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❯</button>
         </div>
+
     </div>
     <ng-template #noProductsMessage>
         <div role="alert" class="alert h-[200px] flex items-center justify-center mt-10">
@@ -33,4 +36,5 @@
             <span class="text-xl font-bold ">No hay productos disponibles en esta categoría.</span>
         </div>
     </ng-template>
+
 </div>

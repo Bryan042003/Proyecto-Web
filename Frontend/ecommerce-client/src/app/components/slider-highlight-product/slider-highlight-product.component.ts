@@ -5,39 +5,36 @@ import { Product } from '../../models/product.model';
 import { CardProductComponent } from "../card-product/card-product.component";
 
 @Component({
-  selector: 'app-slider-day-promotions',
+  selector: 'app-slider-highlight-product',
   standalone: true,
   imports: [CommonModule, CardProductComponent],
-  templateUrl: './slider-day-promotions.component.html',
-  styleUrl: './slider-day-promotions.component.scss'
+  templateUrl: './slider-highlight-product.component.html',
+  styleUrl: './slider-highlight-product.component.scss'
 })
-export class SliderDayPromotionsComponent implements OnInit {
-
-  public products: Product[] = [];
-
+export class SliderHighlightProductComponent implements OnInit {
+  public highlihtProducts: Product[] = [];
 
   constructor(private productService: ProductService) { }
-
   displayedSlides = 4;
   currentIndex = 0;
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((products) => {
-      this.products = products.filter(product => product.id_offer !== null);
+    this.productService.getHighlightedProducts().subscribe((products: Product[]) => {
+
+      this.highlihtProducts = products;
+      console.log("productos highlight",this.highlihtProducts);
     });
   }
-
-
   previousSlide() {
     if (this.currentIndex > 0) {
       this.currentIndex -= 1;
     } else {
-      this.currentIndex = this.products.length - this.displayedSlides;
+      this.currentIndex = this.highlihtProducts.length - this.displayedSlides;
     }
   }
 
   nextSlide() {
-    if (this.currentIndex < this.products.length - this.displayedSlides) {
+    if (this.currentIndex < this.highlihtProducts.length - this.displayedSlides) {
       this.currentIndex += 1;
     } else {
       this.currentIndex = 0;
