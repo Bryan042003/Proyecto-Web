@@ -87,6 +87,25 @@ const getParentCategory = async (req,res) => {
     }
 }
 
+//Get Category by id_product
+const getCategoryByProduct = async (req,res)=>{
+    const {id_product} = req.params;
+
+    try{
+        const product_category = await Product_Category.findOne({
+            where:{
+                id_product: id_product
+            }
+        });
+
+        res.status(200).json(product_category);
+    }catch(error){
+        console.log(error);
+        res.status(500).json({error: 'There was an error trying to get the category'});
+    }
+}
+
+
 //To do: Assing a product to a category
 
 
@@ -94,5 +113,6 @@ module.exports = {
     getALLCategoriesWithSubcategories,
     getCategoryWithSubcategories,
     getSubcategories,
-    getParentCategory
+    getParentCategory,
+    getCategoryByProduct
 }
