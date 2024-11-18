@@ -4,6 +4,16 @@
         <!-- Pantalla de Iniciar Sesión -->
         <div class="row w-full h-full flex justify-center items-center">
             <div class="col w-[50%] h-full p-10 bg-white rounded-l-2xl flex flex-col justify-center items-center">
+               
+               
+                <!-- Alerta de éxito -->
+                <div class="w-full flex justify-center items-center mb-5">
+                    <div class="w-[60%]">
+                        <app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
+                    </div>
+
+                </div>
+
 
                 <div class="row w-full h-[20%] font-extrabold text-2xl font-jetbrains items-center justify-center flex">
                     Iniciar Sesión
@@ -175,7 +185,8 @@
                                     Se permiten solo caraterés alfabéticos</small>
                             </div>
 
-                            <input [type]="showPassword ? 'text' : 'password'" class="w-[95%] h-[15%] pl-5 rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                            <input [type]="showPassword ? 'text' : 'password'"
+                                class="w-[95%] h-[15%] pl-5 rounded-md bg-[#b7bbc1] font-bold placeholder-white"
                                 type="password" placeholder="Contraseña" formControlName="passw" />
                             <div *ngIf="userForm.controls['passw'].invalid && userForm.controls['passw'].touched"
                                 class="text-red-500">
