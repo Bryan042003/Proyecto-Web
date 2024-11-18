@@ -22,7 +22,7 @@ router.post('/assign-category', productController.validateProductCategory, produ
 router.put('/update-category/:id', productController.ValidateUpdateProductCategory, productController.UpdateProductCategory);
 router.delete('/delete-category/:id', productController.deleteProductCategory);
 
-router.patch('/assign-offer',productController.validateProductOffer, productController.AssignProductToOffer);
+router.patch('/assign-offer', productController.AssignProductToOffer);
 
 
 

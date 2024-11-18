@@ -109,42 +109,6 @@ const ValidateUpdateProductCategory = [
     }
 ];
 
-const validateProductOffer = [
-    body('id_product')
-        .isInt().withMessage('Id product must be an integer')
-        .custom(async (value) => {
-            const product = await Product.findByPk(value);
-            if (!product) {
-                throw new Error('Product not found');
-            }
-            return true;
-        }),
-    body('id_offer')
-        .isInt().withMessage('Id offer must be an integer')
-        .custom(async (value) => {
-            const offer = await Offer.findByPk(value);
-            if (!offer) {
-                throw new Error('Offer not found');
-            }
-            return true;
-        }),
-    body()
-        .custom(async (value, { req }) => {
-            const { id_product, id_offer } = req.body;
-            const product = await Product.findByPk(id_product);
-            if (product.id_offer) {
-                throw new Error('This product is already associated with an offer');
-            }
-            return true;
-        }),
-    (req, res, next) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
-        next();
-    }
-]
 
 //Get all products
 const getProducts = async (req, res) => {
@@ -410,7 +374,7 @@ const AssignProductToOffer = async (req, res) => {
     try {
         const product = await Product.findByPk(id_product);
         if (product) {
-            product.id_offer = id_offer;
+            product.id_offer = id_offer? id_offer : null;
             await product.save({ transaction });
             await transaction.commit();
             return res.status(200).json({
