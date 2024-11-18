@@ -410,7 +410,6 @@ module.exports = {
         AssignProductToCategory,
         validateProductCategory,
         AssignProductToOffer,
-        validateProductOffer,
         UpdateProductCategory,
         ValidateUpdateProductCategory,
         deleteProductCategory
