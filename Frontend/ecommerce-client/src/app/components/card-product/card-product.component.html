@@ -5,7 +5,12 @@
                 class="indicator-item indicator-top badge badge-primary absolute top-10 left-0 px-5 pt-5 pb-5 rounded-2xl bg-[#1E2B3D] text-white font-bold text-lg">
                 -{{(offer?.discount ?? 0) * 100}}%
             </span>
-            <img src="{{product.photo}}" alt="product" class="rounded-xl w-full" />
+            <img 
+            [src]="product.photo || 'images/logo.png'" 
+            alt="product" 
+            class="rounded-xl w-full" 
+            (error)="setDefaultImage($event)" 
+          />
         </div>
 
     </figure>

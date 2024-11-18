@@ -18,25 +18,34 @@ export class SliderRelatedProductsComponent {
   product!: Product;
 
   public products: Product[] = [];
+  public productsToShow: Product[] = [];
 
 
   constructor(private productService: ProductService, private categoryService: CategoryService) { }
 
   displayedSlides = 4;
+  displayedProducts = 10;
   currentIndex = 0;
+
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("producto",this.product);
-    console.log("id del producto que envio",this.product.id);
-    this.categoryService.getCategory(this.product?.id.toString()).subscribe((category: any) => {
-      console.log("categoria de ese producto",category);
+    this.categoryService.getCategoryByProduct(this.product?.id.toString()).subscribe((category: any) => {
+        this.categoryService.getParentCategory(category.id_category).subscribe((parentCategory: any) => {
+            this.productService.getProductsByCategory(parentCategory.id).subscribe((products: any) => {
+                this.products = products.filter((p: any) => p.id !== this.product?.id);
+                this.productsToShow = this.getRandomProducts(this.products, 10);
+            });
+        });
     });
+}
 
-    //TERMINAR AQUI CUANDO EL GETCATEGORY ESTE BIEN ---------------
-
-    
-  }
-  
-
+private getRandomProducts(products: any[], count: number): any[] {
+    const shuffled = [...products];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled.slice(0, count);
+}
 
   previousSlide() {
     if (this.currentIndex > 0) {
