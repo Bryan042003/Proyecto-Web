@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule} from '@angular/router';
 import { Product } from '../../models/product.model';
+import { ViewportScroller } from '@angular/common';
+
 
 
 @Component({
@@ -14,4 +16,13 @@ export class InfoProductComponent {
   @Input()
   product: Product | undefined;
 
+  constructor(private viewportScroller: ViewportScroller) { }
+
+  scrollToMainContent() {
+    const element = document.getElementById('main-content');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
 }

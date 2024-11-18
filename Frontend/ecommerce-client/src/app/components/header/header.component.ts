@@ -5,6 +5,8 @@ import { LocalStorageService } from '../../services/LocalStorage.service';
 import { Product } from '../../models/product.model';
 import { CategoryService } from '../../services/Category.service';
 import { AuthGuard } from '../../authGuard/auth.guard';
+import { ViewportScroller } from '@angular/common';
+
 
 
 @Component({
@@ -30,7 +32,7 @@ export class HeaderComponent implements OnInit {
   categories: any[] = [];
 
 
-  constructor(private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
+  constructor(private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
 
   ngOnInit() {
 
@@ -45,24 +47,31 @@ export class HeaderComponent implements OnInit {
     this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
 
     this.calculateSubtotal();
-    this.calculateIVA(); 
-    this.calculateTotal(); 
+    this.calculateIVA();
+    this.calculateTotal();
 
   }
 
+  scrollToMainContent() {
+    const element = document.getElementById('main-content');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
   ShoppingCartDelete(productId: number): void {
     this.localStorageService.removeProduct(productId);
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
-    this.calculateSubtotal(); 
-    this.calculateIVA(); 
-    this.calculateTotal(); 
+    this.calculateSubtotal();
+    this.calculateIVA();
+    this.calculateTotal();
 
   }
 
   WhishlistDelete(productId: number): void {
     this.localStorageService.removeProductWish(productId);
     this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
-}
+  }
 
 
   getQuantity(productId: number): number {
