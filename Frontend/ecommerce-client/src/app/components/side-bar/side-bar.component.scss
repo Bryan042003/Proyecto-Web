@@ -1,0 +1,18 @@
+.sidebar {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0;
+    left: 0;
+    height: 100vh; /* Altura completa de la ventana */
+    overflow-y: auto; /* Si el contenido es demasiado largo, se habilita el scroll */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+  }
+  
+  .menu li {
+    margin-bottom: 20px;
+  }
+  
+  .menu li a.active {
+    color: #007bff; /* Cambia el color cuando el enlace está activo */
+    font-weight: bold; /* Hace que el enlace activo sea más visible */
+  }
+  

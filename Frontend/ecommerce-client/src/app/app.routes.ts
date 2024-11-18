@@ -1,3 +1,4 @@
+import { UsersAdminComponent } from './components/users-admin/users-admin.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
@@ -14,6 +15,9 @@ import { OrderCompleteComponent } from './components/order-complete/order-comple
 import { AuthGuard } from './authGuard/auth.guard';
 import { AdminDashboardComponent } from './features/admin-dashboard/admin-dashboard.component';
 import { SlidersShopComponent } from './components/sliders-shop/sliders-shop.component';
+import { ProdutsAdminComponent } from './components/produts-admin/produts-admin.component';
+import { OrdersAdminComponent } from './components/orders-admin/orders-admin.component';
+import { InventoryAdminComponent } from './components/inventory-admin/inventory-admin.component';
 
 export const routes: Routes = [
     {
@@ -32,7 +36,13 @@ export const routes: Routes = [
             { path: 'order-complete', component: OrderCompleteComponent }
         ]
     },
-    { path: 'admin_dashboard', component: AdminDashboardComponent },
+    { path: 'admin_dashboard', component: AdminDashboardComponent, children:[
+        {path: 'users-admin', component: UsersAdminComponent},
+        {path: 'produts-admin', component: ProdutsAdminComponent},
+        {path: 'orders-admin', component: OrdersAdminComponent},
+        {path: 'inventory-admin', component: InventoryAdminComponent}
+    ]
+     },
     { path: '', redirectTo: 'store', pathMatch: 'full' },
     { path: '**', redirectTo: 'store' }
 ];
