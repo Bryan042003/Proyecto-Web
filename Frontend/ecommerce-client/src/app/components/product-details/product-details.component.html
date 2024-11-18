@@ -81,7 +81,7 @@
             </div>
             <div class="col w-full mt-5 h-[700px] flex">
                 <div class="row h-full w-full flex">
-                    <div class="col w-full h-full bg-white ">
+                    <div class="col w-full h-full bg-white rounded-l-2xl ">
                         <p
                             class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
                             Review de compradores</p>
@@ -157,7 +157,7 @@
 
 
                     </div>
-                    <div class="col w-full h-full bg-white">
+                    <div class="col w-full h-full bg-white rounded-r-2xl">
                         <p
                             class="font-bold text-lg w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
                             Valoraciones </p>
@@ -205,6 +205,12 @@
                     </div>
                 </div>
             </div>
+            <div class="col w-full mt-5 ">
+
+                <app-slider-related-products *ngIf="product" [product]="product"/>
+
+            </div>
+
         </div>
     </div>
 

@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
   cantons: Canton[] = [];
   provinces: Province[] = [];
 
+  showPassword: boolean = false; 
+
 
   public loginForm = new FormGroup({
     email: new FormControl<string>( '',[
@@ -112,6 +114,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProvinces();
+  }
+  
+  togglePasswordVisibility(event: Event): void {
+    this.showPassword = (event.target as HTMLInputElement).checked;
   }
 
 

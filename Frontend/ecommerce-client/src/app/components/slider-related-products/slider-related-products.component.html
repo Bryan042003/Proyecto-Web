@@ -1,0 +1,36 @@
+<div class="w-full bg-white flex flex-col items-center justify-center p-3 rounded-2xl mb-12" >
+    <p class="text-[25px] font-bold">Productos relacionados</p>
+    <div *ngIf="products.length  > 0; else noProductsMessage" class="h-full w-full">
+        <div class="flex w-full justify-center overflow-hidden relative">
+
+            <div class="flex items-center justify-start w-full overflow-hidden">
+
+                <div class="flex transition-transform duration-700 transform" [style.width]="4 * 25 + '%'"
+                    [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 25) + '%)'}">
+
+                    <div *ngFor="let product of products" class="flex-none w-[25%] h-full p-3">
+                        <app-card-product [product]="product" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="flex items-center justify-center w-full mt-5 h-[20%] space-x-2">
+            <button (click)="previousSlide()"
+                class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❮</button>
+            <button (click)="nextSlide()"
+                class="btn btn-circle bg-[#58616e] text-white border border-[#58616e]">❯</button>
+        </div>
+    </div>
+    <ng-template #noProductsMessage>
+        <div role="alert" class="alert h-[200px] flex items-center justify-center mt-10">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                class="stroke-info h-6 w-6 shrink-0">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span class="text-xl font-bold ">No hay productos disponibles en esta categoría.</span>
+        </div>
+    </ng-template>
+</div>
