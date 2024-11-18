@@ -62,6 +62,10 @@ export class UsersService {
         
         return this.http.put<User>(`${this.baseUrl}/${id}`, data);
     }
+
+    updatePassword(id: string, current_password: string, new_password:string): Observable<any> {
+        return this.http.patch(`${this.baseUrl}/update-password/${id}`, {current_password, new_password});
+    }
     
     deleteUser(id: string): Observable<User> {
         return this.http.delete<User>(`${this.baseUrl}/delete/${id}`);

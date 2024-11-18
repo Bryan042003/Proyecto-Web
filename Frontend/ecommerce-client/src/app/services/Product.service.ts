@@ -101,9 +101,9 @@ export class ProductService {
     }
 
     /*Product Offer: Methods related to associate product to offer*/
-
     AssignProductToOffer(id_product: string, id_offer: string): Observable<any> {
-        return this.http.post(`${this.baseUrl}/assign-offer`, { id_product, id_offer });
+        //If you want to quit the offer, just send an empty string as id_offer
+        return this.http.patch(`${this.baseUrl}/assign-offer`, { id_product, id_offer });
     }
 
     
