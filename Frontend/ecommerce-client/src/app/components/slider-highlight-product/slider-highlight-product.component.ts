@@ -20,9 +20,7 @@ export class SliderHighlightProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getHighlightedProducts().subscribe((products: Product[]) => {
-
       this.highlihtProducts = products;
-      console.log("productos highlight",this.highlihtProducts);
     });
   }
   previousSlide() {

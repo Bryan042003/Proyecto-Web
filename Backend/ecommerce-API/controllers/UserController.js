@@ -200,25 +200,25 @@ async function deleteUser(req, res) {
     const transaction = await sequelize.transaction();
 
     try {
-        const user = await User.findByPk(req.params.id);
+        const user = await User.findByPk(req.params.id, { transaction });
 
         if (user) {
-            // Delete address
-            const address = await Address.findOne({ where: { id: user.id_address }, transaction });
+            await user.destroy({ transaction });
+            
+            const address = await Address.findByPk(user.id_address, { transaction });
             if (address) {
                 await address.destroy({ transaction });
             }
 
-            // Delete user
-            await user.destroy({ transaction });
             await transaction.commit();
-            res.status(204).json({ message: 'User and associated address removed successfully' });
+            res.status(200).json({ message: 'User and associated address removed successfully' });
         } else {
+            await transaction.rollback();
             res.status(404).json({ error: 'User not found' });
         }
     } catch (error) {
         await transaction.rollback();
-        console.log(error);
+        console.error(error);
         res.status(500).json({ error: 'There was an error trying to delete the user' });
     }
 }

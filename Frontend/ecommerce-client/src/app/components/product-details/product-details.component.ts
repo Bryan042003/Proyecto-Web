@@ -17,12 +17,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertsComponent } from '../alerts/alerts.component';
 import { AuthService } from '../../services/Auth.service';
 import { LocalStorageService } from '../../services/LocalStorage.service';
+import { SliderRelatedProductsComponent } from "../slider-related-products/slider-related-products.component";
 
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [ReactiveFormsModule, AddCartComponent, AddWhislistComponent, StockStatusComponent, CommonModule, StarRatingComponent, AlertsComponent],
+  imports: [ReactiveFormsModule, AddCartComponent, AddWhislistComponent, StockStatusComponent, CommonModule, StarRatingComponent, AlertsComponent, SliderRelatedProductsComponent],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
@@ -61,7 +62,6 @@ export class ProductDetailsComponent {
 
   ngOnInit(): void {
     this.userActive = this.authService.getDecodedAccessToken(this.localStorageService.getItem('token'));
-    console.log('Usuario activo:', this.userActive);
     this.reviewForm.get('id_user')?.setValue(this.userActive?.id);
 
     this.route.paramMap.subscribe(params => {
@@ -113,7 +113,6 @@ export class ProductDetailsComponent {
     if (this.reviewForm.valid) {
       this.reviewService.createReview(this.reviewForm.value).subscribe({
         next: (result: any) => {
-          console.log('review creado con éxito:', result);
           this.showAlert = true;
           this.reviewForm.reset();
           setTimeout(() => {

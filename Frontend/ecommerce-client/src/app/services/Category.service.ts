@@ -28,4 +28,8 @@ export class CategoryService{
         return this.http.get(`${this.baseUrl}/parentCategory/${id}`);
     }
 
+    getCategoryByProduct(id_product: string): Observable<any> { //Get the category of a product
+        return this.http.get(`${this.baseUrl}/id_product/${id_product}`);
+    }   
+
 }

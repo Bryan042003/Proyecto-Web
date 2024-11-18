@@ -29,11 +29,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   showLogin = true;
   showAlert = false;
+  showAlert2 = false;
   selectedProvinceId: number | null = null;
   selectedCantonId: number | null = null;
   districts: District[] = [];
   cantons: Canton[] = [];
   provinces: Province[] = [];
+
+  showPassword: boolean = false; 
 
 
   public loginForm = new FormGroup({
@@ -112,6 +115,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProvinces();
+  }
+  
+  togglePasswordVisibility(event: Event): void {
+    this.showPassword = (event.target as HTMLInputElement).checked;
   }
 
 
@@ -210,8 +217,14 @@ export class LoginComponent implements OnInit {
         next: (result: any) => {
           console.log('Login cerado con exito:', result.token);
           this._localStorage.setItem('token', result.token);
-          this.router.navigate(['/']);
-          //navegate 
+          this.showAlert = true;
+          this.loginForm.reset();
+          setTimeout(() => {
+            this.showAlert = false
+            this.router.navigate(['/']);
+            window.location.reload();
+          }, 3000);
+
         },
         error:(error:any)=>{
           console.error('Login cerado con exito:', error);
@@ -240,7 +253,10 @@ export class LoginComponent implements OnInit {
             this.showAlert = true;
             this.userForm.reset();
             this.userForm.patchValue({ role: 'user' });
-            setTimeout(() => { this.showAlert = false; }, 3000);
+            setTimeout(() => { this.showAlert = false; 
+              this.router.navigate(['/login']);
+              window.location.reload();
+            }, 3000);
 
           },
           error: (error: any) => {

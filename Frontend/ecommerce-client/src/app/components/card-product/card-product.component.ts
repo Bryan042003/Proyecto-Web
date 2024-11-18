@@ -46,4 +46,10 @@ export class CardProductComponent {
     }
   }
 
+  setDefaultImage(event: Event): void {
+    const element = event.target as HTMLImageElement;
+    element.src = 'images/logo.png'; // Ruta a tu imagen por defecto
+  }
+  
+
 }

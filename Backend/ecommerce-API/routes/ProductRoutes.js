@@ -18,5 +18,13 @@ router.get('/by-prices-and-category', productController.getProductsByPricesAndCa
 router.get('/top-sales-and-category', productController.getTopProductsbySalesAndCategory);
 router.get('/highlighted', productController.GetActiveHighlightedProducts);
 
+router.post('/assign-category', productController.validateProductCategory, productController.AssignProductToCategory);
+router.put('/update-category/:id', productController.ValidateUpdateProductCategory, productController.UpdateProductCategory);
+router.delete('/delete-category/:id', productController.deleteProductCategory);
+
+router.patch('/assign-offer',productController.validateProductOffer, productController.AssignProductToOffer);
+
+
+
 
 module.exports = router;
