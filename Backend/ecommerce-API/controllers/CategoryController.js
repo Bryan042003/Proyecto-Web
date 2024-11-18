@@ -72,15 +72,18 @@ const getParentCategory = async (req,res) => {
     const {category_id} = req.params;
 
     try{
-        const category = await Category.findByPk(category_id,{
-            include:{
-                model: Category,
-                as: 'parent',
-                required: false
-            }
-        });
+        const category = await Category.findByPk(category_id);
 
-        res.status(200).json(category);
+        const parent = await Category.findByPk(category.parent_id);
+
+        if(!parent){ //If the category is a parent category
+            res.status(200).json(category);
+        }
+        else{ //If the category is a subcategory
+            res.status(200).json(parent);
+        }
+
+        
     }catch(error){
         console.log(error);
         res.status(500).json({error: 'There was an error trying to get the category'});
