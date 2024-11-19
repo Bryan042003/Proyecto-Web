@@ -9,5 +9,6 @@ router.get('/email/:email', userController.getUserByEmail);
 router.get('/id/:id', userController.getUserById);
 router.put('/update/:id', userController.validateUpdateUser,userController.updateUser);
 router.delete('/delete/:id', userController.deleteUser);
+router.patch('/update-password/:id', userController.validatePassword,userController.updatePassword);
 
 module.exports = router;

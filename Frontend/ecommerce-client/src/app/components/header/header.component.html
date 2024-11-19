@@ -9,7 +9,7 @@
     <div class="bg-[#1E2B3D] w-full h-[75px] flex items-center justify-end space-x-4 pr-5">
 
 
-        <button *ngIf="!logged" [routerLink]="['/store/login']"
+        <button *ngIf="!logged" [routerLink]="['/store/login']" (click)="scrollToMainContent()"
             class="bg-[#E9EFF9] text-[#1E2B3D] font-bold py-2 px-4 rounded-sm shadow-md transform -skew-x-12 flex space-x-2 btn">
             <span>INICIAR SESIÓN</span>
             <span class="text-[#1E2B3D]">|</span>
@@ -31,10 +31,10 @@
 
             <ul *ngIf="logged" tabindex="0"
                 class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                <li [routerLink]="['/store/personal-information']"><a>Pefil</a></li>
-                <li [routerLink]="['/store/order-history']"><a>Historial de pedidos</a></li>
-                <li [routerLink]="['/store/payment-method']"><a>Método de pago</a></li>
-                <li [routerLink]="['/store/direction']"><a>Dirección</a></li>
+                <li [routerLink]="['/store/personal-information']" (click)="scrollToMainContent()"><a>Pefil</a></li>
+                <li [routerLink]="['/store/order-history']" (click)="scrollToMainContent()"><a>Historial de pedidos</a></li>
+                <li [routerLink]="['/store/payment-method']" (click)="scrollToMainContent()"><a>Método de pago</a></li>
+                <li [routerLink]="['/store/direction']" (click)="scrollToMainContent()"><a>Dirección</a></li>
                 <li (click)="logout()"><a>Salir de la cuenta</a></li>
             </ul>
         </div>
@@ -62,20 +62,20 @@
         <div class="navbar-center hidden lg:flex">
 
             <div *ngFor="let category of categories" class="dropdown dropdown-hover inline-block relative pl-1 pr-1">
-                <button [routerLink]="['/store/products-per-category', category.id]"
+                <button [routerLink]="['/store/products-per-category', category.id]" (click)="scrollToMainContent()"
                     class="btn font-semibold py-2 px-4 rounded-xl inline-flex items-center w-[200px] bg-[#4C5664] text-white font-jetbrains  ">
                     <span>{{category.name}}</span>
                 </button>
                 <ul class="dropdown-content absolute hidden text-gray-700 pt-1 w-[200px] z-50">
                     <li *ngFor="let subcategory of category.subcategories" class="dropdown z-50 relative w-[200px]">
-                        <a [routerLink]="['/store/products-per-category', subcategory.id]"
+                        <a [routerLink]="['/store/products-per-category', subcategory.id]" (click)="scrollToMainContent()"
                             class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
                             {{subcategory.name}}
                         </a>
                         <!-- Sub-subcategorías al lado de las subcategorías -->
                         <ul class="dropdown-content  hidden text-gray-700 pl-5 ml-44 w-[200px] z-[20]" style="top: -10px;">
                             <li *ngFor="let subsubcategory of subcategory.subcategories">
-                                <a [routerLink]="['/store/products-per-category', subsubcategory.id]"
+                                <a [routerLink]="['/store/products-per-category', subsubcategory.id]" (click)="scrollToMainContent()"
                                     class=" bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
                                     {{subsubcategory.name}}
                                 </a>
@@ -147,7 +147,7 @@
                                 </div>
                             </div>
                             <div class="row h-[10%] flex items-center justify-center">
-                                <button [routerLink]="['/store/whishlist']"
+                                <button [routerLink]="['/store/whishlist']" (click)="scrollToMainContent()"
                                     class="w-[50%] h-[90%] bg-[#1E2B3D] rounded-2xl font-jetbrains text-white">Ver
                                     whislist</button>
                             </div>
@@ -279,7 +279,7 @@
                                     </div>
 
                                     <div class="row h-[10%] flex items-center justify-center">
-                                        <button [routerLink]="['/store/shopping-cart']"
+                                        <button [routerLink]="['/store/shopping-cart']" (click)="scrollToMainContent()"
                                             class="w-[75%] h-[75%] bg-[#1E2B3D] rounded-2xl font-jetbrains text-white">Confirmar</button>
                                     </div>
 

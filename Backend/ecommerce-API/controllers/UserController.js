@@ -80,6 +80,20 @@ const validateUpdateUser = [
     }
 ];
 
+const validatePassword = [
+    body('new_password')
+    .isLength({min: 6}).withMessage('Password must have at least 6 characters')
+    .isString().withMessage('Password must be a string'),
+
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors: errors.array()});
+        }
+        next();
+    }
+]
+
 //POST
 
 async function createUser(req, res) {
@@ -223,6 +237,36 @@ async function deleteUser(req, res) {
     }
 }
 
+const updatePassword = async (req, res) => {
+    const transaction = await sequelize.transaction();
+    const {current_password,new_password} = req.body;
+
+    try {
+        const user = await User.findByPk(req.params.id, { transaction });
+
+        if (user) {
+            const isPasswordValid = await bcrypt.compare(current_password, user.passw);
+
+            if (isPasswordValid) {
+                const hashedPassword = await bcrypt.hash(new_password, 10);
+                await user.update({ passw: hashedPassword }, { transaction });
+                await transaction.commit();
+                res.status(200).json({ message: 'Password updated successfully' });
+            } else {
+                await transaction.rollback();
+                res.status(400).json({ error: 'Invalid current password' });
+            }
+        } else {
+            await transaction.rollback();
+            res.status(404).json({ error: 'User not found' });
+        }
+    } catch (error) {
+        await transaction.rollback();
+        console.error(error);
+        res.status(500).json({ error: 'There was an error trying to update the password' });
+    }
+}
+
 
 module.exports = {
     createUser,
@@ -232,6 +276,8 @@ module.exports = {
     getUserByEmail,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    validatePassword,
+    updatePassword
 
 };

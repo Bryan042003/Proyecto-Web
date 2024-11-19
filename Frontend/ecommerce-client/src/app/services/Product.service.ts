@@ -86,7 +86,25 @@ export class ProductService {
         return this.http.get<Product[]>(`${this.baseUrl}/highlighted`);
     }
 
+    /*Product Category: Methods related to associate product to category*/
+
     AssignProductToCategory(id_product: string, id_category: string): Observable<any> {
         return this.http.post(`${this.baseUrl}/assign-category`, { id_product, id_category });
     }
+
+    UpdateProductCategory(id:string,id_product: string, id_category: string): Observable<any> { 
+        return this.http.put(`${this.baseUrl}/update-category/${id}`, { id_product, id_category });
+    }
+
+    DeleteProductCategory(id:string): Observable<any> {
+        return this.http.delete(`${this.baseUrl}/delete-category/${id}`);
+    }
+
+    /*Product Offer: Methods related to associate product to offer*/
+    AssignProductToOffer(id_product: string, id_offer: string): Observable<any> {
+        //If you want to quit the offer, just send an empty string as id_offer
+        return this.http.patch(`${this.baseUrl}/assign-offer`, { id_product, id_offer });
+    }
+
+    
 }
