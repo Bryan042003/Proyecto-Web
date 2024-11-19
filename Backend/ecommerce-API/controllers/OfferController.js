@@ -70,7 +70,6 @@ const createOffer = async (req, res) => {
     
     start_date = moment(start_date).tz('America/Costa_Rica').format('YYYY-MM-DD HH:mm:ss');
     end_date = end_date ? moment(end_date).tz('America/Costa_Rica').format('YYYY-MM-DD HH:mm:ss') : null;
-    console.log("Start: "+start_date);
     try {
         const offer = await Offer.create({ discount, start_date, end_date });
         return res.status(201).json({

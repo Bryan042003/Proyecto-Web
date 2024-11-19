@@ -11,6 +11,7 @@ const CategoryRoutes = require('./routes/CategoryRoutes');
 const OfferRoutes = require('./routes/OfferRoutes');
 const ReviewRoutes = require('./routes/ReviewRoutes');
 const HighlightRoutes = require('./routes/HighlightRoutes');
+const OrderRoutes = require('./routes/OrderRoutes');
 const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
@@ -37,6 +38,7 @@ app.use('/api/categories', CategoryRoutes);
 app.use('/api/offers', OfferRoutes);
 app.use('/api/reviews', ReviewRoutes);
 app.use('/api/highlights', HighlightRoutes);
+app.use('/api/orders', OrderRoutes);
 
 
 //Server
