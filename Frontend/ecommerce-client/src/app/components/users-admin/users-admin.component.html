@@ -67,7 +67,7 @@
           <!-- Letra más grande en el dropdown -->
           <option value="user">user</option>
           <option value="admin">admin</option>
-          <option valie="logist">logist</option>
+          <option value="logist">logist</option><!-- ! por que este parace no aceptarlo-->
         </select>
       </label>
     </div>
@@ -136,45 +136,45 @@
 </form>
 <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
   <button class="btn btn-secondary" (click)="onSubmit()"
-    style="padding: 10px 20px; border-radius: 4px; background-color: #63d2e5; color: #fff; border: none; cursor: pointer;">Agregar</button>
- 
+    style="padding: 10px 20px; border-radius: 4px; background-color: #63d2e5; color: #fff; border: none; cursor: pointer;">Guardar</button>
+
 </div>
 
-  <div class="overflow-x-auto" style="padding: 50px">
-    <table class="table table-striped" style="font-size: 18px;">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Email</th>
-          <th>Telefono</th>
-          <th>Foto</th>
-          <th>Rol</th>
-          <th>ID dirección</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <th>{{ user.id }}</th>
-          <td>{{ user.name }}</td>
-          <td>{{ user.last_name }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.phone }}</td>
-          <td>{{ user.photo }}</td>
-          <td>{{ user.role }}</td>
-          <td>{{ user.id_address }}</td>
-          <td><button class="btn btn-secondary"
-              (click)="onDelete(user.id)"
-              style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;">Eliminar</button>
-          </td>
-          <td>
-             <button class="btn btn-primary"
-    style="padding: 10px 20px; border-radius: 4px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Editar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div class="overflow-x-auto" style="padding: 50px">
+  <table class="table table-striped" style="font-size: 18px;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Telefono</th>
+        <th>Foto</th>
+        <th>Rol</th>
+        <th>ID dirección</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <th>{{ user.id }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.photo }}</td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.id_address }}</td>
+        <td><button class="btn btn-secondary" (click)="onDelete(user.id)"
+            style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;">Eliminar</button>
+        </td>
+        <td>
+          <button class="btn btn-primary"
+          (click)="onEdit(user)"
+            style="padding: 10px 20px; border-radius: 4px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

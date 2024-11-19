@@ -1,13 +1,13 @@
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersService } from '../../services/Users.service';
 import { AddressesService } from '../../services/Addresses.service';
 import { NoAlertsComponent } from '../no-alerts/no-alerts.component';
-import { Canton, District, Province } from '../../models/address.model';
+import { Canton, District, Province, Address } from '../../models/address.model';
 import { AlertsComponent } from '../../components/alerts/alerts.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { User } from '../../models/user.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -32,6 +32,7 @@ export class UsersAdminComponent {
   provinces: Province[] = [];
   showAlert = false;
   showNoAlert = false;
+  isEditMode: boolean = false;
 
   constructor(
     private _usersService: UsersService,
@@ -46,6 +47,8 @@ export class UsersAdminComponent {
 
 
   public userForm = new FormGroup({
+    id: new FormControl<number | null>(null),
+    id_address: new FormControl<number | null>(null),
     email: new FormControl<string>('', [
       Validators.required,
       Validators.email, //1*( atext / "." ) "@" label *( "." label )
@@ -192,7 +195,7 @@ export class UsersAdminComponent {
             this.userForm.reset();
             this.userForm.patchValue({ role: 'user' });
             setTimeout(() => { this.showAlert = false; }, 3000);
-
+            this.loadUser();
           },
           error: (error: any) => {
             console.error('Error al crear usuario:', error);
@@ -217,8 +220,8 @@ export class UsersAdminComponent {
   loadUser() {
     this._usersService.getUsers()
       .subscribe({
-        next: (result: User[]) => { 
-          this.users = result; 
+        next: (result: User[]) => {
+          this.users = result;
           console.log(this.users);
         },
         error: (error: any) => {
@@ -230,27 +233,62 @@ export class UsersAdminComponent {
       });
   }
 
-  onDelete(id: number){
+  onDelete(id: number) {
     this._usersService.deleteUser(id.toString())
-    .subscribe({
-      next: (result) => { 
-        console.log('eliminado exitosamente');
+      .subscribe({
+        next: (result) => {
+          console.log('eliminado exitosamente');
+          this.loadUser();
+          this.showAlert = true;
+          this.userForm.patchValue({ role: 'user' });
+          setTimeout(() => { this.showAlert = false; }, 3000);
+        },
+        error: (error: any) => {
+          console.log('error:', id.toString());
+          console.error('Error al obtener usuario:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        }
+      });
+  }
+
+
+  loadAddress(id: number): Observable<Address> {
+    return this._addressService.getAddress(id.toString());
+  }
+
+  onEdit(user: User): void {
+    this.isEditMode = true; // Cambia a modo edición
+
+    this.loadAddress(user.id_address).subscribe({
+      next: (result) => {
+        console.log('Address obtenida exitosamente', result);
       },
       error: (error: any) => {
-        console.log('error:', id.toString());
-        console.error('Error al obtener usuario:', error);
+        console.error('Error al obtener address:', error);
       },
       complete: () => {
         console.log('Solicitud completada');
       }
     });
+    
+
+
+    this.userForm.patchValue({
+      id: user.id,
+      name: user.name,
+      passw: user.passw,
+      last_name: user.last_name,
+      phone: user.phone,
+      email: user.email,
+      role: user.role,
+      photo: user.photo,
+      id_address: user.id_address,
+    });
   }
 
-  onEdit(id: number, data: User){
 
-  }
-  
-  
-  
+
 }
 
