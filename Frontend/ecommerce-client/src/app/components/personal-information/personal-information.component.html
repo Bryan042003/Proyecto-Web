@@ -21,8 +21,7 @@
                             id="input-name" name="input-name" [value]="user?.name" formControlName="name">
                         <div *ngIf="updateUserForm.controls['name'].invalid && updateUserForm.controls['name'].touched"
                             class="text-red-500">
-                            <small *ngIf="updateUserForm.controls['name'].errors?.['required']">El nombre es
-                                obligatorio.</small>
+
                             <small *ngIf="updateUserForm.controls['name'].errors?.['pattern']">
                                 Se permiten solo caracteres alfabéticos</small>
                         </div>
@@ -34,8 +33,7 @@
                             name="input-last_name" [value]="user?.last_name" formControlName="last_name">
                         <div *ngIf="updateUserForm.controls['last_name'].invalid && updateUserForm.controls['last_name'].touched"
                             class="text-red-500">
-                            <small *ngIf="updateUserForm.controls['last_name'].errors?.['required']">El apellido es
-                                obligatorio.</small>
+
                             <small *ngIf="updateUserForm.controls['last_name'].errors?.['pattern']">
                                 Se permiten solo caraterés alfabéticos</small>
                         </div>
@@ -46,8 +44,7 @@
                             id="input-phone" name="input-phone" [value]="user?.phone" formControlName="phone">
                         <div *ngIf="updateUserForm.controls['phone'].invalid && updateUserForm.controls['phone'].touched"
                             class="text-red-500">
-                            <small *ngIf="updateUserForm.controls['phone'].errors?.['required']">El teléfono es
-                                obligatorio.</small>
+
                             <small *ngIf="updateUserForm.controls['phone'].errors?.['pattern']">Ingrese un teléfono
                                 válido
                                 (8
@@ -68,8 +65,26 @@
                             Eliminar cuenta
                         </button>
                     </div>
+                </div>
+
+
+                <!-- Alerta de éxito -->
+                <div class="w-full flex justify-center items-center mb-5">
+                    <div class="w-[60%]">
+                        <app-alerts *ngIf="showAlertEdit" class="alert alert-success"></app-alerts>
+                    </div>
 
                 </div>
+
+                <!-- Alerta de error -->
+                <div class="w-full flex justify-center items-center mb-5">
+                    <div class="w-[60%]">
+                        <app-alert-error-update-user *ngIf="showErrorAlertEdit" class="alert alert-error"></app-alert-error-update-user>
+                    </div>
+
+                </div>
+
+
                 <app-alert-accept-detele *ngIf="showAlert" class="alert" (cancel)="onCancel($event)"
                     (confirm)="onConfirm($event)"></app-alert-accept-detele>
 
@@ -77,42 +92,28 @@
             </div>
 
             <div class="col bg-white w-[50%] h-full p-10 rounded-r-2xl">
-                <div class="row h-[10%] w-full flex flex-col justify-center">
+                <div class="row h-[20%] w-full flex flex-col justify-center">
                     <p
                         class="font-bold text-2xl w-full h-[20%] flex items-center justify-center font-jetbrains text-black">
                         Tu información personal</p>
                 </div>
-                <form class="w-full h-[20%]" [formGroup]="updateUserForm">
-                    <div class="row h-full w-full flex flex-col justify-center items-center ">
-                        <label for="input-email" class="mb-2 font-bold">Correo Electrónico</label>
-                        <input class="w-[50%] h-[40px]  rounded-xl bg-[#b1b7bf] font-bold pl-5" type="text"
-                            id="input-email" name="input-name" [value]="user?.email" formControlName="email">
-                        <div *ngIf="updateUserForm.controls['email'].invalid && updateUserForm.controls['email'].touched"
-                            class="text-red-500">
-                            <small *ngIf="updateUserForm.controls['email'].errors?.['required']">El correo electrónico
-                                es
-                                obligatorio.</small>
-                            <small *ngIf="updateUserForm.controls['email'].errors?.['email']">
-                                Ingrese un email válido</small>
-                        </div>
-                    </div>
-
-                </form>
-
-                <form class=" w-full h-[70%] "  [formGroup]="updatePassword">
+                <form class=" w-full h-[80%] " [formGroup]="updatePassword">
                     <div class="row h-[25%] w-full flex flex-col justify-center items-center ">
                         <label for="input-actualPassw" class="mb-2 font-bold">Contraseña actual</label>
-                        <input [type]="showPassword ? 'text' : 'password'" class="w-[50%] h-[40px]  rounded-xl bg-[#b1b7bf] font-bold  pl-5" type="password"
+                        <input [type]="showPassword ? 'text' : 'password'"
+                            class="w-[50%] h-[40px]  rounded-xl bg-[#b1b7bf] font-bold  pl-5" type="password"
                             id="input-actualPassw" name="input-actualPassw" formControlName="actualPassword">
                         <div *ngIf="updatePassword.controls['actualPassword'].invalid && updatePassword.controls['actualPassword'].touched"
                             class="text-red-500">
-                            <small *ngIf="updatePassword.controls['actualPassword'].errors?.['required']">La contraseña actual es obligatoria.</small>
+                            <small *ngIf="updatePassword.controls['actualPassword'].errors?.['required']">La contraseña
+                                actual es obligatoria.</small>
                         </div>
                     </div>
 
                     <div class="row h-[25%] w-full flex flex-col justify-center items-center ">
                         <label for="input-newPassw" class="mb-2 font-bold">Nueva contraseña</label>
-                        <input [type]="showPassword ? 'text' : 'password'" class="w-[50%] h-[40px]  rounded-xl bg-[#b1b7bf] font-bold pl-5" type="password"
+                        <input [type]="showPassword ? 'text' : 'password'"
+                            class="w-[50%] h-[40px]  rounded-xl bg-[#b1b7bf] font-bold pl-5" type="password"
                             id="input-newPassw" name="input-name" formControlName="newPassw">
                         <div *ngIf="updatePassword.controls['newPassw'].invalid && updatePassword.controls['newPassw'].touched"
                             class="text-red-500">
@@ -124,7 +125,8 @@
 
                     <div class="row h-[25%] w-full flex flex-col justify-center items-center ">
                         <label for="input-confirmNewPassw" class="mb-2 font-bold">Confirmar nueva contraseña</label>
-                        <input [type]="showPassword ? 'text' : 'password'"  class="w-[50%] h-[40px]  rounded-xl bg-[#b1b7bf] font-bold pl-5" type="password"
+                        <input [type]="showPassword ? 'text' : 'password'"
+                            class="w-[50%] h-[40px]  rounded-xl bg-[#b1b7bf] font-bold pl-5" type="password"
                             id="input-confirmNewPassw" name="input-name" formControlName="confirmNewPassw">
                         <div *ngIf="updatePassword.controls['confirmNewPassw'].invalid && updatePassword.controls['confirmNewPassw'].touched"
                             class="text-red-500">
