@@ -26,6 +26,7 @@ import { Observable } from 'rxjs';
 export class UsersAdminComponent {
   selectedProvinceId: number | null = null;
   selectedCantonId: number | null = null;
+  address: Address| null = null;
   users: User[] = [];
   districts: District[] = [];
   cantons: Canton[] = [];
@@ -253,17 +254,17 @@ export class UsersAdminComponent {
       });
   }
 
-
-  loadAddress(id: number): Observable<Address> {
-    return this._addressService.getAddress(id.toString());
+  get addresBy() {
+    return this.provinces;
   }
 
-  onEdit(user: User): void {
-    this.isEditMode = true; // Cambia a modo edición
-
-    this.loadAddress(user.id_address).subscribe({
-      next: (result) => {
+  loadAddress(id: string) {
+    this._addressService.getAddress(id).
+    subscribe({
+      next: (result) =>
+      {
         console.log('Address obtenida exitosamente', result);
+        this.address = result;
       },
       error: (error: any) => {
         console.error('Error al obtener address:', error);
@@ -273,7 +274,14 @@ export class UsersAdminComponent {
       }
     });
     
+  }
 
+
+  onEdit(user: User): void {
+    this.isEditMode = true; // Cambia a modo edición
+
+    this.loadAddress(user.id_address.toString());
+   
 
     this.userForm.patchValue({
       id: user.id,
@@ -285,7 +293,9 @@ export class UsersAdminComponent {
       role: user.role,
       photo: user.photo,
       id_address: user.id_address,
+     
     });
+
   }
 
 

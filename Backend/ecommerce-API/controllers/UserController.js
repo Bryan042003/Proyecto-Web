@@ -26,7 +26,7 @@ const validateUser = [
     .isLength({min: 6}).withMessage('Password must have at least 6 characters')
     .isString().withMessage('Password must be a string'),
     body('role')
-    .isIn(['admin', 'user', 'operator']).withMessage('Invalid role'),
+    .isIn(['admin', 'user', 'logistics']).withMessage('Invalid role'),
     body('phone')
     .isMobilePhone().withMessage('Invalid phone number'),
     body('province')
