@@ -46,6 +46,7 @@ export class UsersService {
     }
     
     updateUser(id: string, data: any): Observable<any> {
+        console.log("lo que envio de data",data);
         /*
         data = {
             id,

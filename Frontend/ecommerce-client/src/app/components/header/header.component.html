@@ -19,10 +19,9 @@
         <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
                 <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                    <!-- Mostrar imagen si logueado es true -->
                     <img *ngIf="logged" src="images/logo.png" class="w-8 h-8 object-cover" />
 
-                    <!-- Mostrar ícono si logueado es false -->
+
                     <i *ngIf="!logged" class="far fa-user text-lg"></i>
                 </div>
             </div>
@@ -32,7 +31,8 @@
             <ul *ngIf="logged" tabindex="0"
                 class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                 <li [routerLink]="['/store/personal-information']" (click)="scrollToMainContent()"><a>Pefil</a></li>
-                <li [routerLink]="['/store/order-history']" (click)="scrollToMainContent()"><a>Historial de pedidos</a></li>
+                <li [routerLink]="['/store/order-history']" (click)="scrollToMainContent()"><a>Historial de pedidos</a>
+                </li>
                 <li [routerLink]="['/store/payment-method']" (click)="scrollToMainContent()"><a>Método de pago</a></li>
                 <li [routerLink]="['/store/direction']" (click)="scrollToMainContent()"><a>Dirección</a></li>
                 <li (click)="logout()"><a>Salir de la cuenta</a></li>
@@ -68,14 +68,17 @@
                 </button>
                 <ul class="dropdown-content absolute hidden text-gray-700 pt-1 w-[200px] z-50">
                     <li *ngFor="let subcategory of category.subcategories" class="dropdown z-50 relative w-[200px]">
-                        <a [routerLink]="['/store/products-per-category', subcategory.id]" (click)="scrollToMainContent()"
+                        <a [routerLink]="['/store/products-per-category', subcategory.id]"
+                            (click)="scrollToMainContent()"
                             class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
                             {{subcategory.name}}
                         </a>
                         <!-- Sub-subcategorías al lado de las subcategorías -->
-                        <ul class="dropdown-content  hidden text-gray-700 pl-5 ml-44 w-[200px] z-[20]" style="top: -10px;">
+                        <ul class="dropdown-content  hidden text-gray-700 pl-5 ml-44 w-[200px] z-[20]"
+                            style="top: -10px;">
                             <li *ngFor="let subsubcategory of subcategory.subcategories">
-                                <a [routerLink]="['/store/products-per-category', subsubcategory.id]" (click)="scrollToMainContent()"
+                                <a [routerLink]="['/store/products-per-category', subsubcategory.id]"
+                                    (click)="scrollToMainContent()"
                                     class=" bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
                                     {{subsubcategory.name}}
                                 </a>
@@ -95,7 +98,7 @@
                         <div>
                             <i class="far fa-heart text-xl"></i>
                             <div class="badge bg-[#1E2B3D] text-white">{{ whishlistProducts.length > 99 ? '+99' :
-                                    whishlistProducts.length }}</div>
+                                whishlistProducts.length }}</div>
                         </div>
 
                     </div>
@@ -112,10 +115,10 @@
 
                                     <!-- aqui va el for -->
 
-                                    <div  *ngFor="let whishProduct of whishlistProducts"  class="card card-side border  h-[200px] bg-[#f8fafd] ltr">
+                                    <div *ngFor="let whishProduct of whishlistProducts"
+                                        class="card card-side border  h-[200px] bg-[#f8fafd] ltr">
                                         <figure class="rounded-2xl">
-                                            <img src="{{whishProduct.photo}}"
-                                                alt="Movie" />
+                                            <img src="{{whishProduct.photo}}" alt="Movie" />
                                         </figure>
                                         <div class="card-body  rounded-2xl ">
 
@@ -125,7 +128,8 @@
                                                         {{whishProduct.name}}
                                                     </div>
                                                     <div class="flex row h-[50%] items-center font-jetbrains">
-                                                        <p class="font-bold text-lg">₡ {{whishProduct.price - (whishProduct.price * whishProduct.discount)}}</p>
+                                                        <p class="font-bold text-lg">₡ {{whishProduct.price -
+                                                            (whishProduct.price * whishProduct.discount)}}</p>
                                                     </div>
                                                 </div>
 
@@ -198,8 +202,26 @@
                                                     </div>
                                                     <div class="flex row h-[33%] items-center justify-center">
                                                         <div
-                                                            class="w-[40%] h-[80%] bg-[#edf2fb] flex items-center justify-center rounded-2xl font-jetbrains">
-                                                            {{ getQuantity(cartProduct.id) }} X
+                                                            class="flex flex-col items-center justify-center space-y-2 p-4 bg-[#f8fafd] rounded-2xl w-full h-full">
+                                                            <!-- Número central -->
+                                                            <div
+                                                                class="flex items-center justify-center text-2xl font-bold bg-[#edf2fb] w-[50%] h-[80%] rounded-2xl">
+                                                                {{ getQuantity(cartProduct.id) }}
+                                                            </div>
+                                                            <!-- Botones de incremento y decremento -->
+                                                            <div class="flex w-full h-[20%] items-center justify-center">
+                                                                <!-- Botón de decremento -->
+                                                                <button (click)="decrementQuantity(cartProduct)"
+                                                                    class="w-[40px] h-[20px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
+                                                                    -
+                                                                </button>
+
+                                                                <!-- Botón de incremento -->
+                                                                <button (click)="incrementQuantity(cartProduct)"
+                                                                    class="w-[40px] h-[20px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
+                                                                    +
+                                                                </button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="flex row h-[33%] items-center font-jetbrains">
