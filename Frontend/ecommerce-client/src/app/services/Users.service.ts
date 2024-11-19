@@ -46,6 +46,7 @@ export class UsersService {
     }
     
     updateUser(id: string, data: any): Observable<any> {
+        console.log("lo que envio de data",data);
         /*
         data = {
             id,
@@ -60,7 +61,7 @@ export class UsersService {
         }
         */
         
-        return this.http.put<User>(`${this.baseUrl}/${id}`, data);
+        return this.http.put<User>(`${this.baseUrl}/update/${id}`, data);
     }
 
     updatePassword(id: string, current_password: string, new_password:string): Observable<any> {

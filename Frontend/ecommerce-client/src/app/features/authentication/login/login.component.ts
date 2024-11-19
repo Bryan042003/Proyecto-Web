@@ -221,8 +221,10 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
           setTimeout(() => {
             this.showAlert = false
-            this.router.navigate(['/']);
-            window.location.reload();
+            this.router.navigate(['/store']);
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           }, 3000);
 
         },
@@ -255,7 +257,9 @@ export class LoginComponent implements OnInit {
             this.userForm.patchValue({ role: 'user' });
             setTimeout(() => { this.showAlert = false; 
               this.router.navigate(['/login']);
-              window.location.reload();
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
             }, 3000);
 
           },

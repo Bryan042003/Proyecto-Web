@@ -23,47 +23,50 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
 
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
-    this.calculateSubtotal(); // Calcular el subtotal inicial
-    this.calculateIVA(); // Calcular el IVA inicial
-    this.calculateTotal(); // Calcular el total inicial
+    this.calculateSubtotal(); 
+    this.calculateIVA(); 
+    this.calculateTotal(); 
 
   }
 
   ShoppingCartDelete(productId: number): void {
     this.localStorageService.removeProduct(productId);
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
-    this.calculateSubtotal(); // Calcular el subtotal inicial
-    this.calculateIVA(); // Calcular el IVA inicial
-    this.calculateTotal(); // Calcular el total inicial
+    this.calculateSubtotal(); 
+    this.calculateIVA(); 
+    this.calculateTotal(); 
 
   }
 
-  // Incrementar la cantidad específica de un producto
   incrementQuantity(product: Product) {
     const newQuantity = this.localStorageService.getProductQuantity(product.id) + 1;
-
-    // Actualizar la cantidad en el LocalStorage
+  
     this.localStorageService.updateProductQuantity(product.id, newQuantity);
+  
+    this.cartProducts = [...Object.values(this.localStorageService.getAllProducts())];
+  
+    this.calculateSubtotal(); 
+    this.calculateIVA(); 
+    this.calculateTotal(); 
 
-    this.calculateSubtotal(); // Calcular el subtotal
-    this.calculateIVA(); // Calcular el IVA
-    this.calculateTotal(); // Calcular el total
+    window.location.reload();
   }
+  
 
-  // Decrementar la cantidad específica de un producto
+
   decrementQuantity(product: Product) {
     const currentQuantity = this.localStorageService.getProductQuantity(product.id);
 
     if (currentQuantity > 1) {
       const newQuantity = currentQuantity - 1;
 
-      // Actualizar la cantidad en el LocalStorage
       this.localStorageService.updateProductQuantity(product.id, newQuantity);
 
-      this.calculateSubtotal(); // Calcular el subtotal
-      this.calculateIVA(); // Calcular el IVA
-      this.calculateTotal(); // Calcular el total
+      this.calculateSubtotal(); 
+      this.calculateIVA(); 
+      this.calculateTotal(); 
     }
+    window.location.reload();
   }
 
   getQuantity(productId: number): number {
