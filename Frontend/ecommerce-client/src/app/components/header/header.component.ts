@@ -6,6 +6,8 @@ import { Product } from '../../models/product.model';
 import { CategoryService } from '../../services/Category.service';
 import { AuthGuard } from '../../authGuard/auth.guard';
 import { ViewportScroller } from '@angular/common';
+import { Router } from '@angular/router';
+
 
 
 
@@ -32,7 +34,7 @@ export class HeaderComponent implements OnInit{
   categories: any[] = [];
 
 
-  constructor(private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
+  constructor(private router: Router,private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
 
   ngOnInit() {
 
@@ -131,6 +133,10 @@ export class HeaderComponent implements OnInit{
   logout() {
     this.localStorageService.removeItem('token');
     this.logged = false;
+    setTimeout(() => {
+        this.router.navigate(['/store']);
+    }, 100);
+  
   }
 
 }
