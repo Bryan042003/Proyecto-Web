@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { Router } from '@angular/router';
 
 
 
@@ -12,5 +13,21 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
   styles: ''
 })
 export class SideBarComponent {
+  constructor(private router: Router) {}
 
+  navigateToUsers(): void {
+    this.router.navigate(['/admin_dashboard/users-admin']);
+  }
+
+  navigateToProducts(): void {
+    this.router.navigate(['/admin_dashboard/produts-admin']);
+  }
+
+  navigateToInventory(): void {
+    this.router.navigate(['/admin_dashboard/inventory-admin']);
+  }
+
+  navigateToOrders(): void {
+    this.router.navigate(['/admin_dashboard/orders-admin']);
+  }
 }

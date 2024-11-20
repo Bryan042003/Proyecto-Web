@@ -37,7 +37,7 @@ CREATE TABLE User (
     name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
     passw VARCHAR(255) NOT NULL,
-    role ENUM('user', 'admin', 'logist') NOT NULL,
+    role ENUM('user', 'admin', 'logistics') NOT NULL,
     photo VARCHAR(255) ,
     phone VARCHAR(20) NOT NULL,
     id_address INT NOT NULL,

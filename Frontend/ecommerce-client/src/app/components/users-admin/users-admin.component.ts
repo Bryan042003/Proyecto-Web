@@ -26,7 +26,7 @@ import { Observable } from 'rxjs';
 export class UsersAdminComponent {
   selectedProvinceId: number | null = null;
   selectedCantonId: number | null = null;
-  address: Address| null = null;
+  address: Address | null = null;
   users: User[] = [];
   districts: District[] = [];
   cantons: Canton[] = [];
@@ -186,36 +186,66 @@ export class UsersAdminComponent {
   get province() {
     return this.provinces;
   }
-  onSubmit() {
+  
+  onSubmit(): void {
     if (this.userForm.valid) {
-      this._usersService.createUser(this.userForm.value)
-        .subscribe({
-          next: (result: any) => {
-            console.log('Usuario creado con éxito:', result);
+      const formData = this.userForm.value;
+  
+      if (this.isEditMode) {
+        
+        const id = formData.id ? formData.id.toString() : '';
+        this._usersService.updateUser(id, formData).subscribe({
+          next: () => {
+            console.log('Usuario actualizado con éxito');
             this.showAlert = true;
             this.userForm.reset();
-            this.userForm.patchValue({ role: 'user' });
+            this.userForm.patchValue({ role: 'user' }); 
+            this.userForm.patchValue({ photo: '' }); 
             setTimeout(() => { this.showAlert = false; }, 3000);
-            this.loadUser();
+            this.loadUser(); 
+            this.isEditMode=false;
+          },
+          error: (error: any) => {
+            console.error('Error al actualizar usuario:', error);
+            this.showNoAlert = true; 
+            setTimeout(() => { this.showNoAlert = false; }, 3000);
+            console.log(formData);
+          },
+          complete: () => {
+            console.log('Actualización completada');
+          }
+        });
+      } else {
+        
+        this._usersService.createUser(this.userForm.value).subscribe({
+          next: (result: any) => {
+            console.log('Usuario creado con éxito:', result);
+            this.showAlert = true; 
+            this.userForm.reset();
+            this.userForm.patchValue({ role: 'user' }); 
+            setTimeout(() => { this.showAlert = false; }, 3000);
+            this.loadUser(); 
           },
           error: (error: any) => {
             console.error('Error al crear usuario:', error);
-            this.showNoAlert = true;
+            this.showNoAlert = true; 
             console.table(this.userForm.value);
             setTimeout(() => { this.showNoAlert = false; }, 3000);
           },
           complete: () => {
-            console.log('Solicitud completada');
+            console.log('Creación completada');
           }
         });
+      }
     } else {
       console.log('Formulario inválido');
-      this.userForm.markAllAsTouched(); // Marca todos los controles como "tocados" para mostrar errores
-      this.showNoAlert = true;
+      this.userForm.markAllAsTouched(); 
+      this.showNoAlert = true; 
       console.table(this.userForm.value);
       setTimeout(() => { this.showNoAlert = false; }, 3000);
     }
   }
+  
 
 
   loadUser() {
@@ -260,28 +290,41 @@ export class UsersAdminComponent {
 
   loadAddress(id: string) {
     this._addressService.getAddress(id).
-    subscribe({
-      next: (result) =>
-      {
-        console.log('Address obtenida exitosamente', result);
-        this.address = result;
-      },
-      error: (error: any) => {
-        console.error('Error al obtener address:', error);
-      },
-      complete: () => {
-        console.log('Solicitud completada');
-      }
-    });
-    
+      subscribe({
+        next: (result) => {
+ 
+          console.log('Address obtenida exitosamente', result);
+          this.updateFormWithAddress(result);
+        },
+        error: (error: any) => {
+          console.error('Error al obtener address:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        }
+      });
+
   }
 
+
+  updateFormWithAddress(result: any) {
+    const address = result.address;
+    if (address) {
+      this.userForm.patchValue({
+        postal_code: address.postal_code,
+        specific_address: address.specific_address
+      });
+    } else {
+      console.error('No se encontró la propiedad address en la respuesta.');
+    }
+  }
+  
 
   onEdit(user: User): void {
     this.isEditMode = true; // Cambia a modo edición
 
     this.loadAddress(user.id_address.toString());
-   
+   // console.log(this.address);
 
     this.userForm.patchValue({
       id: user.id,
@@ -293,7 +336,7 @@ export class UsersAdminComponent {
       role: user.role,
       photo: user.photo,
       id_address: user.id_address,
-     
+
     });
 
   }
