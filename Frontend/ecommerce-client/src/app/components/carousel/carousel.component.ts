@@ -8,10 +8,12 @@ import { CommonModule } from '@angular/common';
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss'
 })
-export class CarouselComponent {
+export class CarouselComponent  {
   slides = [
-    'https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp',
-    'https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp'
+   "images/gopro.jpg",
+   "images/headset.jpg",
+    "images/imagenbanner.jpg",
+    "images/banner3.jpg",
   ];
   currentIndex = 0;
 
@@ -22,4 +24,7 @@ export class CarouselComponent {
   nextSlide() {
     this.currentIndex = (this.currentIndex === this.slides.length - 1) ? 0 : this.currentIndex + 1;
   }
+
+
 }
+

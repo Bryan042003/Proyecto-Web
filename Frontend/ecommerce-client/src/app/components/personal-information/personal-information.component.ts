@@ -12,13 +12,14 @@ import { Router } from '@angular/router';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { AlertsComponent } from "../alerts/alerts.component";
 import { AlertErrorUpdateUserComponent } from "../alert-error-update-user/alert-error-update-user.component";
+import { AlertErrorComponent } from "../alert-error/alert-error.component";
 
 
 
 @Component({
   selector: 'app-personal-information',
   standalone: true,
-  imports: [CommonModule, AlertAcceptDeteleComponent, FormsModule, ReactiveFormsModule, AlertsComponent, AlertErrorUpdateUserComponent],
+  imports: [CommonModule, AlertAcceptDeteleComponent, FormsModule, ReactiveFormsModule, AlertsComponent, AlertErrorComponent],
   templateUrl: './personal-information.component.html',
   styleUrl: './personal-information.component.scss'
 })
@@ -30,6 +31,7 @@ export class PersonalInformationComponent implements OnInit {
   showAlertEdit: boolean = false;
   showPassword: boolean = false;
   showErrorAlertEdit: boolean = false;
+  message = "Ocurrió un error al actualizar la información. Por favor, intenta nuevamente.";
 
 
   constructor(private router: Router, private usersService: UsersService, private authService: AuthService, public authGuard: AuthGuard, private localStorageService: LocalStorageService) { }

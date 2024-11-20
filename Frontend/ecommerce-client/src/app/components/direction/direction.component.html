@@ -10,52 +10,102 @@
         <div class="row w-full h-full  flex justify-center space-x-2 p-5">
 
 
-            <div class="row w-[50%] h-full flex bg-[#b7bbc1] rounded-2xl" *ngIf="address; else noDirectionMessage">
-                <div class="col w-[80%] h-full p-10">
+            <div class="row w-[50%] h-full flex rounded-2xl border border-black shadow-2xl">
+                <div class="col w-[60%] h-full p-10 ">
                     <div
-                        class="row w-full h-[16.66%] font-extrabold text-2xl font-jetbrains text-white items-center justify-center flex">
+                        class="row w-full h-[25%] font-extrabold text-2xl font-jetbrains  items-center justify-center flex">
                         {{userInfo?.name + ' ' + userInfo?.last_name}}
                     </div>
-                    <div class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center flex">
-                        {{province?.name}}, {{canton?.name}}, {{district?.name}}
+                    <div class="row w-full h-[25%] font-extrabold text- font-jetbrains  items-center flex">
+                        {{province1?.name}}, {{canton1?.name}}, {{district1?.name}}
                     </div>
-                    <div class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center flex">
-                        Dirección exacta : {{address.specific_address}}
+                    <div class="row w-full h-[25%] font-extrabold text- font-jetbrains  items-center flex ">
+                        Dirección exacta : {{address?.specific_address}}
                     </div>
-                    <div class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center flex">
-                        Número de telefono: {{userInfo?.phone}}
-                    </div>
-                    <div
-                        class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center justify-center flex">
-                        <button
-                            class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[50%] h-[60%]">
-                            Guardar
-                        </button>
+                    <div class="row w-full h-[25%] font-extrabold text- font-jetbrains  items-center flex">
+                        Código postal: {{address?.postal_code}}
                     </div>
                 </div>
-                <div class="col w-[20%] h-full flex justify-center items-center">
-                    <button (click)="deleteDirection()" class="font-jetbrains">
-                        <i class="fas fa-trash text-lg"> </i> Eliminar
-                    </button>
+                <div class="col w-[40%] flex justify-center items-center">
+
+                    <img src="images/direccion.png" class="w-[50%]">
+
                 </div>
+
+
             </div>
 
-            <ng-template #noDirectionMessage>
-                <div role="alert" class="alert h-[200px] flex items-center justify-center mt-10">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        class="stroke-info h-6 w-6 shrink-0">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span class="text-xl font-bold ">No hay dirección disponible.</span>
-                </div>
-            </ng-template>
-
-
             <div
-                class=" rounded-2xl row w-[50%] h-full flex  bg-[#b7bbc1] items-center justify-center text-white font-bold text-2xl space-x-2 ">
-                <p>Editar Dirección</p>
-                <i class="fas fa-edit"></i>
+                class="row w-[50%] h-full font-extrabold font-jetbrains text-white items-center justify-center flex flex-col">
+                <!-- Alerta de éxito -->
+                <app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
+                <app-alert-error *ngIf="showErrorAlert" class="alert alert-error" [message]="message"></app-alert-error>
+
+                <div class="w-full flex flex-col items-center justify-center h-[80%]">
+
+                    <form class="w-full h-[40%] flex flex-col items-center justify-center gap-4" [formGroup]="formDistrict">
+                        <select
+                            class="w-[60%] h-[50px] pl-5 rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                            formControlName="province" (change)="onProvinceChange($event)">
+                            <option value="">Seleccione una provincia</option>
+                            <option *ngFor="let province of provinces" [value]="province.name"
+                                [attr.data-id]="province.id">
+                                {{ province.name }}
+                            </option>
+                        </select>
+
+                        <select
+                            class="w-[60%] h-[50px] pl-5 rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                            formControlName="canton" (change)="onCantonChange($event)">
+                            <option value="">Seleccione un cantón</option>
+                            <option *ngFor="let canton of cantons" [value]="canton.name" [attr.data-id]="canton.id">
+                                {{ canton.name }}
+                            </option>
+                        </select>
+
+                        <select
+                            class="w-[60%] h-[50px] pl-5 rounded-md bg-[#b7bbc1] font-bold text-white placeholder-white"
+                            formControlName="district">
+                            <option value="">Seleccione un distrito</option>
+                            <option *ngFor="let district of districts" [value]="district.id">
+                                {{ district.name }}
+                            </option>
+                        </select>
+
+                    </form>
+
+                    <form class="w-full h-[50%] flex flex-col items-center justify-center gap-4"
+                        [formGroup]="adressUpdate">
+                        <div class="w-full flex flex-col items-center">
+                            <input class="row w-[60%] h-[50px] pl-5 rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Código Postal" formControlName="postal_code" />
+                            <div *ngIf="adressUpdate.controls['postal_code'].invalid && adressUpdate.controls['postal_code'].touched"
+                                class="text-red-500">
+                                <small *ngIf="adressUpdate.controls['postal_code'].errors?.['pattern']">
+                                    Ingrese un código postal válido (5 dígitos).
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="w-full flex flex-col items-center">
+                            <input class="row w-[60%] pl-5 h-[50px] rounded-md bg-[#b7bbc1] font-bold placeholder-white"
+                                type="text" placeholder="Dirección Específica" formControlName="specific_address" />
+                            <div *ngIf="adressUpdate.controls['specific_address'].invalid && adressUpdate.controls['specific_address'].touched"
+                                class="text-red-500">
+                                <small *ngIf="adressUpdate.controls['specific_address'].errors?.['required']">
+                                    Una dirección específica es obligatoria.
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+
+
+                    <!-- Botón Guardar -->
+                    <button (click)="updateAddress()"
+                        class="row font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[60%] h-[10%] btn">
+                        Editar dirección
+                    </button>
+                </div>
             </div>
         </div>
     </div>

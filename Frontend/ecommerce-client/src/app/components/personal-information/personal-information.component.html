@@ -79,7 +79,7 @@
                 <!-- Alerta de error -->
                 <div class="w-full flex justify-center items-center mb-5">
                     <div class="w-[60%]">
-                        <app-alert-error-update-user *ngIf="showErrorAlertEdit" class="alert alert-error"></app-alert-error-update-user>
+                        <app-alert-error *ngIf="showErrorAlertEdit" class="alert alert-error" [message]="this.message"></app-alert-error>
                     </div>
 
                 </div>
