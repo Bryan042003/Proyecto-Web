@@ -53,12 +53,24 @@ export class AddressesService {
         return this.http.get(`${environment.baseUrl}addresses/districts`);
     }
 
+    getDistrict(id: string): Observable<any> {
+        return this.http.get(`${environment.baseUrl}addresses/district/${id}`);
+    }
+
     getCantons(): Observable<any> {
         return this.http.get(`${environment.baseUrl}addresses/cantons`);
     }
 
+    getCanton(id: string): Observable<any> {
+        return this.http.get(`${environment.baseUrl}addresses/canton/${id}`);
+    }
+
     getProvinces(): Observable<any> {
         return this.http.get(`${environment.baseUrl}addresses/provinces`);
+    }
+
+    getProvince(id: string): Observable<any> {
+        return this.http.get(`${environment.baseUrl}addresses/province/${id}`);
     }
 
     getDistrictsByCanton(id: string): Observable<any> {

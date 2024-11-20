@@ -10,41 +10,47 @@
         <div class="row w-full h-full  flex justify-center space-x-2 p-5">
 
 
-            <div class="row w-[50%] h-full flex bg-[#b7bbc1] rounded-2xl">
-                <div class="col w-[90%] h-full p-10">
+            <div class="row w-[50%] h-full flex bg-[#b7bbc1] rounded-2xl" *ngIf="address; else noDirectionMessage">
+                <div class="col w-[80%] h-full p-10">
                     <div
-                        class="  row w-full h-[16.66%] font-extrabold text-2xl font-jetbrains text-white items-center justify-center flex ">
-                        nombre
+                        class="row w-full h-[16.66%] font-extrabold text-2xl font-jetbrains text-white items-center justify-center flex">
+                        {{userInfo?.name + ' ' + userInfo?.last_name}}
+                    </div>
+                    <div class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center flex">
+                        {{province?.name}}, {{canton?.name}}, {{district?.name}}
+                    </div>
+                    <div class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center flex">
+                        Dirección exacta : {{address.specific_address}}
+                    </div>
+                    <div class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center flex">
+                        Número de telefono: {{userInfo?.phone}}
                     </div>
                     <div
-                        class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center  flex ">
-                        Provincia, Canton, Distrito
-                    </div>
-                    <div
-                        class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center  flex ">
-                        Pais
-                    </div>
-                    <div
-                        class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center  flex ">
-                        Dirección exacta :
-                    </div>
-                    <div
-                        class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center  flex ">
-                        Número de telefono:
-                    </div>
-                    <div
-                        class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center justify-center flex ">
+                        class="row w-full h-[16.66%] font-extrabold text- font-jetbrains text-white items-center justify-center flex">
                         <button
-                            class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains  rounded-xl w-[50%] h-[60%]">
+                            class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[50%] h-[60%]">
                             Guardar
                         </button>
                     </div>
-
                 </div>
-                <div class="col w-[10%] h-full flex justify-center items-center">
-                    <i class="fas fa-trash text-xl"></i>
+                <div class="col w-[20%] h-full flex justify-center items-center">
+                    <button (click)="deleteDirection()" class="font-jetbrains">
+                        <i class="fas fa-trash text-lg"> </i> Eliminar
+                    </button>
                 </div>
             </div>
+
+            <ng-template #noDirectionMessage>
+                <div role="alert" class="alert h-[200px] flex items-center justify-center mt-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        class="stroke-info h-6 w-6 shrink-0">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <span class="text-xl font-bold ">No hay dirección disponible.</span>
+                </div>
+            </ng-template>
+
 
             <div
                 class=" rounded-2xl row w-[50%] h-full flex  bg-[#b7bbc1] items-center justify-center text-white font-bold text-2xl space-x-2 ">

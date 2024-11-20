@@ -68,9 +68,7 @@ const getAddressById = async (req, res) => {
                 id
             }
         });
-        return res.status(200).json({
-            address
-        });
+        return res.status(200).json(address.get());
     } catch (error) {
         return res.status(500).json({
             message: 'Error getting address',
@@ -155,6 +153,25 @@ const getDistricts = async (req, res) => {
     }
 }
 
+// Get District by ID
+
+const getDistrict = async (req, res) => {
+    const { id } = req.params; 
+    try {
+        const district = await District.findOne({
+            where: { id } 
+        });
+        return res.status(200).json(district);
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting district',
+            error
+        });
+    }
+};
+
+
 const getCantons = async (req, res) => {
     try {
         const cantons = await Canton.findAll();
@@ -169,6 +186,24 @@ const getCantons = async (req, res) => {
     }
 }
 
+// Get Canton by ID
+
+const getCanton = async (req, res) => {
+    const { id } = req.params; 
+    try {
+        const canton = await Canton.findOne({
+            where: { id } 
+        });
+        return res.status(200).json(canton);
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting district',
+            error
+        });
+    }
+};
+
 const getProvinces = async (req, res) => {
     try {
         const provinces = await Province.findAll();
@@ -182,6 +217,24 @@ const getProvinces = async (req, res) => {
         });
     }
 }
+
+// Get Province by ID
+
+const getProvince = async (req, res) => {
+    const { id } = req.params; 
+    try {
+        const province = await Province.findOne({
+            where: { id } 
+        });
+        return res.status(200).json(province);
+
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error getting district',
+            error
+        });
+    }
+};
 
 //Get Cantons by Province
 const getCantonsByProvince = async (req, res) => {
@@ -232,8 +285,11 @@ module.exports = {
     deleteAddress,
     validateAddress,
     getDistricts,
+    getDistrict,
     getCantons,
+    getCanton,
     getProvinces,
+    getProvince,
     getCantonsByProvince,
     getDistrictsByCanton
 }
