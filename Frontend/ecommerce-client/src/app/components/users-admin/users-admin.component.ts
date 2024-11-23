@@ -292,9 +292,12 @@ export class UsersAdminComponent {
     this._addressService.getAddress(id).
       subscribe({
         next: (result) => {
- 
+          this.userForm.patchValue({
+            postal_code: result.postal_code,
+            specific_address: result.specific_address
+          });
           console.log('Address obtenida exitosamente', result);
-          this.updateFormWithAddress(result);
+          
         },
         error: (error: any) => {
           console.error('Error al obtener address:', error);
@@ -306,7 +309,7 @@ export class UsersAdminComponent {
 
   }
 
-
+/* 
   updateFormWithAddress(result: any) {
     const address = result.address;
     if (address) {
@@ -317,7 +320,7 @@ export class UsersAdminComponent {
     } else {
       console.error('No se encontró la propiedad address en la respuesta.');
     }
-  }
+  } */
   
 
   onEdit(user: User): void {

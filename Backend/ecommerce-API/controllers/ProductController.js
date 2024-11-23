@@ -177,6 +177,7 @@ const updateProduct = async (req, res) => {
             product.brand = req.body.brand;
             product.photo = req.body.photo;
             product.technical_stuff = req.body.technical_stuff;
+            product.id_offer= req.body.id_offer;
             product.stock = req.body.stock;
 
             await product.save({ transaction });

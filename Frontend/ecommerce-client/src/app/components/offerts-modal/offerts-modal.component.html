@@ -1,0 +1,57 @@
+<!-- You can open the modal using ID.showModal() method -->
+
+<!-- Modal -->
+<dialog id="my_modal_4" class="modal">
+    <div class="modal-box w-full max-w-5xl">
+        <!-- Botón de cierre -->
+        <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+
+        <!-- Título del Modal -->
+        <h3 class="text-lg font-bold mb-4">Lista de Ofertas</h3>
+
+        <!-- Tabla -->
+<div class="overflow-x-auto">
+    <table class="table w-full">
+      <!-- Cabecera -->
+      <thead>
+        <tr>
+          <th>
+            <label>
+              <input 
+                type="checkbox" 
+                class="checkbox"  />
+            </label>
+          </th>
+          <th>ID</th>
+          <th>Descuento (%)</th>
+          <th>Fecha de Inicio</th>
+          <th>Fecha de Fin</th>
+        </tr>
+      </thead>
+  
+      <!-- Cuerpo -->
+      <tbody>
+        <tr *ngFor="let offert of offerts; let i = index">
+          <th>
+            <label>
+              <input 
+                type="checkbox" 
+                class="checkbox" 
+                [checked]="offert.id === selectedProduct?.id_offer"
+                (change)="toggleSelection(offert.id, $event)" />
+            </label>
+          </th>
+          <td>{{ offert.id }}</td>
+          <td>{{ offert.discount }}</td>
+          <td>{{ offert.start_date }}</td>
+          <td>{{ offert.end_date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+    </div>
+</dialog>

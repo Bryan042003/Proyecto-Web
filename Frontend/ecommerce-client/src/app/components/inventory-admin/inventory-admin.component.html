@@ -1,9 +1,13 @@
+
+<app-offerts-modal (id_offert)="onOfferSelected($event)"
+[selectedProduct]="selectedProduct"></app-offerts-modal>
 <div class="overflow-x-auto">
   <table class="table table-xs" style="font-size: 50px;"> 
     <thead>
       <tr>
         <th></th>
         <th>Nombre</th>
+        <th>Id Oferta</th>
         <th>Descripción</th>
         <th>Precio</th>
         <th>Marca</th>
@@ -15,13 +19,23 @@
       <tr *ngFor="let product of products; let i = index">
         <th>{{ i + 1 }}</th>
         <td>{{ product.name }}</td>
+        <td>{{ product.id_offer}}</td>
         <td>{{ product.description }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.brand }}</td>
         <td>
           <input type="number" [(ngModel)]="product.stock" min="1" max="200" step="1" style="width: 150px; height: 40px; font-size: 20px; padding: 10px; border-radius: 5px; border: 2px solid #ccc;">
+          
         </td>
         <td>{{ product.technical_stuff }}</td>
+        <td>          <button
+          class="btn btn-secondary"
+          (click)="openModal(product)"
+          style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;"
+        >
+          Oferta
+        </button>
+      </td>
       </tr>
       <!-- Puedes continuar añadiendo filas si es necesario -->
     </tbody>
@@ -34,8 +48,8 @@
         <th>Marca</th>
         <th>Stock</th>
         <th>Especificaciones Técnicas</th>
+        <th></th>
       </tr>
     </tfoot>
   </table>
 </div>
-

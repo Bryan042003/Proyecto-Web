@@ -61,7 +61,7 @@ export class ProdutsAdminComponent {
 
   onSubmit() {
     if (this.productForm.valid) {
-      this._productService.createProduct(this.productForm).
+      this._productService.createProduct(this.productForm.value).
         subscribe({
           next: (result: any) => {
             console.log('Usuario creado con éxito:', result);

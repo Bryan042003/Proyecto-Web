@@ -8,7 +8,7 @@ export interface Product {
     technical_stuff:string;
     stock:number;
     n_sales:number;
-    id_offer:number;
+    id_offer:number ;
     quantity: number;
     discount: number;
 }
