@@ -117,7 +117,7 @@ CREATE TABLE Notification(
   id_product INT NOT NULL,
   FOREIGN KEY (id_product) REFERENCES Product(id),
   description VARCHAR(255),
-  `date` DATETIME /*--palabra reservada date*/
+  `date` DATETIME  NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 
