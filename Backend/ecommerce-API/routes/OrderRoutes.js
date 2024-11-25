@@ -8,5 +8,6 @@ router.post('/create', orderController.validateOrder, orderController.createOrde
 router.get('/', orderController.getOrders);
 router.get('/id/:id', orderController.getOrderById);
 router.post('/add-product', orderController.validateOrderProduct,orderController.addProductToOrder);
+router.patch('/update-status', orderController.validateOrderStatus,orderController.updateOrderStatus);
 
 module.exports = router;

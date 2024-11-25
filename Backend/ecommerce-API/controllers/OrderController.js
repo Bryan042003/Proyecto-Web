@@ -30,9 +30,6 @@ const validateUser = [
 
 const validateOrder = [
     ...validateUser,
-    body('status')
-        .isString().withMessage('The status must be a string')
-        .isIn(['pending', 'in_process', 'sent', 'delivered']).withMessage('Invalid status'),
     body('total_price')
         .isNumeric().withMessage('The total price must be a number'),
     (req, res, next) => {
@@ -82,6 +79,26 @@ const validateOrderProduct = [
     },
 ]
 
+const validateOrderStatus = [
+    body('id_order')
+        .isInt().withMessage('The order id must be an integer')
+        .custom(async (value) => {
+            const order = await Order.findByPk(value);
+            if (!order) {
+                throw new Error('Order not found');
+            }
+            return true;
+        }),
+    body('status')
+        .isIn(['pending', 'in_process', 'sent', 'delivered']).withMessage('The status must be pending, in_process, sent or delivered'),
+    (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        next();
+    },
+]
 
 
 //Get all orders
@@ -111,13 +128,13 @@ const getOrderById = async (req, res) => {
 //Create an order
 const createOrder = async (req, res) => {
     const transaction = await sequelize.transaction();
-    const { id_user, status, total_price } = req.body;
+    const { id_user, total_price } = req.body;
     const date = moment().tz('America/Costa_Rica').format('YYYY-MM-DD HH:mm:ss');
     try {
 
         const order = await Order.create({
             id_user: id_user,
-            status: status,
+            status: 'pending',
             total_price: total_price,
             date: date
         }, { transaction });
@@ -172,6 +189,35 @@ const addProductToOrder = async (req, res) => {
     }
 }
 
+const updateOrderStatus = async (req, res) => {
+    const transaction = await sequelize.transaction();
+    const { id_order, status } = req.body;
+    try {
+        const order = await Order.findByPk(id_order);
+        if (!order) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        order.status = status;
+        await order.save({ transaction });
+
+        await transaction.commit();
+
+        return res.status(200).json({
+            message: 'Order updated successfully',
+            order
+        });
+
+    } catch (error) {
+        await transaction.rollback();
+        return res.status(500).json({
+            message: 'Something went wrong',
+            error
+        });
+    }
+}
+
+
 
 
 module.exports = {
@@ -180,5 +226,7 @@ module.exports = {
     getOrders,
     getOrderById,
     addProductToOrder,
-    validateOrderProduct
+    validateOrderProduct,
+    updateOrderStatus,
+    validateOrderStatus
 }
