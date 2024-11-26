@@ -67,7 +67,7 @@ const validateUpdateUser = [
     .isLength({min: 2}).withMessage('Last name must have at least 2 characters')
     .isString().withMessage('Last name must be a string'),
     body('role')
-    .isIn(['admin', 'user', 'operator']).withMessage('Invalid role'),
+    .isIn(['admin', 'user', 'logistics']).withMessage('Invalid role'),
     body('phone')
     .isMobilePhone().withMessage('Invalid phone number'),
 
