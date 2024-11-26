@@ -188,6 +188,7 @@ async function getUserById(req, res) {
 }
 
 //PUT
+// To do: Modify
 async function updateUser(req, res) {
     const transaction = await sequelize.transaction();
 
@@ -195,7 +196,15 @@ async function updateUser(req, res) {
         const user = await User.findByPk(req.params.id);
 
         if(user){
-            const updatedUser = await user.update(req.body, {transaction});
+            const updatedUser = await user.update({
+                email: req.body.email,
+                name: req.body.name,
+                last_name: req.body.last_name,
+                role: req.body.role,
+                photo: req.body.photo,
+                phone: req.body.phone,
+                passw: user.passw
+            }, {transaction});
             await transaction.commit();
             res.status(200).json(updatedUser);
         }else{
