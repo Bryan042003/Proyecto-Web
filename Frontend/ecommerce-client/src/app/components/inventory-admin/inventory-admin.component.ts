@@ -55,7 +55,7 @@ export class InventoryAdminComponent {
     if (this.selectedProduct) {
       this.selectedProduct.id_offer = selectedOfferId;
       console.log('producto antes de actualiza:', this.selectedProduct);
-      this.updateProdut(this.selectedProduct.id, this.selectedProduct);
+      this.updateProdut(this.selectedProduct.id, this.selectedProduct.id);
     }
     
     (document.getElementById('my_modal_4') as HTMLDialogElement).close();
@@ -63,8 +63,8 @@ export class InventoryAdminComponent {
 
   }
 
-  updateProdut(id: string, data: Product) {
-    this._productService.updateProduct(id, data).subscribe({
+  updateProdut(id_offer: string, id_product: string) {
+    this._productService.AssignProductToOffer(id_offer, id_product).subscribe({
       next: (result) => {
         console.log('Actualización exitosa:', result);
       },

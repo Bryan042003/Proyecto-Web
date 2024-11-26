@@ -1,0 +1,70 @@
+<form class="grid" [formGroup]="offerForm" >
+    <div class="form-container"
+        style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <div class="column" style="flex: 1; min-width: 300px;">
+            <label class="input input-bordered flex items-center gap-2 mb-4">
+                Descuento
+                <input type="number" class="grow" formControlName="discount"
+                    style="padding: 15px; border-radius: 4px; width: 100%;" />
+            </label>
+            <div *ngIf="offerForm.controls['discount'].invalid && offerForm.controls['discount'].touched"
+                class="text-red-500">
+                <small *ngIf="offerForm.controls['discount'].errors?.['required']">La cantidad es obligatoria.</small>
+                <small *ngIf="offerForm.controls['discount'].errors?.['maxlength']">Máximo 100 caracteres.</small>
+            </div>
+
+            <label class="input input-bordered flex items-center gap-2 mb-4">
+                Día que comienza
+                <input type="datetime-local" class="grow" formControlName="start_date"
+                    style="padding: 15px; border-radius: 4px; width: 100%;" />
+            </label>
+            <div *ngIf="offerForm.controls['start_date'].invalid && offerForm.controls['start_date'].touched"
+                class="text-red-500">
+                <small *ngIf="offerForm.controls['start_date'].errors?.['required']">La fecha de inicio es
+                    obligatoria.</small>
+            </div>
+
+            <label class="input input-bordered flex items-center gap-2 mb-4">
+                Día que acaba
+                <input type="datetime-local" class="grow" formControlName="end_date"
+                    style="padding: 15px; border-radius: 4px; width: 100%;" />
+            </label>
+        </div>
+    </div>
+</form>
+<div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+    <button class="btn btn-secondary" 
+        style="padding: 10px 20px; border-radius: 4px; background-color: #63d2e5; color: #fff; border: none; cursor: pointer;">Guardar</button>
+</div>
+<!-- Tabla -->
+<div class="overflow-x-auto">
+    <table class="table w-full">
+        <!-- Cabecera -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descuento (%)</th>
+                <th>Fecha de Inicio</th>
+                <th>Fecha de Fin</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <!-- Cuerpo -->
+        <tbody>
+            <tr *ngFor="let offert of offerts; let i = index">
+                <td>{{ offert.id }}</td>
+                <td>{{ offert.discount }}</td>
+                <td>{{ offert.start_date }}</td>
+                <td>{{ offert.end_date }}</td>
+                <td> <button class="btn btn-primary"
+                        style="padding: 10px 20px; border-radius: 4px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Editar</button>
+                </td>
+                <td> <button class="btn btn-secondary"
+                        style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

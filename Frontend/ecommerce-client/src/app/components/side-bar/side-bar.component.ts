@@ -30,4 +30,8 @@ export class SideBarComponent {
   navigateToOrders(): void {
     this.router.navigate(['/admin_dashboard/orders-admin']);
   }
+
+  navigateToStatictics(): void {
+    this.router.navigate(['/admin_dashboard/statistics-admin']);
+  }
 }

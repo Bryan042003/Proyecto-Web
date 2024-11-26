@@ -24,8 +24,6 @@ export class OffertsModalComponent {
 
   ngOnInit(): void {
     this.loadOfferts();
-
-
   }
 
 

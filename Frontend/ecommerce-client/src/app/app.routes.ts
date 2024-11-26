@@ -18,6 +18,8 @@ import { SlidersShopComponent } from './components/sliders-shop/sliders-shop.com
 import { ProdutsAdminComponent } from './components/produts-admin/produts-admin.component';
 import { OrdersAdminComponent } from './components/orders-admin/orders-admin.component';
 import { InventoryAdminComponent } from './components/inventory-admin/inventory-admin.component';
+import { StatisticsAdminComponent } from './components/statistics-admin/statistics-admin.component';
+import { OffersAdminComponent } from './components/offers-admin/offers-admin.component';
 
 export const routes: Routes = [
     {
@@ -40,7 +42,9 @@ export const routes: Routes = [
         {path: 'users-admin', component: UsersAdminComponent},
         {path: 'produts-admin', component: ProdutsAdminComponent},
         {path: 'orders-admin', component: OrdersAdminComponent},
-        {path: 'inventory-admin', component: InventoryAdminComponent}
+        {path: 'inventory-admin', component: InventoryAdminComponent},
+        {path: 'statistics-admin', component: StatisticsAdminComponent},
+        {path: 'offers-admin', component: OffersAdminComponent}
     ]
      },
     { path: '', redirectTo: 'store', pathMatch: 'full' },

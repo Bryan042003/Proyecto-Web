@@ -21,7 +21,7 @@ export class OffersService {
       }
 
     
-    createOffer(data: Offer): Observable<Offer> {
+    createOffer(data: Offer): Observable<any> {
         /*
         data ={
             discount,
