@@ -5,6 +5,7 @@ const Highlight = require('../models/Highlight');
 const Product_Category = require('../models/Product_Category');
 const Category = require('../models/Category');
 const Offer = require('../models/Offer');
+const moment = require('moment');
 
 
 //Middlewares to validate product data
@@ -156,9 +157,8 @@ const createProduct = async (req, res) => {
             expired_date: expiredDate
         }, { transaction });
 
-
         await transaction.commit();
-        return res.status(201).json(newProduct, newHighlight);
+        return res.status(201).json({newProduct, newHighlight});
 
     } catch (error) {
         await transaction.rollback();
