@@ -194,7 +194,8 @@ const createOrder = async (req, res) => {
 
 const addProductToOrder = async (req, res) => {
     const transaction = await sequelize.transaction();
-    const { id_order, id_product, quantity } = req.body;
+    let { id_order, id_product, quantity } = req.body;
+    quantity = parseInt(quantity);
     try {
 
         const order_product = await Order_Products.create({
@@ -205,6 +206,7 @@ const addProductToOrder = async (req, res) => {
 
         const product = await Product.findByPk(id_product);
         product.stock -= quantity;
+        product.n_sales += quantity;
         await product.save({ transaction });
 
         if(product.stock <= 5){
