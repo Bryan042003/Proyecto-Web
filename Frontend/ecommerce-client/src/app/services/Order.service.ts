@@ -20,9 +20,14 @@ export class OrderService {
     getOrder(id: string): Observable<Order> {
         return this.http.get<Order>(`${this.baseUrl}/id/${id}`);
     }
-    //Ordes by user
+    
+    getOrdersByUser(id_user: string): Observable<Order[]> {
+        return this.http.get<Order[]>(`${this.baseUrl}/user/${id_user}`);
+    }
 
-    //Orders products by order
+    getProductsByOrder(id_order: string): Observable<any[]> {
+        return this.http.get<any[]>(`${this.baseUrl}/products/${id_order}`);
+    }
 
     createOrder(data: any): Observable<any> {
         /*
@@ -36,6 +41,7 @@ export class OrderService {
     }
 
     addProductToOrder(data: any): Observable<any> {
+        console.log("data de add order", data);
         /*
         data ={
             id_order,

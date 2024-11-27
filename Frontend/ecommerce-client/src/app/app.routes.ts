@@ -1,7 +1,6 @@
 import { UsersAdminComponent } from './components/users-admin/users-admin.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
-import { PaymentMethodComponent } from './components/payment-method/payment-method.component';
 import { LoginComponent } from './features/authentication/login/login.component';
 import { WhishlistComponent } from './components/whishlist/whishlist.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -25,7 +24,6 @@ export const routes: Routes = [
     {
         path: 'store', component: HomeComponent, children: [
             { path: '', component: SlidersShopComponent },
-            { path: 'payment-method', component: PaymentMethodComponent },
             { path: 'login', component: LoginComponent },
             { path: 'whishlist', component: WhishlistComponent },
             { path: 'product-details/:id', component: ProductDetailsComponent },

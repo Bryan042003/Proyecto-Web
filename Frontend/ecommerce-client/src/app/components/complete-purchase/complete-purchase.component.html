@@ -17,107 +17,206 @@
                         <div class="row w-full h-[20%] flex items-center justify-center">
                             <p class="font-bold text-2xl font-jetbrains text-black">Información de contacto</p>
                         </div>
+                        <form class="h-[80%] w-full" [formGroup]="contactForm" (ngSubmit)="onSubmitContact()">
+                            <div class="row h-full w-full pt-2 pb-6">
 
-                        <div class="row h-[80%] w-full pt-2 pb-6">
-                            <!-- Aquí puedes agregar el contenido de la segunda fila -->
+                                <div class="row  h-[20%] w-full flex justify-center items-center space-x-4 pl-4 pr-4">
+                                    <div class="flex flex-col w-[50%] ">
+                                        <label for="nombre-id" class="mb-2 font-bold text-black">Nombre:</label>
+                                        <input class="w-full h-[40px] text-black pl-5 rounded-xl bg-[#b1b7bf] font-bold"
+                                            type="text" id="nombre-id" name="nombre" formControlName="name">
+                                        <div *ngIf="contactForm.controls['name'].invalid && contactForm.controls['name'].touched"
+                                            class="text-red-500">
+                                            <small *ngIf="contactForm.controls['name'].errors?.['required']">El nombre
+                                                es
+                                                obligatorio.</small>
+                                            <small *ngIf="contactForm.controls['name'].errors?.['pattern']">
+                                                Se permiten solo caraterés alfabéticos</small>
+                                        </div>
+                                    </div>
 
-                            <div class="row  h-[20%] w-full flex justify-center items-center space-x-4 pl-4 pr-4">
-                                <div class="flex flex-col w-[50%] ">
-                                    <label for="nombre-id" class="mb-2 font-bold text-black">Nombre:</label>
-                                    <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
-                                        id="nombre-id" name="nombre">
+                                    <div class="flex flex-col w-[50%]  pl-4 pr-4">
+                                        <label for="apellido-id" class="mb-2 font-bold text-black">Apellidos:</label>
+                                        <input
+                                            class="w-full h-[40px]  pl-5 rounded-xl bg-[#b1b7bf] font-bold text-black"
+                                            type="text" id="apellido-id" name="apellido" formControlName="last_name">
+                                        <div *ngIf="contactForm.controls['last_name'].invalid && contactForm.controls['last_name'].touched"
+                                            class="text-red-500">
+                                            <small *ngIf="contactForm.controls['last_name'].errors?.['required']">El
+                                                apellido es
+                                                obligatorio.</small>
+                                            <small *ngIf="contactForm.controls['last_name'].errors?.['pattern']">
+                                                Se permiten solo caraterés alfabéticos</small>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="flex flex-col w-[50%]  pl-4 pr-4">
-                                    <label for="apellido-id" class="mb-2 font-bold text-black">Apellidos:</label>
-                                    <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
-                                        id="apellido-id" name="apellido">
+                                <div class="row h-[40%]  w-full flex justify-center items-center pl-4 pr-4">
+                                    <div class="flex flex-col w-full r">
+                                        <label for="apellido-id" class="mb-2  font-bold text-black">Dirección
+                                            Exacta:</label>
+                                        <input
+                                            class="w-full h-[80px] pl-5 rounded-xl  text-black bg-[#b1b7bf] font-bold"
+                                            type="text" id="apellido-id" name="apellido"
+                                            formControlName="specific_address">
+                                        <div *ngIf="contactForm.controls['specific_address'].invalid && contactForm.controls['specific_address'].touched"
+                                            class="text-red-500">
+                                            <small
+                                                *ngIf="contactForm.controls['specific_address'].errors?.['required']">
+                                                Una dirección
+                                                específica es obligatorio.</small>
+                                        </div>
+
+                                    </div>
                                 </div>
+
+                                <div class="row h-[20%]  w-full flex justify-center items-center pl-4 pr-4">
+                                    <div class="flex flex-col w-full justify-center ">
+                                        <label for="apellido-id" class="mb-2 font-bold text-black">Telefono:</label>
+                                        <input class="w-full h-[40px] pl-5 rounded-xl bg-[#b1b7bf] text-black font-bold"
+                                            type="text" id="apellido-id" name="apellido" formControlName="phone">
+                                        <div *ngIf="contactForm.controls['phone'].invalid && contactForm.controls['phone'].touched"
+                                            class="text-red-500">
+                                            <small *ngIf="contactForm.controls['phone'].errors?.['required']">El
+                                                teléfono es
+                                                obligatorio.</small>
+                                            <small *ngIf="contactForm.controls['phone'].errors?.['pattern']">Ingrese un
+                                                teléfono válido
+                                                (8
+                                                dígitos).</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row  h-[20%] w-full flex justify-center items-center pl-4 pr-4">
+
+                                    <div class="flex flex-col w-full ">
+                                        <label for="apellido-id" class="mb-2 font-bold text-black">Correo:</label>
+                                        <input class="w-full h-[40px] pl-5 rounded-xl bg-[#b1b7bf] text-black font-bold"
+                                            type="text" id="apellido-id" name="apellido" formControlName="email">
+                                        <div *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched"
+                                            class="text-red-500">
+                                            <small *ngIf="contactForm.controls['email'].errors?.['required']">El correo
+                                                electrónico es
+                                                obligatorio.</small>
+                                            <small *ngIf="contactForm.controls['email'].errors?.['email']">
+                                                Ingrese un email válido</small>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-
-                            <div class="row h-[40%]  w-full flex justify-center items-center pl-4 pr-4">
-                                <div class="flex flex-col w-full r">
-                                    <label for="apellido-id" class="mb-2 font-bold text-black">Dirección Exacta:</label>
-                                    <input class="w-full h-[80px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
-                                        id="apellido-id" name="apellido">
-                                </div>
-                            </div>
-
-                            <div class="row h-[20%]  w-full flex justify-center items-center pl-4 pr-4">
-                                <div class="flex flex-col w-full justify-center ">
-                                    <label for="apellido-id" class="mb-2 font-bold text-black">Telefono:</label>
-                                    <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
-                                        id="apellido-id" name="apellido">
-                                </div>
-                            </div>
-
-
-                            <div class="row  h-[20%] w-full flex justify-center items-center pl-4 pr-4">
-
-                                <div class="flex flex-col w-full ">
-                                    <label for="apellido-id" class="mb-2 font-bold text-black">Correo:</label>
-                                    <input class="w-full h-[40px] rounded-xl bg-[#b1b7bf] font-bold" type="text"
-                                        id="apellido-id" name="apellido">
-                                </div>
-                            </div>
-
-                        </div>
+                        </form>
                     </div>
 
 
                     <div
                         class="flex flex-col w-full h-[50%] bg-[#f8fafd] text-black rounded-2xl justify-center items-center">
-                        <!-- Primera fila -->
-                        <div class="w-full h-[10%] flex items-center justify-center">
-                            <p class="font-bold text-2xl font-jetbrains text-black">Método de pago</p>
-                        </div>
 
-                        <!-- Segunda fila -->
-                        <div class="flex w-full h-[60%] items-center justify-center rounded-2xl p-4">
-                            <div
-                                class="card relative w-[450px] h-[270px] rounded-2xl bg-[#8894a6]/95 backdrop-blur-lg border border-white/10 shadow-lg overflow-hidden">
-                                <div class="logo absolute top-8 right-10 opacity-80">
-                                    <img src="images/letras visa.png" alt="Visa" class="w-20">
-                                </div>
-
-                                <!-- Número de tarjeta -->
-                                <input
-                                    class="number absolute left-10 bottom-[65px] w-[70%] bg-transparent text-white text-lg font-medium tracking-wider placeholder-white placeholder-opacity-80 outline-none border-none"
-                                    type="text" placeholder="**** **** **** ****" maxlength="19" />
-
-                                <!-- Nombre del titular -->
-                                <input
-                                    class="name absolute left-10 bottom-10 bg-transparent text-white text-sm tracking-wider placeholder-white placeholder-opacity-80 outline-none border-none"
-                                    type="text" placeholder="Nombre del titular" />
-
-                                <!-- Fecha de vencimiento -->
-                                <input
-                                    class="to absolute bottom-10 right-24 bg-transparent text-white text-sm text-center placeholder-white placeholder-opacity-80 outline-none border-none z-10"
-                                    type="text" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}"
-                                    style="width: 60px;" />
-
-                                <!-- CVV -->
-                                <input
-                                    class="cvv absolute bottom-10 right-10 bg-transparent text-white text-sm text-center placeholder-white placeholder-opacity-80 outline-none border-none z-10"
-                                    type="text" placeholder="CVV" maxlength="3" style="width: 40px;" />
+                        <form class="flex flex-col w-full h-full justify-center items-center"
+                            [formGroup]="creditCardForm" (ngSubmit)="onSubmitContact()">
 
 
-                                <!-- Anillos decorativos de fondo -->
+
+                            <!-- Primera fila -->
+                            <div class="w-full h-[10%] flex items-center justify-center">
+                                <p class="font-bold text-2xl font-jetbrains text-black">Método de pago</p>
+                            </div>
+
+                            <!-- Segunda fila -->
+                            <div class="flex w-full h-[60%] items-center justify-center rounded-2xl p-4">
                                 <div
-                                    class="ring absolute h-[500px] w-[500px] rounded-full border border-white/10 bottom-[-250px] right-[-250px]">
+                                    class="card relative w-[450px] h-[270px] rounded-2xl bg-[#8894a6]/95 backdrop-blur-lg border border-white/10 shadow-lg overflow-hidden">
+                                    <div class="logo absolute top-8 right-10 opacity-80">
+                                        <img src="images/letras visa.png" alt="Visa" class="w-20">
+                                    </div>
+
+                                    <!-- Número de tarjeta -->
+                                    <input
+                                        class="number absolute left-10 bottom-[65px] w-[70%] bg-transparent text-white text-lg font-medium tracking-wider placeholder-white placeholder-opacity-80 outline-none border-none"
+                                        type="text" placeholder="**** **** **** ****" maxlength="16"
+                                        formControlName="card_number" />
+
+                                    <!-- Nombre del titular -->
+                                    <input
+                                        class="name absolute left-10 bottom-10 bg-transparent text-white text-sm tracking-wider placeholder-white placeholder-opacity-80 outline-none border-none"
+                                        type="text" placeholder="Nombre del titular"
+                                        formControlName="cardholder_name" />
+
+                                    <!-- Fecha de vencimiento -->
+                                    <input
+                                        class="to absolute bottom-10 right-24 bg-transparent text-white text-sm text-center placeholder-white placeholder-opacity-80 outline-none border-none z-10"
+                                        type="text" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}"
+                                        style="width: 60px;" formControlName="expiration_date" />
+
+                                    <!-- CVV -->
+                                    <input
+                                        class="cvv absolute bottom-10 right-10 bg-transparent text-white text-sm text-center placeholder-white placeholder-opacity-80 outline-none border-none z-10"
+                                        type="text" placeholder="CVV" maxlength="3" style="width: 40px;"
+                                        formControlName="cvv" />
+
+                                    <!-- Anillos decorativos de fondo -->
                                     <div
-                                        class="ring-inner absolute h-[600px] w-[600px] rounded-full border-2 border-white/10 bottom-[-80px] right-[-110px]">
+                                        class="ring absolute h-[500px] w-[500px] rounded-full border border-white/10 bottom-[-250px] right-[-250px]">
+                                        <div
+                                            class="ring-inner absolute h-[600px] w-[600px] rounded-full border-2 border-white/10 bottom-[-80px] right-[-110px]">
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
+                            <div *ngIf="creditCardForm.controls['card_number'].invalid && creditCardForm.controls['card_number'].touched"
+                                class="text-red-500">
+                                <small *ngIf="creditCardForm.controls['card_number'].errors?.['required']">El número de
+                                    tarjeta es
+                                    obligatorio.</small>
+                                <small *ngIf="creditCardForm.controls['card_number'].errors?.['pattern']">
+                                    Ingrese un número de tarjeta válido</small>
+                            </div>
 
-                        <div class="row flex items-center gap-4 font-bold">
-                            <input type="checkbox" class="h-[25px] w-[25px] rounded-2xl ">
-                            He leido y acepto los terminos y condiciones de la web
-                        </div>
+                            <div *ngIf="creditCardForm.controls['cardholder_name'].invalid && creditCardForm.controls['cardholder_name'].touched"
+                                class="text-red-500">
+                                <small *ngIf="creditCardForm.controls['cardholder_name'].errors?.['required']">
+                                    El nombre del titular es obligatorio.
+                                </small>
+                                <small *ngIf="creditCardForm.controls['cardholder_name'].errors?.['pattern']">
+                                    Solo se permiten letras y espacios.
+                                </small>
+                                <small *ngIf="creditCardForm.controls['cardholder_name'].errors?.['maxlength']">
+                                    El nombre no debe exceder los 50 caracteres.
+                                </small>
+                            </div>
 
 
+                            <div *ngIf="creditCardForm.controls['expiration_date'].invalid && creditCardForm.controls['expiration_date'].touched"
+                                class="text-red-500">
+                                <small *ngIf="creditCardForm.controls['expiration_date'].errors?.['required']">La fecha
+                                    de vencimiento es obligatoria.</small>
+                                <small *ngIf="creditCardForm.controls['expiration_date'].errors?.['pattern']">Debe tener
+                                    el formato MM/YY.</small>
+                            </div>
+
+                            <div *ngIf="creditCardForm.controls['cvv'].invalid && creditCardForm.controls['cvv'].touched"
+                                class="text-red-500">
+                                <small *ngIf="creditCardForm.controls['cvv'].errors?.['required']">El CVV es
+                                    obligatorio.</small>
+                                <small *ngIf="creditCardForm.controls['cvv'].errors?.['pattern']">Debe contener 3 o 4
+                                    dígitos numéricos.</small>
+                            </div>
+
+
+                            <input type="checkbox" id="terms" class="h-[25px] w-[25px] rounded-2xl"
+                                formControlName="terms" (change)="onTermsChange($event)" />
+
+
+                            <div *ngIf="creditCardForm.controls['terms'].invalid && creditCardForm.controls['terms'].touched"
+                                class="text-red-500">
+                                <small>Debes aceptar los términos y condiciones.</small>
+                            </div>
+
+
+                        </form>
                     </div>
 
                 </div>
@@ -133,17 +232,17 @@
 
                         <!-- Aqui va el for -->
 
-                        <div
+                        <div *ngFor="let cartProduct of cartProducts"
                             class=" flex row w-[95%] h-[200px] bg-[#fcfdfe] min-h-[200px] text-black rounded-2xl shadow-lg ">
                             <div class="col h-full w-[30%] flex items-center justify-center">
                                 <div class="w-full h-[80%] flex items-center justify-center">
-                                    <img src="images/compu.jpeg" alt="" class="w-[80%] h-[80%] rounded-2xl">
+                                    <img [src]="cartProduct.photo" alt="" class="w-[80%] h-[80%] rounded-2xl">
                                 </div>
 
                             </div>
                             <div class="col h-full w-[60%] flex flex-col  ">
                                 <div class="row h-1/2 flex items-center justify-center font-jetbrains">
-                                    <p>Nombre del producto</p>
+                                    <p>{{cartProduct.name}}</p>
                                 </div>
                                 <div class="row h-1/2 flex items-center justify-center font-jetbrains">
                                     <div
@@ -151,19 +250,19 @@
                                         <!-- Número central -->
                                         <div
                                             class="flex items-center justify-center text-2xl font-bold bg-[#edf2fb] w-[50%] h-70%] rounded-2xl">
-                                            {{ counter }}
+                                            {{ getQuantity(cartProduct.id) }}
                                         </div>
 
                                         <!-- Botones de incremento y decremento -->
                                         <div class="flex  w-full h-[30%] items-center justify-center">
                                             <!-- Botón de decremento -->
-                                            <button (click)="decrement()"
+                                            <button (click)="decrementQuantity(cartProduct)"
                                                 class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
                                                 -
                                             </button>
 
                                             <!-- Botón de incremento -->
-                                            <button (click)="increment()"
+                                            <button (click)="incrementQuantity(cartProduct)"
                                                 class="w-[40px] h-[40px] bg-[#edf2fb] rounded-full flex items-center justify-center text-2xl font-bold">
                                                 +
                                             </button>
@@ -171,17 +270,17 @@
                                     </div>
                                     <div
                                         class="col h-full w-[50%] flex items-center justify-center font-bold font-jetbrains text-lg">
-                                        ₡ 250 000
+                                        ₡ {{cartProduct.price * getQuantity(cartProduct.id)}}
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col h-full w-[10%] flex items-center justify-center">
-                                <i class="fas fa-trash text-xl text-black"> </i>
+                                <button (click)="ShoppingCartDelete(cartProduct.id)">
+                                    <i class="fas fa-trash text-xl text-black"></i>
+                                </button>
                             </div>
                         </div>
-
-
 
                     </div>
                     <div class="w-full h-[30%] flex items-end justify-center p-5">
@@ -194,7 +293,7 @@
                                         Subtotal
                                     </div>
                                     <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                        ₡ 250 000
+                                        ₡ {{subtotal}}
                                     </div>
                                 </div>
 
@@ -208,6 +307,16 @@
                                     </div>
                                 </div>
 
+                                <!-- IVA Row -->
+                                <div class="flex w-full">
+                                    <div class="w-[50%] flex justify-start items-center font-jetbrains">
+                                        I.V.A (13%)
+                                    </div>
+                                    <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
+                                        ₡ {{IVA}}
+                                    </div>
+                                </div>
+
                                 <!-- Total Row -->
                                 <div class="flex w-full">
                                     <div
@@ -216,14 +325,24 @@
                                     </div>
                                     <div
                                         class="w-[70%] flex justify-end items-center font-bold text-2xl font-jetbrains">
-                                        ₡ 252 500
+                                        ₡ {{total}}
                                     </div>
                                 </div>
 
+                                <!-- Alerta de éxito -->
+                                <div class="w-full flex justify-center items-center">
+                                    <div class="w-[60%]">
+                                        <app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
+                                    </div>
+
+                                </div>
+
+
                                 <!-- Botón Confirmar -->
                                 <div class="flex h-[50px] items-center justify-center w-full">
-                                    <button [routerLink]="['/store/order-complete']"
-                                        class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full">
+                                    <button
+                                        class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full"
+                                        (click)="onSubmitContact()">
                                         Realizar el pedido
                                     </button>
                                 </div>

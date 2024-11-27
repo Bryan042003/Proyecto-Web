@@ -6,6 +6,7 @@ const sequelize = require('../config/database');
 const User = require('../models/User');
 const Notification = require('../models/Notification');
 const moment = require('moment');
+const { get } = require('../routes/OrderRoutes');
 const op = sequelize.Op;
 
 //Middlewares to validate order data
@@ -126,6 +127,39 @@ const getOrderById = async (req, res) => {
     }
 }
 
+const getOrdersByUser = async (req, res) => {
+    const id_user = req.params.id_user;
+
+    try {
+        const orders = await Order.findAll({
+            where: {
+                id_user: id_user
+            }
+        });
+        return res.status(200).json(orders);
+
+    }catch(error){
+        return res.status(500).json({ error: error.message });
+    }
+}
+
+const getProductsByOrder = async (req, res) => {
+    const id_order = req.params.id_order;
+
+    try {
+        const order_products = await Order_Products.findAll({
+            where: {
+                id_order: id_order
+            },
+            include: Product
+        });
+        return res.status(200).json(order_products);
+
+    }catch(error){
+        return res.status(500).json({ error: error.message });
+    }
+}
+
 //Create an order
 const createOrder = async (req, res) => {
     const transaction = await sequelize.transaction();
@@ -143,7 +177,6 @@ const createOrder = async (req, res) => {
         await transaction.commit();
 
         return res.status(201).json({
-            message: 'Order created successfully',
             order
         });
 
@@ -238,5 +271,7 @@ module.exports = {
     addProductToOrder,
     validateOrderProduct,
     updateOrderStatus,
-    validateOrderStatus
+    validateOrderStatus,
+    getOrdersByUser,
+    getProductsByOrder
 }
