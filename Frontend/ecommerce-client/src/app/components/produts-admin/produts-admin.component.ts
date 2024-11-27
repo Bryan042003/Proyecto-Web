@@ -29,50 +29,58 @@ export class ProdutsAdminComponent {
   ) { }
 
   public productForm = new FormGroup({
-    name: new FormControl<string>('', [
+    name: new FormControl('', [
       Validators.required,
       Validators.maxLength(100)
     ]),
-    description: new FormControl<string>('', [
+    description: new FormControl('', [
       Validators.required,
       Validators.maxLength(500)
     ]),
-    price: new FormControl<number | null>(null, [
+    price: new FormControl(null, [
       Validators.required,
       Validators.min(0)
     ]),
-    brand: new FormControl<string>('', [
+    brand: new FormControl('', [
       Validators.required,
       Validators.maxLength(50)
     ]),
-    stock: new FormControl<number | null>(null, [
+    stock: new FormControl(null, [
       Validators.required,
       Validators.min(0)
     ]),
-    technical_stuff: new FormControl<string>('', [
+    technical_stuff: new FormControl('', [
       Validators.required,
       Validators.maxLength(1000)
     ]),
-    photo: new FormControl<string>('', [
+    photo: new FormControl('', [
       Validators.required,
       Validators.maxLength(255)
     ])
   });
+  
 
   onSubmit() {
     if (this.productForm.valid) {
-      this._productService.createProduct(this.productForm.value).
-        subscribe({
+      const formData = {
+        ...this.productForm.value,
+        price: Number(this.productForm.value.price),
+        stock: Number(this.productForm.value.stock)
+      };
+  
+      console.log('Datos enviados:', formData);
+  
+      this._productService.createProduct(formData)
+        .subscribe({
           next: (result: any) => {
             console.log('Usuario creado con éxito:', result);
-            this.showAlert = true; 
+            this.showAlert = true;
             this.productForm.reset();
             setTimeout(() => { this.showAlert = false; }, 3000);
           },
           error: (error: any) => {
             console.error('Error al crear producto:', error);
-            this.showNoAlert = true; 
-            console.table(this.productForm.value);
+            this.showNoAlert = true;
             setTimeout(() => { this.showNoAlert = false; }, 3000);
           },
           complete: () => {
@@ -82,11 +90,11 @@ export class ProdutsAdminComponent {
     } else {
       console.log('Formulario inválido');
       this.productForm.markAllAsTouched();
-      this.showNoAlert = true; 
-      console.table(this.productForm.value);
+      this.showNoAlert = true;
       setTimeout(() => { this.showNoAlert = false; }, 3000);
     }
   }
+  
 
 
 }
