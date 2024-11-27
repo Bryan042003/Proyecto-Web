@@ -13,7 +13,7 @@ const Notification = sequelize.define('Notification', {
     },
     date:{
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true
     },
     id_product:{
         type: DataTypes.INTEGER,

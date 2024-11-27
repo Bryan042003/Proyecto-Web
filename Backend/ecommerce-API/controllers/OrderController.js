@@ -4,6 +4,7 @@ const Order_Products = require('../models/Order_Products');
 const { body, validationResult } = require('express-validator');
 const sequelize = require('../config/database');
 const User = require('../models/User');
+const Notification = require('../models/Notification');
 const moment = require('moment');
 const op = sequelize.Op;
 
@@ -171,14 +172,23 @@ const addProductToOrder = async (req, res) => {
 
         const product = await Product.findByPk(id_product);
         product.stock -= quantity;
+        await product.save({ transaction });
 
-
+        if(product.stock <= 5){
+           await Notification.create({
+                description: `El producto ${product.name} está por quedarse sin stock, sólo ${product.stock} restantes`,
+                id_product: id_product
+            }, { transaction });
+        }
+        
         await transaction.commit();
 
         return res.status(201).json({
             message: 'Product added to order successfully',
             order_product
+
         });
+
 
     } catch (error) {
         await transaction.rollback();
