@@ -47,7 +47,27 @@
       <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
     </form>
     <h3 class="text-lg font-bold">Notificaciones</h3>
-    <p class="py-4">Press ESC key or click on ✕ button to close</p>
+    <div class="overflow-x-auto">
+      <table class="table">
+        <!-- head -->
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let notification of notifications">
+            <th>{{notification.id_product}}</th>
+            <th>{{notification.description}}</th>
+            <th>{{notification.date}}</th>
+            <th><button  (click)="deleteNotification(notification.id)" class="btn btn-link">Borrar</button></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </dialog>
   

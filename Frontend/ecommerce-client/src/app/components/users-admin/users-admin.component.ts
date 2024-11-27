@@ -66,7 +66,6 @@ export class UsersAdminComponent {
       Validators.maxLength(50)
     ]),
     passw: new FormControl<string>('', [
-      Validators.required,
       Validators.minLength(8),   // Mínimo 8 caracteres para mayor seguridad
       Validators.maxLength(20)
     ]),
@@ -194,27 +193,7 @@ export class UsersAdminComponent {
       if (this.isEditMode) {
         
         const id = formData.id ? formData.id.toString() : '';
-        this._usersService.updateUser(id, formData).subscribe({
-          next: () => {
-            console.log('Usuario actualizado con éxito');
-            this.showAlert = true;
-            this.userForm.reset();
-            this.userForm.patchValue({ role: 'user' }); 
-            this.userForm.patchValue({ photo: '' }); 
-            setTimeout(() => { this.showAlert = false; }, 3000);
-            this.loadUser(); 
-            this.isEditMode=false;
-          },
-          error: (error: any) => {
-            console.error('Error al actualizar usuario:', error);
-            this.showNoAlert = true; 
-            setTimeout(() => { this.showNoAlert = false; }, 3000);
-            console.log(formData);
-          },
-          complete: () => {
-            console.log('Actualización completada');
-          }
-        });
+        this.editFuntion(id, formData);
       } else {
         
         this._usersService.createUser(this.userForm.value).subscribe({
@@ -344,7 +323,29 @@ export class UsersAdminComponent {
 
   }
 
-
+  editFuntion(id: string, data: any){
+    this._usersService.updateUser(id, data).subscribe({
+      next: () => {
+        console.log('Usuario actualizado con éxito');
+        this.showAlert = true;
+        this.userForm.reset();
+        this.userForm.patchValue({ role: 'user' }); 
+        this.userForm.patchValue({ photo: '' }); 
+        setTimeout(() => { this.showAlert = false; }, 3000);
+        this.loadUser(); 
+        this.isEditMode=false;
+      },
+      error: (error: any) => {
+        console.error('Error al actualizar usuario:', error);
+        this.showNoAlert = true; 
+        setTimeout(() => { this.showNoAlert = false; }, 3000);
+        console.log(data);
+      },
+      complete: () => {
+        console.log('Actualización completada');
+      }
+    });
+  }
 
 }
 
