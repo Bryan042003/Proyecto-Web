@@ -177,7 +177,6 @@ const createOrder = async (req, res) => {
         await transaction.commit();
 
         return res.status(201).json({
-            message: 'Order created successfully',
             order
         });
 

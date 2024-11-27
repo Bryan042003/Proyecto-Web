@@ -41,6 +41,7 @@ export class OrderService {
     }
 
     addProductToOrder(data: any): Observable<any> {
+        console.log("data de add order", data);
         /*
         data ={
             id_order,

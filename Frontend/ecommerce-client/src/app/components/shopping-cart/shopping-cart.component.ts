@@ -34,7 +34,8 @@ export class ShoppingCartComponent implements OnInit {
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
     this.calculateSubtotal(); 
     this.calculateIVA(); 
-    this.calculateTotal(); 
+    this.calculateTotal();
+    window.location.reload(); 
 
   }
 
