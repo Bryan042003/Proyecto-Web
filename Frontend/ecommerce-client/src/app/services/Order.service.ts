@@ -49,7 +49,7 @@ export class OrderService {
         }
         */
 
-        return this.http.put(`${this.baseUrl}/add-product`, data);
+        return this.http.post(`${this.baseUrl}/add-product`, data);
     }
 
     updateOrderStatus(data:any): Observable<Order> {
