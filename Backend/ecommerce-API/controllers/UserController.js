@@ -54,9 +54,7 @@ const validateUpdateUser = [
     .isEmail().withMessage('Invalid email')
     .custom(async (value, { req }) => {
       const user = await User.findOne({ where: { email: value } });
-      console.log(user.id, req.params.id);
-      if (user && user.id.toString() !== req.params.id) {
-        console.log('Email already in use');
+      if (user && user.id !== parseInt(req.params.id, 10)) {
         return Promise.reject('Email already in use');
       }
     }),
@@ -206,7 +204,10 @@ async function updateUser(req, res) {
                 passw: user.passw
             }, {transaction});
             await transaction.commit();
-            res.status(200).json(updatedUser);
+            res.status(200).json({
+                message: 'User updated successfully',
+                user: updatedUser
+            });
         }else{
             res.status(404).json({error: 'User not found'});
         }
