@@ -4,7 +4,7 @@
 <div class="overflow-x-auto">
   <table class="table table-xs" style="font-size: 50px;"> 
     <thead>
-      <tr>
+      <tr style="font-size: 18px">
         <th></th>
         <th>Nombre</th>
         <th>Id Oferta</th>
@@ -16,15 +16,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products; let i = index">
-        <th>{{ i + 1 }}</th>
+      <tr *ngFor="let product of products; let i = index" style="font-size: 17px">
+        <th>{{ product.id }}</th>
         <td>{{ product.name }}</td>
         <td>{{ product.id_offer}}</td>
         <td>{{ product.description }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.brand }}</td>
         <td>
-          <input type="number" [(ngModel)]="product.stock" min="1" max="200" step="1" style="width: 150px; height: 40px; font-size: 20px; padding: 10px; border-radius: 5px; border: 2px solid #ccc;">
+          {{product.stock}}
           
         </td>
         <td>{{ product.technical_stuff }}</td>
@@ -40,9 +40,10 @@
       <!-- Puedes continuar añadiendo filas si es necesario -->
     </tbody>
     <tfoot>
-      <tr>
+      <tr style="font-size: 18px">
         <th></th>
         <th>Nombre</th>
+        <th>Id Oferta</th>
         <th>Descripción</th>
         <th>Precio</th>
         <th>Marca</th>

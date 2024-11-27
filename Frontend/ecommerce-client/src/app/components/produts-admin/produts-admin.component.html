@@ -86,8 +86,42 @@
   <button class="btn btn-secondary"
   (click)="onSubmit()"
     style="padding: 10px 20px; border-radius: 4px; background-color: #63d2e5; color: #fff; border: none; cursor: pointer;">Guardar</button>
-  <button class="btn btn-primary"
-    style="padding: 10px 20px; border-radius: 4px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Editar</button>
   <button class="btn btn-secondary"
     style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;">Eliminar</button>
+</div>
+
+
+<div class="overflow-x-auto"  style="padding: 50px">
+  <table class="table table-xs" style="font-size: 50px;"> 
+    <thead>
+      <tr style="font-size: 20px;">
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Marca</th>
+        <th>Stock</th>
+        <th>Especificaciones Técnicas</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products; let i = index" style="font-size: 16px">
+       
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.brand }}</td>
+        <td>{{product.stock}}</td>
+        <td>{{product.technical_stuff}}</td>
+        <td>
+          <button class="btn btn-primary"
+          (click)="onEdit(product)"
+          style="padding: 10px 20px; border-radius: 4px; background-color: #007bff; color: #fff; border: none; cursor: pointer;">Editar</button>
+
+        </td>
+      </tr>
+      <!-- Puedes continuar añadiendo filas si es necesario -->
+    </tbody>
+
+  </table>
 </div>

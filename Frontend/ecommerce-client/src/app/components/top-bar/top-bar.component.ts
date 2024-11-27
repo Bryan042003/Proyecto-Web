@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationsComponent } from '../notifications/notifications.component';
 import { Notification } from '../../models/notification.model';
 import { NotificationService } from '../../services/Notification.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-top-bar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './top-bar.component.html',
   styleUrl: './top-bar.component.scss'
 })
@@ -20,11 +19,11 @@ export class TopBarComponent {
     this.loadNotification();
   }
 
-  loadNotification(){
+  loadNotification() {
     this._notificationService.getNotifications()
       .subscribe({
-        next: (result: any) => {
-          this.notifications = result.notifications;
+        next: (result:Notification[] ) => {
+          this.notifications = result;
           console.log(this.notifications);
         },
         error: (error: any) => {
@@ -35,6 +34,24 @@ export class TopBarComponent {
         }
       });
   }
+
+  deleteNotification(id: number){
+    console.log(`este es el id`,id);
+    this._notificationService.deleteNotification(id.toString())
+    .subscribe({
+      next: (result) => {
+        console.log(result);
+        this.loadNotification();
+      },
+      error: (error: any) => {
+        console.error('Error al borrar notifiaciones:', error);
+      },
+      complete: () => {
+        console.log('Solicitud completada');
+      }
+    });
+  }
+  
 
  openModal(){
   console.log("abre");
