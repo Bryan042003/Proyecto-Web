@@ -33,7 +33,7 @@ export const routes: Routes = [
             { path: 'products-per-category/:id', component: ProductsPerCategoryComponent },
             { path: 'shopping-cart', component: ShoppingCartComponent },
             { path: 'complete-purchase', component: CompletePurchaseComponent },
-            { path: 'order-complete', component: OrderCompleteComponent }
+            { path: 'order-complete/:id', component: OrderCompleteComponent }
         ]
     },
     { path: 'admin_dashboard', component: AdminDashboardComponent, children:[

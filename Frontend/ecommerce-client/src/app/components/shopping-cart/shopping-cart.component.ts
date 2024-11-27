@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { LocalStorageService } from '../../services/LocalStorage.service';
 import { Product } from '../../models/product.model';
 import { CommonModule } from '@angular/common';
+import { AuthGuard } from '../../authGuard/auth.guard';
+
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,16 +19,26 @@ export class ShoppingCartComponent implements OnInit {
   subtotal: number = 0; // Variable para almacenar el total
   total: number = 0; // Variable para almacenar el total
   IVA: number = 0.13; // Variable para almacenar el IVA
+  logged: boolean = false;
 
-  constructor(private localStorageService: LocalStorageService) { }
+  constructor(private localStorageService: LocalStorageService, public authGuard: AuthGuard, private router: Router,) { }
 
   ngOnInit() {
+    this.logged = this.authGuard.logged();
 
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
     this.calculateSubtotal(); 
     this.calculateIVA(); 
     this.calculateTotal(); 
 
+  }
+
+  navigate() {
+    if (this.logged) {
+      this.router.navigate(['/store/complete-purchase']);
+    } else {
+      this.router.navigate(['/store/login']);
+    }
   }
 
   ShoppingCartDelete(productId: number): void {
