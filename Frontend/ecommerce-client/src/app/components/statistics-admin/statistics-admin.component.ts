@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
@@ -17,7 +17,10 @@ import { OrderService } from '../../services/Order.service';
 export class StatisticsAdminComponent implements OnInit {
   products: Product[] = [];
   orders: Order[] = [];
-  
+
+  @ViewChild('productChart', { static: false }) productChart?: BaseChartDirective;
+  @ViewChild('orderChart', { static: false }) orderChart?: BaseChartDirective;
+
   // Chart for Product Sales
   chartData: ChartConfiguration<'bar'>['data'] = {
     labels: [],
@@ -43,7 +46,6 @@ export class StatisticsAdminComponent implements OnInit {
     }
   };
 
-  
   // Chart for Orders per Day
   orderChartData: ChartConfiguration<'line'>['data'] = {
     labels: [],
@@ -68,8 +70,7 @@ export class StatisticsAdminComponent implements OnInit {
       tooltip: {
         enabled: true
       }
-    },
-    
+    }
   };
 
   constructor(
@@ -91,6 +92,7 @@ export class StatisticsAdminComponent implements OnInit {
         this.products = result;
         console.log(this.products);
         this.prepareChartData();
+        this.updateProductChart();
       },
       error: (error: any) => {
         console.error('Error al obtener productos:', error);
@@ -107,6 +109,7 @@ export class StatisticsAdminComponent implements OnInit {
         this.orders = result;
         console.log(result);
         this.prepareOrderChartData();
+        this.updateOrderChart();
       },
       error: (error: any) => {
         console.error('Error al recuperar órdenes:', error);
@@ -129,7 +132,6 @@ export class StatisticsAdminComponent implements OnInit {
 
     this.chartData.labels = Object.keys(categoryMap);
     this.chartData.datasets[0].data = Object.values(categoryMap);
-  
   }
 
   prepareOrderChartData(): void {
@@ -144,5 +146,17 @@ export class StatisticsAdminComponent implements OnInit {
 
     this.orderChartData.labels = Object.keys(orderDateMap).sort(); // Fechas ordenadas
     this.orderChartData.datasets[0].data = Object.values(orderDateMap);
+  }
+
+  updateProductChart(): void {
+    if (this.productChart) {
+      this.productChart.update();
+    }
+  }
+
+  updateOrderChart(): void {
+    if (this.orderChart) {
+      this.orderChart.update();
+    }
   }
 }

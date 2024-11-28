@@ -4,12 +4,11 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/Product.service';
 import { AlertsComponent } from '../../components/alerts/alerts.component';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core'; 
+import { BrowserModule } from '@angular/platform-browser'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { OffertsModalComponent } from '../offerts-modal/offerts-modal.component';
 import { CategoryService } from '../../services/Category.service';
-import { console } from 'inspector';
 
 
 @Component({
@@ -22,21 +21,20 @@ import { console } from 'inspector';
 export class InventoryAdminComponent {
   selectedProduct: any = null;
   products: Product[] = [];
-  categories: Category[] = [];
+  categories: Category[]=[];
   showAlert = false;
-  subcategoria: any = null;
 
   constructor(private _productService: ProductService,
     private _categoryService: CategoryService
-  ) { }
-
+  ){}
+  
   ngOnInit(): void {
     this.loadProducts();
     this.loadCategories();
 
 
   }
-
+  
 
   loadProducts() {
     this._productService.getProducts()
@@ -58,9 +56,9 @@ export class InventoryAdminComponent {
   loadCategories() {
     this._categoryService.getCategories()
       .subscribe({
-        next: (result: Category[]) => {
-          this.categories = result;
-          console.log('categorias', this.categories);
+        next: (result: Category[] ) => {
+          this.categories= result;
+          console.log('categorias',this.categories);
         },
         error: (error: any) => {
           console.error('Error al obtener categories:', error);
@@ -73,7 +71,7 @@ export class InventoryAdminComponent {
 
   openModal(product: any): void {
     this.selectedProduct = product;
-
+    
     (document.getElementById('my_modal_4') as HTMLDialogElement).showModal();
   }
 
@@ -83,13 +81,13 @@ export class InventoryAdminComponent {
       this.selectedProduct.id_offer = selectedOfferId;
       console.log('producto antes de actualiza:', this.selectedProduct);
       this.updateProdut(this.selectedProduct.id_offer, this.selectedProduct.id);
-    } if (selectedOfferId === null) {
-      console.log("entro a null");
-      this.updateProdut(null, this.selectedProduct.id);
+    }if(selectedOfferId === null){
+        console.log("entro a null");
+        this.updateProdut(null, this.selectedProduct.id);
     }
-
+    
     (document.getElementById('my_modal_4') as HTMLDialogElement).close();
-
+    
 
   }
 
@@ -106,15 +104,16 @@ export class InventoryAdminComponent {
       },
     });
   }
-
-  getSubcategory(id: string) {
-    this._categoryService.getSubcategories(id).subscribe({
+  
+  assignProductToCategory(id_product: string, id_category: string){
+    this._productService.AssignProductToCategory(id_product, id_category).subscribe({
       next: (result) => {
-        console.log('get sub exitosa:', result);
-        this.subcategoria = result;
+        this.showAlert = true; 
+        console.log('Actualización exitosa:', result);
+        setTimeout(() => { this.showAlert = false; }, 3000);
       },
       error: (error: any) => {
-        console.error('Error al obtener categoria:', error);
+        console.error('Error al actualizar producto:', error);
       },
       complete: () => {
         console.log('Solicitud completada');
@@ -122,26 +121,5 @@ export class InventoryAdminComponent {
     });
   }
 
-  assignProductToCategory(id_product: string, id_category: string) {
-    this.getSubcategory(id_category);
-    if (this.subcategoria !== null) {
-      this._productService.AssignProductToCategory(id_product, id_category).subscribe({
-        next: (result) => {
-          this.showAlert = true;
-          console.log('Actualización exitosa:', result);
-          setTimeout(() => { this.showAlert = false; }, 3000);
-        },
-        error: (error: any) => {
-          console.error('Error al actualizar producto:', error);
-        },
-        complete: () => {
-          console.log('Solicitud completada');
-        },
-      });
-    } else {
-      console.warn('intento de sub categoria');
-    }
-  }
-
-
+  
 }
