@@ -5,13 +5,6 @@
     <hr style="margin: 40px 0;">
     <ul class="menu">
       <li>
-        <a href="#" class="flex items-center" style="text-decoration: none; color: inherit;">
-          <img src="images/profile.png" alt="profile" class="w-[40px] mr-2">
-          <span class="text-xl font-bold">Perfil</span>
-        </a>
-      </li>
-      <hr style="margin: 20px 0;">
-      <li>
         <a  (click)="navigateToProducts()"  class="flex items-center" style="text-decoration: none; color: inherit;">
           <img src="images/list.png" alt="productList" class="w-[40px] mr-2">
           <span class="text-xl font-bold">Gestión de productos</span>
@@ -54,7 +47,7 @@
       </li>
       <hr style="margin: 20px 0;">
       <li>
-        <a class="flex items-center" style="text-decoration: none; color: inherit;">
+        <a (click)="logout()" class="flex items-center" style="text-decoration: none; color: inherit;">
           <img src="images/exit.png" alt="exit" class="w-[40px] mr-2">
           <span class="text-xl font-bold">Salir</span>
         </a>
@@ -63,3 +56,4 @@
   </div>
 
 </div>
+

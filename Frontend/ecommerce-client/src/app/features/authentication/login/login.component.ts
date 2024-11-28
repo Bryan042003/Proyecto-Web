@@ -6,7 +6,7 @@ import { AlertsComponent } from '../../../components/alerts/alerts.component';
 import { NoAlertsComponent } from '../../../components/no-alerts/no-alerts.component';
 import { Canton, District } from '../../../models/address.model';
 import { Province } from '../../../models/address.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LocalStorageService } from '../../../services/LocalStorage.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
   districts: District[] = [];
   cantons: Canton[] = [];
   provinces: Province[] = [];
-
   showPassword: boolean = false;
 
 
@@ -249,15 +248,14 @@ export class LoginComponent implements OnInit {
             console.log('solicitud aceptada');
             switch (this.role) {
               case 'logistics':
-                this.router.navigate(['/logistics-dashboard']);
+                this.router.navigate(['/logistics-dashboard'], { queryParams: { role: this.role } });
                 break;
               case 'admin':
-                this.router.navigate(['/admin_dashboard']);
+                this.router.navigate(['/admin_dashboard'], { queryParams: { role: this.role } });
                 break;     
               default:
                 this.router.navigate(['/store']);
-                window.location.reload();
-                this.router.navigate(['/store']);
+                
                 break;
             }
           }

@@ -19,6 +19,7 @@ import { OrdersAdminComponent } from './components/orders-admin/orders-admin.com
 import { InventoryAdminComponent } from './components/inventory-admin/inventory-admin.component';
 import { StatisticsAdminComponent } from './components/statistics-admin/statistics-admin.component';
 import { OffersAdminComponent } from './components/offers-admin/offers-admin.component';
+import { LogisticsDashboardComponent } from './features/logistics-dashboard/logistics-dashboard.component';
 
 export const routes: Routes = [
     {
@@ -36,6 +37,7 @@ export const routes: Routes = [
             { path: 'order-complete/:id', component: OrderCompleteComponent }
         ]
     },
+    { path: 'logistics-dashboard', component: LogisticsDashboardComponent},
     { path: 'admin_dashboard', component: AdminDashboardComponent, children:[
         {path: 'users-admin', component: UsersAdminComponent},
         {path: 'produts-admin', component: ProdutsAdminComponent},
@@ -45,8 +47,6 @@ export const routes: Routes = [
         {path: 'offers-admin', component: OffersAdminComponent}
     ]
      },
-
-    { path: 'logistics-dashboard', component: LoginComponent},
     { path: '', redirectTo: 'store', pathMatch: 'full' },
     { path: '**', redirectTo: 'store' }
 ];
