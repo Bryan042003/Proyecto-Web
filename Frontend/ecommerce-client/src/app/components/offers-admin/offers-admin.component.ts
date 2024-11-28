@@ -67,7 +67,7 @@ export class OffersAdminComponent {
 
     onSubmit() {
       console.log(this.offerForm.value);
-  /*   if (this.offerForm.valid) {
+    /*  if (this.offerForm.valid) {
       this._offerService.createOffer(this.offerForm.value).
       subscribe({
         next: (result: any) => {
@@ -92,7 +92,7 @@ export class OffersAdminComponent {
       this.showNoAlert = true;
       console.table(this.offerForm.value);
       setTimeout(() => { this.showNoAlert = false; }, 3000);
-    } */
-  } 
-   
+    } 
+  }  */
+    }
 }
