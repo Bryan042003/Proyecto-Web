@@ -8,6 +8,7 @@ import { AuthGuard } from '../../authGuard/auth.guard';
 import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 import { AlertErrorComponent } from "../alert-error/alert-error.component";
+import { ProductService } from '../../services/Product.service';
 
 
 
@@ -19,9 +20,11 @@ import { AlertErrorComponent } from "../alert-error/alert-error.component";
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
   logged: boolean = false;
+
+  products: Product[] = [];
 
 
   cartProducts: Array<Product & { quantity: number }> = [];
@@ -38,14 +41,16 @@ export class HeaderComponent implements OnInit{
   message = "No hay stock suficiente para agregar más unidades de este producto.";
   noStock: boolean = false;
 
-
-
-  constructor(private router: Router,private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
+  constructor(private productService: ProductService, private router: Router, private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
 
   ngOnInit() {
 
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
+    });
+
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
     });
 
     this.logged = this.authGuard.logged();
@@ -57,31 +62,62 @@ export class HeaderComponent implements OnInit{
 
     this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
 
-    
-
   }
+
+  setDefaultImage(event: Event): void {
+    const element = event.target as HTMLImageElement;
+    element.src = 'images/logo.png';
+  }
+
+  filteredProducts: Product[] = [];
+
+  filterProducts(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const query = input.value;
+    if (query) {
+      this.filteredProducts = this.products.filter(product =>
+        product.name.toLowerCase().includes(query.toLowerCase())
+      );
+    } else {
+      this.filteredProducts = [];
+    }
+  }
+
+  selectProduct(product: Product, input: HTMLInputElement): void {
+    console.log('Producto seleccionado:', product);
+    this.scrollToMainContent();
+    this.router.navigate(['/store/product-details/', product.id]);
+  
+    // Limpiar la barra de búsqueda usando la referencia del input
+    input.value = '';
+  
+    // Limpiar la lista de productos filtrados
+    this.filteredProducts = [];
+  }
+  
+  
 
 
   incrementQuantity(product: Product) {
-    if( product.stock > this.localStorageService.getProductQuantity(product.id) ) {
+    if (product.stock > this.localStorageService.getProductQuantity(product.id)) {
       const newQuantity = this.localStorageService.getProductQuantity(product.id) + 1;
-  
+
       this.localStorageService.updateProductQuantity(product.id, newQuantity);
-    
-      this.calculateSubtotal(); 
-      this.calculateIVA(); 
-      this.calculateTotal(); 
-    }else{
-      this.noStock= true;
+
+      this.calculateSubtotal();
+      this.calculateIVA();
+      this.calculateTotal();
+    } else {
+      this.noStock = true;
       setTimeout(() => {
 
         this.noStock = false;
       }, 3000);
-      
+
     }
-    
+
   }
-  
+
 
 
   decrementQuantity(product: Product) {
@@ -92,9 +128,9 @@ export class HeaderComponent implements OnInit{
 
       this.localStorageService.updateProductQuantity(product.id, newQuantity);
 
-      this.calculateSubtotal(); 
-      this.calculateIVA(); 
-      this.calculateTotal(); 
+      this.calculateSubtotal();
+      this.calculateIVA();
+      this.calculateTotal();
     }
   }
 
@@ -105,20 +141,20 @@ export class HeaderComponent implements OnInit{
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
-  
+
   ShoppingCartDelete(productId: number): void {
-    this.localStorageService.removeProduct(productId); 
+    this.localStorageService.removeProduct(productId);
     this.getProducts();
-    this.calculateSubtotal(); 
-    this.calculateIVA(); 
-    this.calculateTotal(); 
+    this.calculateSubtotal();
+    this.calculateIVA();
+    this.calculateTotal();
   }
 
   getProducts(): void {
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
-    
-  } 
-  
+
+  }
+
 
   WhishlistDelete(productId: number): void {
     this.localStorageService.removeProductWish(productId);
@@ -153,12 +189,12 @@ export class HeaderComponent implements OnInit{
       window.scrollTo({ top: 0, behavior: 'smooth' });
       this.router.navigate(['/store']);
     }, 100);
-  
+
   }
 
-  navigate(){
+  navigate() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.router.navigate(['/store' ]);
+    this.router.navigate(['/store']);
   }
 
 }
