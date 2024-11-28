@@ -24,6 +24,14 @@ export class ProductService {
         return this.http.get<Product>(`${this.baseUrl}/name/${name}`);
     }
 
+    searchProductsByName(name: string): Observable<Product[]> {
+        //query
+        let params = new HttpParams();
+        params = params.append('name', name);
+
+        return this.http.get<Product[]>(`${this.baseUrl}/search`, { params });
+    }
+
     createProduct(data: any): Observable<any> {
         /*
         data ={
