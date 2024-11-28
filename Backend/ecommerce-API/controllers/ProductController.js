@@ -251,10 +251,25 @@ const deleteProduct = async (req, res) => {
     try {
         const product = await Product.findByPk(req.params.id);
         if (product) {
-            await product.destroy({ transaction });
+            const [results,metada] = await sequelize.query('CALL DeleteProductCascade(:id_product)', {
+                replacements: { id_product: req.params.id },
+                transaction
+            })
+
+             const {status_code, message} = results;
+
+            if(status_code == 0){
+                await transaction.rollback();
+                return res.status(400).json({
+                    error: message,
+                    status_code: status_code
+                });
+            }
+
             await transaction.commit();
-            return res.status(204).json({
-                message: 'Product removed successfully'
+            return res.status(200).json({
+                message: 'Product removed successfully',
+                status_code: status_code
             });
         } else {
             return res.status(404).json({ error: 'Product not found' });
