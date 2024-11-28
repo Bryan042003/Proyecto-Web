@@ -21,7 +21,7 @@ export class OffersService {
       }
 
     
-    createOffer(data: Offer): Observable<any> {
+    createOffer(data: any): Observable<any> {
         /*
         data ={
             discount,
@@ -31,7 +31,7 @@ export class OffersService {
 
         dates format = 'YYYY-MM-DD HH:MM:SS'
         */
-        return this.http.post<Offer>(`${this.baseUrl}/create`, data);
+        return this.http.post<any>(`${this.baseUrl}/create`, data);
     }
     
     updateOffer(id: string, data: Offer): Observable<Offer> {
