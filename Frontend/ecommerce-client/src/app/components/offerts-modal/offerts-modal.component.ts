@@ -15,7 +15,7 @@ import { ProductService } from '../../services/Product.service';
 export class OffertsModalComponent {
   offerts: Offer[] = [];
   selectedIds: number | null = null;
-  @Output() id_offert = new EventEmitter<number>();
+  @Output() id_offert = new EventEmitter<number | null>();
   @Input() selectedProduct: Product | null = null;
   constructor(
     private _offerService: OffersService,
@@ -55,7 +55,7 @@ export class OffertsModalComponent {
 
     }
     else {
-      this.selectedProduct!.id_offer = 0; // ! ocupo retornalo nulo para quitar oferta pero por construccion servicio no puedo 
+      this.id_offert.emit(null);
     }
     console.log('Selected IDs:', this.selectedIds); 
   }

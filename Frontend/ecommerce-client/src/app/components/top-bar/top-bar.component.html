@@ -43,34 +43,39 @@
     </div>
   </div>
 
-
-<dialog id="my_modal_3" class="modal">
-  <div class="modal-box">
-    <form method="dialog">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
-    <h3 class="text-lg font-bold">Notificaciones</h3>
-    <div class="overflow-x-auto">
-      <table class="table">
-        <!-- head -->
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Descripción</th>
-            <th>Fecha</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let notification of notifications">
-            <th>{{notification.id_product}}</th>
-            <th>{{notification.description}}</th>
-            <th>{{notification.date}}</th>
-            <th><button  (click)="deleteNotification(notification.id)" class="btn btn-link">Borrar</button></th>
-          </tr>
-        </tbody>
-      </table>
+  <dialog id="my_modal_3" class="modal modal-wide">
+    <div class="modal-box w-11/12 max-w-4xl">
+      <form method="dialog">
+        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+      </form>
+      <h3 class="text-lg font-bold mb-4">Notificaciones</h3>
+      <div class="overflow-x-auto">
+        <table class="table table-zebra w-full">
+          <thead>
+            <tr class="text-base" style="font-size: 16px;">
+              <th class="w-1/4">Producto</th>
+              <th class="w-1/2">Descripción</th>
+              <th class="w-1/6">Fecha</th>
+              <th class="w-1/12">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let notification of notifications" class="hover" style="font-size: 16px;">
+              <td>{{notification.id_product}}</td>
+              <td>{{notification.description}}</td>
+              <td>{{notification.date | date:'dd/MM/yyyy'}}</td>
+              <td>
+                <button 
+                style="font-size: 16px;"
+                  (click)="deleteNotification(notification.id)" 
+                  class="btn btn-ghost btn-xs text-red-500">
+                  Borrar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-</dialog>
+  </dialog>
   

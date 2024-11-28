@@ -1,4 +1,7 @@
-<app-offerts-modal (id_offert)="onOfferSelected($event)" [selectedProduct]="selectedProduct"></app-offerts-modal>
+
+<app-offerts-modal (id_offert)="onOfferSelected($event)"
+[selectedProduct]="selectedProduct"></app-offerts-modal>
+<app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
 <div class="overflow-x-auto">
   <table class="table table-xs" style="font-size: 50px;">
     <thead>
@@ -38,23 +41,27 @@
           <div class="menu bg-base-200 rounded-box w-56">
             <ng-container *ngFor="let category of categories">
               <details>
-                <summary>{{ category.name }}</summary>
+                <summary>
+                  {{ category.name }}
+                </summary>
                 <ul *ngIf="category.subcategories && category.subcategories.length > 0">
                   <li *ngFor="let subcategory of category.subcategories">
                     <!-- Renderizado recursivo de subcategorías -->
-                    <ng-container *ngTemplateOutlet="renderSubcategories; context: { $implicit: subcategory }"></ng-container>
+                    <ng-container *ngTemplateOutlet="renderSubcategories; context: { $implicit: subcategory, productId: product.id }"></ng-container>
                   </li>
                 </ul>
               </details>
             </ng-container>
           </div>
           <!-- Template para renderizado recursivo -->
-          <ng-template #renderSubcategories let-subcategory>
+          <ng-template #renderSubcategories let-subcategory let-productId="productId">
             <details>
-              <summary>{{ subcategory.name }}</summary>
+              <summary (click)="assignProductToCategory(productId.toString(), subcategory.id.toString() )">
+                {{ subcategory.name }}
+              </summary>
               <ul *ngIf="subcategory.subcategories && subcategory.subcategories.length > 0">
                 <li *ngFor="let child of subcategory.subcategories">
-                  <ng-container *ngTemplateOutlet="renderSubcategories; context: { $implicit: child }"></ng-container>
+                  <ng-container *ngTemplateOutlet="renderSubcategories; context: { $implicit: child, productId: productId }"></ng-container>
                 </li>
               </ul>
             </details>
