@@ -33,6 +33,38 @@ INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id
 VALUES ('Cámara Canon EOS Rebel T7', 'Cámara DSLR para fotógrafos principiantes.', 450.00, 'Canon', 'canon_rebel_t7.jpg', '24.1 MP, Full HD', NULL, 10, 0);
 
 
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Laptop Dell XPS 13', 'Ultrabook con pantalla táctil de 13 pulgadas.', 1000.00, 'Dell', 'dell_xps_13.jpg', '8GB RAM, 256GB SSD', NULL, 20, 25);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Smartphone Apple iPhone 12', 'iPhone 12 con pantalla Super Retina XDR.', 800.00, 'Apple', 'iphone_12.jpg', '128GB, 5G', NULL, 50, 45);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Tablet Samsung Galaxy Tab S7', 'Tableta con pantalla de 11 pulgadas y S Pen.', 650.00, 'Samsung', 'galaxy_tab_s7.jpg', '256GB, 6GB RAM', NULL, 30, 35);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Reloj Inteligente Garmin Forerunner 945', 'Reloj GPS multideporte con funciones avanzadas.', 500.00, 'Garmin', 'forerunner_945.jpg', 'GPS, VO2 Max', NULL, 15, 20);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Consola Sony PlayStation 5', 'Consola de videojuegos de última generación.', 500.00, 'Sony', 'ps5.jpg', '825GB SSD, 4K UHD', NULL, 12, 50);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Monitor LG UltraWide 34"', 'Monitor de 34 pulgadas UltraWide con HDR.', 700.00, 'LG', 'lg_ultrawide.jpg', '144Hz, G-Sync', NULL, 8, 30);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Bocinas Bluetooth JBL Charge 4', 'Bocinas portátiles con batería recargable.', 150.00, 'JBL', 'jbl_charge_4.jpg', '20 horas de reproducción', NULL, 25, 40);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Mouse Logitech MX Master 3', 'Mouse ergonómico con múltiples botones.', 100.00, 'Logitech', 'mx_master_3.jpg', 'Bluetooth, USB-C', NULL, 50, 15);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Router ASUS RT-AX88U', 'Router WiFi 6 de alto rendimiento.', 300.00, 'ASUS', 'asus_rt_ax88u.jpg', 'Dual Band, MU-MIMO', NULL, 20, 10);
+
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) 
+VALUES ('Cámara de Seguridad Nest Cam IQ', 'Cámara de seguridad inteligente con reconocimiento facial.', 350.00, 'Nest', 'nest_cam_iq.jpg', '1080p HD, WiFi', NULL, 15, 5);
+
+
 -- Asignando cada producto a una categoría específica
 INSERT INTO Product_Category (id_product, id_category) VALUES (1, 7);  -- Laptop Dell Inspiron en categoría 'Laptops'
 INSERT INTO Product_Category (id_product, id_category) VALUES (2, 9);  -- Tarjeta Gráfica Nvidia GTX 1660 en categoría 'Tarjetas de Video'

@@ -1,1 +1,18 @@
-<p>statistics-admin works!</p>
+<div class="row">
+    <div class="col-6">
+      <h2>Ventas de Productos</h2>
+      <canvas baseChart 
+        [data]="chartData"
+        [options]="chartOptions"
+        chartType="bar">
+      </canvas>
+    </div>
+    <div class="col-6">
+      <h2>Órdenes por Día</h2>
+      <canvas baseChart 
+        [data]="orderChartData"
+        [options]="orderChartOptions"
+        chartType="line">
+      </canvas>
+    </div>
+  </div>

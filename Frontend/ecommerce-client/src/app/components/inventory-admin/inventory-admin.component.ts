@@ -1,3 +1,4 @@
+import { Category } from './../../models/cateory.model';
 import { Product } from './../../models/product.model';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { OffertsModalComponent } from '../offerts-modal/offerts-modal.component';
+import { CategoryService } from '../../services/Category.service';
 
 
 @Component({
@@ -18,11 +20,15 @@ import { OffertsModalComponent } from '../offerts-modal/offerts-modal.component'
 export class InventoryAdminComponent {
   selectedProduct: any = null;
   products: Product[] = [];
+  categories: Category[]=[];
 
-  constructor(private _productService: ProductService){}
+  constructor(private _productService: ProductService,
+    private _categoryService: CategoryService
+  ){}
   
   ngOnInit(): void {
     this.loadProducts();
+    this.loadCategories();
 
 
   }
@@ -37,6 +43,23 @@ export class InventoryAdminComponent {
         },
         error: (error: any) => {
           console.error('Error al obtener productos:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        }
+      });
+  }
+
+
+  loadCategories() {
+    this._categoryService.getCategories()
+      .subscribe({
+        next: (result: Category[] ) => {
+          this.categories= result;
+          console.log('categorias',this.categories);
+        },
+        error: (error: any) => {
+          console.error('Error al obtener categories:', error);
         },
         complete: () => {
           console.log('Solicitud completada');
@@ -77,5 +100,18 @@ export class InventoryAdminComponent {
     });
   }
   
+  assignProductToCategory(id_product: string, id_category: string){
+    this._productService.AssignProductToCategory(id_product, id_category).subscribe({
+      next: (result) => {
+        console.log('Actualización exitosa:', result);
+      },
+      error: (error: any) => {
+        console.error('Error al actualizar producto:', error);
+      },
+      complete: () => {
+        console.log('Solicitud completada');
+      },
+    });
+  }
 
 }

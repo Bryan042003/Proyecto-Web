@@ -1,8 +1,6 @@
-
-<app-offerts-modal (id_offert)="onOfferSelected($event)"
-[selectedProduct]="selectedProduct"></app-offerts-modal>
+<app-offerts-modal (id_offert)="onOfferSelected($event)" [selectedProduct]="selectedProduct"></app-offerts-modal>
 <div class="overflow-x-auto">
-  <table class="table table-xs" style="font-size: 50px;"> 
+  <table class="table table-xs" style="font-size: 50px;">
     <thead>
       <tr style="font-size: 18px">
         <th></th>
@@ -13,31 +11,56 @@
         <th>Marca</th>
         <th>Stock</th>
         <th>Especificaciones Técnicas</th>
+        <th></th>
+        <th>Categoria</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products; let i = index" style="font-size: 17px">
         <th>{{ product.id }}</th>
         <td>{{ product.name }}</td>
-        <td>{{ product.id_offer}}</td>
+        <td>{{ product.id_offer }}</td>
         <td>{{ product.description }}</td>
         <td>{{ product.price }}</td>
         <td>{{ product.brand }}</td>
-        <td>
-          {{product.stock}}
-          
-        </td>
+        <td>{{ product.stock }}</td>
         <td>{{ product.technical_stuff }}</td>
-        <td>          <button
-          class="btn btn-secondary"
-          (click)="openModal(product)"
-          style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;"
-        >
-          Oferta
-        </button>
-      </td>
+        <td>
+          <button
+            class="btn btn-secondary"
+            (click)="openModal(product)"
+            style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;">
+            Oferta
+          </button>
+        </td>
+        <td>
+          <!-- Renderizado dinámico del menú de categorías -->
+          <div class="menu bg-base-200 rounded-box w-56">
+            <ng-container *ngFor="let category of categories">
+              <details>
+                <summary>{{ category.name }}</summary>
+                <ul *ngIf="category.subcategories && category.subcategories.length > 0">
+                  <li *ngFor="let subcategory of category.subcategories">
+                    <!-- Renderizado recursivo de subcategorías -->
+                    <ng-container *ngTemplateOutlet="renderSubcategories; context: { $implicit: subcategory }"></ng-container>
+                  </li>
+                </ul>
+              </details>
+            </ng-container>
+          </div>
+          <!-- Template para renderizado recursivo -->
+          <ng-template #renderSubcategories let-subcategory>
+            <details>
+              <summary>{{ subcategory.name }}</summary>
+              <ul *ngIf="subcategory.subcategories && subcategory.subcategories.length > 0">
+                <li *ngFor="let child of subcategory.subcategories">
+                  <ng-container *ngTemplateOutlet="renderSubcategories; context: { $implicit: child }"></ng-container>
+                </li>
+              </ul>
+            </details>
+          </ng-template>
+        </td>
       </tr>
-      <!-- Puedes continuar añadiendo filas si es necesario -->
     </tbody>
     <tfoot>
       <tr style="font-size: 18px">
@@ -50,6 +73,7 @@
         <th>Stock</th>
         <th>Especificaciones Técnicas</th>
         <th></th>
+        <th>Categoria</th>
       </tr>
     </tfoot>
   </table>
