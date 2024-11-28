@@ -231,14 +231,12 @@ export class LoginComponent implements OnInit {
             console.log('Login cerado con exito:', result.token);
             this._localStorage.setItem('token', result.token);
             this.showAlert = true;
-            this.loginForm.reset();
             setTimeout(() => {
               this.showAlert = false
-              // this.router.navigate(['/store']);
               setTimeout(() => {
-                window.location.reload();
               }, 1000);
             }, 500);
+            console.log(this.role);
 
           },
           error: (error: any) => {
@@ -249,6 +247,19 @@ export class LoginComponent implements OnInit {
           },
           complete: () => {
             console.log('solicitud aceptada');
+            switch (this.role) {
+              case 'logistics':
+                this.router.navigate(['/logistics-dashboard']);
+                break;
+              case 'admin':
+                this.router.navigate(['/admin_dashboard']);
+                break;     
+              default:
+                this.router.navigate(['/store']);
+                window.location.reload();
+                this.router.navigate(['/store']);
+                break;
+            }
           }
         });
 
@@ -264,15 +275,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     if (this.userForm.valid) {
-      const email = this.loginForm.value.email;
-      if (email) {
-        this.getUserbyemail(email);
-
-      }
-      else {
-        console.error('El email es nulo o indefinido.');
-        return;
-      }
       this._usersService.createUser(this.userForm.value)
         .subscribe({
           next: (result: any) => {
@@ -280,21 +282,6 @@ export class LoginComponent implements OnInit {
             this.showAlert = true;
             this.userForm.reset();
             this.userForm.patchValue({ role: 'user' });
-
-            console.log(this.role);
-            switch (this.role) {
-              case 'logistics':
-                this.router.navigate(['/logistics-dashboard']);
-                break;
-              case 'admin':
-                this.router.navigate(['/admin-dashboard']);
-                break;
-              case 'user':
-              default:
-                this.router.navigate(['/']);
-                break;
-            }
-
             setTimeout(() => {
               this.showAlert = false;
               setTimeout(() => {
@@ -323,7 +310,6 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (result: any) => {
           this.role = result.role;
-          console.log(this.role);
         },
         error: (error: any) => {
           console.error('Error al crear usuario:', error);

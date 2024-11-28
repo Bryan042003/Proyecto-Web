@@ -46,7 +46,7 @@ export const routes: Routes = [
     ]
      },
 
-    { path: 'logistics-dashboar', component: LoginComponent},
+    { path: 'logistics-dashboard', component: LoginComponent},
     { path: '', redirectTo: 'store', pathMatch: 'full' },
     { path: '**', redirectTo: 'store' }
 ];
