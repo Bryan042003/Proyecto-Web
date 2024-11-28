@@ -17,97 +17,59 @@
                         <div class="row w-full h-[20%] flex items-center justify-center">
                             <p class="font-bold text-2xl font-jetbrains text-black">Información de contacto</p>
                         </div>
-                        <form class="h-[80%] w-full" [formGroup]="contactForm" (ngSubmit)="onSubmitContact()">
-                            <div class="row h-full w-full pt-2 pb-6">
 
-                                <div class="row  h-[20%] w-full flex justify-center items-center space-x-4 pl-4 pr-4">
-                                    <div class="flex flex-col w-[50%] ">
-                                        <label for="nombre-id" class="mb-2 font-bold text-black">Nombre:</label>
-                                        <input class="w-full h-[40px] text-black pl-5 rounded-xl bg-[#b1b7bf] font-bold"
-                                            type="text" id="nombre-id" name="nombre" formControlName="name">
-                                        <div *ngIf="contactForm.controls['name'].invalid && contactForm.controls['name'].touched"
-                                            class="text-red-500">
-                                            <small *ngIf="contactForm.controls['name'].errors?.['required']">El nombre
-                                                es
-                                                obligatorio.</small>
-                                            <small *ngIf="contactForm.controls['name'].errors?.['pattern']">
-                                                Se permiten solo caraterés alfabéticos</small>
-                                        </div>
-                                    </div>
+                        <div class="row h-[80%] w-full pt-2 pb-6">
 
-                                    <div class="flex flex-col w-[50%]  pl-4 pr-4">
-                                        <label for="apellido-id" class="mb-2 font-bold text-black">Apellidos:</label>
-                                        <input
-                                            class="w-full h-[40px]  pl-5 rounded-xl bg-[#b1b7bf] font-bold text-black"
-                                            type="text" id="apellido-id" name="apellido" formControlName="last_name">
-                                        <div *ngIf="contactForm.controls['last_name'].invalid && contactForm.controls['last_name'].touched"
-                                            class="text-red-500">
-                                            <small *ngIf="contactForm.controls['last_name'].errors?.['required']">El
-                                                apellido es
-                                                obligatorio.</small>
-                                            <small *ngIf="contactForm.controls['last_name'].errors?.['pattern']">
-                                                Se permiten solo caraterés alfabéticos</small>
-                                        </div>
-                                    </div>
+                            <div class="row  h-[20%] w-full flex justify-center items-center space-x-4 pl-4 pr-4">
+                                <div class="flex flex-col w-[50%] ">
+                                    <label for="nombre-id" class="mb-2 font-bold text-black">Nombre:</label>
+                                    <input class="w-full h-[40px] text-black pl-5 rounded-xl bg-[#b1b7bf] font-bold"
+                                        type="text" id="nombre-id" name="nombre" [value]="userInfo?.name" readonly>
+
                                 </div>
 
-                                <div class="row h-[40%]  w-full flex justify-center items-center pl-4 pr-4">
-                                    <div class="flex flex-col w-full r">
-                                        <label for="apellido-id" class="mb-2  font-bold text-black">Dirección
-                                            Exacta:</label>
-                                        <input
-                                            class="w-full h-[80px] pl-5 rounded-xl  text-black bg-[#b1b7bf] font-bold"
-                                            type="text" id="apellido-id" name="apellido"
-                                            formControlName="specific_address">
-                                        <div *ngIf="contactForm.controls['specific_address'].invalid && contactForm.controls['specific_address'].touched"
-                                            class="text-red-500">
-                                            <small
-                                                *ngIf="contactForm.controls['specific_address'].errors?.['required']">
-                                                Una dirección
-                                                específica es obligatorio.</small>
-                                        </div>
+                                <div class="flex flex-col w-[50%]  pl-4 pr-4">
+                                    <label for="apellido-id" class="mb-2 font-bold text-black">Apellidos:</label>
+                                    <input class="w-full h-[40px]  pl-5 rounded-xl bg-[#b1b7bf] font-bold text-black"
+                                        type="text" id="apellido-id" name="apellido" [value]="userInfo?.last_name"
+                                        readonly>
 
-                                    </div>
                                 </div>
-
-                                <div class="row h-[20%]  w-full flex justify-center items-center pl-4 pr-4">
-                                    <div class="flex flex-col w-full justify-center ">
-                                        <label for="apellido-id" class="mb-2 font-bold text-black">Telefono:</label>
-                                        <input class="w-full h-[40px] pl-5 rounded-xl bg-[#b1b7bf] text-black font-bold"
-                                            type="text" id="apellido-id" name="apellido" formControlName="phone">
-                                        <div *ngIf="contactForm.controls['phone'].invalid && contactForm.controls['phone'].touched"
-                                            class="text-red-500">
-                                            <small *ngIf="contactForm.controls['phone'].errors?.['required']">El
-                                                teléfono es
-                                                obligatorio.</small>
-                                            <small *ngIf="contactForm.controls['phone'].errors?.['pattern']">Ingrese un
-                                                teléfono válido
-                                                (8
-                                                dígitos).</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="row  h-[20%] w-full flex justify-center items-center pl-4 pr-4">
-
-                                    <div class="flex flex-col w-full ">
-                                        <label for="apellido-id" class="mb-2 font-bold text-black">Correo:</label>
-                                        <input class="w-full h-[40px] pl-5 rounded-xl bg-[#b1b7bf] text-black font-bold"
-                                            type="text" id="apellido-id" name="apellido" formControlName="email">
-                                        <div *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched"
-                                            class="text-red-500">
-                                            <small *ngIf="contactForm.controls['email'].errors?.['required']">El correo
-                                                electrónico es
-                                                obligatorio.</small>
-                                            <small *ngIf="contactForm.controls['email'].errors?.['email']">
-                                                Ingrese un email válido</small>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
-                        </form>
+
+                            <div class="row h-[40%]  w-full flex justify-center items-center pl-4 pr-4">
+                                <div class="flex flex-col w-full r">
+                                    <label for="apellido-id" class="mb-2  font-bold text-black">Dirección
+                                        Exacta:</label>
+                                    <input class="w-full h-[80px] pl-5 rounded-xl  text-black bg-[#b1b7bf] font-bold"
+                                        type="text" id="apellido-id" name="apellido" [value]="address?.specific_address"
+                                        readonly>
+
+
+                                </div>
+                            </div>
+
+                            <div class="row h-[20%]  w-full flex justify-center items-center pl-4 pr-4">
+                                <div class="flex flex-col w-full justify-center ">
+                                    <label for="apellido-id" class="mb-2 font-bold text-black">Telefono:</label>
+                                    <input class="w-full h-[40px] pl-5 rounded-xl bg-[#b1b7bf] text-black font-bold"
+                                        type="text" id="apellido-id" name="apellido" [value]="userInfo?.phone" readonly>
+
+                                </div>
+                            </div>
+
+
+                            <div class="row  h-[20%] w-full flex justify-center items-center pl-4 pr-4">
+
+                                <div class="flex flex-col w-full ">
+                                    <label for="apellido-id" class="mb-2 font-bold text-black">Correo:</label>
+                                    <input class="w-full h-[40px] pl-5 rounded-xl bg-[#b1b7bf] text-black font-bold"
+                                        type="text" id="apellido-id" name="apellido" [value]="userInfo?.email" readonly>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
 
@@ -188,14 +150,14 @@
                                 </small>
                             </div>
 
-
                             <div *ngIf="creditCardForm.controls['expiration_date'].invalid && creditCardForm.controls['expiration_date'].touched"
                                 class="text-red-500">
                                 <small *ngIf="creditCardForm.controls['expiration_date'].errors?.['required']">La fecha
                                     de vencimiento es obligatoria.</small>
                                 <small *ngIf="creditCardForm.controls['expiration_date'].errors?.['pattern']">Debe tener
-                                    el formato MM/YY.</small>
+                                    el formato MM/YY y ser un mes válido.</small>
                             </div>
+
 
                             <div *ngIf="creditCardForm.controls['cvv'].invalid && creditCardForm.controls['cvv'].touched"
                                 class="text-red-500">
@@ -206,15 +168,16 @@
                             </div>
 
 
-                            <input type="checkbox" id="terms" class="h-[25px] w-[25px] rounded-2xl"
-                                formControlName="terms" (change)="onTermsChange($event)" />
-
-
-                            <div *ngIf="creditCardForm.controls['terms'].invalid && creditCardForm.controls['terms'].touched"
-                                class="text-red-500">
-                                <small>Debes aceptar los términos y condiciones.</small>
+                            <div class="row flex items-center gap-4 font-bold">
+                                <input type="checkbox" id="terms" class="h-[25px] w-[25px] rounded-2xl" />
+                                <label for="terms" class="flex items-center">
+                                    He leído y acepto los
+                                    <a target="_blank" class="text-blue-500 underline ml-1 hover:text-blue-700">
+                                        términos y condiciones
+                                    </a>
+                                    &nbsp; de la web
+                                </label>
                             </div>
-
 
                         </form>
                     </div>
@@ -223,12 +186,19 @@
 
 
                 <div class="col w-[40%] h-full bg-[#f8fafd] rounded-2xl">
-                    <div class="row w-full h-[10%] flex items-center justify-center ">
+                    <div class="row w-full h-[5%] flex items-center justify-center ">
                         <p class="font-bold text-2xl font-jetbrains text-black">Su Orden</p>
                     </div>
 
-                    <div class="row w-full h-[60%] flex flex-col items-center overflow-y-auto gap-2">
+                    <div class="row w-full h-[90%] flex flex-col items-center overflow-y-auto gap-2">
+                        <!-- Alerta de error -->
+                        <div class="w-full flex justify-center items-center mb-5">
+                            <div class="w-[90%]">
+                                <app-alert-error *ngIf="noStock" class="alert alert-error"
+                                    [message]="this.message"></app-alert-error>
+                            </div>
 
+                        </div>
 
                         <!-- Aqui va el for -->
 
@@ -283,7 +253,7 @@
                         </div>
 
                     </div>
-                    <div class="w-full h-[30%] flex items-end justify-center p-5">
+                    <div class="w-full h-[35%] flex items-end justify-center p-5">
 
                         <div class="col text-black w-full h-full flex items-end">
                             <div class="w-full h-full flex flex-col justify-end space-y-10">
@@ -339,7 +309,7 @@
 
 
                                 <!-- Botón Confirmar -->
-                                <div class="flex h-[50px] items-center justify-center w-full">
+                                <div class="flex h-[75px] items-center justify-center w-full">
                                     <button
                                         class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full"
                                         (click)="onSubmitContact()">

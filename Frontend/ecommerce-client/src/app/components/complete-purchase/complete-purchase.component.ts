@@ -11,6 +11,10 @@ import { AuthService } from '../../services/Auth.service';
 import { User } from '../../models/user.model';
 import { OrderService } from '../../services/Order.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UsersService } from '../../services/Users.service';
+import { AddressesService } from '../../services/Addresses.service';
+import { Address } from '../../models/address.model';
+import { AlertErrorComponent } from "../alert-error/alert-error.component";
 
 
 
@@ -23,39 +27,15 @@ import { ActivatedRoute, Router } from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AlertsComponent
-  ],
+    AlertsComponent,
+    AlertErrorComponent
+],
   templateUrl: './complete-purchase.component.html',
   styleUrl: './complete-purchase.component.scss'
 })
 export class CompletePurchaseComponent implements OnInit {
 
 
-  public contactForm = new FormGroup({
-    name: new FormControl<string>('', [
-      Validators.required,
-      Validators.pattern('^[A-Za-z\\s]+$'),
-      Validators.maxLength(50)  // Máximo 50 caracteres
-    ]),
-    last_name: new FormControl<string>('', [
-      Validators.required,
-      Validators.pattern('^[A-Za-z\\s]+$'),
-      Validators.maxLength(50)
-    ]),
-    specific_address: new FormControl<string>('', [
-      Validators.required,
-      Validators.maxLength(200)  // Limita la dirección a 200 caracteres
-    ]),
-    phone: new FormControl<string>('', [
-      Validators.required,
-      Validators.pattern('^[0-9]{8}$')
-    ]),
-    email: new FormControl<string>('', [
-      Validators.required,
-      Validators.email,
-      Validators.maxLength(100)
-    ])
-  });
 
   public creditCardForm = new FormGroup({
     card_number: new FormControl<string>('', [
@@ -69,13 +49,12 @@ export class CompletePurchaseComponent implements OnInit {
     ]),
     expiration_date: new FormControl<string>('', [
       Validators.required,
-      this.expirationDateValidator, // Validación personalizada
+      Validators.pattern('^(0[1-9]|1[0-2])/\\d{2}$'), // Patrón MM/YY
     ]),
     cvv: new FormControl<string>('', [
       Validators.required,
       Validators.pattern('^[0-9]{3,4}$'),
-    ]),
-    terms: new FormControl<boolean>(false, [Validators.requiredTrue]),
+    ])
   });
 
 
@@ -85,6 +64,11 @@ export class CompletePurchaseComponent implements OnInit {
   IVA: number = 0.13; // Variable para almacenar el IVA
   user: User | undefined;
   showAlert = false;
+  userInfo: User | undefined;
+  address: Address | undefined;
+
+  message = "No hay stock suficiente para agregar más unidades de este producto.";
+  noStock: boolean = false;
 
 
   constructor(
@@ -92,11 +76,22 @@ export class CompletePurchaseComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private localStorageService: LocalStorageService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private usersService: UsersService,
+    private addressesService: AddressesService
   ) { }
 
   ngOnInit() {
     this.user = this.authService.getDecodedAccessToken(this.localStorageService.getItem('token'));
+
+    if (this.user) {
+      this.usersService.getUser(this.user.id.toString()).subscribe((user) => {
+        this.userInfo = user;
+        this.addressesService.getAddress(this.userInfo?.id_address.toString()).subscribe((address) => {
+          this.address = address;
+        });
+      });
+    }    
 
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
     this.calculateSubtotal();
@@ -106,11 +101,11 @@ export class CompletePurchaseComponent implements OnInit {
   }
 
   onSubmitContact() {
-    if (this.contactForm.valid) {
+    if ( this.creditCardForm.valid) {
       console.log('Formulario válido  🚀');
       console.log("usuario: ", this.user);
-      console.log(this.contactForm.value);
       console.log(this.creditCardForm.value);
+      let counter = 0;
 
       this.orderService.createOrder({ id_user: this.user?.id, total_price: this.total }).subscribe({
         next: (order: any) => {
@@ -123,6 +118,21 @@ export class CompletePurchaseComponent implements OnInit {
               .subscribe({
                 next: (result: any) => {
                   console.log('Producto agregado:', result);
+                  counter++;
+                  if (counter === this.cartProducts.length) {
+                    this.showAlert = true;
+                    setTimeout(() => {
+                      this.showAlert = false;
+                      this.localStorageService.removeItem('shoppingCart');
+                      
+                      //window.location.reload();
+                      const element = document.getElementById('main-content');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                      this.router.navigate(['/store/order-complete/', order.order.id]);
+                    }, 3000);
+                  }
 
                 }, error: (error: any) => {
                   console.error('Error al agregar producto:', error);
@@ -141,35 +151,9 @@ export class CompletePurchaseComponent implements OnInit {
 
     } else {
       console.log('Formulario inválido');
-      this.contactForm.markAllAsTouched(); // Marca todos los controles como "tocados" para mostrar errores
       this.creditCardForm.markAllAsTouched(); // Marca todos los controles como "tocados" para mostrar errores
-      console.log(this.contactForm.value);
       console.log(this.creditCardForm.value);
     }
-  }
-
-  onTermsChange(event: any) {
-    this.creditCardForm.controls['terms'].setValue(event.target.checked);
-  }
-
-
-  expirationDateValidator(control: AbstractControl): ValidationErrors | null {
-    const value: string = control.value || '';
-    const regex = /^(0[1-9]|1[0-2])\/(\d{2})$/;
-
-    if (!regex.test(value)) {
-      return { invalidFormat: true };
-    }
-
-    const [month, year] = value.split('/').map(Number);
-    const currentYear = new Date().getFullYear() % 100;
-    const currentMonth = new Date().getMonth() + 1;
-
-    if (year < currentYear || (year === currentYear && month < currentMonth)) {
-      return { expired: true };
-    }
-
-    return null;
   }
 
 
@@ -185,6 +169,7 @@ export class CompletePurchaseComponent implements OnInit {
 
   // Función para incrementar el contador
   incrementQuantity(product: Product) {
+    if( product.stock > this.localStorageService.getProductQuantity(product.id) ) {
     const newQuantity = this.localStorageService.getProductQuantity(product.id) + 1;
 
     this.localStorageService.updateProductQuantity(product.id, newQuantity);
@@ -196,6 +181,15 @@ export class CompletePurchaseComponent implements OnInit {
     this.calculateTotal();
 
     window.location.reload();
+    }else{
+      this.noStock= true;
+      setTimeout(() => {
+
+        this.noStock = false;
+      }, 3000);
+      
+    }
+
   }
 
   decrementQuantity(product: Product) {

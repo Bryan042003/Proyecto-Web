@@ -34,6 +34,14 @@
                         </div>
                     </div>
 
+                    <!-- Alerta de error -->
+                    <div class="w-full flex justify-center items-center mb-5">
+                        <div class="w-[90%]">
+                            <app-alert-error *ngIf="noStock" class="alert alert-error"
+                                [message]="this.message"></app-alert-error>
+                        </div>
+
+                    </div>
                     <!-- Aqui va el for -->
 
                     <div *ngFor="let cartProduct of cartProducts"
@@ -140,7 +148,7 @@
 
                                 <!-- Botón Confirmar -->
                                 <div class="flex h-[50px] items-center justify-center w-full">
-                                    <button [routerLink]="['/store/complete-purchase']"
+                                    <button (click)="navigate()"
                                         class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full">
                                         Confirmar
                                     </button>

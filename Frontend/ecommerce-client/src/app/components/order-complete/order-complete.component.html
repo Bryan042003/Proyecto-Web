@@ -19,20 +19,20 @@
                     <div class="row w-full h-[10%] flex items-center justify-center bg-[#4c5664] rounded-2xl">
 
                         <div class="col w-full] flex items-center justify-center font-jetbrains text-2xl font-bold">
-                            Factura No. 00300001045
+                            Factura No. {{orderInfo?.id}}
                         </div>
 
                     </div>
 
                     <!-- Aqui va el for -->
 
-                    <div class=" flex row w-full h-[125px] bg-[#f8fafd]  text-black rounded-2xl">
+                    <div *ngFor="let orderProduct of orderProducts" class=" flex row w-full h-[125px] bg-[#f8fafd]  text-black rounded-2xl">
                         <div class="col h-full w-[50%] flex">
                             <div class="w-[30%] h-full flex items-center justify-center">
-                                <img src="images/compu.jpeg" alt="" class="w-[80%] h-[80%] rounded-2xl">
+                                <img [src]="orderProduct.Product.photo" alt="" class="w-[80%] h-[80%] rounded-2xl">
                             </div>
                             <div class="col h-full w-[70%] flex items-center justify-center font-jetbrains">
-                                <p>Nombre del producto</p>
+                                <p>{{orderProduct.Product.name}}</p>
                             </div>
                         </div>
 
@@ -41,13 +41,13 @@
                             <!-- Número central -->
                             <div
                                 class="flex items-center justify-center text-2xl font-bold bg-[#edf2fb] w-[50%] h-70%] rounded-2xl">
-                                2
+                                {{orderProduct.quantity}}
                             </div>
 
                         </div>
                         <div
                             class="col h-full w-[30%] flex items-center justify-center font-bold font-jetbrains text-xl">
-                            ₡ 250 000
+                            ₡  {{orderProduct.Product.price}}
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                                     Email
                                 </div>
                                 <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                    ejemplo&#64;gmail.com
+                                    {{orderUser?.email }}
                                 </div>
                             </div>
 
@@ -75,7 +75,7 @@
                                     Nombre
                                 </div>
                                 <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                    Pedro Rodriguez
+                                    {{orderUser?.name }}
                                 </div>
                             </div>
 
@@ -85,7 +85,7 @@
                                     Telefono
                                 </div>
                                 <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                    8888 - 8888
+                                  {{orderUser?.phone}}
                                 </div>
                             </div>
 
@@ -95,7 +95,7 @@
                                     Dirección Exacta
                                 </div>
                                 <div class="w-[50%] flex justify-end font-bold font-jetbrains overflow-y-scroll">
-                                    50 metros del super la maravilla iudbeiudeudeuid
+                                   {{addressUser?.specific_address}}
                                 </div>
                             </div>
 
@@ -105,7 +105,7 @@
                                     fecha de emisión:
                                 </div>
                                 <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                    00/00/000
+                                    {{day}}/{{month}}/{{year}}
                                 </div>
                             </div>
 
@@ -127,26 +127,6 @@
                         <div class="col text-black w-full h-full flex items-end">
                             <div class="w-full h-full flex flex-col justify-end space-y-10">
 
-                                <!-- Subtotal Row -->
-                                <div class="flex w-full">
-                                    <div class="w-[50%] flex justify-start items-center font-jetbrains">
-                                        Subtotal
-                                    </div>
-                                    <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                        ₡ 250 000
-                                    </div>
-                                </div>
-
-                                <!-- Transporte Row -->
-                                <div class="flex w-full">
-                                    <div class="w-[50%] flex justify-start items-center font-jetbrains">
-                                        Transporte
-                                    </div>
-                                    <div class="w-[50%] flex justify-end items-center font-bold font-jetbrains">
-                                        ₡ 2 500
-                                    </div>
-                                </div>
-
                                 <!-- Total Row -->
                                 <div class="flex w-full">
                                     <div
@@ -155,13 +135,13 @@
                                     </div>
                                     <div
                                         class="w-[70%] flex justify-end items-center font-bold text-2xl font-jetbrains">
-                                        ₡ 252 500
+                                        ₡ {{orderInfo?.total_price}}
                                     </div>
                                 </div>
 
                                 <!-- Botón Confirmar -->
                                 <div class="flex h-[50px] items-center justify-center w-full">
-                                    <button [routerLink]="['/store/slider-day-promotions']"
+                                    <button (click)="navigate()" 
                                         class="font-bold text-lg bg-[#1E2B3D] text-white font-jetbrains rounded-xl w-[75%] h-full">
                                         Confirmar
                                     </button>

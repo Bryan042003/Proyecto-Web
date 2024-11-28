@@ -12,12 +12,28 @@ import { LocalStorageService } from '../../services/LocalStorage.service';
 export class AddCartComponent {
   @Input()
   product!: Product;
+  isOnCart = false;
+
 
   constructor(private localStorageService: LocalStorageService) { }
-
+/*
   addLocalStorageCart(): void {
+
+    this.localStorageService.getProduct()
+
     this.localStorageService.saveProduct(this.product);
     window.location.reload(); 
+  }*/
+
+  addLocalStorageCart(): void {
+    const storedProducts: Product[] = Object.values(this.localStorageService.getAllProducts()) || [];
+    
+    const productExists = storedProducts.some(storedProduct => storedProduct.id === this.product.id);
+  
+    if (!productExists) {
+      this.localStorageService.saveProduct(this.product);
+      window.location.reload(); 
+    }
   }
 
 }
