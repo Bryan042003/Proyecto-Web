@@ -7,6 +7,7 @@ import { CategoryService } from '../../services/Category.service';
 import { AuthGuard } from '../../authGuard/auth.guard';
 import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
+import { AlertErrorComponent } from "../alert-error/alert-error.component";
 
 
 
@@ -14,13 +15,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, AlertErrorComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
 
   logged: boolean = false;
+
 
   cartProducts: Array<Product & { quantity: number }> = [];
 
@@ -32,6 +34,10 @@ export class HeaderComponent implements OnInit{
   IVA: number = 0.13; // Variable para almacenar el IVA
 
   categories: any[] = [];
+
+  message = "No hay stock suficiente para agregar más unidades de este producto.";
+  noStock: boolean = false;
+
 
 
   constructor(private router: Router,private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
@@ -55,15 +61,25 @@ export class HeaderComponent implements OnInit{
 
   }
 
-  incrementQuantity(product: Product) {
-    const newQuantity = this.localStorageService.getProductQuantity(product.id) + 1;
-  
-    this.localStorageService.updateProductQuantity(product.id, newQuantity);
-  
-    this.calculateSubtotal(); 
-    this.calculateIVA(); 
-    this.calculateTotal(); 
 
+  incrementQuantity(product: Product) {
+    if( product.stock > this.localStorageService.getProductQuantity(product.id) ) {
+      const newQuantity = this.localStorageService.getProductQuantity(product.id) + 1;
+  
+      this.localStorageService.updateProductQuantity(product.id, newQuantity);
+    
+      this.calculateSubtotal(); 
+      this.calculateIVA(); 
+      this.calculateTotal(); 
+    }else{
+      this.noStock= true;
+      setTimeout(() => {
+
+        this.noStock = false;
+      }, 3000);
+      
+    }
+    
   }
   
 
@@ -134,9 +150,15 @@ export class HeaderComponent implements OnInit{
     this.localStorageService.removeItem('token');
     this.logged = false;
     setTimeout(() => {
-        this.router.navigate(['/store']);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.router.navigate(['/store']);
     }, 100);
   
+  }
+
+  navigate(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.router.navigate(['/store' ]);
   }
 
 }

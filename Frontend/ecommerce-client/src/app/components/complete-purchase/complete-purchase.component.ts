@@ -14,6 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../services/Users.service';
 import { AddressesService } from '../../services/Addresses.service';
 import { Address } from '../../models/address.model';
+import { AlertErrorComponent } from "../alert-error/alert-error.component";
 
 
 
@@ -26,8 +27,9 @@ import { Address } from '../../models/address.model';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    AlertsComponent
-  ],
+    AlertsComponent,
+    AlertErrorComponent
+],
   templateUrl: './complete-purchase.component.html',
   styleUrl: './complete-purchase.component.scss'
 })
@@ -64,6 +66,9 @@ export class CompletePurchaseComponent implements OnInit {
   showAlert = false;
   userInfo: User | undefined;
   address: Address | undefined;
+
+  message = "No hay stock suficiente para agregar más unidades de este producto.";
+  noStock: boolean = false;
 
 
   constructor(
@@ -119,7 +124,12 @@ export class CompletePurchaseComponent implements OnInit {
                     setTimeout(() => {
                       this.showAlert = false;
                       this.localStorageService.removeItem('shoppingCart');
+                      
                       //window.location.reload();
+                      const element = document.getElementById('main-content');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
                       this.router.navigate(['/store/order-complete/', order.order.id]);
                     }, 3000);
                   }
@@ -159,6 +169,7 @@ export class CompletePurchaseComponent implements OnInit {
 
   // Función para incrementar el contador
   incrementQuantity(product: Product) {
+    if( product.stock > this.localStorageService.getProductQuantity(product.id) ) {
     const newQuantity = this.localStorageService.getProductQuantity(product.id) + 1;
 
     this.localStorageService.updateProductQuantity(product.id, newQuantity);
@@ -170,6 +181,15 @@ export class CompletePurchaseComponent implements OnInit {
     this.calculateTotal();
 
     window.location.reload();
+    }else{
+      this.noStock= true;
+      setTimeout(() => {
+
+        this.noStock = false;
+      }, 3000);
+      
+    }
+
   }
 
   decrementQuantity(product: Product) {

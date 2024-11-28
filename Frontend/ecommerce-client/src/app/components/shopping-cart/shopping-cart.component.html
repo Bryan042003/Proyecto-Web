@@ -34,6 +34,14 @@
                         </div>
                     </div>
 
+                    <!-- Alerta de error -->
+                    <div class="w-full flex justify-center items-center mb-5">
+                        <div class="w-[90%]">
+                            <app-alert-error *ngIf="noStock" class="alert alert-error"
+                                [message]="this.message"></app-alert-error>
+                        </div>
+
+                    </div>
                     <!-- Aqui va el for -->
 
                     <div *ngFor="let cartProduct of cartProducts"

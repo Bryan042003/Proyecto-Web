@@ -31,7 +31,7 @@ export class OrderCompleteComponent implements OnInit {
   orderProducts: any;
 
 
-  constructor(private route: ActivatedRoute, private orderService:OrderService, private usersService:UsersService, private addressesService:AddressesService) {  }
+  constructor( private router: Router,private route: ActivatedRoute, private orderService:OrderService, private usersService:UsersService, private addressesService:AddressesService) {  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -57,5 +57,9 @@ export class OrderCompleteComponent implements OnInit {
 
       });
     });
+  }
+  navigate(){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.router.navigate(['/store' ]);
   }
 }
