@@ -1,3 +1,5 @@
+<app-alerts *ngIf="showAlert" class="alert alert-success"></app-alerts>
+<app-no-alerts *ngIf="showNoAlert" class="alert alert-error"></app-no-alerts>
 <form class="grid" [formGroup]="offerForm" >
     <div class="form-container"
         style="display: flex; flex-wrap: wrap; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
@@ -42,7 +44,7 @@
     <table class="table w-full">
         <!-- Cabecera -->
         <thead>
-            <tr>
+            <tr style="font-size: 18px;">
                 <th>ID</th>
                 <th>Descuento (%)</th>
                 <th>Fecha de Inicio</th>
@@ -54,12 +56,13 @@
 
         <!-- Cuerpo -->
         <tbody>
-            <tr *ngFor="let offert of offerts; let i = index">
+            <tr *ngFor="let offert of offerts; let i = index" style="font-size: 16px;">
                 <td>{{ offert.id }}</td>
                 <td>{{ offert.discount }}</td>
                 <td>{{ offert.start_date }}</td>
                 <td>{{ offert.end_date }}</td>
                 <td> <button class="btn btn-secondary"
+                    (click)="onDelete(offert.id.toString());"
                         style="padding: 10px 20px; border-radius: 4px; background-color: #6c757d; color: #fff; border: none; cursor: pointer;">Eliminar</button>
                 </td>
             </tr>

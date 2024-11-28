@@ -6,12 +6,16 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { OffersService } from '../../services/Offers.service';
 import { Offer } from '../../models/offer.model';
 
+
 @Component({
   selector: 'app-offers-admin',
   standalone: true,
   imports: [ CommonModule,
     FormsModule,
-    ReactiveFormsModule],
+    ReactiveFormsModule,
+    AlertsComponent,
+    NoAlertsComponent
+  ],
   templateUrl: './offers-admin.component.html',
   styleUrl: './offers-admin.component.scss'
 })
@@ -55,25 +59,33 @@ export class OffersAdminComponent {
       });
   }
 
-  // onSubmit(){
-  //   console.log(this.offerForm.value);
-  // }
-
-   formatDateToBackend(date: Date): string {
-    const tzOffset = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
-    return tzOffset.toISOString().slice(0, 19).replace('T', ' ');
+  onDelete(id: string){
+    this._offerService.deleteOffer(id).
+    subscribe({
+      next: (result: any) => {
+        console.log('oferta:', result);
+        this.loadOfferts();
+      },
+      error: (error: any) => {
+        console.error('Error al eliminar oferta:', error);
+      },
+      complete: () => {
+        console.log('Creación completada');
+      }
+    })
   }
   
 
     onSubmit() {
       console.log(this.offerForm.value);
-    /*  if (this.offerForm.valid) {
+      if (this.offerForm.valid) {
       this._offerService.createOffer(this.offerForm.value).
       subscribe({
         next: (result: any) => {
           console.log('oferta:', result);
           this.showAlert = true;
           this.offerForm.reset();
+          this.loadOfferts();
           setTimeout(() => { this.showAlert = false; }, 3000);
         },
         error: (error: any) => {
@@ -93,6 +105,6 @@ export class OffersAdminComponent {
       console.table(this.offerForm.value);
       setTimeout(() => { this.showNoAlert = false; }, 3000);
     } 
-  }  */
-    }
+  }  
+    
 }
