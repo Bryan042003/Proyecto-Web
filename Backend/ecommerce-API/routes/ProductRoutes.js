@@ -24,6 +24,7 @@ router.delete('/delete-category/:id', productController.deleteProductCategory);
 
 router.patch('/assign-offer', productController.AssignProductToOffer);
 
+router.get('/search', productController.searchProductByName);
 
 
 

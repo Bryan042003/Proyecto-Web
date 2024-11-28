@@ -6,6 +6,7 @@ const Product_Category = require('../models/Product_Category');
 const Category = require('../models/Category');
 const Offer = require('../models/Offer');
 const moment = require('moment');
+const { Op } = require('sequelize');
 
 
 //Middlewares to validate product data
@@ -132,6 +133,28 @@ const getProductById = async (req, res) => {
         }
     } catch (error) {
         return res.status(500).json({ error: error.message });
+    }
+}
+
+const searchProductByName = async (req, res) => {
+    const  {name} = req.query;
+    if(!name){
+        return res.status(400).json({error: 'Name is required'});
+    }
+    try{
+        const products = await Product.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${name}%`
+                }
+            },
+            limit: 10
+
+        })
+        return res.status(200).json(products);
+    }catch(error){
+        console.log(error);
+        return res.status(500).json({error: error.message});
     }
 }
 
@@ -413,6 +436,7 @@ module.exports = {
         AssignProductToOffer,
         UpdateProductCategory,
         ValidateUpdateProductCategory,
-        deleteProductCategory
+        deleteProductCategory,
+        searchProductByName
     }
 
