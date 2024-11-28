@@ -32,9 +32,9 @@ export class HeaderComponent implements OnInit {
   whishlistProducts: Array<Product> = [];
 
 
-  subtotal: number = 0; // Variable para almacenar el total
-  total: number = 0; // Variable para almacenar el total
-  IVA: number = 0.13; // Variable para almacenar el IVA
+  subtotal: number = 0; 
+  total: number = 0; 
+  IVA: number = 0.13; 
 
   categories: any[] = [];
 
@@ -87,16 +87,9 @@ export class HeaderComponent implements OnInit {
     console.log('Producto seleccionado:', product);
     this.scrollToMainContent();
     this.router.navigate(['/store/product-details/', product.id]);
-  
-    // Limpiar la barra de búsqueda usando la referencia del input
-    input.value = '';
-  
-    // Limpiar la lista de productos filtrados
-    this.filteredProducts = [];
+      input.value = '';
+      this.filteredProducts = [];
   }
-  
-  
-
 
   incrementQuantity(product: Product) {
     if (product.stock > this.localStorageService.getProductQuantity(product.id)) {
@@ -117,8 +110,6 @@ export class HeaderComponent implements OnInit {
     }
 
   }
-
-
 
   decrementQuantity(product: Product) {
     const currentQuantity = this.localStorageService.getProductQuantity(product.id);
