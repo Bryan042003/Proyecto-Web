@@ -1,20 +1,22 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-lg-6 mb-4">
-      <h2 class="text-center">Ventas de Productos</h2>
-      <canvas baseChart 
-        [data]="chartData"
-        [options]="chartOptions"
-        chartType="bar">
-      </canvas>
-    </div>
-    <div class="col-12 col-lg-6">
-      <h2 class="text-center">Órdenes por Día</h2>
-      <canvas baseChart 
-        [data]="orderChartData"
-        [options]="orderChartOptions"
-        chartType="line">
-      </canvas>
-    </div>
+<div class="row">
+  <div class="col-12 mb-4">
+    <h2>Ventas de Productos</h2>
+    <canvas
+      baseChart
+      #productChart
+      [data]="chartData"
+      [options]="chartOptions"
+      chartType="bar">
+    </canvas>
+  </div>
+  <div class="col-12">
+    <h2>Órdenes por Día</h2>
+    <canvas
+      baseChart
+      #orderChart
+      [data]="orderChartData"
+      [options]="orderChartOptions"
+      chartType="line">
+    </canvas>
   </div>
 </div>
