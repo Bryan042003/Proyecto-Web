@@ -33,7 +33,6 @@ export class StatisticsAdminComponent implements OnInit {
   };
   chartOptions: ChartOptions<'bar'> = {
     responsive: true,
-    maintainAspectRatio: true,
     plugins: {
       legend: {
         position: 'top'

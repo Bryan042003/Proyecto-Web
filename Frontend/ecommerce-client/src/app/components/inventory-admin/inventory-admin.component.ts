@@ -3,6 +3,7 @@ import { Product } from './../../models/product.model';
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/Product.service';
+import { AlertsComponent } from '../../components/alerts/alerts.component';
 import { NgModule } from '@angular/core'; 
 import { BrowserModule } from '@angular/platform-browser'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
@@ -13,7 +14,7 @@ import { CategoryService } from '../../services/Category.service';
 @Component({
   selector: 'app-inventory-admin',
   standalone: true,
-  imports: [CommonModule, FormsModule, OffertsModalComponent],
+  imports: [CommonModule, FormsModule, OffertsModalComponent, AlertsComponent],
   templateUrl: './inventory-admin.component.html',
   styleUrl: './inventory-admin.component.scss'
 })
@@ -21,6 +22,7 @@ export class InventoryAdminComponent {
   selectedProduct: any = null;
   products: Product[] = [];
   categories: Category[]=[];
+  showAlert = false;
 
   constructor(private _productService: ProductService,
     private _categoryService: CategoryService
@@ -74,11 +76,14 @@ export class InventoryAdminComponent {
   }
 
 
-  onOfferSelected(selectedOfferId: number): void {
-    if (this.selectedProduct) {
+  onOfferSelected(selectedOfferId: any): void {
+    if (this.selectedProduct && selectedOfferId !== null) {
       this.selectedProduct.id_offer = selectedOfferId;
       console.log('producto antes de actualiza:', this.selectedProduct);
-      this.updateProdut(this.selectedProduct.id, this.selectedProduct.id);
+      this.updateProdut(this.selectedProduct.id_offer, this.selectedProduct.id);
+    }if(selectedOfferId === null){
+        console.log("entro a null");
+        this.updateProdut(null, this.selectedProduct.id);
     }
     
     (document.getElementById('my_modal_4') as HTMLDialogElement).close();
@@ -86,7 +91,7 @@ export class InventoryAdminComponent {
 
   }
 
-  updateProdut(id_offer: string, id_product: string) {
+  updateProdut(id_offer: any, id_product: string) {
     this._productService.AssignProductToOffer(id_offer, id_product).subscribe({
       next: (result) => {
         console.log('Actualización exitosa:', result);
@@ -103,7 +108,9 @@ export class InventoryAdminComponent {
   assignProductToCategory(id_product: string, id_category: string){
     this._productService.AssignProductToCategory(id_product, id_category).subscribe({
       next: (result) => {
+        this.showAlert = true; 
         console.log('Actualización exitosa:', result);
+        setTimeout(() => { this.showAlert = false; }, 3000);
       },
       error: (error: any) => {
         console.error('Error al actualizar producto:', error);
@@ -114,4 +121,5 @@ export class InventoryAdminComponent {
     });
   }
 
+  
 }
