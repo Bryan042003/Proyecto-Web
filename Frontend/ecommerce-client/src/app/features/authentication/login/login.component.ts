@@ -3,6 +3,7 @@ import { UsersService } from './../../../services/Users.service';
 import { AddressesService } from '../../../services/Addresses.service';
 import { AuthService } from '../../../services/Auth.service';
 import { AlertsComponent } from '../../../components/alerts/alerts.component';
+import { NoAlertsComponent } from '../../../components/no-alerts/no-alerts.component';
 import { Canton, District } from '../../../models/address.model';
 import { Province } from '../../../models/address.model';
 import { Component, OnInit } from '@angular/core';
@@ -20,7 +21,8 @@ import { ActivatedRoute, Router } from '@angular/router';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AlertsComponent
+    AlertsComponent,
+    NoAlertsComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -30,24 +32,26 @@ export class LoginComponent implements OnInit {
   showLogin = true;
   showAlert = false;
   showAlert2 = false;
+  showNoAlert = false;
+  role: string = "";
   selectedProvinceId: number | null = null;
   selectedCantonId: number | null = null;
   districts: District[] = [];
   cantons: Canton[] = [];
   provinces: Province[] = [];
 
-  showPassword: boolean = false; 
+  showPassword: boolean = false;
 
 
   public loginForm = new FormGroup({
-    email: new FormControl<string>( '',[
+    email: new FormControl<string>('', [
       Validators.required,
       Validators.email,
       Validators.maxLength(100)
     ]),
-    passw:  new FormControl<string>('', [
+    passw: new FormControl<string>('', [
       Validators.required,
-      Validators.minLength(8),   
+      Validators.minLength(8),
       Validators.maxLength(20)
     ])
   });
@@ -110,13 +114,13 @@ export class LoginComponent implements OnInit {
     private _localStorage: LocalStorageService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
 
   ngOnInit(): void {
     this.loadProvinces();
   }
-  
+
   togglePasswordVisibility(event: Event): void {
     this.showPassword = (event.target as HTMLInputElement).checked;
   }
@@ -124,21 +128,22 @@ export class LoginComponent implements OnInit {
 
   loadDistricts() {
     if (this.selectedCantonId !== null && this.selectedCantonId !== undefined) {
-    this._addressService.getDistrictsByCanton(this.selectedCantonId.toString())
-      .subscribe({
-        next: (result: { districts: District[] }) => {
-          this.districts = result.districts;
-          console.log(this.districts);
-        },
-        error: (error: any) => {
-          console.error('Error al obtener distritos:', error);
-        },
-        complete: () => {
-          console.log('Solicitud completada');
-        }
-      });}else {
-        console.error('Error: selectedProvinceId no tiene un valor válido.');
-      }
+      this._addressService.getDistrictsByCanton(this.selectedCantonId.toString())
+        .subscribe({
+          next: (result: { districts: District[] }) => {
+            this.districts = result.districts;
+            console.log(this.districts);
+          },
+          error: (error: any) => {
+            console.error('Error al obtener distritos:', error);
+          },
+          complete: () => {
+            console.log('Solicitud completada');
+          }
+        });
+    } else {
+      console.error('Error: selectedProvinceId no tiene un valor válido.');
+    }
   }
 
   get district() {
@@ -210,44 +215,64 @@ export class LoginComponent implements OnInit {
     return this.provinces;
   }
 
-  onSubmitLogin(){
-    if(this.loginForm.valid){
+  onSubmitLogin() {
+    if (this.loginForm.valid) {
+      const email = this.loginForm.value.email;
+      if (email) {
+        this.getUserbyemail(email);
+      }
+      else {
+        console.error('El email es nulo o indefinido.');
+        return;
+      }
       this._loginAuth.login(this.loginForm.value).
-      subscribe({
-        next: (result: any) => {
-          console.log('Login cerado con exito:', result.token);
-          this._localStorage.setItem('token', result.token);
-          this.showAlert = true;
-          this.loginForm.reset();
-          setTimeout(() => {
-            this.showAlert = false
-            this.router.navigate(['/store']);
+        subscribe({
+          next: (result: any) => {
+            console.log('Login cerado con exito:', result.token);
+            this._localStorage.setItem('token', result.token);
+            this.showAlert = true;
+            this.loginForm.reset();
             setTimeout(() => {
-              window.location.reload();
-            }, 1000);
-          }, 500);
+              this.showAlert = false
+              // this.router.navigate(['/store']);
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
+            }, 500);
 
-        },
-        error:(error:any)=>{
-          console.error('Login cerado con exito:', error);
-          console.table(this.loginForm.value);
-        },
-        complete: () => {
-          console.log('solicitud aceptada');
-        }
-      });
+          },
+          error: (error: any) => {
+            console.error('Login no efectuado:', error);
+            this.showNoAlert = true;
+            setTimeout(() => { this.showNoAlert = false; }, 3000);
+            console.table(this.loginForm.value);
+          },
+          complete: () => {
+            console.log('solicitud aceptada');
+          }
+        });
 
-    }else{
+    } else {
       console.log('Formulario inválido');
-      this.loginForm.markAllAsTouched(); // Marca todos los controles como "tocados" para mostrar errores
+      this.loginForm.markAllAsTouched();
       console.log(this.loginForm.value);
+      this.showNoAlert = true;
+      setTimeout(() => { this.showNoAlert = false; }, 3000);
     }
 
   }
 
-
   onSubmit() {
     if (this.userForm.valid) {
+      const email = this.loginForm.value.email;
+      if (email) {
+        this.getUserbyemail(email);
+
+      }
+      else {
+        console.error('El email es nulo o indefinido.');
+        return;
+      }
       this._usersService.createUser(this.userForm.value)
         .subscribe({
           next: (result: any) => {
@@ -255,13 +280,27 @@ export class LoginComponent implements OnInit {
             this.showAlert = true;
             this.userForm.reset();
             this.userForm.patchValue({ role: 'user' });
-            setTimeout(() => { this.showAlert = false; 
-              this.router.navigate(['/login']);
+
+            console.log(this.role);
+            switch (this.role) {
+              case 'logistics':
+                this.router.navigate(['/logistics-dashboard']);
+                break;
+              case 'admin':
+                this.router.navigate(['/admin-dashboard']);
+                break;
+              case 'user':
+              default:
+                this.router.navigate(['/']);
+                break;
+            }
+
+            setTimeout(() => {
+              this.showAlert = false;
               setTimeout(() => {
                 window.location.reload();
               }, 1000);
             }, 3000);
-
           },
           error: (error: any) => {
             console.error('Error al crear usuario:', error);
@@ -279,6 +318,22 @@ export class LoginComponent implements OnInit {
   }
 
 
+  getUserbyemail(email: string) {
+    this._usersService.getUserByEmail(email)
+      .subscribe({
+        next: (result: any) => {
+          this.role = result.role;
+          console.log(this.role);
+        },
+        error: (error: any) => {
+          console.error('Error al crear usuario:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        }
+      });
+
+  }
 
 
 

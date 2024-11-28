@@ -20,17 +20,19 @@ export class OffersAdminComponent {
   showNoAlert = false;
   showAlert = false;
   offerts: Offer[] = [];
-
+  
   public offerForm = new FormGroup({
-    discount: new FormControl<number | null>(null, [
+    id: new FormControl<number | null>(null), // Campo opcional para 'id'
+    discount: new FormControl<number>(0, [
       Validators.required,
-      Validators.max(100)  
+      Validators.max(100)
     ]),
-    start_date: new FormControl<Date | null>(null, [
+    start_date: new FormControl<Date>(new Date(), [
       Validators.required
     ]),
-    end_date: new FormControl<Date | null>(null) 
+    end_date: new FormControl<Date | null>(null) // Opcional
   });
+  
   
   ngOnInit(): void {
     this.loadOfferts();
@@ -53,8 +55,19 @@ export class OffersAdminComponent {
       });
   }
 
-/*   onSubmit() {
-    if (this.offerForm.valid) {
+  // onSubmit(){
+  //   console.log(this.offerForm.value);
+  // }
+
+   formatDateToBackend(date: Date): string {
+    const tzOffset = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+    return tzOffset.toISOString().slice(0, 19).replace('T', ' ');
+  }
+  
+
+    onSubmit() {
+      console.log(this.offerForm.value);
+  /*   if (this.offerForm.valid) {
       this._offerService.createOffer(this.offerForm.value).
       subscribe({
         next: (result: any) => {
@@ -79,7 +92,7 @@ export class OffersAdminComponent {
       this.showNoAlert = true;
       console.table(this.offerForm.value);
       setTimeout(() => { this.showNoAlert = false; }, 3000);
-    }
-  }
-   */
+    } */
+  } 
+   
 }

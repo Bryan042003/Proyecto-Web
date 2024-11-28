@@ -45,6 +45,8 @@ export const routes: Routes = [
         {path: 'offers-admin', component: OffersAdminComponent}
     ]
      },
+
+    { path: 'logistics-dashboar', component: LoginComponent},
     { path: '', redirectTo: 'store', pathMatch: 'full' },
     { path: '**', redirectTo: 'store' }
 ];

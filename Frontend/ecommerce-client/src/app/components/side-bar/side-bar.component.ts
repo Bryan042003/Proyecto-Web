@@ -34,4 +34,7 @@ export class SideBarComponent {
   navigateToStatictics(): void {
     this.router.navigate(['/admin_dashboard/statistics-admin']);
   }
+  navigateToOfferts(): void {
+    this.router.navigate(['/admin_dashboard/offers-admin']);
+  }
 }

@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "angular-svg-icon": "^18.0.2"
+    "angular-svg-icon": "^18.0.2",
+    "chart.js": "^4.4.6"
   }
 }
