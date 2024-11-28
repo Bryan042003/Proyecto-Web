@@ -2,7 +2,10 @@
     <div class="navbar-start">
     </div>
     <div class="navbar-center">
-      <a class="btn btn-ghost text-xl">ExtremeTEC Administración</a>
+      <a class="btn btn-ghost text-xl"> {{ role === 'admin' ? 'ExtremeTEC Administración' : 
+      role === 'logistics' ? 'ExtremeTEC Operadores' : 'ExtremeTEC' }}
+
+      </a>
     </div>
     <div class="navbar-end">
       <button class="btn btn-ghost btn-circle">

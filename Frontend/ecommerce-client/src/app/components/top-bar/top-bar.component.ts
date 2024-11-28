@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Notification } from '../../models/notification.model';
 import { NotificationService } from '../../services/Notification.service';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class TopBarComponent {
   notifications: Notification[]=[];
+  @Input() role: string = '';
   constructor(private _notificationService: NotificationService){}
 
 

@@ -1,11 +1,12 @@
 import { Component} from '@angular/core';
 import { SideBarComponent } from '../../components/side-bar/side-bar.component';
 import { ActivatedRoute } from '@angular/router';
+import { TopBarComponent } from '../../components/top-bar/top-bar.component';
 
 @Component({
   selector: 'app-logistics-dashboard',
   standalone: true,
-  imports: [SideBarComponent],
+  imports: [SideBarComponent,TopBarComponent],
   templateUrl: './logistics-dashboard.component.html',
   styles: ``
 })
