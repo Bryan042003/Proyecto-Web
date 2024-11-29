@@ -202,20 +202,6 @@ export class PersonalInformationComponent implements OnInit {
   deleteProfile() {
     console.log('Solicitando confirmación para eliminar cuenta...');
     this.showAlert = true;
-    if (this.userActive?.id) {
-      console.log("usuario a eliminar", this.userActive.id);
-      this.usersService.deleteUser(this.userActive.id.toString()).subscribe((user: User) => {
-
-        console.log('Usuario eliminado correctamente ', user);
-        this.user = user;
-        this.showAlert = true;
-        setTimeout(() => {
-          this.showAlert = false
-        }, 3000);
-      });
-    } else {
-      console.error('No se puede eliminar el usuario');
-    }
   }
 
   onCancel(event: boolean) {
@@ -228,14 +214,21 @@ export class PersonalInformationComponent implements OnInit {
 
     if (this.userActive?.id) {
       console.log("usuario a eliminar", this.userActive.id);
-      this.usersService.deleteUser(this.userActive.id.toString());
-      this.authService.logout();
-      setTimeout(() => {
-        this.router.navigate(['/store']);
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-      }, 3000);
+      this.usersService.deleteUser(this.userActive.id.toString()).subscribe({
+        next: () => {
+          console.log('Usuario eliminado correctamente');
+          this.authService.logout();
+          setTimeout(() => {
+            this.router.navigate(['/store']);
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+          }, 1000);
+        },
+        error: (error) => {
+          console.error('Error al eliminar usuario:', error);
+        }
+      });
     }
   }
 
