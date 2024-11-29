@@ -220,19 +220,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id4, 15)
 INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 15);
 
 -- Producto 1: Cooler Master Hyper 212 EVO
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Cooler Master Hyper 212 EVO', 'Disipador de aire para CPU con excelente relación calidad-precio.', 40000.00, 'Cooler Master', 'ruta/a/la/foto1.jpg', 'Tipo: Disipador de aire, Compatible con Intel y AMD, Ventilador de 120mm', NULL, 50, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Cooler Master Hyper 212 EVO', 'Disipador de aire para CPU con excelente relación calidad-precio.', 40000.00, 'Cooler Master', 'https://img.pacifiko.com/PROD/resize/1/1000x1000/ZWIwZWFmMD.png', 'Tipo: Disipador de aire, Compatible con Intel y AMD, Ventilador de 120mm', NULL, 50, 0);
 
 -- Producto 2: NZXT Kraken X63 Liquid Cooler
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NZXT Kraken X63 Liquid Cooler', 'Sistema de enfriamiento líquido todo en uno con iluminación RGB.', 180000.00, 'NZXT', 'ruta/a/la/foto2.jpg', 'Tipo: Enfriamiento líquido AIO, Radiador de 280mm, 2 ventiladores de 140mm, Compatible con Intel y AMD', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NZXT Kraken X63 Liquid Cooler', 'Sistema de enfriamiento líquido todo en uno con iluminación RGB.', 180000.00, 'NZXT', 'https://www.datocms-assets.com/34299/1615584522-kraken-x63frontbnwith-fanpurple.png', 'Tipo: Enfriamiento líquido AIO, Radiador de 280mm, 2 ventiladores de 140mm, Compatible con Intel y AMD', NULL, 20, 0);
 
 -- Producto 3: Noctua NH-D15 Dual Tower CPU Cooler
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Noctua NH-D15 Dual Tower CPU Cooler', 'Disipador de aire premium con rendimiento excepcional y funcionamiento silencioso.', 150000.00, 'Noctua', 'ruta/a/la/foto3.jpg', 'Tipo: Disipador de aire, Dual tower, 2 ventiladores de 140mm, Compatible con Intel y AMD', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Noctua NH-D15 Dual Tower CPU Cooler', 'Disipador de aire premium con rendimiento excepcional y funcionamiento silencioso.', 150000.00, 'Noctua', 'https://images-na.ssl-images-amazon.com/images/I/51H3ITbJWQL.jpg', 'Tipo: Disipador de aire, Dual tower, 2 ventiladores de 140mm, Compatible con Intel y AMD', NULL, 15, 0);
 
 -- Producto 4: Corsair iCUE H100i Elite Capellix Liquid CPU Cooler
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair iCUE H100i Elite Capellix Liquid CPU Cooler', 'Enfriamiento líquido con iluminación RGB y alto rendimiento.', 200000.00, 'Corsair', 'ruta/a/la/foto4.jpg', 'Tipo: Enfriamiento líquido AIO, Radiador de 240mm, 2 ventiladores de 120mm, Compatible con Intel y AMD', NULL, 18, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair iCUE H100i Elite Capellix Liquid CPU Cooler', 'Enfriamiento líquido con iluminación RGB y alto rendimiento.', 200000.00, 'Corsair', 'https://extremetechcr.com/tienda/31609/corsair-icue-h100i-elite-capellix-xt-negro.jpg', 'Tipo: Enfriamiento líquido AIO, Radiador de 240mm, 2 ventiladores de 120mm, Compatible con Intel y AMD', NULL, 18, 0);
 
 -- Producto 5: Arctic Liquid Freezer II 360
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Arctic Liquid Freezer II 360', 'Sistema de enfriamiento líquido con excelente eficiencia y bajo nivel de ruido.', 170000.00, 'Arctic', 'ruta/a/la/foto5.jpg', 'Tipo: Enfriamiento líquido AIO, Radiador de 360mm, 3 ventiladores de 120mm, Compatible con Intel y AMD', NULL, 12, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Arctic Liquid Freezer II 360', 'Sistema de enfriamiento líquido con excelente eficiencia y bajo nivel de ruido.', 170000.00, 'Arctic', 'https://centrale.cl/wp-content/uploads/RefrigeraciC3B3n-LC3ADquida-CPU-ARCTIC-Liquid-Freezer-II-360-A-RGB-AiO-LGA-17_b7vv1rB.webp', 'Tipo: Enfriamiento líquido AIO, Radiador de 360mm, 3 ventiladores de 120mm, Compatible con Intel y AMD', NULL, 12, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -252,19 +252,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 16)
 
 
 -- Producto 1: Monitor Dell UltraSharp U2720Q 27" 4K
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Dell UltraSharp U2720Q 27" 4K Monitor', 'Monitor 4K UHD con panel IPS y amplia gama de colores.', 450000.00, 'Dell', 'ruta/a/la/foto1.jpg', 'Resolución: 3840x2160, Conectividad: HDMI, DisplayPort, USB-C, Tamaño: 27 pulgadas', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Dell UltraSharp U2720Q 27" 4K Monitor', 'Monitor 4K UHD con panel IPS y amplia gama de colores.', 450000.00, 'Dell', 'https://i.dell.com/is/image/DellContent//content/dam/ss2/product-images/peripherals/output-devices/dell/monitors/u2720qm/pdp/u2720qm_monitor_responsive_hero.jpg?fmt=jpg', 'Resolución: 3840x2160, Conectividad: HDMI, DisplayPort, USB-C, Tamaño: 27 pulgadas', NULL, 15, 0);
 
 -- Producto 2: Monitor LG 34WN80C-B UltraWide 34"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('LG 34WN80C-B UltraWide 34" Monitor', 'Monitor curvo UltraWide con resolución QHD para multitarea.', 350000.00, 'LG', 'ruta/a/la/foto2.jpg', 'Resolución: 3440x1440, Conectividad: HDMI, DisplayPort, USB-C, Tamaño: 34 pulgadas', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('LG 34WN80C-B UltraWide 34" Monitor', 'Monitor curvo UltraWide con resolución QHD para multitarea.', 350000.00, 'LG', 'https://media.us.lg.com/transform/ecomm-PDPGallery-1100x730/0105a9c4-0b5f-46bc-99fd-5510364d2fca/md07000511-zoom-01-jpg', 'Resolución: 3440x1440, Conectividad: HDMI, DisplayPort, USB-C, Tamaño: 34 pulgadas', NULL, 20, 0);
 
 -- Producto 3: Proyector Epson Home Cinema 2150
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Epson Home Cinema 2150 Projector', 'Proyector inalámbrico Full HD ideal para cine en casa.', 600000.00, 'Epson', 'ruta/a/la/foto3.jpg', 'Resolución: 1920x1080, Luminosidad: 2500 lúmenes, Conectividad: HDMI, Wi-Fi', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Epson Home Cinema 2150 Projector', 'Proyector inalámbrico Full HD ideal para cine en casa.', 600000.00, 'Epson', 'https://mediaserver.goepson.com/ImConvServlet/imconv/1c5847ccd9f67ebc802dd880d2e8e1d2291a9055/1200Wx1200H?use=banner&hybrisId=B2C&assetDescr=hc2150_hero-left_690x460', 'Resolución: 1920x1080, Luminosidad: 2500 lúmenes, Conectividad: HDMI, Wi-Fi', NULL, 10, 0);
 
 -- Producto 4: Monitor ASUS TUF Gaming VG27AQ 27"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASUS TUF Gaming VG27AQ 27" Monitor', 'Monitor gaming con frecuencia de actualización de 165Hz y soporte G-Sync.', 300000.00, 'ASUS', 'ruta/a/la/foto4.jpg', 'Resolución: 2560x1440, Frecuencia: 165Hz, Conectividad: HDMI, DisplayPort', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASUS TUF Gaming VG27AQ 27" Monitor', 'Monitor gaming con frecuencia de actualización de 165Hz y soporte G-Sync.', 300000.00, 'ASUS', 'https://www.asus.com/media/global/products/x2ahzOXdioDZggLv/P_setting_xxx_0_90_end_500.png', 'Resolución: 2560x1440, Frecuencia: 165Hz, Conectividad: HDMI, DisplayPort', NULL, 25, 0);
 
 -- Producto 5: Proyector BenQ TK800M 4K HDR
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('BenQ TK800M 4K HDR Projector', 'Proyector 4K UHD con HDR para entretenimiento en casa.', 900000.00, 'BenQ', 'ruta/a/la/foto5.jpg', 'Resolución: 3840x2160, Luminosidad: 3000 lúmenes, Conectividad: HDMI, VGA', NULL, 8, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('BenQ TK800M 4K HDR Projector', 'Proyector 4K UHD con HDR para entretenimiento en casa.', 900000.00, 'BenQ', 'https://image.benq.com/is/image/benqco/tk800-front30-2?$ResponsivePreset$', 'Resolución: 3840x2160, Luminosidad: 3000 lúmenes, Conectividad: HDMI, VGA', NULL, 8, 0);
 
 -- Obtener los IDs de los productos insertados
 SET @product_id1 = (SELECT id FROM Product WHERE name = 'Dell UltraSharp U2720Q 27" 4K Monitor');
@@ -282,19 +282,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 17)
 
 
 -- Producto 1: HP LaserJet Pro M404dn
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HP LaserJet Pro M404dn', 'Impresora láser monocromática con conectividad Ethernet y dúplex automático.', 180000.00, 'HP', 'ruta/a/la/foto1.jpg', 'Velocidad de impresión: hasta 38 ppm, Resolución: 4800 x 600 dpi, Conectividad: USB, Ethernet', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HP LaserJet Pro M404dn', 'Impresora láser monocromática con conectividad Ethernet y dúplex automático.', 180000.00, 'HP', 'https://m.media-amazon.com/images/I/61n1Vw2BpkL._AC_SL1500_.jpg', 'Velocidad de impresión: hasta 38 ppm, Resolución: 4800 x 600 dpi, Conectividad: USB, Ethernet', NULL, 20, 0);
 
 -- Producto 2: Canon imageCLASS MF743Cdw
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Canon imageCLASS MF743Cdw', 'Impresora láser multifunción a color con escáner, copiadora y fax.', 300000.00, 'Canon', 'ruta/a/la/foto2.jpg', 'Velocidad de impresión: hasta 28 ppm, Escaneo a doble cara, Conectividad: USB, Ethernet, Wi-Fi', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Canon imageCLASS MF743Cdw', 'Impresora láser multifunción a color con escáner, copiadora y fax.', 300000.00, 'Canon', 'https://m.media-amazon.com/images/I/617AECqp8LL.jpg', 'Velocidad de impresión: hasta 28 ppm, Escaneo a doble cara, Conectividad: USB, Ethernet, Wi-Fi', NULL, 15, 0);
 
 -- Producto 3: Epson EcoTank L3150
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Epson EcoTank L3150', 'Impresora multifuncional inalámbrica con sistema de tanque de tinta de alta capacidad.', 150000.00, 'Epson', 'ruta/a/la/foto3.jpg', 'Impresión sin cartuchos, Conectividad: Wi-Fi, Wi-Fi Direct, USB, Resolución: 5760 x 1440 dpi', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Epson EcoTank L3150', 'Impresora multifuncional inalámbrica con sistema de tanque de tinta de alta capacidad.', 150000.00, 'Epson', 'https://cash-business.net/wp-content/uploads/2021/02/epson-ecotanl-L3150.jpg', 'Impresión sin cartuchos, Conectividad: Wi-Fi, Wi-Fi Direct, USB, Resolución: 5760 x 1440 dpi', NULL, 25, 0);
 
 -- Producto 4: Brother DCP-L2550DW
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Brother DCP-L2550DW', 'Impresora láser multifunción monocromática con dúplex automático y conectividad inalámbrica.', 120000.00, 'Brother', 'ruta/a/la/foto4.jpg', 'Velocidad de impresión: hasta 36 ppm, Escaneo y copia, Conectividad: Wi-Fi, Ethernet, USB', NULL, 18, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Brother DCP-L2550DW', 'Impresora láser multifunción monocromática con dúplex automático y conectividad inalámbrica.', 120000.00, 'Brother', 'https://www.brother.com.ph/-/media/ap2/products/printer/dcp-l2550dw/dcp-l2550dw-l.jpg?rev=42cd5e3078084acb80fac12c72c13827', 'Velocidad de impresión: hasta 36 ppm, Escaneo y copia, Conectividad: Wi-Fi, Ethernet, USB', NULL, 18, 0);
 
 -- Producto 5: Canon CanoScan LiDE 300
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Canon CanoScan LiDE 300', 'Escáner compacto y ligero para uso doméstico y de oficina.', 48000.00, 'Canon', 'ruta/a/la/foto5.jpg', 'Resolución óptica: 2400 x 2400 dpi, Escaneo de alta velocidad, Conectividad: USB', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Canon CanoScan LiDE 300', 'Escáner compacto y ligero para uso doméstico y de oficina.', 48000.00, 'Canon', 'https://img.pacifiko.com/PROD/resize/1/500x500/YTU2Yzg3N2.jpg', 'Resolución óptica: 2400 x 2400 dpi, Escaneo de alta velocidad, Conectividad: USB', NULL, 30, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -313,19 +313,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 18)
 
 
 -- Producto 1: Apple MacBook Pro 13" M1
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple MacBook Pro 13" M1', 'Laptop con chip M1 de Apple para alto rendimiento y eficiencia.', 1200000.00, 'Apple', 'ruta/a/la/foto1.jpg', 'Pantalla Retina de 13", 8GB RAM, 256GB SSD, Chip M1, macOS', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple MacBook Pro 13" M1', 'Laptop con chip M1 de Apple para alto rendimiento y eficiencia.', 1200000.00, 'Apple', 'https://img.pacifiko.com/PROD/resize/1/1000x1000/NDljZDBiMj_1.jpg', 'Pantalla Retina de 13", 8GB RAM, 256GB SSD, Chip M1, macOS', NULL, 10, 0);
 
 -- Producto 2: Dell XPS 13 9310
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Dell XPS 13 9310', 'Laptop ultraportátil con pantalla InfinityEdge y procesador Intel de 11ª generación.', 1100000.00, 'Dell', 'ruta/a/la/foto2.jpg', 'Pantalla de 13.4" FHD+, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 10', NULL, 12, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Dell XPS 13 9310', 'Laptop ultraportátil con pantalla InfinityEdge y procesador Intel de 11ª generación.', 1100000.00, 'Dell', 'https://m.media-amazon.com/images/I/91MXLpouhoL._AC_SL1500_.jpg', 'Pantalla de 13.4" FHD+, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 10', NULL, 12, 0);
 
 -- Producto 3: HP Spectre x360 14
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HP Spectre x360 14', 'Convertible 2 en 1 premium con pantalla táctil y diseño elegante.', 1050000.00, 'HP', 'ruta/a/la/foto3.jpg', 'Pantalla táctil de 13.5" OLED, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 10', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HP Spectre x360 14', 'Convertible 2 en 1 premium con pantalla táctil y diseño elegante.', 1050000.00, 'HP', 'https://www.cqnetcr.com/108998-thickbox_default/laptop-hp-spectre-x360-convertible-14-ea0001la-13-.jpg', 'Pantalla táctil de 13.5" OLED, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 10', NULL, 15, 0);
 
 -- Producto 4: Lenovo ThinkPad X1 Carbon Gen 9
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Lenovo ThinkPad X1 Carbon Gen 9', 'Ultrabook empresarial con rendimiento y durabilidad excepcionales.', 1300000.00, 'Lenovo', 'ruta/a/la/foto4.jpg', 'Pantalla de 14" FHD, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 10 Pro', NULL, 8, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Lenovo ThinkPad X1 Carbon Gen 9', 'Ultrabook empresarial con rendimiento y durabilidad excepcionales.', 1300000.00, 'Lenovo', 'https://baetech.pe/cdn/shop/files/nblen20xxs7qg00_2_800x.jpg?v=1687387552', 'Pantalla de 14" FHD, Intel Core i7-1165G7, 16GB RAM, 512GB SSD, Windows 10 Pro', NULL, 8, 0);
 
 -- Producto 5: ASUS ROG Zephyrus G14
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASUS ROG Zephyrus G14', 'Laptop gaming ultraportátil con potente hardware.', 950000.00, 'ASUS', 'ruta/a/la/foto5.jpg', 'Pantalla de 14" FHD 120Hz, AMD Ryzen 9 5900HS, 16GB RAM, 1TB SSD, NVIDIA GeForce RTX 3060, Windows 10', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASUS ROG Zephyrus G14', 'Laptop gaming ultraportátil con potente hardware.', 950000.00, 'ASUS', 'https://images-cdn.ubuy.co.in/63513c99def74e5aa17b1166-asus-rog-zephyrus-g14-14.jpg', 'Pantalla de 14" FHD 120Hz, AMD Ryzen 9 5900HS, 16GB RAM, 1TB SSD, NVIDIA GeForce RTX 3060, Windows 10', NULL, 10, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -344,19 +344,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 7);
 
 
 -- Producto 1: Logitech MX Anywhere 3 Mouse Inalámbrico
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Logitech MX Anywhere 3 Mouse Inalámbrico', 'Mouse inalámbrico compacto y versátil para uso en cualquier superficie.', 60000.00, 'Logitech', 'ruta/a/la/foto1.jpg', 'Tecnología: Bluetooth y receptor USB, Batería recargable, Sensor Darkfield de 4000 DPI', NULL, 50, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Logitech MX Anywhere 3 Mouse Inalámbrico', 'Mouse inalámbrico compacto y versátil para uso en cualquier superficie.', 60000.00, 'Logitech', 'https://www.unimart.com/cdn/shop/products/Canvasfotosconguias_5_-2021-12-03T093328.244.jpg?v=1667425390', 'Tecnología: Bluetooth y receptor USB, Batería recargable, Sensor Darkfield de 4000 DPI', NULL, 50, 0);
 
 -- Producto 2: Anker PowerCore+ 26800mAh Power Bank
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Anker PowerCore+ 26800mAh Power Bank', 'Batería externa de alta capacidad con soporte para carga rápida.', 80000.00, 'Anker', 'ruta/a/la/foto2.jpg', 'Capacidad: 26800mAh, Puertos: USB-C y USB-A, Soporta Power Delivery', NULL, 40, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Anker PowerCore+ 26800mAh Power Bank', 'Batería externa de alta capacidad con soporte para carga rápida.', 80000.00, 'Anker', 'https://m.media-amazon.com/images/I/61vj2BPDpuL.jpg', 'Capacidad: 26800mAh, Puertos: USB-C y USB-A, Soporta Power Delivery', NULL, 40, 0);
 
 -- Producto 3: Base Enfriadora para Laptop HAVIT
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HAVIT Base Enfriadora para Laptop', 'Soporte con ventiladores para mantener la laptop fresca durante uso intensivo.', 25000.00, 'HAVIT', 'ruta/a/la/foto3.jpg', 'Ventiladores: 3, Iluminación LED, Ajustable en altura, Compatible con laptops de hasta 17 pulgadas', NULL, 60, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HAVIT Base Enfriadora para Laptop', 'Soporte con ventiladores para mantener la laptop fresca durante uso intensivo.', 25000.00, 'HAVIT', 'https://gabastorecr.com/wp-content/uploads/2023/04/image-2.png', 'Ventiladores: 3, Iluminación LED, Ajustable en altura, Compatible con laptops de hasta 17 pulgadas', NULL, 60, 0);
 
 -- Producto 4: Adaptador USB-C a HDMI Apple
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple Adaptador USB-C a Digital AV (HDMI)', 'Adaptador para conectar tu MacBook o iPad Pro a una pantalla HDMI.', 70000.00, 'Apple', 'ruta/a/la/foto4.jpg', 'Puertos: HDMI, USB-C (para carga), USB-A, Resolución hasta 4K a 60Hz', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple Adaptador USB-C a Digital AV (HDMI)', 'Adaptador para conectar tu MacBook o iPad Pro a una pantalla HDMI.', 70000.00, 'Apple', 'https://compubetel.com/wp-content/uploads/2024/08/AE000APL27.png', 'Puertos: HDMI, USB-C (para carga), USB-A, Resolución hasta 4K a 60Hz', NULL, 30, 0);
 
 -- Producto 5: Auriculares Bluetooth JBL TUNE 500BT
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('JBL TUNE 500BT Auriculares Bluetooth', 'Auriculares inalámbricos con sonido JBL Pure Bass y diseño ligero.', 35000.00, 'JBL', 'ruta/a/la/foto5.jpg', 'Conectividad: Bluetooth, Batería: Hasta 16 horas, Micrófono integrado, Asistente de voz', NULL, 55, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('JBL TUNE 500BT Auriculares Bluetooth', 'Auriculares inalámbricos con sonido JBL Pure Bass y diseño ligero.', 35000.00, 'JBL', 'https://www.cqnetcr.com/54252-large_default/audifonos-jbl-tune-500bt-bluetooth-300mah-negro.jpg', 'Conectividad: Bluetooth, Batería: Hasta 16 horas, Micrófono integrado, Asistente de voz', NULL, 55, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -375,19 +375,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 8);
 
 
 -- Producto 1: Logitech MX Master 3 Mouse Inalámbrico
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Logitech MX Master 3 Mouse Inalámbrico', 'Mouse inalámbrico avanzado con rueda de desplazamiento MagSpeed y control de múltiples dispositivos.', 65000.00, 'Logitech', 'ruta/a/la/foto1.jpg', 'Conectividad: Bluetooth y receptor USB, Batería recargable, Sensor Darkfield de 4000 DPI', NULL, 40, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Logitech MX Master 3 Mouse Inalámbrico', 'Mouse inalámbrico avanzado con rueda de desplazamiento MagSpeed y control de múltiples dispositivos.', 65000.00, 'Logitech', 'https://img.pacifiko.com/PROD/resize/1/1000x1000/ZGE2MDlkYT.jpg', 'Conectividad: Bluetooth y receptor USB, Batería recargable, Sensor Darkfield de 4000 DPI', NULL, 40, 0);
 
 -- Producto 2: Razer Huntsman Elite Teclado Mecánico
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Razer Huntsman Elite Teclado Mecánico', 'Teclado mecánico gaming con interruptores optomecánicos y retroiluminación Chroma RGB.', 120000.00, 'Razer', 'ruta/a/la/foto2.jpg', 'Tipo de interruptor: Optomecánico Razer, Iluminación RGB, Reposamuñecas magnético', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Razer Huntsman Elite Teclado Mecánico', 'Teclado mecánico gaming con interruptores optomecánicos y retroiluminación Chroma RGB.', 120000.00, 'Razer', 'https://m.media-amazon.com/images/I/4182pNjGG8L._AC_.jpg', 'Tipo de interruptor: Optomecánico Razer, Iluminación RGB, Reposamuñecas magnético', NULL, 25, 0);
 
 -- Producto 3: Microsoft Sculpt Ergonomic Desktop
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Microsoft Sculpt Ergonomic Desktop', 'Teclado y mouse ergonómicos diseñados para mayor comodidad y reducir la fatiga.', 85000.00, 'Microsoft', 'ruta/a/la/foto3.jpg', 'Conectividad: Receptor USB, Teclado dividido, Mouse ergonómico, Teclado numérico separado', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Microsoft Sculpt Ergonomic Desktop', 'Teclado y mouse ergonómicos diseñados para mayor comodidad y reducir la fatiga.', 85000.00, 'Microsoft', 'https://www.unimart.com/cdn/shop/products/12-8_1_1c53da7c-82aa-4271-bb86-3516b60f6471.jpg?v=1662044163', 'Conectividad: Receptor USB, Teclado dividido, Mouse ergonómico, Teclado numérico separado', NULL, 30, 0);
 
 -- Producto 4: HyperX Alloy FPS Pro Teclado Mecánico
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HyperX Alloy FPS Pro Teclado Mecánico', 'Teclado mecánico compacto sin teclado numérico para jugadores FPS.', 60000.00, 'HyperX', 'ruta/a/la/foto4.jpg', 'Tipo de interruptor: Cherry MX Red, Iluminación LED roja, Diseño tenkeyless', NULL, 35, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('HyperX Alloy FPS Pro Teclado Mecánico', 'Teclado mecánico compacto sin teclado numérico para jugadores FPS.', 60000.00, 'HyperX', 'https://www.invidcomputers.com/images/000000000041084347784HyperX-Alloy-FPS-Pro-1.jpg', 'Tipo de interruptor: Cherry MX Red, Iluminación LED roja, Diseño tenkeyless', NULL, 35, 0);
 
 -- Producto 5: Logitech G502 HERO Mouse Gaming
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Logitech G502 HERO Mouse Gaming', 'Mouse gaming con sensor HERO 25K, 11 botones programables y pesos ajustables.', 50000.00, 'Logitech', 'ruta/a/la/foto5.jpg', 'Sensor: HERO 25K DPI, Conectividad: Cable USB, Pesos ajustables, Iluminación RGB', NULL, 45, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Logitech G502 HERO Mouse Gaming', 'Mouse gaming con sensor HERO 25K, 11 botones programables y pesos ajustables.', 50000.00, 'Logitech', 'https://extremetechcr.com/tienda/5445/logitech-g502-hero.jpg', 'Sensor: HERO 25K DPI, Conectividad: Cable USB, Pesos ajustables, Iluminación RGB', NULL, 45, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -406,19 +406,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 19)
 
 
 -- Producto 1: Sony WH-1000XM4
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony WH-1000XM4', 'Audífonos inalámbricos con cancelación de ruido líder en la industria y hasta 30 horas de batería.', 250000.00, 'Sony', 'ruta/a/la/foto1.jpg', 'Conectividad: Bluetooth, NFC; Cancelación de ruido activa; Asistente de voz; Compatibilidad con Hi-Res Audio', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony WH-1000XM4', 'Audífonos inalámbricos con cancelación de ruido líder en la industria y hasta 30 horas de batería.', 250000.00, 'Sony', 'https://www.radioshack.cr/media/catalog/product/m/i/microsoftteams-image_10__mdjfe0evcndqaqyc.png?optimize=medium&bg-color=255,255,255&fit=bounds&height=700&width=700&canvas=700:700&format=jpeg', 'Conectividad: Bluetooth, NFC; Cancelación de ruido activa; Asistente de voz; Compatibilidad con Hi-Res Audio', NULL, 20, 0);
 
 -- Producto 2: Bose QuietComfort 35 II
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Bose QuietComfort 35 II', 'Audífonos inalámbricos con cancelación de ruido y acceso al Asistente de Google y Amazon Alexa.', 220000.00, 'Bose', 'ruta/a/la/foto2.jpg', 'Conectividad: Bluetooth, NFC; Cancelación de ruido activa; Asistentes de voz integrados; Batería de hasta 20 horas', NULL, 18, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Bose QuietComfort 35 II', 'Audífonos inalámbricos con cancelación de ruido y acceso al Asistente de Google y Amazon Alexa.', 220000.00, 'Bose', 'https://assets.bose.com/content/dam/Bose_DAM/Web/consumer_electronics/global/products/headphones/qc35_ii/product_silo_images/qc35_ii_black_EC_hero.psd/_jcr_content/renditions/cq5dam.web.320.320.png', 'Conectividad: Bluetooth, NFC; Cancelación de ruido activa; Asistentes de voz integrados; Batería de hasta 20 horas', NULL, 18, 0);
 
 -- Producto 3: Apple AirPods Max
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple AirPods Max', 'Audífonos over-ear con audio de alta fidelidad y ecualización adaptativa.', 380000.00, 'Apple', 'ruta/a/la/foto3.jpg', 'Conectividad: Bluetooth; Cancelación de ruido activa; Audio espacial con seguimiento dinámico de la cabeza; Integración con Siri', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple AirPods Max', 'Audífonos over-ear con audio de alta fidelidad y ecualización adaptativa.', 380000.00, 'Apple', 'https://d1t5sm6y8yvnce.cloudfront.net/wp-content/uploads/2023/09/B08PZD76NP-1.jpg', 'Conectividad: Bluetooth; Cancelación de ruido activa; Audio espacial con seguimiento dinámico de la cabeza; Integración con Siri', NULL, 10, 0);
 
 -- Producto 4: Sennheiser HD 660 S
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sennheiser HD 660 S', 'Audífonos abiertos de alta fidelidad para audiófilos con sonido preciso y detallado.', 320000.00, 'Sennheiser', 'ruta/a/la/foto4.jpg', 'Tipo: Over-ear abierto; Impedancia: 150 ohmios; Respuesta de frecuencia: 10 - 41,000 Hz; Cable desmontable', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sennheiser HD 660 S', 'Audífonos abiertos de alta fidelidad para audiófilos con sonido preciso y detallado.', 320000.00, 'Sennheiser', 'https://www.techzilla.cr/wp-content/uploads/magictoolbox_cache/cf3e6ec01aac7cb79461bcfe9d0d075e/2/0/20467/thumb750x750/2728941313/Sennheiser-HD660s_SKU_HE0446.jpg', 'Tipo: Over-ear abierto; Impedancia: 150 ohmios; Respuesta de frecuencia: 10 - 41,000 Hz; Cable desmontable', NULL, 15, 0);
 
 -- Producto 5: Jabra Elite 85h
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Jabra Elite 85h', 'Audífonos inalámbricos con cancelación de ruido inteligente y batería de larga duración.', 180000.00, 'Jabra', 'ruta/a/la/foto5.jpg', 'Conectividad: Bluetooth; Cancelación de ruido activa adaptativa; Resistencia al agua y al polvo IP52; Batería de hasta 36 horas', NULL, 22, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Jabra Elite 85h', 'Audífonos inalámbricos con cancelación de ruido inteligente y batería de larga duración.', 180000.00, 'Jabra', 'https://www.jabra.com/-/media/Images/Products/Jabra-Elite-85h/Product/jabra_elite_85h_black_copper_01.png', 'Conectividad: Bluetooth; Cancelación de ruido activa adaptativa; Resistencia al agua y al polvo IP52; Batería de hasta 36 horas', NULL, 22, 0);
 
 
 -- Obtener los IDs de los productos insertados
