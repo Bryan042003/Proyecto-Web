@@ -87,12 +87,12 @@ export class StatisticsAdminComponent implements OnInit {
   }
 
   loadProducts(): void {
-    this._productService.getProducts().subscribe({
+    this._productService.getTopSellingProducts(10).subscribe({
       next: (result: Product[]) => {
         this.products = result;
         console.log(this.products);
         this.prepareChartData();
-        this.updateProductChart();
+       
       },
       error: (error: any) => {
         console.error('Error al obtener productos:', error);
@@ -109,7 +109,7 @@ export class StatisticsAdminComponent implements OnInit {
         this.orders = result;
         console.log(result);
         this.prepareOrderChartData();
-        this.updateOrderChart();
+        
       },
       error: (error: any) => {
         console.error('Error al recuperar órdenes:', error);
@@ -148,15 +148,5 @@ export class StatisticsAdminComponent implements OnInit {
     this.orderChartData.datasets[0].data = Object.values(orderDateMap);
   }
 
-  updateProductChart(): void {
-    if (this.productChart) {
-      this.productChart.update();
-    }
-  }
 
-  updateOrderChart(): void {
-    if (this.orderChart) {
-      this.orderChart.update();
-    }
-  }
 }

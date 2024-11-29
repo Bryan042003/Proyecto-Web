@@ -23,7 +23,7 @@
         </svg>
       </button>
       
-      <button class="btn btn-ghost btn-circle"  onclick="my_modal_3.showModal()" >
+      <button class="btn btn-ghost btn-circle" (click)="openModal()" >
         <div class="indicator">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +43,7 @@
     </div>
   </div>
 
-  <dialog id="my_modal_3" class="modal modal-wide">
+  <dialog id="my_modal_7" class="modal modal-wide">
     <div class="modal-box w-11/12 max-w-4xl">
       <form method="dialog">
         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -79,3 +79,39 @@
     </div>
   </dialog>
   
+
+  
+<div id="noentry-overlay" *ngIf="showNoEntryAlert" style="
+position: fixed; 
+top: 0; 
+left: 0; 
+width: 100%; 
+height: 100%; 
+background-color: rgba(0, 0, 0, 0.5); 
+display: flex; 
+align-items: center; 
+justify-content: center; 
+z-index: 9999;">
+<div id="noentry" role="alert" style="
+  background-color: rgb(249, 189, 10); 
+  padding: 20px; 
+  border-radius: 10px; 
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  text-align: center;">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    style="width: 30px; height: 40px; margin-bottom: 10px;"
+    fill="none"
+    viewBox="0 0 24 24">
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+  </svg>
+  <span style="font-size: 16px; font-weight: bold; color: #333;">
+    No tienes permisos para ver esta información!
+  </span>
+</div>
+</div>
