@@ -113,43 +113,47 @@ DELIMITER ;
 
 DELIMITER $$
 
-CREATE PROCEDURE DeleteProductCascade(IN product_id INT)
+CREATE PROCEDURE DeleteUserCascade(IN user_id INT)
 BEGIN
     DECLARE status_code INT;
     DECLARE message VARCHAR(255);
+    DECLARE user_address_id INT;
 
-    -- Verificar si el producto existe
-    IF NOT EXISTS (SELECT 1 FROM Product WHERE id = product_id) THEN
+    -- Verificar si el usuario existe
+    IF NOT EXISTS (SELECT 1 FROM User WHERE id = user_id) THEN
         SET status_code = -1;
-        SET message = 'El producto no existe.';
-    -- Verificar si el producto tiene órdenes asociadas
-    ELSEIF EXISTS (SELECT 1 FROM Order_Product WHERE id_product = product_id) THEN
-        SET status_code = 0;
-        SET message = 'No se puede eliminar el producto porque tiene órdenes asociadas.';
+        SET message = 'El usuario no existe.';
     ELSE
         -- Iniciar una transacción para asegurar la integridad de los datos
         START TRANSACTION;
 
-        -- Eliminar entradas de Review relacionadas con el producto
-        DELETE FROM Review WHERE id_product = product_id;
+        -- Obtener el ID de la dirección del usuario antes de eliminarlo
+        SELECT id_address INTO user_address_id FROM User WHERE id = user_id;
 
-        -- Eliminar entradas de Highlight relacionadas con el producto
-        DELETE FROM Highlight WHERE id_product = product_id;
+        -- Eliminar reseñas hechas por el usuario
+        DELETE FROM Review WHERE id_user = user_id;
 
-        -- Eliminar entradas de Notification relacionadas con el producto
-        DELETE FROM Notification WHERE id_product = product_id;
+        -- Eliminar productos de las órdenes del usuario
+        DELETE op FROM Order_Product op
+        INNER JOIN `Order` o ON op.id_order = o.id
+        WHERE o.id_user = user_id;
 
-        -- Eliminar entradas de Product_Category relacionadas con el producto
-        DELETE FROM Product_Category WHERE id_product = product_id;
+        -- Eliminar las órdenes del usuario
+        DELETE FROM `Order` WHERE id_user = user_id;
 
-        -- Eliminar el producto
-        DELETE FROM Product WHERE id = product_id;
+        -- Eliminar el usuario
+        DELETE FROM User WHERE id = user_id;
+
+        -- Eliminar la dirección si no es usada por otros usuarios
+        IF NOT EXISTS (SELECT 1 FROM User WHERE id_address = user_address_id) THEN
+            DELETE FROM Address WHERE id = user_address_id;
+        END IF;
 
         -- Confirmar la transacción
         COMMIT;
 
         SET status_code = 1;
-        SET message = 'Producto y datos relacionados eliminados exitosamente.';
+        SET message = 'Usuario y datos relacionados eliminados exitosamente.';
     END IF;
 
     -- Devolver los valores de status_code y message
@@ -157,5 +161,6 @@ BEGIN
 END $$
 
 DELIMITER ;
+
 
 

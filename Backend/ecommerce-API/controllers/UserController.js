@@ -227,15 +227,14 @@ async function deleteUser(req, res) {
         const user = await User.findByPk(req.params.id, { transaction });
 
         if (user) {
-            await user.destroy({ transaction });
-            
-            const address = await Address.findByPk(user.id_address, { transaction });
-            if (address) {
-                await address.destroy({ transaction });
-            }
+
+            await sequelize.query('CALL DeleteUserCascade(:id)', {
+                replacements: { id: req.params.id },
+                transaction
+            })
 
             await transaction.commit();
-            res.status(200).json({ message: 'User and associated address removed successfully' });
+            res.status(200).json({ message: 'User and associated things removed succesfully' });
         } else {
             await transaction.rollback();
             res.status(404).json({ error: 'User not found' });
