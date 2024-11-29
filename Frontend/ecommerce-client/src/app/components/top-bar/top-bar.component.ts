@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Notification } from '../../models/notification.model';
 import { NotificationService } from '../../services/Notification.service';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-top-bar',
   standalone: true,
@@ -12,12 +13,26 @@ import { CommonModule } from '@angular/common';
 export class TopBarComponent {
   notifications: Notification[]=[];
   @Input() role: string = '';
-  constructor(private _notificationService: NotificationService){}
+  showNoEntryAlert: boolean = false;
+  constructor(private _notificationService: NotificationService,
+    private route: ActivatedRoute
+  ){}
 
 
   ngOnInit(): void {
    
     this.loadNotification();
+    this.route.queryParams.subscribe(params => {
+      this.role = params['role'];
+      console.log('Rol recibido:', this.role);
+     
+    });
+  }
+  showAlert() {
+    this.showNoEntryAlert = true;
+    setTimeout(() => {
+      this.showNoEntryAlert = false;
+    }, 2000); // Oculta la alerta después de 3 segundos.
   }
 
   loadNotification() {
@@ -54,7 +69,16 @@ export class TopBarComponent {
   }
   
 
- openModal(){
-  console.log("abre");
- }
+  openModal() {
+    
+  
+    if (this.role === 'admin') {
+      (document.getElementById('my_modal_7') as HTMLDialogElement).showModal();
+      console.log("abre");
+    } else {
+      this.showAlert();
+    }
+  }
+
+  
 }

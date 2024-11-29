@@ -79,14 +79,11 @@ export class InventoryAdminComponent {
 
 
   onOfferSelected(selectedOfferId: any): void {
-    if (this.selectedProduct && selectedOfferId !== null) {
+   
       this.selectedProduct.id_offer = selectedOfferId;
       console.log('producto antes de actualiza:', this.selectedProduct);
       this.updateProdut(this.selectedProduct.id_offer, this.selectedProduct.id);
-    }if(selectedOfferId === null){
-        console.log("entro a null");
-        this.updateProdut(null, this.selectedProduct.id);
-    }
+   
     
     (document.getElementById('my_modal_4') as HTMLDialogElement).close();
     
@@ -94,7 +91,7 @@ export class InventoryAdminComponent {
   }
 
   updateProdut(id_offer: any, id_product: string) {
-    this._productService.AssignProductToOffer(id_offer, id_product).subscribe({
+    this._productService.AssignProductToOffer(id_product, id_offer).subscribe({
       next: (result) => {
         console.log('Actualización exitosa:', result);
       },
@@ -123,8 +120,7 @@ export class InventoryAdminComponent {
   } 
   
   assignProductToCategory(id_product: string, id_category: string){
-    this.getSubcategory(id_category);
-    if (this.subcategoria !== null) {
+   
       this._productService.AssignProductToCategory(id_product, id_category).subscribe({
         next: (result) => {
           this.showAlert = true;
@@ -138,14 +134,7 @@ export class InventoryAdminComponent {
           console.log('Solicitud completada');
         },
       });
-    } else {
-      console.warn('intento de sub categoria');
-    }
-  }
-
-
-
+    } 
   
-
   
 }

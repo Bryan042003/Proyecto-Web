@@ -74,13 +74,13 @@ export class UsersAdminComponent {
     ]),
     photo: new FormControl<string>(''),
     province: new FormControl<string>('', [
-      Validators.required
+      
     ]),
     canton: new FormControl<string>('', [
-      Validators.required
+      
     ]),
     district: new FormControl<string>('', [
-      Validators.required
+      
     ]),
     postal_code: new FormControl<string>('', [
       Validators.required,
