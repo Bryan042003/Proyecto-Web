@@ -165,7 +165,8 @@ DELIMITER ;
 
 DELIMITER $$
 
-BEGIN $$
+CREATE PROCEDURE DeleteProductCascade(IN product_id INT)
+BEGIN
     DECLARE status_code INT;
     DECLARE message VARCHAR(255);
 
