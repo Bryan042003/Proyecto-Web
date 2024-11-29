@@ -54,9 +54,7 @@ export class OffertsModalComponent {
       this.id_offert.emit(this.selectedIds);
 
     }
-    else {
-      this.id_offert.emit(null);
-    }
+ 
     console.log('Selected IDs:', this.selectedIds); 
   }
 
