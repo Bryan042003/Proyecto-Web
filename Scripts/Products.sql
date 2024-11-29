@@ -437,19 +437,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 20)
 
 
 -- Producto 1: Apple iPhone 13 Pro Max
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple iPhone 13 Pro Max', 'Smartphone de alto rendimiento con pantalla Super Retina XDR y sistema de cámaras avanzado.', 1200000.00, 'Apple', 'ruta/a/la/foto1.jpg', 'Pantalla de 6.7", Chip A15 Bionic, 128GB almacenamiento, Sistema de cámaras Pro de 12MP, 5G, iOS', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple iPhone 13 Pro Max', 'Smartphone de alto rendimiento con pantalla Super Retina XDR y sistema de cámaras avanzado.', 1200000.00, 'Apple', 'https://icon.co.cr/cdn/shop/files/IMG-12496198_550x.jpg', 'Pantalla de 6.7", Chip A15 Bionic, 128GB almacenamiento, Sistema de cámaras Pro de 12MP, 5G, iOS', NULL, 15, 0);
 
 -- Producto 2: Samsung Galaxy S21 Ultra
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung Galaxy S21 Ultra', 'Teléfono inteligente premium con pantalla Dynamic AMOLED 2X y zoom espacial de 100x.', 1100000.00, 'Samsung', 'ruta/a/la/foto2.jpg', 'Pantalla de 6.8", Exynos 2100, 256GB almacenamiento, Cámara cuádruple de 108MP, 5G, Android', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung Galaxy S21 Ultra', 'Teléfono inteligente premium con pantalla Dynamic AMOLED 2X y zoom espacial de 100x.', 1100000.00, 'Samsung', 'https://extremetechcr.com/tienda/33064-home_default/samsung-a25-6-gb-128-gb-blue.jpg', 'Pantalla de 6.8", Exynos 2100, 256GB almacenamiento, Cámara cuádruple de 108MP, 5G, Android', NULL, 20, 0);
 
 -- Producto 3: Xiaomi Mi 11
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Xiaomi Mi 11', 'Smartphone con pantalla AMOLED de alta resolución y rendimiento potente.', 600000.00, 'Xiaomi', 'ruta/a/la/foto3.jpg', 'Pantalla de 6.81", Snapdragon 888, 128GB almacenamiento, Cámara de 108MP, 5G, Android', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Xiaomi Mi 11', 'Smartphone con pantalla AMOLED de alta resolución y rendimiento potente.', 600000.00, 'Xiaomi', 'https://extremetechcr.com/tienda/36327-home_default/samsung-galaxy-a35-5g-8-gb-256-gb-violeta.jpg', 'Pantalla de 6.81", Snapdragon 888, 128GB almacenamiento, Cámara de 108MP, 5G, Android', NULL, 25, 0);
 
 -- Producto 4: Huawei P40 Pro
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Huawei P40 Pro', 'Teléfono con diseño elegante y sistema de cámaras Leica para fotografía profesional.', 800000.00, 'Huawei', 'ruta/a/la/foto4.jpg', 'Pantalla de 6.58", Kirin 990 5G, 256GB almacenamiento, Cámara cuádruple de 50MP, 5G, Android (sin servicios de Google)', NULL, 18, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Huawei P40 Pro', 'Teléfono con diseño elegante y sistema de cámaras Leica para fotografía profesional.', 800000.00, 'Huawei', 'https://extremetechcr.com/tienda/33131-home_default/samsung-s24-8-gb-256-gb-cobalt-violet.jpg', 'Pantalla de 6.58", Kirin 990 5G, 256GB almacenamiento, Cámara cuádruple de 50MP, 5G, Android (sin servicios de Google)', NULL, 18, 0);
 
 -- Producto 5: OnePlus 9 Pro
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('OnePlus 9 Pro', 'Smartphone con pantalla Fluid AMOLED y carga rápida Warp Charge 65T.', 900000.00, 'OnePlus', 'ruta/a/la/foto5.jpg', 'Pantalla de 6.7", Snapdragon 888, 256GB almacenamiento, Cámara cuádruple de 48MP co-desarrollada con Hasselblad, 5G, Android', NULL, 22, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('OnePlus 9 Pro', 'Smartphone con pantalla Fluid AMOLED y carga rápida Warp Charge 65T.', 900000.00, 'OnePlus', 'https://extremetechcr.com/tienda/33401-home_default/samsung-galaxy-fold-5-12gb-512gb-phantom-black.jpg', 'Pantalla de 6.7", Snapdragon 888, 256GB almacenamiento, Cámara cuádruple de 48MP co-desarrollada con Hasselblad, 5G, Android', NULL, 22, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -468,19 +468,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 21)
 
 
 -- Producto 1: Apple iPad Pro 12.9" (5ª generación)
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple iPad Pro 12.9" (5ª generación)', 'Tablet de alto rendimiento con pantalla Liquid Retina XDR y chip M1.', 1200000.00, 'Apple', 'ruta/a/la/foto1.jpg', 'Pantalla de 12.9", Chip M1, 128GB almacenamiento, Wi-Fi, Cámara de 12MP, iPadOS', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple iPad Pro 12.9" (5ª generación)', 'Tablet de alto rendimiento con pantalla Liquid Retina XDR y chip M1.', 1200000.00, 'Apple', 'https://extremetechcr.com/tienda/32057-home_default/samsung-galaxy-tab-a8-32-gb-wifi-gray.jpg', 'Pantalla de 12.9", Chip M1, 128GB almacenamiento, Wi-Fi, Cámara de 12MP, iPadOS', NULL, 10, 0);
 
 -- Producto 2: Samsung Galaxy Tab S7+
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung Galaxy Tab S7+', 'Tablet premium con pantalla Super AMOLED y soporte para S Pen.', 900000.00, 'Samsung', 'ruta/a/la/foto2.jpg', 'Pantalla de 12.4", Snapdragon 865+, 128GB almacenamiento, Wi-Fi, Cámara de 13MP, Android', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung Galaxy Tab S7+', 'Tablet premium con pantalla Super AMOLED y soporte para S Pen.', 900000.00, 'Samsung', 'https://extremetechcr.com/tienda/38921-home_default/tablet-xiaomi-redmi-pad-se-4gb-128gb-lavender-purple.jpg', 'Pantalla de 12.4", Snapdragon 865+, 128GB almacenamiento, Wi-Fi, Cámara de 13MP, Android', NULL, 15, 0);
 
 -- Producto 3: Microsoft Surface Pro 7
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Microsoft Surface Pro 7', 'Tablet y laptop 2 en 1 con rendimiento versátil y diseño ultraligero.', 850000.00, 'Microsoft', 'ruta/a/la/foto3.jpg', 'Pantalla de 12.3", Intel Core i5, 8GB RAM, 128GB SSD, Windows 10', NULL, 12, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Microsoft Surface Pro 7', 'Tablet y laptop 2 en 1 con rendimiento versátil y diseño ultraligero.', 850000.00, 'Microsoft', 'https://extremetechcr.com/tienda/32583-home_default/tablet-xiaomi-redmi-pad-se-4gb-128gb-graphite-gray.jpg', 'Pantalla de 12.3", Intel Core i5, 8GB RAM, 128GB SSD, Windows 10', NULL, 12, 0);
 
 -- Producto 4: Lenovo Tab P11 Pro
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Lenovo Tab P11 Pro', 'Tablet con pantalla OLED y rendimiento optimizado para entretenimiento.', 500000.00, 'Lenovo', 'ruta/a/la/foto4.jpg', 'Pantalla de 11.5" OLED, Snapdragon 730G, 128GB almacenamiento, Wi-Fi, Android', NULL, 18, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Lenovo Tab P11 Pro', 'Tablet con pantalla OLED y rendimiento optimizado para entretenimiento.', 500000.00, 'Lenovo', 'https://extremetechcr.com/tienda/36488-home_default/lenovo-tab-m11-tab-pen-plus-folio-case.jpg', 'Pantalla de 11.5" OLED, Snapdragon 730G, 128GB almacenamiento, Wi-Fi, Android', NULL, 18, 0);
 
 -- Producto 5: Huawei MatePad Pro
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Huawei MatePad Pro', 'Tablet con diseño elegante y rendimiento potente, compatible con M-Pencil.', 650000.00, 'Huawei', 'ruta/a/la/foto5.jpg', 'Pantalla de 10.8", Kirin 990, 128GB almacenamiento, Wi-Fi, Cámara de 13MP, HarmonyOS', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Huawei MatePad Pro', 'Tablet con diseño elegante y rendimiento potente, compatible con M-Pencil.', 650000.00, 'Huawei', 'https://extremetechcr.com/tienda/32916-home_default/samsung-galaxy-tab-s9-fe-6-gb-ram-128-gb-gris.jpg', 'Pantalla de 10.8", Kirin 990, 128GB almacenamiento, Wi-Fi, Cámara de 13MP, HarmonyOS', NULL, 20, 0);
 
 -- Obtener los IDs de los productos insertados
 SET @product_id1 = (SELECT id FROM Product WHERE name = 'Apple iPad Pro 12.9" (5ª generación)');
@@ -498,19 +498,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 22)
 
 
 -- Producto 1: Samsung Wireless Charger Duo
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung Wireless Charger Duo', 'Cargador inalámbrico para cargar dos dispositivos simultáneamente.', 60000.00, 'Samsung', 'ruta/a/la/foto1.jpg', 'Compatibilidad: Dispositivos con carga inalámbrica Qi, Entrada: USB-C', NULL, 40, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung Wireless Charger Duo', 'Cargador inalámbrico para cargar dos dispositivos simultáneamente.', 60000.00, 'Samsung', 'https://extremetechcr.com/tienda/29427-home_default/cargador-usb-argom-tech-1a-arg-ac-0104.jpg', 'Compatibilidad: Dispositivos con carga inalámbrica Qi, Entrada: USB-C', NULL, 40, 0);
 
 -- Producto 2: Apple AirTag
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple AirTag', 'Dispositivo de rastreo para localizar objetos perdidos con la app Buscar.', 30000.00, 'Apple', 'ruta/a/la/foto2.jpg', 'Conectividad: Bluetooth, Chip U1 Ultra Wideband, Resistencia al agua IP67', NULL, 50, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Apple AirTag', 'Dispositivo de rastreo para localizar objetos perdidos con la app Buscar.', 30000.00, 'Apple', 'https://extremetechcr.com/tienda/23851-home_default/cargador-para-carro-argom-tech-dual-usb-21a-arg-ac-0102bk.jpg', 'Conectividad: Bluetooth, Chip U1 Ultra Wideband, Resistencia al agua IP67', NULL, 50, 0);
 
 -- Producto 3: JBL Tune 225TWS Audífonos Bluetooth
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('JBL Tune 225TWS Audífonos Bluetooth', 'Audífonos inalámbricos True Wireless con sonido Pure Bass.', 70000.00, 'JBL', 'ruta/a/la/foto3.jpg', 'Conectividad: Bluetooth 5.0, Batería: Hasta 25 horas con estuche, Micrófono integrado', NULL, 35, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('JBL Tune 225TWS Audífonos Bluetooth', 'Audífonos inalámbricos True Wireless con sonido Pure Bass.', 70000.00, 'JBL', 'https://extremetechcr.com/tienda/29404-home_default/soporte-de-celular-unno-tekno-para-carro-de-cuello-corto-ch3003bk.jpg', 'Conectividad: Bluetooth 5.0, Batería: Hasta 25 horas con estuche, Micrófono integrado', NULL, 35, 0);
 
 -- Producto 4: Spigen QS11 Soporte Magnético para Auto
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Spigen QS11 Soporte Magnético para Auto', 'Soporte magnético para sujetar el celular en la rejilla de ventilación del auto.', 15000.00, 'Spigen', 'ruta/a/la/foto4.jpg', 'Compatibilidad: Universal, Instalación: Rejilla de ventilación, Incluye placas metálicas adhesivas', NULL, 60, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Spigen QS11 Soporte Magnético para Auto', 'Soporte magnético para sujetar el celular en la rejilla de ventilación del auto.', 15000.00, 'Spigen', 'https://extremetechcr.com/tienda/32158-home_default/soporte-de-celular-argom-tech-para-salida-de-aire-para-carro-negro-arg-ac-0327bk.jpg', 'Compatibilidad: Universal, Instalación: Rejilla de ventilación, Incluye placas metálicas adhesivas', NULL, 60, 0);
 
 -- Producto 5: Anker PowerCore 10000mAh Power Bank
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Anker PowerCore 10000mAh Power Bank', 'Batería portátil compacta para cargar dispositivos móviles.', 30000.00, 'Anker', 'ruta/a/la/foto5.jpg', 'Capacidad: 10000mAh, Salida: USB-A, Tecnología PowerIQ para carga rápida', NULL, 45, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Anker PowerCore 10000mAh Power Bank', 'Batería portátil compacta para cargar dispositivos móviles.', 30000.00, 'Anker', 'https://extremetechcr.com/tienda/38618-home_default/cargador-aon-de-pared-ao-cr-1006.jpg', 'Capacidad: 10000mAh, Salida: USB-A, Tecnología PowerIQ para carga rápida', NULL, 45, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -528,19 +528,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id4, 23)
 INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 23);
 
 -- Producto 1: Samsung QLED Q80T 65"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung QLED Q80T 65"', 'Televisor QLED 4K con tecnología de retroiluminación Direct Full Array y Quantum Processor 4K.', 1200000.00, 'Samsung', 'ruta/a/la/foto1.jpg', 'Resolución: 3840x2160, Tamaño: 65", HDR10+, Smart TV con Tizen OS', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung QLED Q80T 65"', 'Televisor QLED 4K con tecnología de retroiluminación Direct Full Array y Quantum Processor 4K.', 1200000.00, 'Samsung', 'https://extremetechcr.com/tienda/38974-home_default/xiaomi-a-50-2025-4k-google-tv.jpg', 'Resolución: 3840x2160, Tamaño: 65", HDR10+, Smart TV con Tizen OS', NULL, 10, 0);
 
 -- Producto 2: LG OLED CX 55"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('LG OLED CX 55"', 'Televisor OLED 4K con negros perfectos y procesador inteligente α9 Gen 3 AI Processor 4K.', 1400000.00, 'LG', 'ruta/a/la/foto2.jpg', 'Resolución: 3840x2160, Tamaño: 55", HDR10 Pro, Dolby Vision IQ, Smart TV con webOS', NULL, 8, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('LG OLED CX 55"', 'Televisor OLED 4K con negros perfectos y procesador inteligente α9 Gen 3 AI Processor 4K.', 1400000.00, 'LG', 'https://extremetechcr.com/tienda/34681-home_default/jvc-58-4k-google-tv-lt-58kb538.jpg', 'Resolución: 3840x2160, Tamaño: 55", HDR10 Pro, Dolby Vision IQ, Smart TV con webOS', NULL, 8, 0);
 
 -- Producto 3: Sony Bravia X900H 65"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony Bravia X900H 65"', 'Televisor LED 4K Full Array con soporte para HDMI 2.1 y Android TV.', 1100000.00, 'Sony', 'ruta/a/la/foto3.jpg', 'Resolución: 3840x2160, Tamaño: 65", HDR, Dolby Vision, Smart TV con Android TV', NULL, 12, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony Bravia X900H 65"', 'Televisor LED 4K Full Array con soporte para HDMI 2.1 y Android TV.', 1100000.00, 'Sony', 'https://extremetechcr.com/tienda/38806-home_default/xiaomi-a-pro-65-pulgadas-2025-4k-google-tv.jpg', 'Resolución: 3840x2160, Tamaño: 65", HDR, Dolby Vision, Smart TV con Android TV', NULL, 12, 0);
 
 -- Producto 4: TCL 6-Series Roku TV 55"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('TCL 6-Series Roku TV 55"', 'Televisor QLED 4K con tecnología Mini-LED y plataforma Roku TV.', 600000.00, 'TCL', 'ruta/a/la/foto4.jpg', 'Resolución: 3840x2160, Tamaño: 55", HDR Pro Pack con Dolby Vision, Smart TV con Roku OS', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('TCL 6-Series Roku TV 55"', 'Televisor QLED 4K con tecnología Mini-LED y plataforma Roku TV.', 600000.00, 'TCL', 'https://extremetechcr.com/tienda/29280-home_default/televisor-xiaomi-q2-55-4k-qled-l55m7-q2sa.jpg', 'Resolución: 3840x2160, Tamaño: 55", HDR Pro Pack con Dolby Vision, Smart TV con Roku OS', NULL, 15, 0);
 
 -- Producto 5: Hisense H8G Quantum Series 65"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Hisense H8G Quantum Series 65"', 'Televisor ULED 4K con colores vibrantes y tecnología Quantum Dot.', 700000.00, 'Hisense', 'ruta/a/la/foto5.jpg', 'Resolución: 3840x2160, Tamaño: 65", Dolby Vision HDR, Smart TV con Android TV', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Hisense H8G Quantum Series 65"', 'Televisor ULED 4K con colores vibrantes y tecnología Quantum Dot.', 700000.00, 'Hisense', 'https://extremetechcr.com/tienda/39878-home_default/xiaomi-a-series-32-hd.jpg', 'Resolución: 3840x2160, Tamaño: 65", Dolby Vision HDR, Smart TV con Android TV', NULL, 20, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -558,19 +558,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id4, 24)
 INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 24);
 
 -- Producto 1: Bose Soundbar 700
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Bose Soundbar 700', 'Barra de sonido premium con sonido envolvente y control por voz integrado.', 600000.00, 'Bose', 'ruta/a/la/foto1.jpg', 'Conectividad: Wi-Fi, Bluetooth, HDMI ARC; Soporte para Alexa y Google Assistant', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Bose Soundbar 700', 'Barra de sonido premium con sonido envolvente y control por voz integrado.', 600000.00, 'Bose', 'https://extremetechcr.com/tienda/31850-home_default/genius-sp-hf180-madera.jpg', 'Conectividad: Wi-Fi, Bluetooth, HDMI ARC; Soporte para Alexa y Google Assistant', NULL, 10, 0);
 
 -- Producto 2: Sony HT-G700 Barra de Sonido
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony HT-G700 Barra de Sonido', 'Barra de sonido de 3.1 canales con Dolby Atmos y subwoofer inalámbrico.', 350000.00, 'Sony', 'ruta/a/la/foto2.jpg', 'Conectividad: Bluetooth, HDMI eARC/ARC, Entrada óptica; Tecnología Vertical Surround Engine', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony HT-G700 Barra de Sonido', 'Barra de sonido de 3.1 canales con Dolby Atmos y subwoofer inalámbrico.', 350000.00, 'Sony', 'https://extremetechcr.com/tienda/25467-home_default/parlante-unno-tekno-desktop-speakers-sp9025bk.jpg', 'Conectividad: Bluetooth, HDMI eARC/ARC, Entrada óptica; Tecnología Vertical Surround Engine', NULL, 15, 0);
 
 -- Producto 3: JBL PartyBox 310
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('JBL PartyBox 310', 'Altavoz portátil de alta potencia con efectos de luz y batería recargable.', 450000.00, 'JBL', 'ruta/a/la/foto3.jpg', 'Conectividad: Bluetooth, USB, Entrada para micrófono y guitarra; Batería: Hasta 18 horas', NULL, 12, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('JBL PartyBox 310', 'Altavoz portátil de alta potencia con efectos de luz y batería recargable.', 450000.00, 'JBL', 'https://extremetechcr.com/tienda/25472-home_default/parlante-unno-pulse-tws-sp9209bk.jpg', 'Conectividad: Bluetooth, USB, Entrada para micrófono y guitarra; Batería: Hasta 18 horas', NULL, 12, 0);
 
 -- Producto 4: Yamaha RX-V6A Receptor AV
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Yamaha RX-V6A Receptor AV', 'Receptor AV de 7.2 canales con soporte para 8K y funciones avanzadas.', 550000.00, 'Yamaha', 'ruta/a/la/foto4.jpg', 'Soporte: Dolby Atmos, DTS:X; Conectividad: HDMI 2.1, Wi-Fi, Bluetooth, AirPlay 2', NULL, 8, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Yamaha RX-V6A Receptor AV', 'Receptor AV de 7.2 canales con soporte para 8K y funciones avanzadas.', 550000.00, 'Yamaha', 'https://extremetechcr.com/tienda/39309-home_default/energy-system-sunrise-bluetooth-navy-bloom.jpg', 'Soporte: Dolby Atmos, DTS:X; Conectividad: HDMI 2.1, Wi-Fi, Bluetooth, AirPlay 2', NULL, 8, 0);
 
 -- Producto 5: Klipsch Reference R-625FA Altavoces de Piso
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Klipsch Reference R-625FA Altavoces de Piso', 'Par de altavoces de piso con canales integrados para Dolby Atmos.', 700000.00, 'Klipsch', 'ruta/a/la/foto5.jpg', 'Tipo: Altavoces de piso 2.5 vías; Potencia: 100W RMS; Sensibilidad: 96 dB', NULL, 5, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Klipsch Reference R-625FA Altavoces de Piso', 'Par de altavoces de piso con canales integrados para Dolby Atmos.', 700000.00, 'Klipsch', 'https://extremetechcr.com/tienda/36059-home_default/genius-sp-925bt-bluetooth-chocolate.jpg', 'Tipo: Altavoces de piso 2.5 vías; Potencia: 100W RMS; Sensibilidad: 96 dB', NULL, 5, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -590,19 +590,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 25)
 
 
 -- Producto 1: Canon EOS R5
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Canon EOS R5', 'Cámara mirrorless profesional con capacidad de grabación de video 8K.', 2500000.00, 'Canon', 'ruta/a/la/foto1.jpg', 'Sensor CMOS full-frame de 45MP, Video 8K RAW, Estabilización de imagen en el cuerpo, Dual Pixel CMOS AF II', NULL, 5, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Canon EOS R5', 'Cámara mirrorless profesional con capacidad de grabación de video 8K.', 2500000.00, 'Canon', 'https://extremetechcr.com/tienda/21986-home_default/baston-extensor-y-tripode-gopro-shorty-afttm-001.jpg', 'Sensor CMOS full-frame de 45MP, Video 8K RAW, Estabilización de imagen en el cuerpo, Dual Pixel CMOS AF II', NULL, 5, 0);
 
 -- Producto 2: Sony Alpha a7 III
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony Alpha a7 III', 'Cámara mirrorless de fotograma completo con rendimiento versátil y enfoque automático rápido.', 1500000.00, 'Sony', 'ruta/a/la/foto2.jpg', 'Sensor CMOS Exmor R de 24.2MP, Video 4K, Estabilización de imagen de 5 ejes, Sistema AF híbrido rápido', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Sony Alpha a7 III', 'Cámara mirrorless de fotograma completo con rendimiento versátil y enfoque automático rápido.', 1500000.00, 'Sony', 'https://extremetechcr.com/tienda/38727-home_default/camara-de-accion-argom-epiccam85-4k-arg-ac-9185bk.jpg', 'Sensor CMOS Exmor R de 24.2MP, Video 4K, Estabilización de imagen de 5 ejes, Sistema AF híbrido rápido', NULL, 10, 0);
 
 -- Producto 3: GoPro HERO9 Black
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('GoPro HERO9 Black', 'Cámara de acción resistente con capacidad de video 5K y pantalla frontal.', 350000.00, 'GoPro', 'ruta/a/la/foto3.jpg', 'Video 5K30 y 4K60, Fotos de 20MP, Estabilización HyperSmooth 3.0, Resistente al agua hasta 10m', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('GoPro HERO9 Black', 'Cámara de acción resistente con capacidad de video 5K y pantalla frontal.', 350000.00, 'GoPro', 'https://extremetechcr.com/tienda/35752-home_default/gopro-max-lens-mod-20-adwal-002.jpg', 'Video 5K30 y 4K60, Fotos de 20MP, Estabilización HyperSmooth 3.0, Resistente al agua hasta 10m', NULL, 20, 0);
 
 -- Producto 4: Panasonic Lumix GH5
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Panasonic Lumix GH5', 'Cámara sin espejo orientada a video con grabación interna 4K 10-bit 4:2:2.', 1300000.00, 'Panasonic', 'ruta/a/la/foto4.jpg', 'Sensor Digital Live MOS de 20.3MP, Video 4K60p, Estabilización Dual IS 2, Sin límite de tiempo de grabación', NULL, 8, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Panasonic Lumix GH5', 'Cámara sin espejo orientada a video con grabación interna 4K 10-bit 4:2:2.', 1300000.00, 'Panasonic', 'https://extremetechcr.com/tienda/38944-home_default/gopro-hero-12-black.jpg', 'Sensor Digital Live MOS de 20.3MP, Video 4K60p, Estabilización Dual IS 2, Sin límite de tiempo de grabación', NULL, 8, 0);
 
 -- Producto 5: Nikon D850
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Nikon D850', 'Cámara DSLR de fotograma completo con alta resolución y rendimiento rápido.', 2200000.00, 'Nikon', 'ruta/a/la/foto5.jpg', 'Sensor CMOS BSI de 45.7MP, Video 4K UHD, Sistema AF de 153 puntos, Pantalla táctil inclinable', NULL, 6, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Nikon D850', 'Cámara DSLR de fotograma completo con alta resolución y rendimiento rápido.', 2200000.00, 'Nikon', 'https://extremetechcr.com/tienda/39534-home_default/macro-lens-mod-go-pro-hero-hb-serires-hero13-black-aewal-021.jpg', 'Sensor CMOS BSI de 45.7MP, Video 4K UHD, Sistema AF de 153 puntos, Pantalla táctil inclinable', NULL, 6, 0);
 
 
 -- Obtener los IDs de los productos insertados
