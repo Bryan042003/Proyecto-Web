@@ -177,6 +177,8 @@ export class ProdutsAdminComponent {
       },
       error: (error: any) => {
         console.error('Error al eliminar product:', error);
+        this.showNoAlert = true;
+        setTimeout(() => { this.showNoAlert = false; }, 3000);
       },
       complete: () => {
         console.log('Creación completada');
