@@ -223,7 +223,7 @@ export class PersonalInformationComponent implements OnInit {
             setTimeout(() => {
               window.location.reload();
             }, 1000);
-          }, 3000);
+          }, 1000);
         },
         error: (error) => {
           console.error('Error al eliminar usuario:', error);
