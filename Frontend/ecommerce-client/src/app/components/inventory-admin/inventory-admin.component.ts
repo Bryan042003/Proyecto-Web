@@ -23,6 +23,8 @@ export class InventoryAdminComponent {
   products: Product[] = [];
   categories: Category[]=[];
   showAlert = false;
+  subcategoria: any = null;
+
 
   constructor(private _productService: ProductService,
     private _categoryService: CategoryService
@@ -104,22 +106,46 @@ export class InventoryAdminComponent {
       },
     });
   }
-  
-  assignProductToCategory(id_product: string, id_category: string){
-    this._productService.AssignProductToCategory(id_product, id_category).subscribe({
+
+  getSubcategory(id: string) {
+    this._categoryService.getSubcategories(id).subscribe({
       next: (result) => {
-        this.showAlert = true; 
-        console.log('Actualización exitosa:', result);
-        setTimeout(() => { this.showAlert = false; }, 3000);
+        console.log('get sub exitosa:', result);
+        this.subcategoria = result;
       },
       error: (error: any) => {
-        console.error('Error al actualizar producto:', error);
+        console.error('Error al obtener categoria:', error);
       },
       complete: () => {
         console.log('Solicitud completada');
       },
     });
+  } 
+  
+  assignProductToCategory(id_product: string, id_category: string){
+    this.getSubcategory(id_category);
+    if (this.subcategoria !== null) {
+      this._productService.AssignProductToCategory(id_product, id_category).subscribe({
+        next: (result) => {
+          this.showAlert = true;
+          console.log('Actualización exitosa:', result);
+          setTimeout(() => { this.showAlert = false; }, 3000);
+        },
+        error: (error: any) => {
+          console.error('Error al actualizar producto:', error);
+        },
+        complete: () => {
+          console.log('Solicitud completada');
+        },
+      });
+    } else {
+      console.warn('intento de sub categoria');
+    }
   }
+
+
+
+  
 
   
 }
