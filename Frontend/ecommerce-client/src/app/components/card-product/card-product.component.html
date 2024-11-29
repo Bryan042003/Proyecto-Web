@@ -1,18 +1,20 @@
-<div class="card bg-[#f5f8fc] w-full h-[375px] shadow-xl">
-    <figure class="relative px-2  w-full h-[225px]">
-        <div class="indicator relative">
+<div class="card bg-[#f5f8fc] w-full h-[450px] shadow-xl">
+    <figure class="relative px-2 w-full h-[300px]">
+        <div class="indicator relative w-full h-full">
             <span *ngIf="product.id_offer !== null"
                 class="indicator-item indicator-top badge badge-primary absolute top-10 left-0 px-5 pt-5 pb-5 rounded-2xl bg-[#1E2B3D] text-white font-bold text-lg">
                 -{{(offer?.discount ?? 0) * 100}}%
             </span>
-            <img [src]="product.photo || 'images/logo.png'" alt="product" class="rounded-xl w-full h-full object-fill"
+            <img [src]="product.photo || 'images/logo.png'" alt="product" class="rounded-xl w-full h-full object-center"
                 (error)="setDefaultImage($event)" />
+
         </div>
     </figure>
     <div class="card-body items-center text-center h-[150px]">
 
         <!-- Nombre del producto con scroll -->
-        <div class="w-full font-medium font-jetbrains h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+        <div
+            class="w-full font-medium font-jetbrains h-full overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
             {{product.name}}
         </div>
 
