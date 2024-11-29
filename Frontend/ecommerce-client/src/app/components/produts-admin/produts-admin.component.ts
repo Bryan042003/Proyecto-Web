@@ -168,4 +168,20 @@ export class ProdutsAdminComponent {
       })
   }
 
+  onDelete(id: string){
+    this._productService.deleteProduct(id).
+    subscribe({
+      next: (result: any) => {
+        console.log('products:', result);
+        this.loadProducts();
+      },
+      error: (error: any) => {
+        console.error('Error al eliminar product:', error);
+      },
+      complete: () => {
+        console.log('Creación completada');
+      }
+    })
+  }
+
 }
