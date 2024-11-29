@@ -163,4 +163,48 @@ END $$
 DELIMITER ;
 
 
+DELIMITER $$
 
+BEGIN $$
+    DECLARE status_code INT;
+    DECLARE message VARCHAR(255);
+
+    -- Verificar si el producto existe
+    IF NOT EXISTS (SELECT 1 FROM Product WHERE id = product_id) THEN
+        SET status_code = -1;
+        SET message = 'El producto no existe.';
+    -- Verificar si el producto tiene órdenes asociadas
+    ELSEIF EXISTS (SELECT 1 FROM Order_Product WHERE id_product = product_id) THEN
+        SET status_code = 0;
+        SET message = 'No se puede eliminar el producto porque tiene órdenes asociadas.';
+    ELSE
+        -- Iniciar una transacción para asegurar la integridad de los datos
+        START TRANSACTION;
+
+        -- Eliminar entradas de Review relacionadas con el producto
+        DELETE FROM Review WHERE id_product = product_id;
+
+        -- Eliminar entradas de Highlight relacionadas con el producto
+        DELETE FROM Highlight WHERE id_product = product_id;
+
+        -- Eliminar entradas de Notification relacionadas con el producto
+        DELETE FROM Notification WHERE id_product = product_id;
+
+        -- Eliminar entradas de Product_Category relacionadas con el producto
+        DELETE FROM Product_Category WHERE id_product = product_id;
+
+        -- Eliminar el producto
+        DELETE FROM Product WHERE id = product_id;
+
+        -- Confirmar la transacción
+        COMMIT;
+
+        SET status_code = 1;
+        SET message = 'Producto y datos relacionados eliminados exitosamente.';
+    END IF;
+
+    -- Devolver los valores de status_code y message
+    SELECT status_code AS status_code, message AS message;
+END $$
+
+DELIMITER ;
