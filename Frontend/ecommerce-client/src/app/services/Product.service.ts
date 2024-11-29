@@ -89,6 +89,12 @@ export class ProductService {
         params = params.append('limit', limit);
         return this.http.get<Product[]>(`${this.baseUrl}/top-sales-and-category`, { params });
     }
+
+    getTopSellingProducts(limit:number): Observable<Product[]> {
+        let params = new HttpParams();
+        params = params.append('limit', limit);
+        return this.http.get<Product[]>(`${this.baseUrl}/top-selling`, { params });
+    }
     
     getHighlightedProducts(): Observable<Product[]> {
         return this.http.get<Product[]>(`${this.baseUrl}/highlighted`);

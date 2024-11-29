@@ -209,3 +209,19 @@ BEGIN
 END $$
 
 DELIMITER ;
+
+
+DELIMITER $$
+
+CREATE PROCEDURE GetTopSellingProducts(IN limit_results INT)
+BEGIN
+    SELECT
+        p.*
+    FROM
+        Product p
+    ORDER BY
+        p.n_sales DESC
+    LIMIT limit_results;
+END $$
+
+DELIMITER ;

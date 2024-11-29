@@ -17,6 +17,7 @@ router.get('/by-brand-and-category', productController.getProductsByBrandAndCate
 router.get('/by-prices-and-category', productController.getProductsByPricesAndCategory);
 router.get('/top-sales-and-category', productController.getTopProductsbySalesAndCategory);
 router.get('/highlighted', productController.GetActiveHighlightedProducts);
+router.get('/top-selling', productController.getTopSellingProducts);
 
 router.post('/assign-category', productController.validateProductCategory, productController.AssignProductToCategory);
 router.put('/update-category/:id', productController.ValidateUpdateProductCategory, productController.UpdateProductCategory);
