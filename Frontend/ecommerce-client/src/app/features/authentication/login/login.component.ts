@@ -254,8 +254,8 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/admin_dashboard'], { queryParams: { role: this.role } });
                 break;     
               default:
+                window.location.reload();
                 this.router.navigate(['/store']);
-                
                 break;
             }
           }
