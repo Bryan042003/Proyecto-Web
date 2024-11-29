@@ -35,19 +35,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 10)
 
 
 -- Producto 1: NVIDIA GeForce RTX 3090
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NVIDIA GeForce RTX 3090', 'Tarjeta gráfica de alto rendimiento para gaming y creación de contenido en 8K.', 1500000.00, 'NVIDIA', 'ruta/a/la/foto1.jpg', '24GB GDDR6X, HDMI, DisplayPort, PCI Express 4.0', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NVIDIA GeForce RTX 3090', 'Tarjeta gráfica de alto rendimiento para gaming y creación de contenido en 8K.', 1500000.00, 'NVIDIA', 'https://extremetechcr.com/tienda/33881-thickbox_default/msi-nvidia-geforce-rtx-4070ti-super-16-gb-ventus-3x-oc.jpg', '24GB GDDR6X, HDMI, DisplayPort, PCI Express 4.0', NULL, 10, 0);
 
 -- Producto 2: AMD Radeon RX 6900 XT
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Radeon RX 6900 XT', 'Tarjeta gráfica potente para juegos en 4K con alta tasa de refresco.', 1300000.00, 'AMD', 'ruta/a/la/foto2.jpg', '16GB GDDR6, HDMI, DisplayPort, PCI Express 4.0', NULL, 12, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Radeon RX 6900 XT', 'Tarjeta gráfica potente para juegos en 4K con alta tasa de refresco.', 1300000.00, 'AMD', 'https://extremetechcr.com/tienda/39942-thickbox_default/gigabyte-geforce-rtx-4080-super-gaming-16-gb.jpg', '16GB GDDR6, HDMI, DisplayPort, PCI Express 4.0', NULL, 12, 0);
 
 -- Producto 3: NVIDIA GeForce RTX 3070
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NVIDIA GeForce RTX 3070', 'Excelente rendimiento para gaming en 1440p y capacidades de trazado de rayos.', 700000.00, 'NVIDIA', 'ruta/a/la/foto3.jpg', '8GB GDDR6, HDMI, DisplayPort, PCI Express 4.0', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NVIDIA GeForce RTX 3070', 'Excelente rendimiento para gaming en 1440p y capacidades de trazado de rayos.', 700000.00, 'NVIDIA', 'https://extremetechcr.com/tienda/33992-thickbox_default/gigabyte-geforce-rtx-4070ti-super-windforce-oc-16-gb.jpg', '8GB GDDR6, HDMI, DisplayPort, PCI Express 4.0', NULL, 25, 0);
 
 -- Producto 4: AMD Radeon RX 6800
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Radeon RX 6800', 'Tarjeta gráfica optimizada para juegos en 1440p y 4K.', 850000.00, 'AMD', 'ruta/a/la/foto4.jpg', '16GB GDDR6, HDMI, DisplayPort, PCI Express 4.0', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Radeon RX 6800', 'Tarjeta gráfica optimizada para juegos en 1440p y 4K.', 850000.00, 'AMD', 'https://extremetechcr.com/tienda/33633-thickbox_default/zotac-nvidia-geforce-rtx-4070-super-twin-edge-12-gb.jpg', '16GB GDDR6, HDMI, DisplayPort, PCI Express 4.0', NULL, 20, 0);
 
 -- Producto 5: NVIDIA GeForce GTX 1660 Ti
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NVIDIA GeForce GTX 1660 Ti', 'Tarjeta gráfica de gama media para gaming en 1080p con alto rendimiento.', 350000.00, 'NVIDIA', 'ruta/a/la/foto5.jpg', '6GB GDDR6, HDMI, DisplayPort, PCI Express 3.0', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NVIDIA GeForce GTX 1660 Ti', 'Tarjeta gráfica de gama media para gaming en 1080p con alto rendimiento.', 350000.00, 'NVIDIA', 'https://extremetechcr.com/tienda/33635-large_default/gigabyte-geforce-rtx-4070-super-gaming-oc-12-gb.jpg', '6GB GDDR6, HDMI, DisplayPort, PCI Express 3.0', NULL, 30, 0);
 
 -- Obtener los IDs de los productos insertados
 SET @product_id1 = (SELECT id FROM Product WHERE name = 'NVIDIA GeForce RTX 3090');
@@ -55,6 +55,9 @@ SET @product_id2 = (SELECT id FROM Product WHERE name = 'AMD Radeon RX 6900 XT')
 SET @product_id3 = (SELECT id FROM Product WHERE name = 'NVIDIA GeForce RTX 3070');
 SET @product_id4 = (SELECT id FROM Product WHERE name = 'AMD Radeon RX 6800');
 SET @product_id5 = (SELECT id FROM Product WHERE name = 'NVIDIA GeForce GTX 1660 Ti');
+
+
+
 
 -- Asociar los productos a la categoría Tarjetas de Video (id = 9)
 INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id1, 9);
@@ -64,19 +67,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id4, 9);
 INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 9);
 
 -- Producto 1: Intel Core i9-11900K
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Intel Core i9-11900K', 'Procesador de alto rendimiento de 11ª generación para entusiastas y jugadores.', 550000.00, 'Intel', 'ruta/a/la/foto1.jpg', '8 núcleos, 16 hilos, frecuencia base de 3.5 GHz, Turbo de hasta 5.3 GHz', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Intel Core i9-11900K', 'Procesador de alto rendimiento de 11ª generación para entusiastas y jugadores.', 550000.00, 'Intel', 'https://extremetechcr.com/tienda/30777-large_default/intel-core-i9-14900kf.jpg', '8 núcleos, 16 hilos, frecuencia base de 3.5 GHz, Turbo de hasta 5.3 GHz', NULL, 15, 0);
 
 -- Producto 2: AMD Ryzen 9 5950X
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Ryzen 9 5950X', 'Procesador de alto rendimiento para creadores y gamers exigentes.', 700000.00, 'AMD', 'ruta/a/la/foto2.jpg', '16 núcleos, 32 hilos, frecuencia base de 3.4 GHz, Boost de hasta 4.9 GHz', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Ryzen 9 5950X', 'Procesador de alto rendimiento para creadores y gamers exigentes.', 700000.00, 'AMD', 'https://extremetechcr.com/tienda/38034-large_default/amd-ryzen-9-9950x.jpg', '16 núcleos, 32 hilos, frecuencia base de 3.4 GHz, Boost de hasta 4.9 GHz', NULL, 10, 0);
 
 -- Producto 3: Intel Core i7-11700K
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Intel Core i7-11700K', 'Procesador de 11ª generación optimizado para gaming y multitarea.', 400000.00, 'Intel', 'ruta/a/la/foto3.jpg', '8 núcleos, 16 hilos, frecuencia base de 3.6 GHz, Turbo de hasta 5.0 GHz', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Intel Core i7-11700K', 'Procesador de 11ª generación optimizado para gaming y multitarea.', 400000.00, 'Intel', 'https://extremetechcr.com/tienda/30775-large_default/intel-core-i7-14700k.jpg', '8 núcleos, 16 hilos, frecuencia base de 3.6 GHz, Turbo de hasta 5.0 GHz', NULL, 20, 0);
 
 -- Producto 4: AMD Ryzen 7 5800X
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Ryzen 7 5800X', 'Procesador de alto rendimiento para juegos y aplicaciones creativas.', 450000.00, 'AMD', 'ruta/a/la/foto4.jpg', '8 núcleos, 16 hilos, frecuencia base de 3.8 GHz, Boost de hasta 4.7 GHz', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('AMD Ryzen 7 5800X', 'Procesador de alto rendimiento para juegos y aplicaciones creativas.', 450000.00, 'AMD', 'https://extremetechcr.com/tienda/40118-large_default/amd-ryzen-7-9800x3d.jpg', '8 núcleos, 16 hilos, frecuencia base de 3.8 GHz, Boost de hasta 4.7 GHz', NULL, 25, 0);
 
 -- Producto 5: Intel Core i5-11600K
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Intel Core i5-11600K', 'Procesador de 11ª generación con excelente relación calidad-precio.', 300000.00, 'Intel', 'ruta/a/la/foto5.jpg', '6 núcleos, 12 hilos, frecuencia base de 3.9 GHz, Turbo de hasta 4.9 GHz', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Intel Core i5-11600K', 'Procesador de 11ª generación con excelente relación calidad-precio.', 300000.00, 'Intel', 'https://extremetechcr.com/tienda/11650-large_default/intel-core-i5-10400f.jpg', '6 núcleos, 12 hilos, frecuencia base de 3.9 GHz, Turbo de hasta 4.9 GHz', NULL, 30, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -95,19 +98,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 11)
 
 
 -- Producto 1: Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz', 'Kit de memoria RAM DDR4 de alto rendimiento para sistemas de escritorio.', 100000.00, 'Corsair', 'ruta/a/la/foto1.jpg', 'Capacidad: 16GB (2x8GB), Velocidad: 3200MHz, Latencia CAS 16', NULL, 50, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz', 'Kit de memoria RAM DDR4 de alto rendimiento para sistemas de escritorio.', 100000.00, 'Corsair', 'https://extremetechcr.com/tienda/10865-home_default/teamgroup-t-force-delta-rgb-8-gb-ddr4-2666.jpg', 'Capacidad: 16GB (2x8GB), Velocidad: 3200MHz, Latencia CAS 16', NULL, 50, 0);
 
 -- Producto 2: G.Skill Trident Z RGB 32GB (2x16GB) DDR4 3600MHz
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('G.Skill Trident Z RGB 32GB (2x16GB) DDR4 3600MHz', 'Memoria RAM con iluminación RGB y alto rendimiento para entusiastas.', 250000.00, 'G.Skill', 'ruta/a/la/foto2.jpg', 'Capacidad: 32GB (2x16GB), Velocidad: 3600MHz, Latencia CAS 18', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('G.Skill Trident Z RGB 32GB (2x16GB) DDR4 3600MHz', 'Memoria RAM con iluminación RGB y alto rendimiento para entusiastas.', 250000.00, 'G.Skill', 'https://extremetechcr.com/tienda/26424-home_default/gskill-trident-z-rgb-8-gb-ddr4-3200.jpg', 'Capacidad: 32GB (2x16GB), Velocidad: 3600MHz, Latencia CAS 18', NULL, 30, 0);
 
 -- Producto 3: Kingston HyperX Fury 8GB DDR4 2400MHz
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Kingston HyperX Fury 8GB DDR4 2400MHz', 'Módulo de memoria RAM confiable y de alto rendimiento.', 50000.00, 'Kingston', 'ruta/a/la/foto3.jpg', 'Capacidad: 8GB, Velocidad: 2400MHz, Latencia CAS 15', NULL, 70, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Kingston HyperX Fury 8GB DDR4 2400MHz', 'Módulo de memoria RAM confiable y de alto rendimiento.', 50000.00, 'Kingston', 'https://extremetechcr.com/tienda/10677-large_default/teamgroup-t-force-vulcan-z-roja-8-gb-ddr4-3200.jpg', 'Capacidad: 8GB, Velocidad: 2400MHz, Latencia CAS 15', NULL, 70, 0);
 
 -- Producto 4: Crucial Ballistix 16GB (2x8GB) DDR4 2666MHz
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Crucial Ballistix 16GB (2x8GB) DDR4 2666MHz', 'Memoria RAM de alto rendimiento para gaming y aplicaciones intensivas.', 90000.00, 'Crucial', 'ruta/a/la/foto4.jpg', 'Capacidad: 16GB (2x8GB), Velocidad: 2666MHz, Latencia CAS 16', NULL, 60, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Crucial Ballistix 16GB (2x8GB) DDR4 2666MHz', 'Memoria RAM de alto rendimiento para gaming y aplicaciones intensivas.', 90000.00, 'Crucial', 'https://extremetechcr.com/tienda/19206-home_default/adata-xpg-lancer-16-gb-ddr5-5200-rgb.jpg', 'Capacidad: 16GB (2x8GB), Velocidad: 2666MHz, Latencia CAS 16', NULL, 60, 0);
 
 -- Producto 5: TeamGroup T-Force Delta RGB 16GB (2x8GB) DDR4 3200MHz
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('TeamGroup T-Force Delta RGB 16GB (2x8GB) DDR4 3200MHz', 'Memoria RAM con iluminación RGB y diseño único.', 110000.00, 'TeamGroup', 'ruta/a/la/foto5.jpg', 'Capacidad: 16GB (2x8GB), Velocidad: 3200MHz, Latencia CAS 16', NULL, 40, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('TeamGroup T-Force Delta RGB 16GB (2x8GB) DDR4 3200MHz', 'Memoria RAM con iluminación RGB y diseño único.', 110000.00, 'TeamGroup', 'https://extremetechcr.com/tienda/36417-home_default/gskill-ripjaws-s5-16-gb-ddr5-5200-cl40-blanco.jpg', 'Capacidad: 16GB (2x8GB), Velocidad: 3200MHz, Latencia CAS 16', NULL, 40, 0);
 
 -- Obtener los IDs de los productos insertados
 SET @product_id1 = (SELECT id FROM Product WHERE name = 'Corsair Vengeance LPX 16GB (2x8GB) DDR4 3200MHz');
@@ -125,19 +128,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 12)
 
 
 -- Producto 1: Samsung 970 EVO Plus NVMe M.2 SSD 1TB
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung 970 EVO Plus NVMe M.2 SSD 1TB', 'Unidad SSD NVMe de alto rendimiento para laptops y PCs.', 250000.00, 'Samsung', 'ruta/a/la/foto1.jpg', 'Capacidad: 1TB, Interfaz: NVMe M.2 PCIe 3.0 x4, Velocidad de lectura: hasta 3500 MB/s, Velocidad de escritura: hasta 3300 MB/s', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Samsung 970 EVO Plus NVMe M.2 SSD 1TB', 'Unidad SSD NVMe de alto rendimiento para laptops y PCs.', 250000.00, 'Samsung', 'https://extremetechcr.com/tienda/28799-home_default/teamgroup-mp44l-m2-500-gb.jpg', 'Capacidad: 1TB, Interfaz: NVMe M.2 PCIe 3.0 x4, Velocidad de lectura: hasta 3500 MB/s, Velocidad de escritura: hasta 3300 MB/s', NULL, 20, 0);
 
 -- Producto 2: Seagate BarraCuda 2TB HDD 3.5"
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Seagate BarraCuda 2TB HDD 3.5"', 'Disco duro interno de alta capacidad para almacenamiento masivo.', 100000.00, 'Seagate', 'ruta/a/la/foto2.jpg', 'Capacidad: 2TB, Interfaz: SATA III, Velocidad: 7200 RPM, Caché: 256MB', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Seagate BarraCuda 2TB HDD 3.5"', 'Disco duro interno de alta capacidad para almacenamiento masivo.', 100000.00, 'Seagate', 'https://extremetechcr.com/tienda/33962-home_default/patriot-p400-lite-500gb.jpg', 'Capacidad: 2TB, Interfaz: SATA III, Velocidad: 7200 RPM, Caché: 256MB', NULL, 30, 0);
 
 -- Producto 3: Western Digital Blue 500GB SATA SSD
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Western Digital Blue 500GB SATA SSD', 'SSD SATA de alto rendimiento para mejorar la velocidad del sistema.', 85000.00, 'Western Digital', 'ruta/a/la/foto3.jpg', 'Capacidad: 500GB, Interfaz: SATA III, Velocidad de lectura: hasta 560 MB/s, Velocidad de escritura: hasta 530 MB/s', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Western Digital Blue 500GB SATA SSD', 'SSD SATA de alto rendimiento para mejorar la velocidad del sistema.', 85000.00, 'Western Digital', 'https://extremetechcr.com/tienda/27003-home_default/adata-legend-800-2-tb.jpg', 'Capacidad: 500GB, Interfaz: SATA III, Velocidad de lectura: hasta 560 MB/s, Velocidad de escritura: hasta 530 MB/s', NULL, 25, 0);
 
 -- Producto 4: Kingston A2000 NVMe M.2 SSD 500GB
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Kingston A2000 NVMe M.2 SSD 500GB', 'SSD NVMe económico con rendimiento impresionante para laptops y PCs.', 90000.00, 'Kingston', 'ruta/a/la/foto4.jpg', 'Capacidad: 500GB, Interfaz: NVMe M.2 PCIe 3.0 x4, Velocidad de lectura: hasta 2200 MB/s, Velocidad de escritura: hasta 2000 MB/s', NULL, 40, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Kingston A2000 NVMe M.2 SSD 500GB', 'SSD NVMe económico con rendimiento impresionante para laptops y PCs.', 90000.00, 'Kingston', 'https://extremetechcr.com/tienda/39135-home_default/kingston-nv3-1tb-nvme-pcie-40.jpg', 'Capacidad: 500GB, Interfaz: NVMe M.2 PCIe 3.0 x4, Velocidad de lectura: hasta 2200 MB/s, Velocidad de escritura: hasta 2000 MB/s', NULL, 40, 0);
 
 -- Producto 5: SanDisk Ultra Flair 128GB USB 3.0
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('SanDisk Ultra Flair 128GB USB 3.0', 'Memoria USB de alta velocidad para almacenamiento portátil.', 25000.00, 'SanDisk', 'ruta/a/la/foto5.jpg', 'Capacidad: 128GB, Interfaz: USB 3.0, Velocidad de lectura: hasta 150 MB/s', NULL, 50, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('SanDisk Ultra Flair 128GB USB 3.0', 'Memoria USB de alta velocidad para almacenamiento portátil.', 25000.00, 'SanDisk', 'https://extremetechcr.com/tienda/26423-home_default/adata-32-gb-ddr5-4800-so-dimm.jpg', 'Capacidad: 128GB, Interfaz: USB 3.0, Velocidad de lectura: hasta 150 MB/s', NULL, 50, 0);
 
 -- Obtener los IDs de los productos insertados
 SET @product_id1 = (SELECT id FROM Product WHERE name = 'Samsung 970 EVO Plus NVMe M.2 SSD 1TB');
@@ -155,19 +158,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 13)
 
 
 -- Producto 1: Corsair RM750x 750W 80+ Gold
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair RM750x 750W 80+ Gold', 'Fuente de poder modular de alta eficiencia y rendimiento silencioso.', 150000.00, 'Corsair', 'ruta/a/la/foto1.jpg', 'Potencia: 750W, Certificación: 80+ Gold, Modular: Sí, Ventilador de 135mm', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair RM750x 750W 80+ Gold', 'Fuente de poder modular de alta eficiencia y rendimiento silencioso.', 150000.00, 'Corsair', 'https://extremetechcr.com/tienda/17974-home_default/aerocool-dorado-850w-argb-80-plus-gold.jpg', 'Potencia: 750W, Certificación: 80+ Gold, Modular: Sí, Ventilador de 135mm', NULL, 20, 0);
 
 -- Producto 2: EVGA SuperNOVA 650 G5 650W 80+ Gold
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('EVGA SuperNOVA 650 G5 650W 80+ Gold', 'Fuente de poder totalmente modular con garantía de 10 años.', 130000.00, 'EVGA', 'ruta/a/la/foto2.jpg', 'Potencia: 650W, Certificación: 80+ Gold, Modular: Sí, Ventilador de 135mm', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('EVGA SuperNOVA 650 G5 650W 80+ Gold', 'Fuente de poder totalmente modular con garantía de 10 años.', 130000.00, 'EVGA', 'https://extremetechcr.com/tienda/30991-home_default/msi-mag-a850gl-pcie5-850w-80-plus-gold-.jpg', 'Potencia: 650W, Certificación: 80+ Gold, Modular: Sí, Ventilador de 135mm', NULL, 25, 0);
 
 -- Producto 3: Seasonic Focus GX-550 550W 80+ Gold
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Seasonic Focus GX-550 550W 80+ Gold', 'Fuente de poder compacta y eficiente con cables modulares.', 110000.00, 'Seasonic', 'ruta/a/la/foto3.jpg', 'Potencia: 550W, Certificación: 80+ Gold, Modular: Sí, Ventilador de 120mm', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Seasonic Focus GX-550 550W 80+ Gold', 'Fuente de poder compacta y eficiente con cables modulares.', 110000.00, 'Seasonic', 'https://extremetechcr.com/tienda/36593-home_default/asus-tuf-gaming-850w-80-plus-gold.jpg', 'Potencia: 550W, Certificación: 80+ Gold, Modular: Sí, Ventilador de 120mm', NULL, 30, 0);
 
 -- Producto 4: Cooler Master MWE 650 Bronze V2 650W 80+ Bronze
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Cooler Master MWE 650 Bronze V2 650W 80+ Bronze', 'Fuente de poder con cables planos y rendimiento fiable.', 90000.00, 'Cooler Master', 'ruta/a/la/foto4.jpg', 'Potencia: 650W, Certificación: 80+ Bronze, Modular: No, Ventilador de 120mm', NULL, 40, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Cooler Master MWE 650 Bronze V2 650W 80+ Bronze', 'Fuente de poder con cables planos y rendimiento fiable.', 90000.00, 'Cooler Master', 'https://extremetechcr.com/tienda/33732-home_default/seasonic-focus-gx-1000-80-plus-gold-blanca-atx-3-pcie-5.jpg', 'Potencia: 650W, Certificación: 80+ Bronze, Modular: No, Ventilador de 120mm', NULL, 40, 0);
 
 -- Producto 5: Thermaltake Smart 500W 80+ White
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Thermaltake Smart 500W 80+ White', 'Fuente de poder asequible y eficiente para sistemas básicos.', 65000.00, 'Thermaltake', 'ruta/a/la/foto5.jpg', 'Potencia: 500W, Certificación: 80+ White, Modular: No, Ventilador de 120mm', NULL, 50, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Thermaltake Smart 500W 80+ White', 'Fuente de poder asequible y eficiente para sistemas básicos.', 65000.00, 'Thermaltake', 'https://extremetechcr.com/tienda/33729-large_default/seasonic-focus-gx-1000-80-plus-gold-atx-3-pcie-5.jpg', 'Potencia: 500W, Certificación: 80+ White, Modular: No, Ventilador de 120mm', NULL, 50, 0);
 
 
 -- Obtener los IDs de los productos insertados
@@ -187,19 +190,19 @@ INSERT INTO Product_Category (id_product, id_category) VALUES (@product_id5, 14)
 
 
 -- Producto 1: NZXT H510 Mid-Tower Case
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NZXT H510 Mid-Tower Case', 'Gabinete mid-tower elegante y compacto con gestión de cables.', 80000.00, 'NZXT', 'ruta/a/la/foto1.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Puertos: USB 3.1 Gen 1, USB-C', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('NZXT H510 Mid-Tower Case', 'Gabinete mid-tower elegante y compacto con gestión de cables.', 80000.00, 'NZXT', 'https://extremetechcr.com/tienda/27521-home_default/nzxt-h9-flow-blanco.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Puertos: USB 3.1 Gen 1, USB-C', NULL, 30, 0);
 
 -- Producto 2: Corsair iCUE 4000X RGB Mid-Tower Case
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair iCUE 4000X RGB Mid-Tower Case', 'Gabinete con panel frontal de vidrio templado e iluminación RGB.', 150000.00, 'Corsair', 'ruta/a/la/foto2.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Incluye 3 ventiladores RGB', NULL, 20, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Corsair iCUE 4000X RGB Mid-Tower Case', 'Gabinete con panel frontal de vidrio templado e iluminación RGB.', 150000.00, 'Corsair', 'https://extremetechcr.com/tienda/39859-home_default/lian-li-011-evo-rgb-blanco.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Incluye 3 ventiladores RGB', NULL, 20, 0);
 
 -- Producto 3: Cooler Master MasterBox TD500 Mesh
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Cooler Master MasterBox TD500 Mesh', 'Gabinete con panel frontal de malla y excelente flujo de aire.', 120000.00, 'Cooler Master', 'ruta/a/la/foto3.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Incluye 3 ventiladores ARGB', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Cooler Master MasterBox TD500 Mesh', 'Gabinete con panel frontal de malla y excelente flujo de aire.', 120000.00, 'Cooler Master', 'https://extremetechcr.com/tienda/27523-home_default/nzxt-h9-elite-negro.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Incluye 3 ventiladores ARGB', NULL, 25, 0);
 
 -- Producto 4: Phanteks Eclipse P400A Digital
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Phanteks Eclipse P400A Digital', 'Gabinete con malla ultra fina para un flujo de aire óptimo.', 130000.00, 'Phanteks', 'ruta/a/la/foto4.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Incluye 3 ventiladores RGB', NULL, 15, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Phanteks Eclipse P400A Digital', 'Gabinete con malla ultra fina para un flujo de aire óptimo.', 130000.00, 'Phanteks', 'https://extremetechcr.com/tienda/27530-home_default/lian-li-lancool-216rx-blanco.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Incluye 3 ventiladores RGB', NULL, 15, 0);
 
 -- Producto 5: Thermaltake Core P3 ATX Open Frame
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Thermaltake Core P3 ATX Open Frame', 'Gabinete de marco abierto ideal para exhibición y modding.', 160000.00, 'Thermaltake', 'ruta/a/la/foto5.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Diseño modular', NULL, 10, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Thermaltake Core P3 ATX Open Frame', 'Gabinete de marco abierto ideal para exhibición y modding.', 160000.00, 'Thermaltake', 'https://extremetechcr.com/tienda/35031-home_default/lian-li-011-dynamic-evo-xl-blanco.jpg', 'Compatibilidad: ATX, Micro-ATX, Mini-ITX; Diseño modular', NULL, 10, 0);
 
 
 -- Obtener los IDs de los productos insertados
