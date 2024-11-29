@@ -9,6 +9,8 @@ import { ViewportScroller } from '@angular/common';
 import { Router } from '@angular/router';
 import { AlertErrorComponent } from "../alert-error/alert-error.component";
 import { ProductService } from '../../services/Product.service';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 
 
@@ -32,34 +34,46 @@ export class HeaderComponent implements OnInit {
   whishlistProducts: Array<Product> = [];
 
 
-  subtotal: number = 0; 
-  total: number = 0; 
-  IVA: number = 0.13; 
+  subtotal: number = 0;
+  total: number = 0;
+  IVA: number = 0.13;
 
   categories: any[] = [];
+  filteredProducts: Product[] = [];
+  private searchSubject = new Subject<string>();
+
 
   message = "No hay stock suficiente para agregar más unidades de este producto.";
   noStock: boolean = false;
 
-  constructor(private productService: ProductService, private router: Router, private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) { }
+  constructor(private productService: ProductService, private router: Router, private viewportScroller: ViewportScroller, private localStorageService: LocalStorageService, public categoryService: CategoryService, public authGuard: AuthGuard) {
+    // Configurar el Subject con debounceTime y distinctUntilChanged
+    this.searchSubject
+      .pipe(
+        debounceTime(1000), // Espera 300 ms después del último evento
+        distinctUntilChanged() // Ignora los valores repetidos consecutivamente
+      )
+      .subscribe(query => {
+        if (query) {
+          this.productService.searchProductsByName(query).subscribe(products => {
+            this.filteredProducts = products;
+          });
+        } else {
+          this.filteredProducts = [];
+        }
+      });
+  }
 
   ngOnInit() {
 
     this.categoryService.getCategories().subscribe(categories => {
       this.categories = categories;
     });
-
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
-    });
-
     this.logged = this.authGuard.logged();
     this.cartProducts = Object.values(this.localStorageService.getAllProducts());
-
     this.calculateSubtotal();
     this.calculateIVA();
     this.calculateTotal();
-
     this.whishlistProducts = Object.values(this.localStorageService.getAllProductsWish());
 
   }
@@ -69,26 +83,19 @@ export class HeaderComponent implements OnInit {
     element.src = 'images/logo.png';
   }
 
-  filteredProducts: Product[] = [];
 
   filterProducts(event: Event): void {
     const input = event.target as HTMLInputElement;
     const query = input.value;
-    if (query) {
-      this.filteredProducts = this.products.filter(product =>
-        product.name.toLowerCase().includes(query.toLowerCase())
-      );
-    } else {
-      this.filteredProducts = [];
-    }
+    this.searchSubject.next(query); // Emite el valor al Subject
   }
 
   selectProduct(product: Product, input: HTMLInputElement): void {
     console.log('Producto seleccionado:', product);
     this.scrollToMainContent();
     this.router.navigate(['/store/product-details/', product.id]);
-      input.value = '';
-      this.filteredProducts = [];
+    input.value = '';
+    this.filteredProducts = [];
   }
 
   incrementQuantity(product: Product) {
