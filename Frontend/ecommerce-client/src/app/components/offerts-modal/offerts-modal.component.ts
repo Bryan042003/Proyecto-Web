@@ -53,9 +53,13 @@ export class OffertsModalComponent {
       this.selectedProduct!.id_offer = id;
       this.id_offert.emit(this.selectedIds);
 
+    }else{
+      this.selectedIds = null;
+      this.id_offert.emit(this.selectedIds);
     }
+
  
-    console.log('Selected IDs:', this.selectedIds); 
+    console.log('Selected IDs:', this.selectedIds, isChecked); 
   }
 
   updateProdut(id: string, data: Product) {
