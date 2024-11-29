@@ -8,13 +8,13 @@ INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id
 INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('Gigabyte Z490 AORUS Ultra', 'Tarjeta madre ATX para procesadores Intel de 10ma generación.', 250000.00, 'Gigabyte', 'https://extremetechcr.com/tienda/36798-large_default/gigabyte-h510m-k-v2.jpg', 'Chipset Z490, 4x DDR4, Intel WiFi 6, RGB Fusion 2.0, PCIe 3.0', NULL, 15, 0);
 
 -- Producto 3: MSI MPG X570 Gaming Plus
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('MSI MPG X570 Gaming Plus', 'Tarjeta madre ATX con socket AM4 y diseño eficiente de energía.', 200000.00, 'MSI', 'ruta/a/la/foto3.jpg', 'Chipset X570, 4x DDR4, PCIe 4.0, M.2 Shield Frozr, Audio Boost 4', NULL, 25, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('MSI MPG X570 Gaming Plus', 'Tarjeta madre ATX con socket AM4 y diseño eficiente de energía.', 200000.00, 'MSI', 'https://extremetechcr.com/tienda/32621-home_default/gigabyte-b450m-k.jpg', 'Chipset X570, 4x DDR4, PCIe 4.0, M.2 Shield Frozr, Audio Boost 4', NULL, 25, 0);
 
 -- Producto 4: ASRock B460 Steel Legend
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASRock B460 Steel Legend', 'Tarjeta madre ATX para Intel de 10ma generación con iluminación RGB.', 150000.00, 'ASRock', 'ruta/a/la/foto4.jpg', 'Chipset B460, 4x DDR4, Polychrome RGB, M.2 NVMe, USB 3.2', NULL, 30, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASRock B460 Steel Legend', 'Tarjeta madre ATX para Intel de 10ma generación con iluminación RGB.', 150000.00, 'ASRock', 'https://extremetechcr.com/tienda/26518-home_default/asrock-h610m-hvsm2-r20.jpg', 'Chipset B460, 4x DDR4, Polychrome RGB, M.2 NVMe, USB 3.2', NULL, 30, 0);
 
 -- Producto 5: ASUS Prime Z590-P
-INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASUS Prime Z590-P', 'Tarjeta madre ATX para procesadores Intel de 11va generación.', 220000.00, 'ASUS', 'ruta/a/la/foto5.jpg', 'Chipset Z590, 4x DDR4, PCIe 4.0, 2x M.2, USB 3.2 Gen 2', NULL, 18, 0);
+INSERT INTO Product (name, description, price, brand, photo, technical_stuff, id_offer, stock, n_sales) VALUES ('ASUS Prime Z590-P', 'Tarjeta madre ATX para procesadores Intel de 11va generación.', 220000.00, 'ASUS', 'https://extremetechcr.com/tienda/30689-home_default/gigabyte-a520m-k-v2.jpg', 'Chipset Z590, 4x DDR4, PCIe 4.0, 2x M.2, USB 3.2 Gen 2', NULL, 18, 0);
 
 
 
